@@ -7,6 +7,9 @@ include/
 pylibssh/
 Pylibssh/
 
+# Ignore Pandas workspace folder
+Pandas/
+
 # sshpass sources / build
 sshpass*/
 

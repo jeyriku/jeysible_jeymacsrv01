@@ -1,5 +1,17 @@
 ---
-# Template: inventaire Infrahub par type
-plugin: community.general.script
-command: |
-  /usr/local/bin/infrahub-inventory --filter type
+# Template: inventaire Infrahub par type (utilise opsmill.infrahub.inventory)
+plugin: opsmill.infrahub.inventory
+api_endpoint: "http://jeysrv10:8080"
+validate_certs: false
+# token: set via INFRAHUB_API_TOKEN or Vault
+keyed_groups:
+  - prefix: "type"
+    separator: ""
+    key: "type"
+
+nodes:
+  InfraDevice:
+    include:
+      - name
+      - type
+      - platform.ansible_network_os

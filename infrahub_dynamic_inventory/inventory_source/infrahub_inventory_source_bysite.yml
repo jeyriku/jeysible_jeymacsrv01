@@ -1,5 +1,17 @@
 ---
-# Template: inventaire Infrahub par site
-plugin: community.general.script
-command: |
-  /usr/local/bin/infrahub-inventory --filter site
+# Template: inventaire Infrahub par site (utilise opsmill.infrahub.inventory)
+plugin: opsmill.infrahub.inventory
+api_endpoint: "http://jeysrv10:8080"
+validate_certs: false
+# token: set via INFRAHUB_API_TOKEN or Vault
+keyed_groups:
+  - prefix: "site"
+    separator: ""
+    key: "site.name"
+
+nodes:
+  InfraDevice:
+    include:
+      - name
+      - site.name
+      - primary_address.address

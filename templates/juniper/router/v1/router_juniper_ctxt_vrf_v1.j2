@@ -1,0 +1,39 @@
+{% for vrf in netbox_vrfs.json.results if vrf.name == 'vpn-internet' %}
+set routing-instances vpn-internet protocols bgp group external type external
+set routing-instances vpn-internet protocols bgp group external family inet unicast
+set routing-instances vpn-internet protocols bgp group external neighbor 192.168.13.2 peer-as 65002
+{% endfor %}
+{% for ifvrf in netbox_ifaces.json.results if ifvrf.device.name  == 'jeyniper01'-%}
+{% if ifvrf.custom_fields.iface_vrf == 'vpn-internet' %}
+set routing-instances vpn-internet interface {{ ifvrf.name }}
+{% endif %}
+{% endfor %}
+{% for vrf in netbox_vrfs.json.results if vrf.name == 'vpn-internet' %}
+set routing-instances vpn-internet description {{ vrf.name }}
+set routing-instances vpn-internet instance-type vrf
+set routing-instances vpn-internet routing-options autonomous-system 65003
+{% endfor %}
+{% for device_name in netbox_devices.json.results if device_name.name == 'jeyniper01' -%}
+set routing-instances vpn-internet route-distinguisher {{ device_name.custom_fields.dev_lpbk }}:01
+{% endfor %}
+{% for vrf in netbox_vrfs.json.results if vrf.name == 'vpn-internet' %}
+set routing-instances vpn-internet vrf-import Vrf-Internet-Import
+set routing-instances vpn-internet vrf-export Vrf-Internet-Export
+{% endfor %}
+{% for vrf in netbox_vrfs.json.results if vrf.name == 'vpn-internet-guest' %}
+set routing-instances vpn-internet description {{ vrf.name }}
+set routing-instances vpn-internet-guest instance-type vrf
+set routing-instances vpn-internet-guest routing-options static route 192.168.3.0/24 next-hop 192.168.30.2
+{% endfor %}
+{% for ifvrf in netbox_ifaces.json.results if ifvrf.device.name  == 'jeyniper01'-%}
+{% if ifvrf.custom_fields.iface_vrf == 'vpn-internet-guest' %}
+set routing-instances vpn-internet-guest interface {{ ifvrf.name }}
+{% endif %}
+{% endfor %}
+{% for device_name in netbox_devices.json.results if device_name.name == 'jeyniper01' -%}
+set routing-instances vpn-internet route-distinguisher {{ device_name.custom_fields.dev_lpbk }}:03
+{% endfor %}
+{% for vrf in netbox_vrfs.json.results if vrf.name == 'vpn-internet-guest' %}
+set routing-instances vpn-internet-guest vrf-import Vrf-Internet-Guest-Import
+set routing-instances vpn-internet-guest vrf-export Vrf-Internet-Guest-Export
+{% endfor %}

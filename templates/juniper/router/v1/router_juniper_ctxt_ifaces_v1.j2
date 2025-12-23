@@ -1,0 +1,27 @@
+{% for data in netbox_ifaces.json.results if data.device.name == 'jeyniper01' -%}
+{% if data.type.value == '1000base-t' %}
+{% if data.enabled == true %}
+set interfaces {{ data.name }} description {{ data.description }}
+set interfaces {{ data.name}} flexible-vlan-tagging
+set interfaces {{ data.name }} mtu {{ data.mtu }}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% for ifdata in netbox_ipaddr.json.results -%}
+{% if ifdata.custom_fields.iface_device == 'jeyniper01' %}
+{% if ifdata.custom_fields.iface_role == 'mpls' -%}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} description {{ ifdata.description }}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} family inet address {{ ifdata.address }}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} family mpls
+{% elif ifdata.custom_fields.iface_role == 'ip' -%}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} description {{ ifdata.description }}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} family inet address {{ ifdata.address }}
+{% elif ifdata.custom_fields.iface_role == 'ipvrf' -%}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} description {{ ifdata.description }}
+set interfaces {{ ifdata.custom_fields.iface_parent }} unit {{ ifdata.custom_fields.iface_unit }} family inet address {{ ifdata.address }}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% for ifdata in netbox_ipaddr.json.results if ifdata.custom_fields.iface_unit|int > 0 -%}
+set interfaces {{ ifdata.custom_fields.iface_parent  }} unit {{ ifdata.custom_fields.iface_unit }} vlan-id {{ ifdata.custom_fields.iface_unit }}
+{% endfor %}

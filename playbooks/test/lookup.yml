@@ -1,0 +1,11 @@
+---
+- name: Lookup tasks
+  hosts: localhost
+  tasks:
+    - name: "loop through list"
+      ansible.builtin.debug:
+        msg: "An item: {{ item }}"
+      with_items:
+        - 1
+        - 2
+        - 3

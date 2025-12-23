@@ -1,0 +1,15 @@
+---
+- name: Using conditionals
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Run for Cisco_Edge nodes only
+      debug:
+        msg: "Router names is {{ hostname }}"
+      when: "'edge_cisco' in group_names"
+
+    - name: Run for Juniper_Core nodes only
+      debug:
+        msg: "{{ hostname }} is running {{ os }}"
+      when: 
+        - inventory_hostname == 'jeyniper05'

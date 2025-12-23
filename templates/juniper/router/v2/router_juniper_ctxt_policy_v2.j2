@@ -1,0 +1,16 @@
+set policy-options prefix-list Default 0.0.0.0/0
+set policy-options policy-statement Export-static term 1 from protocol static
+set policy-options policy-statement Export-static term 1 then accept
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet then community add Rt-Vpn-Internet
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet then accept
+set policy-options policy-statement Vrf-Internet-Guest-Export term from-Vrf-Internet-Guest then community add Rt-Vpn-Internet-Guest
+set policy-options policy-statement Vrf-Internet-Guest-Export term from-Vrf-Internet-Guest then accept
+set policy-options policy-statement Vrf-Internet-Guest-Import term from-Vrf-Internet from community Rt-Vpn-Internet
+set policy-options policy-statement Vrf-Internet-Guest-Import term from-Vrf-Internet from prefix-list Default
+set policy-options policy-statement Vrf-Internet-Guest-Import term from-Vrf-Internet then accept
+set policy-options policy-statement Vrf-Internet-Guest-Import term from-Vrf-Internet-Guest from community Rt-Vpn-Internet-Guest
+set policy-options policy-statement Vrf-Internet-Guest-Import term from-Vrf-Internet-Guest then accept
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet from community Rt-Vpn-Internet
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet then accept
+set policy-options community Rt-Vpn-Internet members target:65003:01
+set policy-options community Rt-Vpn-Internet-Guest members target:65003:03

@@ -1,0 +1,12 @@
+{% for device_name in netbox_devices.json.results if device_name.name == 'jeyniper01' -%}
+set routing-options rib inet.3 static route {{ device_name.custom_fields.rr1 }}/32 discard
+set routing-options rib inet.3 static route {{ device_name.custom_fields.rr2 }}/32 discard
+{% endfor %}
+set routing-options static route 192.168.0.0/24 next-hop 192.168.16.2
+set routing-options static route 192.168.4.0/24 next-hop 192.168.16.2
+set routing-options static route 192.168.40.0/24 next-hop 192.168.16.2
+{% for device_name in netbox_devices.json.results if device_name.name == 'jeyniper01' -%}
+set routing-options route-distinguisher-id {{ device_name.custom_fields.dev_lpbk }}
+set routing-options router-id {{ device_name.custom_fields.dev_lpbk }}
+set routing-options autonomous-system {{ device_name.custom_fields.bgp_asn.asn }}
+{% endfor %}

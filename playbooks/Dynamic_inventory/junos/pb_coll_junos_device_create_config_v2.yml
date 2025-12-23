@@ -1,0 +1,48 @@
+---
+- name: Create Report from netbox Data
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint: "/api/dcim/devices/"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+    # Make a Netbox API call to retrieve devices'components
+    - name: Get Device List from Netbox
+      uri:
+        url: "{{ server }}{{ endpoint }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_datas
+      run_once: yes
+
+    - name: save the Json data to a Variable as a Fact
+      set_fact:
+        netbox_datas: "{{ netbox_datas.json.results | to_nice_json | from_json }}"
+
+    - name: setDeviceName
+      set_fact:
+        device_name: "{{ netbox_datas.json.results | json_query(jmesquery) }}"
+      vars:
+        jmesquery: 'device_name.name'
+
+    - name: Generate Junos Config from Jinja2
+      ansible.builtin.file:
+        path: /Users/jeremierouzet/jeysible/config state=directory
+        state: directory
+
+
+    - name: Generate Junos Config from Jinja2 & Netbox
+      template:
+        src: "/Users/jeremierouzet/jeysible/templates/router_juniper_full_cfg.j2"
+        dest: "/Users/jeremierouzet/jeysible/config/{{inventory_hostname}}.cfg"
+      delegate_to: localhost

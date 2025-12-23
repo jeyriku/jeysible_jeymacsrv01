@@ -1,0 +1,41 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.3/32",
+            "Name": "jeyniper01"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.6/32",
+            "Name": "jeyniper02"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.8/32",
+            "Name": "jeyniper03"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.4/32",
+            "Name": "jeyniper04"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.9/32",
+            "Name": "jeyniper05"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.10/32",
+            "Name": "jeyniper06"
+        },
+        {
+            "DNS": "int.jeyriku.net",
+            "IP": "10.0.0.12/32",
+            "Name": "jeyniper07"
+        }
+    ]
+}

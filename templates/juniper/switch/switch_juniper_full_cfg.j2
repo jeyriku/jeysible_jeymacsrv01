@@ -1,0 +1,77 @@
+set version 18.2R3-S5.3
+set system root-authentication encrypted-password "$6$Y.Ofl9yO$EfZl4U3TW89kiE3Svaa42mZDS5K/iFsJ0hD5qzIExhA.FwUdZNgGZmrYqEVXisdL.0K5vA.drIaka7JMjrKcu."
+set system host-name jeyswitch06
+set system auto-snapshot
+set system domain-name int.jeyriku.net
+set system domain-search int.jeyriku.net
+set system time-zone Europe/Paris
+set system name-server 192.168.0.252
+set system name-server 192.168.0.250
+set system services ssh root-login allow
+set system services netconf ssh port 830
+set system services netconf rfc-compliant
+set system services netconf yang-compliant
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system license keys key "JUNOS469557073 aeaqia qmjbld amrrhe ztimbz gmyqma uqiyga qu2dim qfglsb fydsro zenbsy ilcbyr 6sxoqq s2stqh ocjn7c 7op7ps jpwgej shetgm lxiymn l4en2h 6jiq5r"
+set system ntp server 192.168.0.250
+set system ntp server 192.168.0.252
+set system ntp source-address 192.168.0.254
+set chassis redundancy graceful-switchover
+set chassis alarm management-ethernet link-down ignore
+set chassis auto-image-upgrade
+set interfaces ge-0/0/0 description "Lien vers Jeyswitch02"
+set interfaces ge-0/0/0 native-vlan-id 1
+set interfaces ge-0/0/0 unit 0 description "Lien vers Jeyswitch02"
+set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members INTERNAL
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members GUEST
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members ZTP
+set interfaces ge-0/0/1 disable
+set interfaces ge-0/0/2 disable
+set interfaces ge-0/0/3 disable
+set interfaces ge-0/0/4 disable
+set interfaces ge-0/0/5 disable
+set interfaces ge-0/0/6 disable
+set interfaces ge-0/0/7 disable
+set interfaces ge-0/0/8 disable
+set interfaces ge-0/0/9 disable
+set interfaces ge-0/0/10 disable
+set interfaces ge-0/0/11 description "Lien vers Jeycisco01"
+set interfaces ge-0/0/11 unit 0 description "Lien vers Jeycisco01"
+set interfaces ge-0/0/11 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members INTERNET
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members GUEST
+set interfaces ge-0/1/0 description "Lien vers Jeyswitch03"
+set interfaces ge-0/1/0 native-vlan-id 1
+set interfaces ge-0/1/0 unit 0 description "Lien vers Jeyswitch03"
+set interfaces ge-0/1/0 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members INTERNAL
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members GUEST
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members ZTP
+set interfaces irb unit 0 family inet address 192.168.0.254/24
+set interfaces irb unit 3 family inet address 192.168.3.253/24
+set interfaces irb unit 15 family inet address 192.168.15.2/30
+set interfaces irb unit 100 family inet address 192.168.100.254/24
+set snmp location "int.jeyriku.net, 44 rue des Tournelles, 77700, Chessy, France [48.878105, 2.772766]"
+set snmp community jeyricorp authorization read-only
+set snmp community jeyricorp clients 192.168.0.249/32
+set snmp trap-options source-address 192.168.0.254
+set routing-options static route 0.0.0.0/0 next-hop 192.168.15.1
+set routing-options static route 192.168.4.0/24 next-hop 192.168.0.244
+set protocols lldp interface ge-0/0/0
+set protocols lldp interface ge-0/0/10
+set protocols lldp interface ge-0/0/11
+set protocols lldp interface ge-0/1/0
+set protocols rstp interface ge-0/0/0 mode point-to-point
+set protocols rstp interface ge-0/1/0 mode point-to-point
+set vlans GUEST vlan-id 3
+set vlans GUEST l3-interface irb.3
+set vlans INTERNAL vlan-id 1
+set vlans INTERNAL l3-interface irb.0
+set vlans INTERNET vlan-id 15
+set vlans INTERNET l3-interface irb.15
+set vlans ZTP vlan-id 100
+set vlans ZTP l3-interface irb.100

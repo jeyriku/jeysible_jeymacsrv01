@@ -1,0 +1,308 @@
+---
+- name: Upgrade Ios on Cisco Devices
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  roles:
+    - ansible-pyats
+  vars:
+    server: "https://192.168.0.251"
+    endpoint1: "/api/dcim/devices/?limit=1000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    upgrade_ios_version: "17.08.01a"
+    tftp_path: "netos/tftp/cisco/router/c1100"
+    tftp_server: "192.168.0.249"
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_user: root
+    ansible_password: Celjer.05n
+    new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
+    previous_ios_bin: "c1100-universalk9.16.12.04.SPA.bin"
+
+  tasks:
+
+# Make a Netbox API call to retrieve devices'components
+    - name: Get Device List from Netbox
+      uri:
+        url: "{{ server }}{{ endpoint1 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_devices
+      run_once: yes
+
+# Define specific filters to only keep particular device Role
+    - name: QueryDeviceName
+      ansible.builtin.debug:
+        msg: "{{ netbox_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?device_role.display=='Router_CE_Cisco'].{Name: name, IP: custom_fields.dev_lpbk }"
+      register: device_name
+
+# Display debug outputs for learning purpose
+    - name: Debug for learning purpose
+      debug:
+        msg: "Device's name is {{ device_name.msg[item].Name }}, and IP is {{ device_name.msg[item].IP }}"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+# Retrieve device facts
+    - name: Retrieve device facts
+      ios_facts:
+      with_items:
+         - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Display debug output thanks to embedded Ansible variables
+    - debug:
+        msg:
+          - "Device's name is {{ device_name.msg[item].Name }}"
+          - "Current version is {{ ansible_net_version }}"
+          - "Current Cisco binary file is {{ ansible_net_image }}"
+          - "Upgrade image is {{ upgrade_ios_version }}"
+      with_items:
+        - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+# Get IOSXE version with PyATS and compare it with the target version
+    - name: Get current IOSXE version
+      tags: pre-check, check-version, post-check, install
+      ios_command:
+        commands:
+          - show version
+      register: show_version
+      with_items:
+        - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Debug previous command registered values
+
+    - name: Debug previous command registered values
+      ansible.builtin.debug:
+        var: show_version
+
+# Get fact for the current IOSXE version with PyATS
+    - name: Get fact for the current IOSXE version with PyATS
+      tags: pre-check, check-version, post-check, install
+      set_fact:
+        current_xe_ver: "{{ show_version.results[item]['stdout'][0] | pyats_parser('show version', 'iosxe') }}"
+      with_items:
+        - "{{ show_version.results }}"
+      loop_control:
+        index_var: item
+
+# Debug message for learning purpose based on facts parsed with PyATS
+    - name: Debug parsed output for the current IOSXE version
+      debug:
+        msg: "{{ device_name.msg[item].Name }} currently running with {{ current_xe_ver.version.xe_version }}"
+      with_items:
+          - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Assert that Device is NOT running with the target IOSXE version with PyATS
+    - name: Assert that Device is NOT running with the target IOSXE version with PyATS
+      tags: pre-check, check-version, install
+      assert:
+        quiet: no
+        success_msg: "{{ device_name.msg[item].Name }} is not running target version {{ upgrade_ios_version }}, current version is {{ current_xe_ver.version.xe_version }}"
+        fail_msg: "{{ device_name.msg[item].Name }} is already running {{ upgrade_ios_version }}"
+        that:
+          - "'{{ current_xe_ver.version.xe_version }}' != '{{ upgrade_ios_version }}'"
+      with_items:
+          - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Display debug output telling that software needs to be upgraded
+    - debug:
+        msg:
+        - "IOS Software on {{ device_name.msg[item].Name }} is not compliant and will be upgraded"
+      when: ansible_net_version != upgrade_ios_version
+      with_items:
+          - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Check the disk space using PyATS
+    - name: Check if Device has the enough disk space for the  target image
+      tags: pre-check, disk_check, image-check, image-copy, install
+      ios_command:
+        commands: dir
+      register: disk_check
+      with_items:
+        - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+    - name: Set fact for the disk space with PyATS
+      tags: pre-check, disk_check, post-check, install
+      set_fact:
+        dsk_chk: "{{ disk_check.results[item]['stdout'][0] | pyats_parser('dir', 'iosxe') }}"
+      with_items:
+        - "{{ disk_check.results }}"
+      loop_control:
+        index_var: item
+
+    - debug:
+        msg: "{{ dsk_chk['dir'][flash_dir + '/']['bytes_free'] }}"
+
+    - name: Assert Enough Disk Space Available
+      tags: image-copy, install
+      assert:
+        quiet: no
+        success_msg: "Enough disk spcae available to accommodate target image."
+        fail_msg: 'Not enough disk space available for the target image!'
+        that:
+          - "{{ dsk_chk['dir'][flash_dir + '/']['bytes_free'] | int }} > {{ target_image_size }}"
+
+# Check if device has the target image
+    - name: Check if switch has the target image in the {{ flash_dir }} directory
+      tags: pre-check, install, image-check, image-copy
+      ios_command:
+        commands: "dir {{ flash_dir }}"
+      register: image_check
+
+    - name: Set image check as fact
+      tags: pre-check, install, image-check, image-copy
+      set_fact:
+        dir_image_check: "{{ image_check.stdout[0] | regex_search(image_var, multiline=True) }}"
+      vars:
+        image_var: "{{ target_image }}"
+
+# Start of the upgrade process
+    - name: Upgrade of IOS image on remote device if not compliant
+      block:
+
+# Check if IOS is already present in the flash
+        - name: Check if IOS is already present on the flash
+          ios_command:
+              commands:
+              - command: "dir flash: | include {{ new_ios_bin }}"
+          register: dir_flash
+          tags:
+            - flash
+          with_items:
+            - "{{ device_name.msg }}"
+          loop_control:
+            index_var: item
+          vars:
+            ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Display content of previously registered value
+        - debug:
+            var: dir_flash
+
+# Copy of IOS software on remote device
+        - name: Copy of IOS software on remote device
+          ios_command:
+              commands:
+                - command: "copy tftp://{{ tftp_server }}/{{ tftp_path }}/{{ new_ios_bin }} bootflash:"
+                  prompt: '[{{ new_ios_bin }}]'
+                  answer: "\r"
+          when:
+            - ansible_net_model != ["upgrade_ios_version"]
+            - new_ios_bin not in ["dir_flash"]
+          with_items:
+            - "{{ device_name.msg }}"
+          loop_control:
+            index_var: item
+          tags:
+            - upload
+          vars:
+            ansible_command_timeout: 1400
+            ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Change the Boot Variable to the new image
+        - name: Change Boot Variable to new image
+          ios_config:
+            commands:
+              - "boot system bootflash:{{ new_ios_bin }}"
+              - "no boot system bootflash:{{ previous_ios_bin }}"
+            save_when: always
+          with_items:
+            - "{{ device_name.msg }}"
+          loop_control:
+            index_var: item
+          vars:
+            ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Reload the device
+        - name: Reload the Device
+          cli_command:
+            command: reload
+            prompt:
+              - confirm
+            answer:
+              - 'y'
+          with_items:
+            - "{{ device_name.msg }}"
+          loop_control:
+            index_var: item
+          vars:
+            ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Wait for Reachability to the device
+        - name: Wait for device to come back online
+          wait_for:
+            host: "{{ device_name.msg[item].Name }}"
+            port: 22
+            delay: 180
+          delegate_to: localhost
+
+# Delete Previous Ios Software from Device
+        - name: Reload the Device
+          ios_command:
+              commands:
+                - command: "delete {{ previous_ios_bin }}"
+                  prompt: '[{{ previous_ios_bin }}]'
+                  answer: "\r"
+          with_items:
+            - "{{ device_name.msg }}"
+          loop_control:
+            index_var: item
+          vars:
+            ansible_host: "{{ device_name.msg[item].Name }}"
+
+# Check current image
+        - name: Check Image Version
+          ios_facts:
+
+        - debug:
+            msg:
+            - "Current version is {{ ansible_net_version }}"
+
+        - name: ASSERT THAT THE IOS VERSION IS CORRECT
+
+          vars:
+            upgrade_ios_version: 17.08.01a
+
+          assert:
+            that:
+              - upgrade_ios_version == ansible_net_version
+        - debug:
+            msg:
+            - "Software Upgrade has been completed"

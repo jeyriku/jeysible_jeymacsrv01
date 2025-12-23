@@ -1,0 +1,33 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "Name": "jeyniper01",
+            "bgp_vrf": "vpn-internet",
+            "local_addr": "192.168.13.1/30",
+            "local_as": 65003,
+            "peer_group": "external",
+            "remote_addr": "192.168.13.2/30",
+            "remote_as": 65002
+        },
+        {
+            "Name": "jeyniper01",
+            "bgp_vrf": "default",
+            "local_addr": "10.0.0.3/32",
+            "local_as": 65003,
+            "peer_group": "route-reflector",
+            "remote_addr": "10.0.0.10/32",
+            "remote_as": 65003
+        },
+        {
+            "Name": "jeyniper01",
+            "bgp_vrf": "default",
+            "local_addr": "10.0.0.3/32",
+            "local_as": 65003,
+            "peer_group": "route-reflector",
+            "remote_addr": "10.0.0.12/32",
+            "remote_as": 65003
+        }
+    ]
+}

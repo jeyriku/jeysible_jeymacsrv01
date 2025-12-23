@@ -1,0 +1,36 @@
+set version 20.3R1.8
+{% for device in device_name.msg -%}
+set system host-name {{ device.Name }}
+set system root-authentication encrypted-password "$5$ub0EANni$ZZ8MSvNDdGJoDUjTf00q2wqTtZUqnzgo12u7wZrfg.4"
+set system login user Jeyriku full-name Jeyriku
+set system login user Jeyriku uid 100
+set system login user Jeyriku class super-user
+set system login user Jeyriku authentication encrypted-password "$5$nSRnDAuu$EhBK6nlwsvoDtHiGR9Ykh6w5RosnMIDsaGL5tj7K5z6"
+set system services ssh root-login allow
+set system services telnet
+set system services xnm-clear-text
+set system services netconf ssh
+set system services rest https port 4443
+set system services rest https addresses {{ device.IP }}
+set system services rest https server-certificate jeycert
+set system services rest enable-explorer
+set system auto-snapshot
+set system domain-name {{ device.DNS }}
+set system domain-search {{ device.DNS }}
+set system time-zone Europe/Paris
+set system name-server {{ device.DNS1 }}
+set system name-server {{ device.DNS2 }}
+set system syslog archive size 100k
+set system syslog archive files 3
+set system syslog user * any emergency
+set system syslog file messages any critical
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands error
+set system syslog file kmd-logs daemon info
+set system max-configurations-on-flash 5
+set system max-configuration-rollbacks 5
+set system license autoupdate url https://ae1.juniper.net/junos/key_retrieval
+set system ntp server {{ device.DNS1 }}
+set system ntp server {{ device.DNS2 }}
+set security forwarding-options family mpls mode packet-based
+{% endfor %}

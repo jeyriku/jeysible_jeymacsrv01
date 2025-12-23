@@ -1,0 +1,31 @@
+{% for bgp in plugin_bgp.msg if bgp.bgp_vrf == 'vpn-internet' -%}
+set routing-instances {{ bgp.bgp_vrf }} protocols bgp group {{ bgp.peer_group }} type external
+set routing-instances {{ bgp.bgp_vrf }} protocols bgp group {{ bgp.peer_group }} family inet unicast
+set routing-instances {{ bgp.bgp_vrf }} protocols bgp group {{ bgp.peer_group }} neighbor 192.168.13.2 peer-as 65002
+{% for ifaces in dcim_ifaces.msg if ifaces.vrf == 'vpn-internet'-%}
+set routing-instances vpn-internet interface {{ ifaces.iface_name }}
+{% endfor %}
+{% for vrf in ipam_vrf.msg if vrf.Name == 'vpn-internet' %}
+set routing-instances {{ vrf.Name }} description {{ vrf.Name }}
+set routing-instances {{ vrf.Name }} instance-type vrf
+set routing-instances {{ vrf.Name }} routing-options autonomous-system 65003
+{% for iface in dcim_devices.msg -%}
+set routing-instances {{ vrf.Name }} route-distinguisher {{ iface.ipaddr }}:01
+set routing-instances vpn-internet vrf-import Vrf-Internet-Import
+set routing-instances vpn-internet vrf-export Vrf-Internet-Export
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% for vrf in ipam_vrf.msg if vrf.Name == 'vpn-internet-guest' %}
+set routing-instances {{ vrf.Name }} description {{ vrf.Name }}
+set routing-instances {{ vrf.Name }} instance-type vrf
+set routing-instances {{ vrf.Name }} routing-options autonomous-system 65003
+{% for ifaces in dcim_ifaces.msg if ifaces.vrf == 'vpn-internet-guest'-%}
+set routing-instances {{ vrf.Name }} interface {{ ifaces.iface_name }}
+{% for iface in dcim_devices.msg if vrf.Name == 'vpn-internet-guest'-%}
+set routing-instances {{ vrf.Name }} route-distinguisher {{ iface.ipaddr }}:03
+set routing-instances vpn-internet-guest vrf-import Vrf-Internet-Guest-Import
+set routing-instances vpn-internet-guest vrf-export Vrf-Internet-Guest-Export
+{% endfor %}
+{% endfor %}
+{% endfor %}

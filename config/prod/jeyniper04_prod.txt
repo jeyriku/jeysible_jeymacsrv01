@@ -1,0 +1,122 @@
+set version 20.3R1.8
+set system host-name Jeyniper04
+set system root-authentication encrypted-password "$5$ub0EANni$ZZ8MSvNDdGJoDUjTf00q2wqTtZUqnzgo12u7wZrfg.4"
+set system login user Jeyriku full-name Jeyriku
+set system login user Jeyriku uid 100
+set system login user Jeyriku class super-user
+set system login user Jeyriku authentication encrypted-password "$5$nSRnDAuu$EhBK6nlwsvoDtHiGR9Ykh6w5RosnMIDsaGL5tj7K5z6"
+set system services ssh root-login allow
+set system services telnet
+set system services xnm-clear-text
+set system services netconf ssh
+set system auto-snapshot
+set system domain-name int.jeyriku.net
+set system domain-search int.jeyriku.net
+set system time-zone Europe/Paris
+set system name-server 192.168.0.252
+set system name-server 192.168.0.250
+set system syslog archive size 100k
+set system syslog archive files 3
+set system syslog user * any emergency
+set system syslog file messages any critical
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands error
+set system syslog file kmd-logs daemon info
+set system max-configurations-on-flash 5
+set system max-configuration-rollbacks 5
+set system license autoupdate url https://ae1.juniper.net/junos/key_retrieval
+set system ntp server 192.168.0.250
+set system ntp server 192.168.0.252
+set security forwarding-options family mpls mode packet-based
+set interfaces ge-0/0/0 description "Lien vers Jeyniper02"
+set interfaces ge-0/0/0 mtu 1614
+set interfaces ge-0/0/0 unit 0 description "Lien vers Jeyniper02"
+set interfaces ge-0/0/0 unit 0 family inet address 192.168.12.10/30
+set interfaces ge-0/0/0 unit 0 family mpls
+set interfaces ge-0/0/1 description "Lien vers Jeyniper01"
+set interfaces ge-0/0/1 mtu 1614
+set interfaces ge-0/0/1 unit 0 description "Lien vers Jeyniper01"
+set interfaces ge-0/0/1 unit 0 family inet address 192.168.12.13/30
+set interfaces ge-0/0/1 unit 0 family mpls
+set interfaces ge-0/0/2 description "Lien vers Jeyniper03"
+set interfaces ge-0/0/2 mtu 1614
+set interfaces ge-0/0/2 unit 0 description "Lien vers Jeyniper03"
+set interfaces ge-0/0/2 unit 0 family inet address 192.168.12.18/30
+set interfaces ge-0/0/2 unit 0 family mpls
+set interfaces ge-0/0/3 description "Lien vers Jeyniper07"
+set interfaces ge-0/0/3 mtu 1614
+set interfaces ge-0/0/3 unit 0 description "Lien vers Jeyniper07"
+set interfaces ge-0/0/3 unit 0 family inet address 192.168.12.41/30
+set interfaces ge-0/0/4 disable
+set interfaces ge-0/0/5 description "Lien vers Jeyniper05"
+set interfaces ge-0/0/5 mtu 1514
+set interfaces ge-0/0/5 unit 0 description "Lien vers Jeyniper05"
+set interfaces ge-0/0/5 unit 0 family inet address 192.168.11.5/30
+set interfaces ge-0/0/6 disable
+set interfaces ge-0/0/7 disable
+set interfaces lo0 unit 0 family inet address 10.0.0.4/32
+set snmp location "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]"
+set snmp community jeyricorp authorization read-only
+set snmp community jeyricorp clients 192.168.0.249/32
+set snmp trap-options source-address 10.0.0.4
+set policy-options prefix-list Default
+set policy-options prefix-list Vrf-Internet-Guest-Prefix 192.168.3.0/24
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet from protocol direct
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet from protocol bgp
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet then community add Rt-Vpn-Internet
+set policy-options policy-statement Vrf-Internet-Export term from-Vrf-Internet then accept
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet-Guest from community Rt-Vpn-Internet-Guest
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet-Guest from prefix-list Vrf-Internet-Guest-Prefix
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet-Guest then accept
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet from community Rt-Vpn-Internet
+set policy-options policy-statement Vrf-Internet-Import term from-Vrf-Internet then accept
+set policy-options policy-statement Vrf-Internet-Import term reject then reject
+set policy-options community Rt-Vpn-Internet members target:65003:01
+set policy-options community Rt-Vpn-Internet-Guest members target:65003:03
+set routing-instances vpn-internet protocols bgp group external type external
+set routing-instances vpn-internet protocols bgp group external family inet unicast
+set routing-instances vpn-internet protocols bgp group external neighbor 192.168.11.6 peer-as 65004
+set routing-instances vpn-internet interface ge-0/0/5.0
+set routing-instances vpn-internet instance-type vrf
+set routing-instances vpn-internet route-distinguisher 10.0.0.4:01
+set routing-instances vpn-internet vrf-import Vrf-Internet-Import
+set routing-instances vpn-internet vrf-export Vrf-Internet-Export
+set routing-instances vpn-internet vrf-table-label
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 retransmit-interval 5
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 hello-interval 10
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 dead-interval 40
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 retransmit-interval 5
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 hello-interval 10
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 dead-interval 40
+set protocols ospf area 0.0.0.0 interface ge-0/0/2.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/2.0 retransmit-interval 5
+set protocols ospf area 0.0.0.0 interface ge-0/0/2.0 hello-interval 10
+set protocols ospf area 0.0.0.0 interface ge-0/0/2.0 dead-interval 40
+set protocols ospf area 0.0.0.0 interface ge-0/0/3.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/3.0 retransmit-interval 5
+set protocols ospf area 0.0.0.0 interface ge-0/0/3.0 hello-interval 10
+set protocols ospf area 0.0.0.0 interface ge-0/0/3.0 dead-interval 40
+set protocols bgp group route-reflector type internal
+set protocols bgp group route-reflector local-address 10.0.0.4
+set protocols bgp group route-reflector family inet unicast add-path receive
+set protocols bgp group route-reflector family inet unicast add-path send path-count 6
+set protocols bgp group route-reflector family inet-vpn unicast
+set protocols bgp group route-reflector family route-target
+set protocols bgp group route-reflector neighbor 10.0.0.10
+set protocols bgp group route-reflector neighbor 10.0.0.12
+set protocols ldp interface ge-0/0/0.0
+set protocols ldp interface ge-0/0/1.0
+set protocols ldp interface ge-0/0/2.0
+set protocols ldp igp-synchronization holddown-interval 15
+set protocols mpls interface ge-0/0/0.0
+set protocols mpls interface ge-0/0/1.0
+set protocols mpls interface ge-0/0/2.0
+set protocols lldp interface all
+set routing-options rib inet.3 static route 10.0.0.10/32 discard
+set routing-options rib inet.3 static route 10.0.0.12/32 discard
+set routing-options route-distinguisher-id 10.0.0.4
+set routing-options router-id 10.0.0.4
+set routing-options autonomous-system 65003

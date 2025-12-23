@@ -1,0 +1,22 @@
+changed: false
+msg: All items completed
+results:
+-   ansible_index_var: item
+    ansible_loop_var: item
+    changed: false
+    failed: false
+    item: 0
+    msg: jey-isr1k-ce-01 is currently running with 16.12.04
+-   ansible_index_var: item
+    ansible_loop_var: item
+    changed: false
+    failed: false
+    item: 1
+    msg: jey-isr1k-ce-02 is currently running with 17.08.01a
+-   ansible_index_var: item
+    ansible_loop_var: item
+    changed: false
+    failed: false
+    item: 2
+    msg: jey-isr1k-ce-03 is currently running with 16.09.03
+skipped: false

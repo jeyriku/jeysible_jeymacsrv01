@@ -1,0 +1,6 @@
+run request security pki generate-key-pair size 1024 certificate-id jeycert
+run request security pki local-certificate generate-self-signed certificate-id jeycert subject CN={{device_name.msg[item].Name}} domain-name {{ device_name.msg[item].DNS }} ip-address {{ device_name.msg[item].IP|replace('/32', '') }}
+set system services rest https port 4443
+set system services rest https addresses {{ device_name.msg[item].IP|replace('/32', '') }}
+set system services rest https server-certificate jeycert
+set system services rest enable-explorer

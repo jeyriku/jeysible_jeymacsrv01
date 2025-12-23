@@ -1,0 +1,92 @@
+---
+- name: Update Junos context system user
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint1: "/api/dcim/devices/?limit=1000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+    # Make a Netbox API call to retrieve devices'components
+    - name: Get Device List from Netbox
+      uri:
+        url: "{{ server }}{{ endpoint1 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_devices
+      run_once: yes
+
+    - name: QueryDeviceName
+      ansible.builtin.debug:
+        msg: "{{ netbox_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?device_type.manufacturer.slug=='juniper-networks'].{ Name: name, Manufacturer: device_type.manufacturer.slug, Address: primary_ip.address  }"
+      register: device_name
+
+    - name: Debug for learning purpose
+      debug:
+        msg: "Device's name is {{ device_name.msg[item].Name }}, supplier is {{ device_name.msg[item].Manufacturer }} and IP address is {{ device_name.msg[item].Address }}"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: Generate Junos Config Directory
+      ansible.builtin.file:
+        path: /Users/jeremierouzet/jeysible/config
+        state: directory
+
+    - name: Generate Junos Config from Jinja2 & Netbox
+      template:
+        src: "/Users/jeremierouzet/jeysible/templates/juniper/common/v2/common_juniper_update_ctxt_system_login_v2.j2"
+        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      delegate_to: localhost
+
+    - name: Generate Facts from previous generated config file
+      set_fact:
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg') }}"
+      with_items:
+         - "{{ device_name.msg }}"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: debug
+      ansible.builtin.debug:
+        var: command_to_push
+
+    - name: Push command to devices
+      junipernetworks.junos.junos_config:
+        src: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg"
+        src_format: "set"
+      with_items:
+         - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_network_os: junipernetworks.junos.junos
+        ansible_connection: ansible.netcommon.netconf
+        ansible_user: root
+        ansible_password: Celjer.05n
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+    - local_action:
+        module: copy
+        content: "{{ device_name | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/common/update_ctxt_system_login/update_ctxt_system_login.yml
+
+    - local_action:
+        module: copy
+        content: "{{ device_name | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/common/update_ctxt_system_login/update_ctxt_system_login.json

@@ -1,0 +1,19 @@
+changed: false
+failed: false
+msg:
+-   Manufacturer: juniper-networks
+    Name: jeyniper01
+-   Manufacturer: juniper-networks
+    Name: jeyniper02
+-   Manufacturer: juniper-networks
+    Name: jeyniper03
+-   Manufacturer: juniper-networks
+    Name: jeyniper04
+-   Manufacturer: juniper-networks
+    Name: jeyniper05
+-   Manufacturer: juniper-networks
+    Name: jeyniper06
+-   Manufacturer: juniper-networks
+    Name: jeyniper07
+-   Manufacturer: juniper-networks
+    Name: jeyswitch06

@@ -1,0 +1,62 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "IP": "10.0.0.3",
+            "Name": "jeyniper01",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.6",
+            "Name": "jeyniper02",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.8",
+            "Name": "jeyniper03",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.4",
+            "Name": "jeyniper04",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.9",
+            "Name": "jeyniper05",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.10",
+            "Name": "jeyniper06",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "IP": "10.0.0.12",
+            "Name": "jeyniper07",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249"
+        }
+    ]
+}

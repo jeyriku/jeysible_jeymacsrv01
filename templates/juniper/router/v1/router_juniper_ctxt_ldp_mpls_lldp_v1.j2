@@ -1,0 +1,12 @@
+{% for ldpdata in netbox_ipaddr.json.results if ldpdata.custom_fields.iface_device == 'jeyniper01'  -%}
+{% if ldpdata.custom_fields.iface_role == 'mpls' %}
+set protocols ldp interface {{ ldpdata.custom_fields.iface_parent }}.{{ ldpdata.custom_fields.iface_unit }}
+{% endif %}
+{% endfor %}
+set protocols ldp igp-synchronization holddown-interval 15
+{% for mplsdata in netbox_ipaddr.json.results if mplsdata.custom_fields.iface_device == 'jeyniper01'  -%}
+{% if mplsdata.custom_fields.iface_role == 'mpls' %}
+set protocols mpls interface {{ mplsdata.custom_fields.iface_parent }}.{{ mplsdata.custom_fields.iface_unit }}
+{% endif %}
+{% endfor %}
+set protocols lldp interface all

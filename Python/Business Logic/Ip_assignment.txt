@@ -1,0 +1,126 @@
+Pour affecter des adresses IP à un équipement dans NetBox en fonction de son rôle, vous pouvez implémenter une logique métier en Python qui utilise l'API NetBox ou les modèles internes de NetBox, selon que vous travaillez directement dans le système ou via l'API. Voici une approche détaillée pour créer cette logique.
+
+1. Étape préliminaire : Comprendre le modèle de données dans NetBox
+
+Dans NetBox, les équipements (devices) ont plusieurs propriétés :
+
+device_role : Le rôle d'un équipement (ex : switch, firewall, server).
+
+interfaces : Un équipement peut avoir plusieurs interfaces réseau.
+
+ip_addresses : Les adresses IP associées aux interfaces d'un équipement.
+
+
+L'objectif est d'attribuer automatiquement des adresses IP à un équipement basé sur son rôle.
+
+2. Utiliser l'API NetBox ou le modèle interne
+
+Vous pouvez interagir avec NetBox soit via son API REST, soit directement avec les modèles internes si vous créez un plugin ou un script à l'intérieur du serveur NetBox.
+
+Voici comment implémenter cette logique métier.
+
+A. Exemple via l'API REST de NetBox
+
+Voici une logique de base utilisant l'API Python pour NetBox (pynetbox) :
+
+import pynetbox
+
+# Connexion à NetBox via l'API
+nb = pynetbox.api('http://netbox.local', token='your_api_token')
+
+# Récupérer l'équipement selon son ID ou son nom
+device = nb.dcim.devices.get(name='DeviceName')
+
+# Logique métier pour affecter des IPs en fonction du rôle de l'équipement
+if device.device_role.slug == 'switch':
+    # Exemple : Attribuer une adresse IP pour un switch
+    ip_address = nb.ipam.ip_addresses.create({
+        "address": "192.168.1.10/24",
+        "assigned_object_type": "dcim.interface",
+        "assigned_object_id": device.interfaces.get(name='eth0').id
+    })
+    print(f"IP {ip_address.address} assignée à {device.name}")
+
+elif device.device_role.slug == 'firewall':
+    # Exemple : Attribuer une adresse IP pour un firewall
+    ip_address = nb.ipam.ip_addresses.create({
+        "address": "10.0.0.10/24",
+        "assigned_object_type": "dcim.interface",
+        "assigned_object_id": device.interfaces.get(name='eth1').id
+    })
+    print(f"IP {ip_address.address} assignée à {device.name}")
+
+else:
+    print(f"Aucun traitement spécifique pour le rôle {device.device_role.name}")
+
+Dans cet exemple :
+
+On se connecte à l'API de NetBox avec un token.
+
+On récupère l'équipement via son nom ou ID.
+
+En fonction du rôle (device_role), on affecte une adresse IP à une interface spécifique de l'équipement.
+
+
+B. Exemple via les modèles Django internes (plugin ou script sur le serveur NetBox)
+
+Si vous avez accès direct aux modèles Django de NetBox, voici un exemple de logique pour attribuer une adresse IP :
+
+from ipam.models import IPAddress
+from dcim.models import Device, Interface
+
+# Récupérer l'équipement
+device = Device.objects.get(name='DeviceName')
+
+# Logique métier en fonction du rôle de l'équipement
+if device.device_role.slug == 'switch':
+    # Exemple : Attribuer une IP pour un switch
+    interface = Interface.objects.get(device=device, name='eth0')
+    ip_address = IPAddress.objects.create(
+        address='192.168.1.10/24',
+        assigned_object=interface
+    )
+    print(f"IP {ip_address.address} assignée à l'interface {interface.name} du switch {device.name}")
+
+elif device.device_role.slug == 'firewall':
+    # Exemple : Attribuer une IP pour un firewall
+    interface = Interface.objects.get(device=device, name='eth1')
+    ip_address = IPAddress.objects.create(
+        address='10.0.0.10/24',
+        assigned_object=interface
+    )
+    print(f"IP {ip_address.address} assignée à l'interface {interface.name} du firewall {device.name}")
+
+else:
+    print(f"Aucun traitement spécifique pour le rôle {device.device_role.name}")
+
+3. Gestion de la logique d'attribution d'IP
+
+Vous pouvez étendre cette logique pour :
+
+Vérifier si une IP est déjà assignée à l'interface avant d'en assigner une nouvelle.
+
+Choisir automatiquement la prochaine IP disponible dans un sous-réseau spécifique.
+
+Gérer des rôles supplémentaires (comme des serveurs, routeurs, etc.).
+
+
+Voici comment gérer l'attribution automatique de la prochaine IP disponible dans un sous-réseau :
+
+subnet = nb.ipam.prefixes.get(prefix='192.168.1.0/24')
+next_ip = subnet.available_ips.list()[0]
+
+ip_address = nb.ipam.ip_addresses.create({
+    "address": next_ip['address'],
+    "assigned_object_type": "dcim.interface",
+    "assigned_object_id": device.interfaces.get(name='eth0').id
+})
+print(f"IP {ip_address.address} assignée à {device.name}")
+
+4. Exécuter le script en tant que tâche planifiée ou bouton NetBox
+
+Vous pouvez intégrer ce script dans une tâche planifiée ou ajouter un bouton dans l'interface de NetBox (via un plugin) pour lancer l'attribution d'IP manuellement ou automatiquement lorsque des équipements sont créés.
+
+Conclusion
+
+Ce code montre comment implémenter une logique d'attribution automatique d'IP à un équipement dans NetBox en fonction de son rôle. Vous pouvez ajuster cette logique selon les rôles d'équipements que vous gérez et l'infrastructure réseau que vous administrez.

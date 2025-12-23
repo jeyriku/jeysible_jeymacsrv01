@@ -1,0 +1,12 @@
+{% for ldpdata in iface_name.msg -%}
+{% if ldpdata.Iface_role == 'mpls' %}
+set protocols ldp interface {{ ldpdata.Iface_name }}.{{ ldpdata.Iface_unit }}
+{% endif %}
+{% endfor %}
+set protocols ldp igp-synchronization holddown-interval 15
+{% for mplsdata in iface_name.msg -%}
+{% if mplsdata.Iface_role == 'mpls' %}
+set protocols mpls interface {{ mplsdata.Iface_name }}.{{ mplsdata.Iface_unit }}
+{% endif %}
+{% endfor %}
+set protocols lldp interface all

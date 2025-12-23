@@ -1,0 +1,229 @@
+---
+# First play - Recover VRF datas from Netbox thanks to Rest Api Call
+- name: Retrieve datas from netbox for context VRF
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint4: "/api/ipam/vrfs/?limit=5000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+##### Make a Netbox API call to retrieve devices'components related to VRF
+    - name: Retrieve datas from netbox for context VRF
+      uri:
+        url: "{{ server }}{{ endpoint4 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_vrfs
+      run_once: yes
+
+# Second play - Recover BGP datas from Netbox thanks to Rest Api Call
+- name: Retrieve datas from netbox for context BGP in VRF
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint5: "/api/plugins/bgp/session/"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+##### Make a Netbox API call to retrieve devices'components related to BGP
+    - name: Retrieve datas from netbox for context BGP in VRF
+      uri:
+        url: "{{ server }}{{ endpoint5 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_bgp_sessions
+      run_once: yes
+
+# Third play - Recover Ifaces datas from Netbox thanks to Rest Api Call
+- name: Retrieve datas from netbox for context BGP & VRF
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint2: "/api/dcim/interfaces/?limit=30000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+##### Make a Netbox API call to retrieve devices'components related to dcim/ifaces
+    - name: Retrieve datas from netbox for context BGP & VRF
+      uri:
+        url: "{{ server }}{{ endpoint2 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_ifaces
+      run_once: yes
+
+# Fourth play - Recover Devices datas from Netbox thanks to Rest Api Call
+- name: Retrieve datas from netbox for context BGP & VRF
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint1: "/api/dcim/devices/?limit=1000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+##### Make a Netbox API call to retrieve devices'components related to dcim/devices
+    - name: Retrieve datas from netbox for context BGP & VRF
+      uri:
+        url: "{{ server }}{{ endpoint1 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_devices
+      run_once: yes
+
+# Fifth play - Parse recovered datas from Netbox thanks to jmesquery
+- name: Configure Junos device context BGP & VRF
+  gather_facts: no
+  hosts: all
+  connection: local
+  tasks:
+##### Parse recovered datas from Netbox VRF, BGP, DCIM Apps with jmesquery
+    - name: QueryNetboxItems in IPAM/VRF App
+      ansible.builtin.debug:
+        msg: "{{ netbox_vrfs.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?id].{ Name: name }"
+      register: ipam_vrf
+
+    - name: QueryNetboxItems in BGP App Plugin
+      ansible.builtin.debug:
+        msg: "{{ netbox_bgp_sessions.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?device.name=='jeyniper01'].{Name: device.name, peer_group: peer_group.name, local_addr: local_address.address, remote_addr: remote_address.address, local_as: local_as.asn, remote_as: remote_as.asn, bgp_vrf: custom_fields.bgp_vrf }"
+      register: plugin_bgp
+
+    - name: QueryNetboxItems in DCIM/IFaces App
+      ansible.builtin.debug:
+        msg: "{{ netbox_ifaces.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?device.name=='jeyniper01' && enabled].{ device: device.name, iface_name: name, iface_desc: description, vrf: vrf.name }"
+      register: dcim_ifaces
+
+    - name: QueryNetboxItems in DCIM/Devices App
+      ansible.builtin.debug:
+        msg: "{{ netbox_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?name=='jeyniper01'].{ Name: name, ipaddr: custom_fields.dev_lpbk }"
+      register: dcim_devices
+
+##### Display debug result of jmesquery for learning purpose with recovered datas from Netbox VRF, BGP, DCIM Apps.
+    - name: Debug for learning purpose - IPAM/VRF App
+      debug:
+        msg: "VFR's name is {{ ipam_vrf.msg[item].Name }}"
+      loop: "{{ ipam_vrf.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: Debug for learning purpose - BGP Plugin App
+      debug:
+        msg: "Device's name is {{ plugin_bgp.msg[item].Name }}, BGP Peer-Group is BGP {{ plugin_bgp.msg[item].peer_group }}, BGP local address is {{ plugin_bgp.msg[item].local_addr }}, BGP remote address is  {{ plugin_bgp.msg[item].remote_addr }}, Local-as is {{ plugin_bgp.msg[item].local_as }} and Remote-as is {{ plugin_bgp.msg[item].remote_as }}"
+      loop: "{{ plugin_bgp.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: Debug for learning purpose - DCIM/IFACES App
+      debug:
+        msg: "Device hostname is {{ dcim_ifaces.msg[item].device }}, Interface's name is {{ dcim_ifaces.msg[item].iface_name }}, description is {{ dcim_ifaces.msg[item].iface_desc }} and Interface is attached to VRF {{ dcim_ifaces.msg[item].vrf }}"
+      loop: "{{ dcim_ifaces.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: Debug for learning purpose - DCIM/Devices App
+      debug:
+        msg: "Device hostname is {{ dcim_devices.msg[item].Name }}, Loopback IP is {{ dcim_devices.msg[item].ipaddr }}"
+      loop: "{{ dcim_devices.msg }}"
+      loop_control:
+        index_var: item
+
+##### Output Datas recovered from first,second and third play for learning purpose into Nice YAML & JSON format
+    - local_action:
+        module: copy
+        content: "{{ ipam_vrf | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_ipam_vrf.yml
+
+    - local_action:
+        module: copy
+        content: "{{ ipam_vrf | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_ipam_vrf.json
+
+    - local_action:
+        module: copy
+        content: "{{ plugin_bgp | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_plugin_bgp.yml
+
+    - local_action:
+        module: copy
+        content: "{{ plugin_bgp | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_plugin_bgp.json
+
+    - local_action:
+        module: copy
+        content: "{{ dcim_ifaces | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_dcim_ifaces.yml
+
+    - local_action:
+        module: copy
+        content: "{{ dcim_ifaces | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_dcim_ifaces.json
+
+    - local_action:
+        module: copy
+        content: "{{ dcim_devices | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_dcim_devices.yml
+
+    - local_action:
+        module: copy
+        content: "{{ dcim_devices | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/juniper/router/config_ctxt_vrf/config_ctxt_vrf_dcim_devices.json
+
+##### Generate Junos Config Directory
+    - name: Generate Junos Config Directory
+      ansible.builtin.file:
+        path: /Users/jeremierouzet/jeysible/config
+        state: directory
+
+##### Render Junos Config thanks to Jinja2 Template
+    - name: Generate Junos Config from Jinja2 & Netbox
+      template:
+        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_vrf_v2.j2"
+        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ dcim_devices.msg[item].Name }}.cfg"
+      loop: "{{ dcim_devices.msg }}"
+      loop_control:
+        index_var: item
+      delegate_to: localhost

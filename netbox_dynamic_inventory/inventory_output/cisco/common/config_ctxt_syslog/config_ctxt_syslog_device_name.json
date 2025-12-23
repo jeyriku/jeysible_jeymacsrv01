@@ -1,0 +1,62 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "Name": "jey-c1000-sw-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c1200-sw-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c2960-sw-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c2960-sw-02",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c2960-sw-03",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c2960-sw-04",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-c2960-sw-05",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr1k-ce-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr1k-ce-02",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr1k-ce-03",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr1K-pe-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr4k-ce-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jey-isr8x-pe-01",
+            "snmp_srv2": "192.168.0.249"
+        },
+        {
+            "Name": "jeysaco",
+            "snmp_srv2": "192.168.0.249"
+        }
+    ]
+}

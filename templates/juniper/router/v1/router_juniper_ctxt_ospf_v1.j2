@@ -1,0 +1,20 @@
+{% for ospfdata in netbox_ipaddr.json.results if ospfdata.custom_fields.iface_device == 'jeyniper01'  -%}
+{% if ospfdata.custom_fields.iface_role == 'mpls' %}
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} interface-type p2p
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} retransmit-interval 5
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} hello-interval 10
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} dead-interval 40
+{% elif ospfdata.custom_fields.iface_role == 'iprr' -%}
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} interface-type p2p
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} retransmit-interval 5
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} hello-interval 10
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} dead-interval 40
+{% elif ospfdata.custom_fields.iface_role == 'ip' -%}
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface {{ ospfdata.custom_fields.iface_parent }}.{{ ospfdata.custom_fields.iface_unit }} passive
+{% endif %}
+{% endfor %}
+{% for ospfdata in netbox_ipaddr.json.results if ospfdata.custom_fields.iface_device == 'jeyniper01'  -%}
+{% if ospfdata.custom_fields.iface_parent == 'loopback' %}
+set protocols ospf area {{ospfdata.custom_fields.ospf_area}} interface lo0.0 passive
+{% endif %}
+{% endfor %}

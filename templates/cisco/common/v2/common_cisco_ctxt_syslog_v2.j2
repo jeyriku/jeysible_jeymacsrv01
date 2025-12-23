@@ -1,0 +1,8 @@
+logging host {{ ciscodevices.msg[item].snmp_srv2 }}
+logging trap informational
+logging history informational
+logging origin-id hostname
+facility local6
+logging host {{ ciscodevices.msg[item].snmp_srv2 }} transport udp port 514
+service sequence numbers
+service timestamps log

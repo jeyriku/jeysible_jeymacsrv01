@@ -1,0 +1,13 @@
+---
+plugin: netbox.netbox.nb_inventory
+api_endpoint: https://192.168.0.251
+validate_certs: false
+token: 7435d9eb9841dc8a941417a0993fc531c3dc35ca
+group_by:
+  - sites
+keyed_groups:
+  - prefix: ""
+    separator: ""
+    key: 
+      - device_types[0]
+      - device_roles[0]

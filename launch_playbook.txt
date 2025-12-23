@@ -1,0 +1,19 @@
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/playbook_byrole.yml
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_bysite.yml playbooks/playbook_bysite.yml
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_bytype.yml playbooks/playbook_bytype.yml
+
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/playbook_cisco_config_restconf.yml
+
+
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/playbook_juniper_pyez.yml
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/playbook_juniper_activate_netconf.yml
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/playbook_juniper_pyez_alternate.yml
+
+
+
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml playbooks/pb_coll_junos_device_create_config.yml -vvvv
+pb_build_config_v0.0.yml
+
+
+ansible-playbook -i netbox_dynamic_inventory/inventory_source/netbox_data.yml playbooks/Dynamic_inventory/pb_create_report_v1.yml
+ansible-playbook -i hosts playbooks/Dynamic_inventory/pb_create_report_v2.yml

@@ -1,0 +1,3 @@
+ansible-inventory -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_bysite.yml --list --output netbox_dynamic_inventory/inventory_output/jeylan_bysite -vvvv
+ansible-inventory -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_byrole.yml --list --output netbox_dynamic_inventory/inventory_output/jeylan_byrole -vvvv
+ansible-inventory -i netbox_dynamic_inventory/inventory_source/netbox_inventory_source_bytype.yml --list --output netbox_dynamic_inventory/inventory_output/jeylan_bytype -vvvv

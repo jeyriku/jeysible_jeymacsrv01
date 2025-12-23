@@ -1,0 +1,25 @@
+---
+  - name: Gather Facts
+    hosts: router_juniper
+    connection: local
+    gather_facts: no
+    vars:
+      user: "{{ ansible_user }}"
+      passwd: "{{ ansible_password }}"
+      ansible_network_os: "junipernetworks.junos.junos"
+
+    vars_files:
+      - /Users/jeremierouzet/jeysible/vars/juniper_nc.yaml
+
+    tasks:
+    - name: Checking NETCONF connectivity
+      wait_for: host={{ inventory_hostname }} port=830 timeout=5
+
+    - name: Retrieve information from devices running Junos OS
+      juniper.device.facts:
+        host: "{{ inventory_hostname }}"
+      register: junos
+
+    - name: Print Junos Software version
+      debug:
+        msg="{{ junos.facts['version'] }}"

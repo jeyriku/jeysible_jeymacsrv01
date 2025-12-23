@@ -1,0 +1,2984 @@
+allow: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+ansible_facts:
+    discovered_interpreter_python: /opt/homebrew/bin/python3.10
+api_version: '3.3'
+changed: false
+connection: close
+content_length: '70949'
+content_type: application/json
+cookies: {}
+cookies_string: ''
+cross_origin_opener_policy: same-origin
+date: Sat, 05 Nov 2022 17:41:51 GMT
+elapsed: 0
+failed: false
+json:
+    count: 33
+    next: null
+    previous: null
+    results:
+    -   airflow: null
+        asset_tag: jeycisco01
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_CE_Cisco
+            id: 15
+            name: Router_CE_Cisco
+            slug: router_ce_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/15/
+        device_type:
+            display: C1111_8P
+            id: 3
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: C1111_8P
+            slug: c1111_8p
+            url: https://192.168.0.251/api/dcim/device-types/3/
+        display: jeycisco01 (jeycisco01)
+        face: null
+        id: 8
+        last_updated: '2022-11-05T15:18:38.630516Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeycisco01
+        parent_device: null
+        platform:
+            display: Cisco_c1100_universalk9.16.12.04
+            id: 1
+            name: Cisco_c1100_universalk9.16.12.04
+            slug: cisco_c1100_universalk9-16-12-04
+            url: https://192.168.0.251/api/dcim/platforms/1/
+        position: null
+        primary_ip:
+            address: 10.0.0.1/32
+            display: 10.0.0.1/32
+            family: 4
+            id: 1
+            url: https://192.168.0.251/api/ipam/ip-addresses/1/
+        primary_ip4:
+            address: 10.0.0.1/32
+            display: 10.0.0.1/32
+            family: 4
+            id: 1
+            url: https://192.168.0.251/api/ipam/ip-addresses/1/
+        primary_ip6: null
+        rack: null
+        serial: FCZ2247E1CX
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/8/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeycisco02
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65004
+                display: AS65004
+                id: 3
+                url: https://192.168.0.251/api/ipam/asns/3/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_CE_Cisco
+            id: 15
+            name: Router_CE_Cisco
+            slug: router_ce_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/15/
+        device_type:
+            display: C1111_8P
+            id: 3
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: C1111_8P
+            slug: c1111_8p
+            url: https://192.168.0.251/api/dcim/device-types/3/
+        display: jeycisco02 (jeycisco02)
+        face: null
+        id: 9
+        last_updated: '2022-11-05T15:18:56.810724Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeycisco02
+        parent_device: null
+        platform:
+            display: Cisco_c1100_universalk9.16.12.04
+            id: 1
+            name: Cisco_c1100_universalk9.16.12.04
+            slug: cisco_c1100_universalk9-16-12-04
+            url: https://192.168.0.251/api/dcim/platforms/1/
+        position: null
+        primary_ip:
+            address: 10.0.0.7/32
+            display: 10.0.0.7/32
+            family: 4
+            id: 7
+            url: https://192.168.0.251/api/ipam/ip-addresses/7/
+        primary_ip4:
+            address: 10.0.0.7/32
+            display: 10.0.0.7/32
+            family: 4
+            id: 7
+            url: https://192.168.0.251/api/ipam/ip-addresses/7/
+        primary_ip6: null
+        rack: null
+        serial: FCZ2421C30S
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/9/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeycisco03
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_CE_Cisco
+            id: 15
+            name: Router_CE_Cisco
+            slug: router_ce_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/15/
+        device_type:
+            display: C1111_4P
+            id: 13
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: C1111_4P
+            slug: c1111_4p
+            url: https://192.168.0.251/api/dcim/device-types/13/
+        display: jeycisco03 (jeycisco03)
+        face: null
+        id: 16
+        last_updated: '2022-11-05T15:19:17.609869Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeycisco03
+        parent_device: null
+        platform:
+            display: Cisco_c1100_universalk9.16.12.04
+            id: 1
+            name: Cisco_c1100_universalk9.16.12.04
+            slug: cisco_c1100_universalk9-16-12-04
+            url: https://192.168.0.251/api/dcim/platforms/1/
+        position: null
+        primary_ip:
+            address: 10.0.0.11/32
+            display: 10.0.0.11/32
+            family: 4
+            id: 11
+            url: https://192.168.0.251/api/ipam/ip-addresses/11/
+        primary_ip4:
+            address: 10.0.0.11/32
+            display: 10.0.0.11/32
+            family: 4
+            id: 11
+            url: https://192.168.0.251/api/ipam/ip-addresses/11/
+        primary_ip6: null
+        rack: null
+        serial: FCZ2435C1G0
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/16/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: Macmini9,1
+        cluster: null
+        comments: "Software:\r\n\r\n    System Software Overview:\r\n\r\n      System
+            Version: macOS 12.6 (21G115)\r\n      Kernel Version: Darwin 21.6.0\r\n
+            \     Boot Volume: Macintosh HD\r\n      Boot Mode: Normal\r\n      Computer
+            Name: jeymacsrv01\r\n      User Name: Jérémie Rouzet (jeremierouzet)\r\n
+            \     Secure Virtual Memory: Enabled\r\n      System Integrity Protection:
+            Enabled\r\n      Time since boot: 3 days 17:08\r\n\r\nHardware:\r\n\r\n
+            \   Hardware Overview:\r\n\r\n      Model Name: Mac mini\r\n      Model
+            Identifier: Macmini9,1\r\n      Chip: Apple M1\r\n      Total Number of
+            Cores: 8 (4 performance and 4 efficiency)\r\n      Memory: 8 GB\r\n      System
+            Firmware Version: 7459.141.1\r\n      OS Loader Version: 7459.141.1\r\n
+            \     Serial Number (system): C07H10DZQ6NV\r\n      Hardware UUID: 230CF825-6DCA-5D97-BE5E-ACBC558F2BBD\r\n
+            \     Provisioning UDID: 00008103-001238382E23001E\r\n      Activation
+            Lock Status: Enabled"
+        config_context: {}
+        created: '2022-09-27T09:46:34.874614Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Server
+            id: 3
+            name: Server
+            slug: server
+            url: https://192.168.0.251/api/dcim/device-roles/3/
+        device_type:
+            display: Mac_mini
+            id: 18
+            manufacturer:
+                display: Apple
+                id: 9
+                name: Apple
+                slug: apple
+                url: https://192.168.0.251/api/dcim/manufacturers/9/
+            model: Mac_mini
+            slug: mac_mini
+            url: https://192.168.0.251/api/dcim/device-types/18/
+        display: jeymacsrv01 (Macmini9,1)
+        face: null
+        id: 28
+        last_updated: '2022-09-30T12:24:33.423359Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeymacsrv01
+        parent_device: null
+        platform:
+            display: MacOS_12_6
+            id: 13
+            name: MacOS_12_6
+            slug: macos_12_6
+            url: https://192.168.0.251/api/dcim/platforms/13/
+        position: null
+        primary_ip:
+            address: 192.168.0.241/24
+            display: 192.168.0.241/24
+            family: 4
+            id: 72
+            url: https://192.168.0.251/api/ipam/ip-addresses/72/
+        primary_ip4:
+            address: 192.168.0.241/24
+            display: 192.168.0.241/24
+            family: 4
+            id: 72
+            url: https://192.168.0.251/api/ipam/ip-addresses/72/
+        primary_ip6: null
+        rack: null
+        serial: C07H10DZQ6NV
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/28/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeynas01
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-11-17T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Nas_Synology
+            id: 9
+            name: Nas_Synology
+            slug: nas
+            url: https://192.168.0.251/api/dcim/device-roles/9/
+        device_type:
+            display: DS214play
+            id: 9
+            manufacturer:
+                display: Synology
+                id: 6
+                name: Synology
+                slug: synology
+                url: https://192.168.0.251/api/dcim/manufacturers/6/
+            model: DS214play
+            slug: ds214play
+            url: https://192.168.0.251/api/dcim/device-types/9/
+        display: jeynas01 (jeynas01)
+        face: null
+        id: 20
+        last_updated: '2022-10-13T19:25:15.938811Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeynas01
+        parent_device: null
+        platform:
+            display: DSM 6_2_25556
+            id: 18
+            name: DSM 6_2_25556
+            slug: dsm_6_2_25556
+            url: https://192.168.0.251/api/dcim/platforms/18/
+        position: null
+        primary_ip:
+            address: 192.168.0.30/24
+            display: 192.168.0.30/24
+            family: 4
+            id: 20
+            url: https://192.168.0.251/api/ipam/ip-addresses/20/
+        primary_ip4:
+            address: 192.168.0.30/24
+            display: 192.168.0.30/24
+            family: 4
+            id: 20
+            url: https://192.168.0.251/api/ipam/ip-addresses/20/
+        primary_ip6: null
+        rack: null
+        serial: 1510LTN425107
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/20/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeynas02
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-11-17T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Nas_Synology
+            id: 9
+            name: Nas_Synology
+            slug: nas
+            url: https://192.168.0.251/api/dcim/device-roles/9/
+        device_type:
+            display: DS220+
+            id: 14
+            manufacturer:
+                display: Synology
+                id: 6
+                name: Synology
+                slug: synology
+                url: https://192.168.0.251/api/dcim/manufacturers/6/
+            model: DS220+
+            slug: ds220
+            url: https://192.168.0.251/api/dcim/device-types/14/
+        display: jeynas02 (jeynas02)
+        face: null
+        id: 21
+        last_updated: '2022-10-13T19:25:15.988988Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeynas02
+        parent_device: null
+        platform:
+            display: DSM 6_2_25556
+            id: 18
+            name: DSM 6_2_25556
+            slug: dsm_6_2_25556
+            url: https://192.168.0.251/api/dcim/platforms/18/
+        position: null
+        primary_ip:
+            address: 192.168.0.31/24
+            display: 192.168.0.31/24
+            family: 4
+            id: 21
+            url: https://192.168.0.251/api/ipam/ip-addresses/21/
+        primary_ip4:
+            address: 192.168.0.31/24
+            display: 192.168.0.31/24
+            family: 4
+            id: 21
+            url: https://192.168.0.251/api/ipam/ip-addresses/21/
+        primary_ip6: null
+        rack: null
+        serial: 2150RLR6YQ2B3
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/21/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeynas03
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-11-17T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Nas_Synology
+            id: 9
+            name: Nas_Synology
+            slug: nas
+            url: https://192.168.0.251/api/dcim/device-roles/9/
+        device_type:
+            display: DS218play
+            id: 10
+            manufacturer:
+                display: Synology
+                id: 6
+                name: Synology
+                slug: synology
+                url: https://192.168.0.251/api/dcim/manufacturers/6/
+            model: DS218play
+            slug: ds218play
+            url: https://192.168.0.251/api/dcim/device-types/10/
+        display: jeynas03 (jeynas03)
+        face: null
+        id: 22
+        last_updated: '2022-10-13T19:25:16.035122Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeynas03
+        parent_device: null
+        platform:
+            display: DSM 6_2_25556
+            id: 18
+            name: DSM 6_2_25556
+            slug: dsm_6_2_25556
+            url: https://192.168.0.251/api/dcim/platforms/18/
+        position: null
+        primary_ip:
+            address: 192.168.0.32/24
+            display: 192.168.0.32/24
+            family: 4
+            id: 22
+            url: https://192.168.0.251/api/ipam/ip-addresses/22/
+        primary_ip4:
+            address: 192.168.0.32/24
+            display: 192.168.0.32/24
+            family: 4
+            id: 22
+            url: https://192.168.0.251/api/ipam/ip-addresses/22/
+        primary_ip6: null
+        rack: null
+        serial: 1830Q8N302304
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/22/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper01
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: 10.0.0.3
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: 10.0.0.10
+            rr2: 10.0.0.12
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_PE_Juniper
+            id: 16
+            name: Router_PE_Juniper
+            slug: router_pe_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/16/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper01 (jeyniper01)
+        face: null
+        id: 1
+        last_updated: '2022-11-05T17:17:23.909747Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper01
+        parent_device: null
+        platform:
+            display: Juniper_20.3R1.8
+            id: 2
+            name: Juniper_20.3R1.8
+            slug: juniper_20-3r1-8
+            url: https://192.168.0.251/api/dcim/platforms/2/
+        position: null
+        primary_ip:
+            address: 10.0.0.3/32
+            display: 10.0.0.3/32
+            family: 4
+            id: 3
+            url: https://192.168.0.251/api/ipam/ip-addresses/3/
+        primary_ip4:
+            address: 10.0.0.3/32
+            display: 10.0.0.3/32
+            family: 4
+            id: 3
+            url: https://192.168.0.251/api/ipam/ip-addresses/3/
+        primary_ip6: null
+        rack: null
+        serial: CV4817AF1252
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/1/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper02
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: 10.0.0.10
+            rr2: 10.0.0.12
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_PE_Juniper
+            id: 16
+            name: Router_PE_Juniper
+            slug: router_pe_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/16/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper02 (jeyniper02)
+        face: null
+        id: 2
+        last_updated: '2022-11-05T17:17:23.963153Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper02
+        parent_device: null
+        platform:
+            display: Juniper_20.3R1.8
+            id: 2
+            name: Juniper_20.3R1.8
+            slug: juniper_20-3r1-8
+            url: https://192.168.0.251/api/dcim/platforms/2/
+        position: null
+        primary_ip:
+            address: 10.0.0.6/32
+            display: 10.0.0.6/32
+            family: 4
+            id: 6
+            url: https://192.168.0.251/api/ipam/ip-addresses/6/
+        primary_ip4:
+            address: 10.0.0.6/32
+            display: 10.0.0.6/32
+            family: 4
+            id: 6
+            url: https://192.168.0.251/api/ipam/ip-addresses/6/
+        primary_ip6: null
+        rack: null
+        serial: CV3917AF5791
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/2/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper03
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: 10.0.0.10
+            rr2: 10.0.0.12
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_PE_Juniper
+            id: 16
+            name: Router_PE_Juniper
+            slug: router_pe_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/16/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper03 (jeyniper03)
+        face: null
+        id: 3
+        last_updated: '2022-11-05T17:17:24.011850Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper03
+        parent_device: null
+        platform:
+            display: Juniper_20.3R1.8
+            id: 2
+            name: Juniper_20.3R1.8
+            slug: juniper_20-3r1-8
+            url: https://192.168.0.251/api/dcim/platforms/2/
+        position: null
+        primary_ip:
+            address: 10.0.0.8/32
+            display: 10.0.0.8/32
+            family: 4
+            id: 8
+            url: https://192.168.0.251/api/ipam/ip-addresses/8/
+        primary_ip4:
+            address: 10.0.0.8/32
+            display: 10.0.0.8/32
+            family: 4
+            id: 8
+            url: https://192.168.0.251/api/ipam/ip-addresses/8/
+        primary_ip6: null
+        rack: null
+        serial: CV2118AF1819
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/3/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper04
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: 10.0.0.10
+            rr2: 10.0.0.12
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_PE_Juniper
+            id: 16
+            name: Router_PE_Juniper
+            slug: router_pe_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/16/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper04 (jeyniper04)
+        face: null
+        id: 4
+        last_updated: '2022-11-05T17:17:24.060769Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper04
+        parent_device: null
+        platform:
+            display: Juniper_20.3R1.8
+            id: 2
+            name: Juniper_20.3R1.8
+            slug: juniper_20-3r1-8
+            url: https://192.168.0.251/api/dcim/platforms/2/
+        position: null
+        primary_ip:
+            address: 10.0.0.4/32
+            display: 10.0.0.4/32
+            family: 4
+            id: 4
+            url: https://192.168.0.251/api/ipam/ip-addresses/4/
+        primary_ip4:
+            address: 10.0.0.4/32
+            display: 10.0.0.4/32
+            family: 4
+            id: 4
+            url: https://192.168.0.251/api/ipam/ip-addresses/4/
+        primary_ip6: null
+        rack: null
+        serial: CV1319AF0480
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/4/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper05
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65004
+                display: AS65004
+                id: 3
+                url: https://192.168.0.251/api/ipam/asns/3/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_CE_Juniper
+            id: 1
+            name: Router_CE_Juniper
+            slug: router_ce_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/1/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper05 (jeyniper05)
+        face: null
+        id: 5
+        last_updated: '2022-11-05T15:20:54.912554Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper05
+        parent_device: null
+        platform:
+            display: Juniper_20.3R1.8
+            id: 2
+            name: Juniper_20.3R1.8
+            slug: juniper_20-3r1-8
+            url: https://192.168.0.251/api/dcim/platforms/2/
+        position: null
+        primary_ip:
+            address: 10.0.0.9/32
+            display: 10.0.0.9/32
+            family: 4
+            id: 9
+            url: https://192.168.0.251/api/ipam/ip-addresses/9/
+        primary_ip4:
+            address: 10.0.0.9/32
+            display: 10.0.0.9/32
+            family: 4
+            id: 9
+            url: https://192.168.0.251/api/ipam/ip-addresses/9/
+        primary_ip6: null
+        rack: null
+        serial: CV1319AF0637
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/5/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper06
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_RR_Juniper
+            id: 17
+            name: Router_RR_Juniper
+            slug: router_rr_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/17/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper06 (jeyniper06)
+        face: null
+        id: 6
+        last_updated: '2022-11-05T15:21:12.150161Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper06
+        parent_device: null
+        platform:
+            display: Juniper_19.4R3.11
+            id: 3
+            name: Juniper_19.4R3.11
+            slug: juniper_19-4r3-11
+            url: https://192.168.0.251/api/dcim/platforms/3/
+        position: null
+        primary_ip:
+            address: 10.0.0.10/32
+            display: 10.0.0.10/32
+            family: 4
+            id: 10
+            url: https://192.168.0.251/api/ipam/ip-addresses/10/
+        primary_ip4:
+            address: 10.0.0.10/32
+            display: 10.0.0.10/32
+            family: 4
+            id: 10
+            url: https://192.168.0.251/api/ipam/ip-addresses/10/
+        primary_ip6: null
+        rack: null
+        serial: CV3717AF1563
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/6/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyniper07
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-09-22T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65003
+                display: AS65003
+                id: 2
+                url: https://192.168.0.251/api/ipam/asns/2/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_RR_Juniper
+            id: 17
+            name: Router_RR_Juniper
+            slug: router_rr_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/17/
+        device_type:
+            display: SRX300
+            id: 1
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: SRX300
+            slug: srx300
+            url: https://192.168.0.251/api/dcim/device-types/1/
+        display: jeyniper07 (jeyniper07)
+        face: null
+        id: 19
+        last_updated: '2022-11-05T15:21:34.519579Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyniper07
+        parent_device: null
+        platform:
+            display: Juniper_19.4R3.11
+            id: 3
+            name: Juniper_19.4R3.11
+            slug: juniper_19-4r3-11
+            url: https://192.168.0.251/api/dcim/platforms/3/
+        position: null
+        primary_ip:
+            address: 10.0.0.12/32
+            display: 10.0.0.12/32
+            family: 4
+            id: 19
+            url: https://192.168.0.251/api/ipam/ip-addresses/19/
+        primary_ip4:
+            address: 10.0.0.12/32
+            display: 10.0.0.12/32
+            family: 4
+            id: 19
+            url: https://192.168.0.251/api/ipam/ip-addresses/19/
+        primary_ip6: null
+        rack: null
+        serial: CV2121AN1367
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/19/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyRS400
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T13:34:13.631941Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_Netgear
+            id: 12
+            name: Router_Netgear
+            slug: router_netgear
+            url: https://192.168.0.251/api/dcim/device-roles/12/
+        device_type:
+            display: Nighthawk_AC2300
+            id: 23
+            manufacturer:
+                display: Netgear
+                id: 12
+                name: Netgear
+                slug: netgear
+                url: https://192.168.0.251/api/dcim/manufacturers/12/
+            model: Nighthawk_AC2300
+            slug: rs400
+            url: https://192.168.0.251/api/dcim/device-types/23/
+        display: jeyRS400 (jeyRS400)
+        face: null
+        id: 34
+        last_updated: '2022-09-30T12:24:33.941380Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyRS400
+        parent_device: null
+        platform:
+            display: Netgear_1.5.0.54
+            id: 16
+            name: Netgear_1.5.0.54
+            slug: netgear_1_5_0_54
+            url: https://192.168.0.251/api/dcim/platforms/16/
+        position: null
+        primary_ip:
+            address: 192.168.0.244/24
+            display: 192.168.0.244/24
+            family: 4
+            id: 84
+            url: https://192.168.0.251/api/ipam/ip-addresses/84/
+        primary_ip4:
+            address: 192.168.0.244/24
+            display: 192.168.0.244/24
+            family: 4
+            id: 84
+            url: https://192.168.0.251/api/ipam/ip-addresses/84/
+        primary_ip6: null
+        rack: null
+        serial: 61R1967FA0182
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/34/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeysaco
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Firewall_Cisco
+            id: 4
+            name: Firewall_Cisco
+            slug: firewall_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/4/
+        device_type:
+            display: ASA5506
+            id: 12
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: ASA5506
+            slug: asa5506
+            url: https://192.168.0.251/api/dcim/device-types/12/
+        display: jeysaco (jeysaco)
+        face: null
+        id: 17
+        last_updated: '2022-09-30T12:24:33.989429Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysaco
+        parent_device: null
+        platform:
+            display: Cisco_asa982_20_lfbff_k8
+            id: 8
+            name: Cisco_asa982_20_lfbff_k8
+            slug: cisco_asa982_20_lfbff_k8
+            url: https://192.168.0.251/api/dcim/platforms/8/
+        position: null
+        primary_ip:
+            address: 192.168.17.2/30
+            display: 192.168.17.2/30
+            family: 4
+            id: 12
+            url: https://192.168.0.251/api/ipam/ip-addresses/12/
+        primary_ip4:
+            address: 192.168.17.2/30
+            display: 192.168.17.2/30
+            family: 4
+            id: 12
+            url: https://192.168.0.251/api/ipam/ip-addresses/12/
+        primary_ip6: null
+        rack: null
+        serial: JMX2037Y33K
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/17/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: ProLiant
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T10:02:14.453267Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Server
+            id: 3
+            name: Server
+            slug: server
+            url: https://192.168.0.251/api/dcim/device-roles/3/
+        device_type:
+            display: Proliant_MicroServer_Gen10
+            id: 19
+            manufacturer:
+                display: Hewlett Packard
+                id: 4
+                name: Hewlett Packard
+                slug: hewlett-packard
+                url: https://192.168.0.251/api/dcim/manufacturers/4/
+            model: Proliant_MicroServer_Gen10
+            slug: proliant_microserver_gen10
+            url: https://192.168.0.251/api/dcim/device-types/19/
+        display: jeysrv01 (ProLiant)
+        face: null
+        id: 29
+        last_updated: '2022-09-30T12:24:34.035862Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv01
+        parent_device: null
+        platform:
+            display: Windows_Server_2019
+            id: 14
+            name: Windows_Server_2019
+            slug: windows_server_2019
+            url: https://192.168.0.251/api/dcim/platforms/14/
+        position: null
+        primary_ip:
+            address: 192.168.0.246/24
+            display: 192.168.0.246/24
+            family: 4
+            id: 73
+            url: https://192.168.0.251/api/ipam/ip-addresses/73/
+        primary_ip4:
+            address: 192.168.0.246/24
+            display: 192.168.0.246/24
+            family: 4
+            id: 73
+            url: https://192.168.0.251/api/ipam/ip-addresses/73/
+        primary_ip6: null
+        rack: null
+        serial: 7CE919U0DJ
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/29/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: NUC6CAYH
+        cluster: null
+        comments: "System Information\r\n        Manufacturer: Intel(R) Client Systems\r\n
+            \       Product Name: NUC6CAYH\r\n        Version: J26843-410\r\n        Serial
+            Number: G6AY93800GNT\r\n        UUID: 91F633C7-D71C-51BB-A212-1C697A08F659\r\n
+            \       Wake-up Type: Power Switch\r\n        SKU Number:\r\n        Family:
+            Intel NUC"
+        config_context: {}
+        created: '2022-09-27T08:34:51.330347Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: DNS_Server
+            id: 10
+            name: DNS_Server
+            slug: dns_server
+            url: https://192.168.0.251/api/dcim/device-roles/10/
+        device_type:
+            display: NUC
+            id: 15
+            manufacturer:
+                display: Intel
+                id: 3
+                name: Intel
+                slug: intel
+                url: https://192.168.0.251/api/dcim/manufacturers/3/
+            model: NUC
+            slug: nuc
+            url: https://192.168.0.251/api/dcim/device-types/15/
+        display: jeysrv02 (NUC6CAYH)
+        face: null
+        id: 23
+        last_updated: '2022-09-30T12:24:34.083421Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv02
+        parent_device: null
+        platform:
+            display: Ubuntu_18.04
+            id: 10
+            name: Ubuntu_18.04
+            slug: ubuntu_18_04
+            url: https://192.168.0.251/api/dcim/platforms/10/
+        position: null
+        primary_ip:
+            address: 192.168.0.252/24
+            display: 192.168.0.252/24
+            family: 4
+            id: 68
+            url: https://192.168.0.251/api/ipam/ip-addresses/68/
+        primary_ip4:
+            address: 192.168.0.252/24
+            display: 192.168.0.252/24
+            family: 4
+            id: 68
+            url: https://192.168.0.251/api/ipam/ip-addresses/68/
+        primary_ip6: null
+        rack: null
+        serial: G6AY93800GNT
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/23/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: NUC7i3DNKE
+        cluster: null
+        comments: "System Information\r\n        Manufacturer: Intel Corporation\r\n
+            \       Product Name: NUC7i3DNKE\r\n        Version: J57829-503\r\n        Serial
+            Number: DW1646213300234\r\n        UUID: 52ed8c64-db5c-4c96-bc50-d45ddf046f03\r\n
+            \       Wake-up Type: Power Switch\r\n        SKU Number:\r\n        Family:
+            Intel NUC"
+        config_context: {}
+        created: '2022-09-27T09:13:51.457557Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Server
+            id: 3
+            name: Server
+            slug: server
+            url: https://192.168.0.251/api/dcim/device-roles/3/
+        device_type:
+            display: NUC
+            id: 15
+            manufacturer:
+                display: Intel
+                id: 3
+                name: Intel
+                slug: intel
+                url: https://192.168.0.251/api/dcim/manufacturers/3/
+            model: NUC
+            slug: nuc
+            url: https://192.168.0.251/api/dcim/device-types/15/
+        display: jeysrv03 (NUC7i3DNKE)
+        face: null
+        id: 26
+        last_updated: '2022-09-30T12:24:34.130223Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv03
+        parent_device: null
+        platform:
+            display: Ubuntu_20.04
+            id: 11
+            name: Ubuntu_20.04
+            slug: ubuntu_20_04
+            url: https://192.168.0.251/api/dcim/platforms/11/
+        position: null
+        primary_ip:
+            address: 192.168.0.251/24
+            display: 192.168.0.251/24
+            family: 4
+            id: 69
+            url: https://192.168.0.251/api/ipam/ip-addresses/69/
+        primary_ip4:
+            address: 192.168.0.251/24
+            display: 192.168.0.251/24
+            family: 4
+            id: 69
+            url: https://192.168.0.251/api/ipam/ip-addresses/69/
+        primary_ip6: null
+        rack: null
+        serial: DW1646213300234
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/26/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: OEM
+        cluster: null
+        comments: "Base Board Information\r\n        Manufacturer: INTEL Corporation\r\n
+            \       Product Name: Q3XXG4-P\r\n        Version:  V1.0\r\n        Serial
+            Number: To be filled by O.E.M.\r\n        Asset Tag: To be filled by O.E.M.\r\n
+            \       Features:\r\n                Board is a hosting board\r\n                Board
+            is replaceable\r\n        Location In Chassis: To be filled by O.E.M.\r\n
+            \       Chassis Handle: 0x0003\r\n        Type: Motherboard\r\n        Contained
+            Object Handles: 0"
+        config_context: {}
+        created: '2022-09-27T08:35:07.303298Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: DNS_Server
+            id: 10
+            name: DNS_Server
+            slug: dns_server
+            url: https://192.168.0.251/api/dcim/device-roles/10/
+        device_type:
+            display: NUC
+            id: 15
+            manufacturer:
+                display: Intel
+                id: 3
+                name: Intel
+                slug: intel
+                url: https://192.168.0.251/api/dcim/manufacturers/3/
+            model: NUC
+            slug: nuc
+            url: https://192.168.0.251/api/dcim/device-types/15/
+        display: jeysrv04 (OEM)
+        face: null
+        id: 24
+        last_updated: '2022-09-30T12:24:34.176644Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv04
+        parent_device: null
+        platform:
+            display: Ubuntu_18.04
+            id: 10
+            name: Ubuntu_18.04
+            slug: ubuntu_18_04
+            url: https://192.168.0.251/api/dcim/platforms/10/
+        position: null
+        primary_ip:
+            address: 192.168.0.250/24
+            display: 192.168.0.250/24
+            family: 4
+            id: 67
+            url: https://192.168.0.251/api/ipam/ip-addresses/67/
+        primary_ip4:
+            address: 192.168.0.250/24
+            display: 192.168.0.250/24
+            family: 4
+            id: 67
+            url: https://192.168.0.251/api/ipam/ip-addresses/67/
+        primary_ip6: null
+        rack: null
+        serial: OEM
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/24/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: 4VG00EA#ABF
+        cluster: null
+        comments: "jeyriku@jeysrv05:~$ sudo dmidecode -t system\r\n# dmidecode 3.1\r\nGetting
+            SMBIOS data from sysfs.\r\nSMBIOS 3.1.1 present.\r\n\r\nHandle 0x0001,
+            DMI type 1, 27 bytes\r\nSystem Information\r\n        Manufacturer: HP\r\n
+            \       Product Name: HP 260 G3 DM\r\n        Version:\r\n        Serial
+            Number: 8CC92033PH\r\n        UUID: 4FEDF941-ABFF-89B1-01E6-C5AC8F1DF3D2\r\n
+            \       Wake-up Type: Power Switch\r\n        SKU Number: 4VG00EA#ABF\r\n
+            \       Family: 103C_53307F HP 260"
+        config_context: {}
+        created: '2022-09-27T09:11:04.597032Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Server
+            id: 3
+            name: Server
+            slug: server
+            url: https://192.168.0.251/api/dcim/device-roles/3/
+        device_type:
+            display: HP_260_G3
+            id: 16
+            manufacturer:
+                display: Hewlett Packard
+                id: 4
+                name: Hewlett Packard
+                slug: hewlett-packard
+                url: https://192.168.0.251/api/dcim/manufacturers/4/
+            model: HP_260_G3
+            slug: hp_260_g3
+            url: https://192.168.0.251/api/dcim/device-types/16/
+        display: jeysrv05 (4VG00EA#ABF)
+        face: null
+        id: 25
+        last_updated: '2022-09-30T12:24:34.223423Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv05
+        parent_device: null
+        platform:
+            display: Ubuntu_18.04
+            id: 10
+            name: Ubuntu_18.04
+            slug: ubuntu_18_04
+            url: https://192.168.0.251/api/dcim/platforms/10/
+        position: null
+        primary_ip:
+            address: 192.168.0.249/24
+            display: 192.168.0.249/24
+            family: 4
+            id: 70
+            url: https://192.168.0.251/api/ipam/ip-addresses/70/
+        primary_ip4:
+            address: 192.168.0.249/24
+            display: 192.168.0.249/24
+            family: 4
+            id: 70
+            url: https://192.168.0.251/api/ipam/ip-addresses/70/
+        primary_ip6: null
+        rack: null
+        serial: 8CC92033PH
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/25/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: 10A4S06L02
+        cluster:
+            display: jeycluster01
+            id: 1
+            name: jeycluster01
+            url: https://192.168.0.251/api/virtualization/clusters/1/
+        comments: "System Information\r\n        Manufacturer: LENOVO\r\n        Product
+            Name: 10A4S06L02\r\n        Version: ThinkCentre M93\r\n        Serial
+            Number: S4S71018\r\n        UUID: 7f12c2ec-a802-11e5-b73f-3406e84d1200\r\n
+            \       Wake-up Type: Power Switch\r\n        SKU Number: LENOVO_PN_10A4S06L02\r\n
+            \       Family: To be filled by O.E.M."
+        config_context: {}
+        created: '2022-09-27T09:17:33.859457Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Hypervisor
+            id: 13
+            name: Hypervisor
+            slug: hypervisor
+            url: https://192.168.0.251/api/dcim/device-roles/13/
+        device_type:
+            display: ThinkCentre_M93
+            id: 17
+            manufacturer:
+                display: Lenovo
+                id: 8
+                name: Lenovo
+                slug: lenovo
+                url: https://192.168.0.251/api/dcim/manufacturers/8/
+            model: ThinkCentre_M93
+            slug: thinkcentre_m93
+            url: https://192.168.0.251/api/dcim/device-types/17/
+        display: jeysrv06 (10A4S06L02)
+        face: null
+        id: 27
+        last_updated: '2022-09-30T12:24:34.274037Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeysrv06
+        parent_device: null
+        platform:
+            display: Debian_11
+            id: 12
+            name: Debian_11
+            slug: debian_11
+            url: https://192.168.0.251/api/dcim/platforms/12/
+        position: null
+        primary_ip:
+            address: 192.168.0.245/24
+            display: 192.168.0.245/24
+            family: 4
+            id: 71
+            url: https://192.168.0.251/api/ipam/ip-addresses/71/
+        primary_ip4:
+            address: 192.168.0.245/24
+            display: 192.168.0.245/24
+            family: 4
+            id: 71
+            url: https://192.168.0.251/api/ipam/ip-addresses/71/
+        primary_ip6: null
+        rack: null
+        serial: S4S71018
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/27/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch01
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Cisco
+            id: 6
+            name: Switch_Cisco
+            slug: switch_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/6/
+        device_type:
+            display: WS_C2960C_8TC_S
+            id: 4
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: WS_C2960C_8TC_S
+            slug: ws_c2960c_8tc_s
+            url: https://192.168.0.251/api/dcim/device-types/4/
+        display: jeyswitch01 (jeyswitch01)
+        face: null
+        id: 11
+        last_updated: '2022-09-30T12:24:34.323033Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch01
+        parent_device: null
+        platform:
+            display: Cisco_c2960c405_universalk9_mz.150_2.SE5
+            id: 4
+            name: Cisco_c2960c405_universalk9_mz.150_2.SE5
+            slug: cisco_c2960c405_universalk9_mz-150_2-se5
+            url: https://192.168.0.251/api/dcim/platforms/4/
+        position: null
+        primary_ip:
+            address: 192.168.0.60/24
+            display: 192.168.0.60/24
+            family: 4
+            id: 13
+            url: https://192.168.0.251/api/ipam/ip-addresses/13/
+        primary_ip4:
+            address: 192.168.0.60/24
+            display: 192.168.0.60/24
+            family: 4
+            id: 13
+            url: https://192.168.0.251/api/ipam/ip-addresses/13/
+        primary_ip6: null
+        rack: null
+        serial: FOC1905Y2V2
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/11/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch02
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Cisco
+            id: 6
+            name: Switch_Cisco
+            slug: switch_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/6/
+        device_type:
+            display: WS_C2960CG_8TC_L
+            id: 5
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: WS_C2960CG_8TC_L
+            slug: ws_c2960cg_8tc_l
+            url: https://192.168.0.251/api/dcim/device-types/5/
+        display: jeyswitch02 (jeyswitch02)
+        face: null
+        id: 12
+        last_updated: '2022-09-30T12:24:34.371710Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch02
+        parent_device: null
+        platform:
+            display: Cisco_c2960c405ex_universalk9_mz.150_2.SE5
+            id: 5
+            name: Cisco_c2960c405ex_universalk9_mz.150_2.SE5
+            slug: cisco_c2960c405ex_universalk9_mz-150_2-se5
+            url: https://192.168.0.251/api/dcim/platforms/5/
+        position: null
+        primary_ip:
+            address: 192.168.0.61/24
+            display: 192.168.0.61/24
+            family: 4
+            id: 14
+            url: https://192.168.0.251/api/ipam/ip-addresses/14/
+        primary_ip4:
+            address: 192.168.0.61/24
+            display: 192.168.0.61/24
+            family: 4
+            id: 14
+            url: https://192.168.0.251/api/ipam/ip-addresses/14/
+        primary_ip6: null
+        rack: null
+        serial: FOC1904Y3EH
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/12/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch03
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Cisco
+            id: 6
+            name: Switch_Cisco
+            slug: switch_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/6/
+        device_type:
+            display: WS_C2960CG_8TC_L
+            id: 5
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: WS_C2960CG_8TC_L
+            slug: ws_c2960cg_8tc_l
+            url: https://192.168.0.251/api/dcim/device-types/5/
+        display: jeyswitch03 (jeyswitch03)
+        face: null
+        id: 13
+        last_updated: '2022-09-30T12:24:34.419789Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch03
+        parent_device: null
+        platform:
+            display: Cisco_c2960c405ex_universalk9_mz.150_2.SE5
+            id: 5
+            name: Cisco_c2960c405ex_universalk9_mz.150_2.SE5
+            slug: cisco_c2960c405ex_universalk9_mz-150_2-se5
+            url: https://192.168.0.251/api/dcim/platforms/5/
+        position: null
+        primary_ip:
+            address: 192.168.0.62/24
+            display: 192.168.0.62/24
+            family: 4
+            id: 15
+            url: https://192.168.0.251/api/ipam/ip-addresses/15/
+        primary_ip4:
+            address: 192.168.0.62/24
+            display: 192.168.0.62/24
+            family: 4
+            id: 15
+            url: https://192.168.0.251/api/ipam/ip-addresses/15/
+        primary_ip6: null
+        rack: null
+        serial: FOC1905Z4C2
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/13/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch04
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Cisco
+            id: 6
+            name: Switch_Cisco
+            slug: switch_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/6/
+        device_type:
+            display: WS_C2960L_8PS_LL
+            id: 6
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: WS_C2960L_8PS_LL
+            slug: ws_c2960l_8ps_ll
+            url: https://192.168.0.251/api/dcim/device-types/6/
+        display: jeyswitch04 (jeyswitch04)
+        face: null
+        id: 14
+        last_updated: '2022-09-30T12:24:34.469028Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch04
+        parent_device: null
+        platform:
+            display: Cisco_c2960l_universalk9-mz.152_7.E2
+            id: 6
+            name: Cisco_c2960l_universalk9-mz.152_7.E2
+            slug: cisco_c2960l_universalk9-mz-152_7-e2
+            url: https://192.168.0.251/api/dcim/platforms/6/
+        position: null
+        primary_ip:
+            address: 192.168.0.63/24
+            display: 192.168.0.63/24
+            family: 4
+            id: 16
+            url: https://192.168.0.251/api/ipam/ip-addresses/16/
+        primary_ip4:
+            address: 192.168.0.63/24
+            display: 192.168.0.63/24
+            family: 4
+            id: 16
+            url: https://192.168.0.251/api/ipam/ip-addresses/16/
+        primary_ip6: null
+        rack: null
+        serial: FCW2204A0MQ
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/14/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch05
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Cisco
+            id: 6
+            name: Switch_Cisco
+            slug: switch_cisco
+            url: https://192.168.0.251/api/dcim/device-roles/6/
+        device_type:
+            display: WS_C2960L_8TS_LL
+            id: 11
+            manufacturer:
+                display: Cisco Systems
+                id: 2
+                name: Cisco Systems
+                slug: cisco-systems
+                url: https://192.168.0.251/api/dcim/manufacturers/2/
+            model: WS_C2960L_8TS_LL
+            slug: ws_c2960l_8ts_ll
+            url: https://192.168.0.251/api/dcim/device-types/11/
+        display: jeyswitch05 (jeyswitch05)
+        face: null
+        id: 15
+        last_updated: '2022-09-30T12:24:34.517305Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch05
+        parent_device: null
+        platform:
+            display: Cisco_c2960l_universalk9-mz.152_7.E2
+            id: 6
+            name: Cisco_c2960l_universalk9-mz.152_7.E2
+            slug: cisco_c2960l_universalk9-mz-152_7-e2
+            url: https://192.168.0.251/api/dcim/platforms/6/
+        position: null
+        primary_ip:
+            address: 192.168.10.6/29
+            display: 192.168.10.6/29
+            family: 4
+            id: 17
+            url: https://192.168.0.251/api/ipam/ip-addresses/17/
+        primary_ip4:
+            address: 192.168.10.6/29
+            display: 192.168.10.6/29
+            family: 4
+            id: 17
+            url: https://192.168.0.251/api/ipam/ip-addresses/17/
+        primary_ip6: null
+        rack: null
+        serial: FCW2202A2J9
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/15/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeyswitch06
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-06-29T00:00:00Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Switch_Juniper
+            id: 7
+            name: Switch_Juniper
+            slug: switch_juniper
+            url: https://192.168.0.251/api/dcim/device-roles/7/
+        device_type:
+            display: EX2300_C_12P
+            id: 2
+            manufacturer:
+                display: Juniper Networks
+                id: 1
+                name: Juniper Networks
+                slug: juniper-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/1/
+            model: EX2300_C_12P
+            slug: ex2300_c_12p
+            url: https://192.168.0.251/api/dcim/device-types/2/
+        display: jeyswitch06 (jeyswitch06)
+        face: null
+        id: 7
+        last_updated: '2022-09-30T12:24:34.565297Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeyswitch06
+        parent_device: null
+        platform:
+            display: Juniper_18.2R3_S5.3
+            id: 7
+            name: Juniper_18.2R3_S5.3
+            slug: juniper_18-2r3_s5-3
+            url: https://192.168.0.251/api/dcim/platforms/7/
+        position: null
+        primary_ip:
+            address: 192.168.0.254/24
+            display: 192.168.0.254/24
+            family: 4
+            id: 18
+            url: https://192.168.0.251/api/ipam/ip-addresses/18/
+        primary_ip4:
+            address: 192.168.0.254/24
+            display: 192.168.0.254/24
+            family: 4
+            id: 18
+            url: https://192.168.0.251/api/ipam/ip-addresses/18/
+        primary_ip6: null
+        rack: null
+        serial: HV0219340931
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/7/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: jeywanfree
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2021-07-06T00:00:00Z'
+        custom_fields:
+            bgp_asn:
+                asn: 65005
+                display: AS65005
+                id: 4
+                url: https://192.168.0.251/api/ipam/asns/4/
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Router_Mikrotik
+            id: 8
+            name: Router_Mikrotik
+            slug: router_mikrotik
+            url: https://192.168.0.251/api/dcim/device-roles/8/
+        device_type:
+            display: RB4011iGS+
+            id: 8
+            manufacturer:
+                display: Mikrotik
+                id: 7
+                name: Mikrotik
+                slug: mikrotik
+                url: https://192.168.0.251/api/dcim/manufacturers/7/
+            model: RB4011iGS+
+            slug: rb4011igs
+            url: https://192.168.0.251/api/dcim/device-types/8/
+        display: jeywanfree (jeywanfree)
+        face: null
+        id: 18
+        last_updated: '2022-09-30T16:26:12.997855Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeywanfree
+        parent_device: null
+        platform:
+            display: Mikrotik_6.43.7
+            id: 9
+            name: Mikrotik_6.43.7
+            slug: mikrotik_6-43-7
+            url: https://192.168.0.251/api/dcim/platforms/9/
+        position: null
+        primary_ip:
+            address: 192.168.10.3/29
+            display: 192.168.10.3/29
+            family: 4
+            id: 23
+            url: https://192.168.0.251/api/ipam/ip-addresses/23/
+        primary_ip4:
+            address: 192.168.10.3/29
+            display: 192.168.10.3/29
+            family: 4
+            id: 23
+            url: https://192.168.0.251/api/ipam/ip-addresses/23/
+        primary_ip6: null
+        rack: null
+        serial: AAAF0A467683
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/18/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: null
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T12:52:43.297567Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: AP_Wifi_Ubiquiti
+            id: 11
+            name: AP_Wifi_Ubiquiti
+            slug: ap_wifi_ubiquiti
+            url: https://192.168.0.251/api/dcim/device-roles/11/
+        device_type:
+            display: UAP_FlexHD
+            id: 21
+            manufacturer:
+                display: Ubiquiti Networks
+                id: 5
+                name: Ubiquiti Networks
+                slug: ubiquiti-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/5/
+            model: UAP_FlexHD
+            slug: uap_flexhd
+            url: https://192.168.0.251/api/dcim/device-types/21/
+        display: jeywifiap01
+        face: null
+        id: 31
+        last_updated: '2022-10-13T19:35:17.519397Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeywifiap01
+        parent_device: null
+        platform:
+            display: Ubiquiti UniFi 6_2_39_14077
+            id: 19
+            name: Ubiquiti UniFi 6_2_39_14077
+            slug: ubiquiti_unifi_6_2_39_14077
+            url: https://192.168.0.251/api/dcim/platforms/19/
+        position: null
+        primary_ip:
+            address: 192.168.0.51/24
+            display: 192.168.0.51/24
+            family: 4
+            id: 75
+            url: https://192.168.0.251/api/ipam/ip-addresses/75/
+        primary_ip4:
+            address: 192.168.0.51/24
+            display: 192.168.0.51/24
+            family: 4
+            id: 75
+            url: https://192.168.0.251/api/ipam/ip-addresses/75/
+        primary_ip6: null
+        rack: null
+        serial: ''
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/31/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: null
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T12:53:06.740936Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: AP_Wifi_Ubiquiti
+            id: 11
+            name: AP_Wifi_Ubiquiti
+            slug: ap_wifi_ubiquiti
+            url: https://192.168.0.251/api/dcim/device-roles/11/
+        device_type:
+            display: UAP_AC_Lite
+            id: 22
+            manufacturer:
+                display: Ubiquiti Networks
+                id: 5
+                name: Ubiquiti Networks
+                slug: ubiquiti-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/5/
+            model: UAP_AC_Lite
+            slug: uap_ac_lite
+            url: https://192.168.0.251/api/dcim/device-types/22/
+        display: jeywifiap02
+        face: null
+        id: 32
+        last_updated: '2022-10-13T19:36:04.903556Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeywifiap02
+        parent_device: null
+        platform:
+            display: Ubiquiti UniFi 6_2_35_14043
+            id: 20
+            name: Ubiquiti UniFi 6_2_35_14043
+            slug: ubiquiti-unifi-6_2_35_14043
+            url: https://192.168.0.251/api/dcim/platforms/20/
+        position: null
+        primary_ip:
+            address: 192.168.0.52/24
+            display: 192.168.0.52/24
+            family: 4
+            id: 76
+            url: https://192.168.0.251/api/ipam/ip-addresses/76/
+        primary_ip4:
+            address: 192.168.0.52/24
+            display: 192.168.0.52/24
+            family: 4
+            id: 76
+            url: https://192.168.0.251/api/ipam/ip-addresses/76/
+        primary_ip6: null
+        rack: null
+        serial: ''
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/32/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: null
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T12:53:27.190412Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: AP_Wifi_Ubiquiti
+            id: 11
+            name: AP_Wifi_Ubiquiti
+            slug: ap_wifi_ubiquiti
+            url: https://192.168.0.251/api/dcim/device-roles/11/
+        device_type:
+            display: UAP_FlexHD
+            id: 21
+            manufacturer:
+                display: Ubiquiti Networks
+                id: 5
+                name: Ubiquiti Networks
+                slug: ubiquiti-networks
+                url: https://192.168.0.251/api/dcim/manufacturers/5/
+            model: UAP_FlexHD
+            slug: uap_flexhd
+            url: https://192.168.0.251/api/dcim/device-types/21/
+        display: jeywifiap03
+        face: null
+        id: 33
+        last_updated: '2022-10-13T19:36:04.955201Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: jeywifiap03
+        parent_device: null
+        platform:
+            display: Ubiquiti UniFi 6_2_35_14043
+            id: 20
+            name: Ubiquiti UniFi 6_2_35_14043
+            slug: ubiquiti-unifi-6_2_35_14043
+            url: https://192.168.0.251/api/dcim/platforms/20/
+        position: null
+        primary_ip:
+            address: 192.168.0.53/24
+            display: 192.168.0.53/24
+            family: 4
+            id: 77
+            url: https://192.168.0.251/api/ipam/ip-addresses/77/
+        primary_ip4:
+            address: 192.168.0.53/24
+            display: 192.168.0.53/24
+            family: 4
+            id: 77
+            url: https://192.168.0.251/api/ipam/ip-addresses/77/
+        primary_ip6: null
+        rack: null
+        serial: ''
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/33/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+    -   airflow: null
+        asset_tag: Raspberry Pi 3
+        cluster: null
+        comments: ''
+        config_context: {}
+        created: '2022-09-27T11:50:34.698829Z'
+        custom_fields:
+            bgp_asn: null
+            dev_lpbk: null
+            dns_server_pri: 192.168.0.252
+            dns_server_sec: 192.168.0.250
+            domain_name: int.jeyriku.net
+            rr1: null
+            rr2: null
+            snmp_community: jeyricorp
+            snmp_location: int.jeyriku.net, 2 allee des campagnols, Seynod, 74600,
+                Annecy, France [45.85995, 6.0793]
+            snmp_server: 192.168.0.249
+        device_role:
+            display: Server
+            id: 3
+            name: Server
+            slug: server
+            url: https://192.168.0.251/api/dcim/device-roles/3/
+        device_type:
+            display: Raspberry_Pi3
+            id: 20
+            manufacturer:
+                display: Raspberry
+                id: 11
+                name: Raspberry
+                slug: raspberry
+                url: https://192.168.0.251/api/dcim/manufacturers/11/
+            model: Raspberry_Pi3
+            slug: raspberry_pi3
+            url: https://192.168.0.251/api/dcim/device-types/20/
+        display: Raspberry (Raspberry Pi 3)
+        face: null
+        id: 30
+        last_updated: '2022-09-30T12:24:34.791932Z'
+        local_context_data: null
+        location:
+            _depth: 0
+            display: Vieugy
+            id: 2
+            name: Vieugy
+            slug: vieugy
+            url: https://192.168.0.251/api/dcim/locations/2/
+        name: Raspberry
+        parent_device: null
+        platform:
+            display: Raspbian_10
+            id: 15
+            name: Raspbian_10
+            slug: raspbian_10
+            url: https://192.168.0.251/api/dcim/platforms/15/
+        position: null
+        primary_ip:
+            address: 192.168.0.243/24
+            display: 192.168.0.243/24
+            family: 4
+            id: 74
+            url: https://192.168.0.251/api/ipam/ip-addresses/74/
+        primary_ip4:
+            address: 192.168.0.243/24
+            display: 192.168.0.243/24
+            family: 4
+            id: 74
+            url: https://192.168.0.251/api/ipam/ip-addresses/74/
+        primary_ip6: null
+        rack: null
+        serial: 00000000145617c2
+        site:
+            display: JeyHome2
+            id: 2
+            name: JeyHome2
+            slug: jeyhome2
+            url: https://192.168.0.251/api/dcim/sites/2/
+        status:
+            label: Active
+            value: active
+        tags: []
+        tenant: null
+        url: https://192.168.0.251/api/dcim/devices/30/
+        vc_position: null
+        vc_priority: null
+        virtual_chassis: null
+msg: OK (70949 bytes)
+redirected: false
+referrer_policy: same-origin
+server: nginx/1.18.0 (Ubuntu)
+status: 200
+url: https://192.168.0.251/api/dcim/devices/?limit=1000
+vary: Accept, Cookie, Origin
+warnings:
+- Platform darwin on host netbox is using the discovered Python interpreter at /opt/homebrew/bin/python3.10,
+    but future installation of another Python interpreter could change the meaning
+    of that path. See https://docs.ansible.com/ansible-core/2.13/reference_appendices/interpreter_discovery.html
+    for more information.
+x_content_type_options: nosniff
+x_frame_options: SAMEORIGIN

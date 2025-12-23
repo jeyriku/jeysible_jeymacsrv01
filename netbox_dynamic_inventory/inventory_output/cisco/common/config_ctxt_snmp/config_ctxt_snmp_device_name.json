@@ -1,0 +1,33 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "IP": "10.0.1.11",
+            "Name": "jey-isr1k-ce-01",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249",
+            "snmp_srv3": "192.168.0.239"
+        },
+        {
+            "IP": "10.0.1.12",
+            "Name": "jey-isr1k-ce-02",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249",
+            "snmp_srv3": "192.168.0.239"
+        },
+        {
+            "IP": "10.0.1.13",
+            "Name": "jey-isr1k-ce-03",
+            "snmp_com": "jeyricorp",
+            "snmp_loc": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+            "snmp_srv1": "192.168.0.248",
+            "snmp_srv2": "192.168.0.249",
+            "snmp_srv3": "192.168.0.239"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{% for ospfdata in iface_name.msg -%}
+{% if ospfdata.Iface_role == 'mpls' %}
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} interface-type p2p
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} retransmit-interval 5
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} hello-interval 10
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} dead-interval 40
+{% elif ospfdata.Iface_role == 'iprr' -%}
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} interface-type p2p
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} retransmit-interval 5
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} hello-interval 10
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} dead-interval 40
+{% elif ospfdata.Iface_role == 'ip' -%}
+set protocols ospf area {{ospfdata.Ospf_area}} interface {{ ospfdata.Iface_name }}.{{ ospfdata.Iface_unit }} passive
+{% elif ospfdata.Iface_role == 'loopback' %}
+set protocols ospf area {{ospfdata.Ospf_area}} interface lo0.0 passive
+{% endif %}
+{% endfor %}

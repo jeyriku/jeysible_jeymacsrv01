@@ -1,0 +1,21 @@
+{% for ifdata in device_ifaces.msg -%}
+set interfaces {{ ifdata.iface_name }} description {{ ifdata.iface_desc }}
+set interfaces {{ ifdata.iface_name}} flexible-vlan-tagging
+set interfaces {{ ifdata.iface_name }} mtu {{ ifdata.iface_mtu }}
+{% endfor %}
+{% for ifdata in device_ipaddr.msg -%}
+{% if ifdata.subif_role == 'mpls' -%}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} description {{ ifdata.subif_desc }}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} family inet address {{ ifdata.subif_address }}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} family mpls
+{% elif ifdata.subif_role == 'ip' -%}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} description {{ ifdata.subif_desc }}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} family inet address {{ ifdata.subif_address }}
+{% elif ifdata.subif_role == 'ipvrf' -%}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} description {{ ifdata.subif_desc }}
+set interfaces {{ ifdata.subif_name }} unit {{ ifdata.subif_unit }} family inet address {{ ifdata.subif_address }}
+{% endif %}
+{% endfor %}
+{% for ifdata in device_ipaddr.msg if ifdata.subif_unit|int > 0 -%}
+set interfaces {{ ifdata.subif_name  }} unit {{ ifdata.subif_unit }} vlan-id {{ ifdata.subif_unit }}
+{% endfor %}

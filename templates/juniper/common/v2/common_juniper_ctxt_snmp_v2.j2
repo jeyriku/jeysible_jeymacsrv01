@@ -1,0 +1,6 @@
+set snmp location "{{ device_name.msg[item].snmp_loc }}"
+set snmp community {{ device_name.msg[item].snmp_com }} authorization read-only
+set snmp community {{ device_name.msg[item].snmp_com }} clients {{ device_name.msg[item].snmp_srv1 }}/32
+set snmp community {{ device_name.msg[item].snmp_com }} clients {{ device_name.msg[item].snmp_srv2 }}/32
+set snmp community {{ device_name.msg[item].snmp_com }} clients {{ device_name.msg[item].snmp_srv3 }}/32
+set snmp trap-options source-address {{ device_name.msg[item].IP }}

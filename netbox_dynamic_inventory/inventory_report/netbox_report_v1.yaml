@@ -1,0 +1,36 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+netbox_datas.json:
+  - { node: jeycisco01, runs Network OS: Cisco_c1100_universalk9.16.12.04, and has Ipv4: 10.0.0.1/32}
+  - { node: jeycisco02, runs Network OS: Cisco_c1100_universalk9.16.12.04, and has Ipv4: 10.0.0.7/32}
+  - { node: jeycisco03, runs Network OS: Cisco_c1100_universalk9.16.12.04, and has Ipv4: 10.0.0.11/32}
+  - { node: jeymacsrv01, runs Network OS: MacOS_12_6, and has Ipv4: 192.168.0.241/24}
+  - { node: jeynas01, runs Network OS: DSM 6_2_25556, and has Ipv4: 192.168.0.30/24}
+  - { node: jeynas02, runs Network OS: DSM 6_2_25556, and has Ipv4: 192.168.0.31/24}
+  - { node: jeynas03, runs Network OS: DSM 6_2_25556, and has Ipv4: 192.168.0.32/24}
+  - { node: jeyniper01, runs Network OS: Juniper_20.3R1.8, and has Ipv4: 10.0.0.3/32}
+  - { node: jeyniper02, runs Network OS: Juniper_20.3R1.8, and has Ipv4: 10.0.0.6/32}
+  - { node: jeyniper03, runs Network OS: Juniper_20.3R1.8, and has Ipv4: 10.0.0.8/32}
+  - { node: jeyniper04, runs Network OS: Juniper_20.3R1.8, and has Ipv4: 10.0.0.4/32}
+  - { node: jeyniper05, runs Network OS: Juniper_20.3R1.8, and has Ipv4: 10.0.0.9/32}
+  - { node: jeyniper06, runs Network OS: Juniper_19.4R3.11, and has Ipv4: 10.0.0.10/32}
+  - { node: jeyniper07, runs Network OS: Juniper_19.4R3.11, and has Ipv4: 10.0.0.12/32}
+  - { node: jeyRS400, runs Network OS: Netgear_1.5.0.54, and has Ipv4: 192.168.0.244/24}
+  - { node: jeysaco, runs Network OS: Cisco_asa982_20_lfbff_k8, and has Ipv4: 192.168.17.2/30}
+  - { node: jeysrv01, runs Network OS: Windows_Server_2019, and has Ipv4: 192.168.0.246/24}
+  - { node: jeysrv02, runs Network OS: Ubuntu_18.04, and has Ipv4: 192.168.0.252/24}
+  - { node: jeysrv03, runs Network OS: Ubuntu_20.04, and has Ipv4: 192.168.0.251/24}
+  - { node: jeysrv04, runs Network OS: Ubuntu_18.04, and has Ipv4: 192.168.0.250/24}
+  - { node: jeysrv05, runs Network OS: Ubuntu_18.04, and has Ipv4: 192.168.0.249/24}
+  - { node: jeysrv06, runs Network OS: Debian_11, and has Ipv4: 192.168.0.245/24}
+  - { node: jeyswitch01, runs Network OS: Cisco_c2960c405_universalk9_mz.150_2.SE5, and has Ipv4: 192.168.0.60/24}
+  - { node: jeyswitch02, runs Network OS: Cisco_c2960c405ex_universalk9_mz.150_2.SE5, and has Ipv4: 192.168.0.61/24}
+  - { node: jeyswitch03, runs Network OS: Cisco_c2960c405ex_universalk9_mz.150_2.SE5, and has Ipv4: 192.168.0.62/24}
+  - { node: jeyswitch04, runs Network OS: Cisco_c2960l_universalk9-mz.152_7.E2, and has Ipv4: 192.168.0.63/24}
+  - { node: jeyswitch05, runs Network OS: Cisco_c2960l_universalk9-mz.152_7.E2, and has Ipv4: 192.168.10.6/29}
+  - { node: jeyswitch06, runs Network OS: Juniper_18.2R3_S5.3, and has Ipv4: 192.168.0.254/24}
+  - { node: jeywanfree, runs Network OS: Mikrotik_6.43.7, and has Ipv4: 192.168.10.3/29}
+  - { node: jeywifiap01, runs Network OS: Ubiquiti UniFi 6_2_39_14077, and has Ipv4: 192.168.0.51/24}
+  - { node: jeywifiap02, runs Network OS: Ubiquiti UniFi 6_2_35_14043, and has Ipv4: 192.168.0.52/24}
+  - { node: jeywifiap03, runs Network OS: Ubiquiti UniFi 6_2_35_14043, and has Ipv4: 192.168.0.53/24}
+  - { node: Raspberry, runs Network OS: Raspbian_10, and has Ipv4: 192.168.0.243/24}
+# END ANSIBLE MANAGED BLOCK

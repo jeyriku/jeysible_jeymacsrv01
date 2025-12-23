@@ -1,0 +1,108 @@
+allow: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+api_version: '3.3'
+changed: false
+connection: close
+content_length: '2159'
+content_type: application/json
+cookies: {}
+cookies_string: ''
+cross_origin_opener_policy: same-origin
+date: Sat, 05 Nov 2022 17:41:55 GMT
+elapsed: 0
+failed: false
+json:
+    count: 3
+    next: null
+    previous: null
+    results:
+    -   created: '2022-09-30T13:49:17.875741Z'
+        custom_fields: {}
+        description: Global Routing Table
+        display: default
+        enforce_unique: true
+        export_targets: []
+        id: 3
+        import_targets: []
+        ipaddress_count: 0
+        last_updated: '2022-09-30T13:49:42.856135Z'
+        name: default
+        prefix_count: 0
+        rd: null
+        tags:
+        -   color: 3f51b5
+            display: Role_Router_PE_Juniper
+            id: 3
+            name: Role_Router_PE_Juniper
+            slug: role_router_pe_juniper
+            url: https://192.168.0.251/api/extras/tags/3/
+        tenant: null
+        url: https://192.168.0.251/api/ipam/vrfs/3/
+    -   created: '2021-11-19T00:00:00Z'
+        custom_fields: {}
+        description: vpn-internet
+        display: vpn-internet (01)
+        enforce_unique: true
+        export_targets:
+        -   display: target:65003:01
+            id: 1
+            name: target:65003:01
+            url: https://192.168.0.251/api/ipam/route-targets/1/
+        id: 1
+        import_targets:
+        -   display: target:65003:01
+            id: 1
+            name: target:65003:01
+            url: https://192.168.0.251/api/ipam/route-targets/1/
+        ipaddress_count: 39
+        last_updated: '2022-09-30T13:28:29.558810Z'
+        name: vpn-internet
+        prefix_count: 18
+        rd: '01'
+        tags:
+        -   color: 3f51b5
+            display: Role_Router_PE_Juniper
+            id: 3
+            name: Role_Router_PE_Juniper
+            slug: role_router_pe_juniper
+            url: https://192.168.0.251/api/extras/tags/3/
+        tenant: null
+        url: https://192.168.0.251/api/ipam/vrfs/1/
+    -   created: '2021-11-19T00:00:00Z'
+        custom_fields: {}
+        description: vpn-internet-guest
+        display: vpn-internet-guest (03)
+        enforce_unique: true
+        export_targets:
+        -   display: target:65003:03
+            id: 2
+            name: target:65003:03
+            url: https://192.168.0.251/api/ipam/route-targets/2/
+        id: 2
+        import_targets:
+        -   display: target:65003:03
+            id: 2
+            name: target:65003:03
+            url: https://192.168.0.251/api/ipam/route-targets/2/
+        ipaddress_count: 5
+        last_updated: '2022-09-30T13:44:58.217423Z'
+        name: vpn-internet-guest
+        prefix_count: 3
+        rd: '03'
+        tags:
+        -   color: 3f51b5
+            display: Role_Router_PE_Juniper
+            id: 3
+            name: Role_Router_PE_Juniper
+            slug: role_router_pe_juniper
+            url: https://192.168.0.251/api/extras/tags/3/
+        tenant: null
+        url: https://192.168.0.251/api/ipam/vrfs/2/
+msg: OK (2159 bytes)
+redirected: false
+referrer_policy: same-origin
+server: nginx/1.18.0 (Ubuntu)
+status: 200
+url: https://192.168.0.251/api/ipam/vrfs/?limit=5000
+vary: Accept, Cookie, Origin
+x_content_type_options: nosniff
+x_frame_options: SAMEORIGIN

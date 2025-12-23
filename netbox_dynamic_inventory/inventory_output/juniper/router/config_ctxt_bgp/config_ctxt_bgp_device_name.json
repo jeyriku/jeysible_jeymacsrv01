@@ -1,0 +1,12 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "Name": "jeyniper01",
+            "loopback": "10.0.0.3",
+            "rr1": "10.0.0.10",
+            "rr2": "10.0.0.12"
+        }
+    ]
+}

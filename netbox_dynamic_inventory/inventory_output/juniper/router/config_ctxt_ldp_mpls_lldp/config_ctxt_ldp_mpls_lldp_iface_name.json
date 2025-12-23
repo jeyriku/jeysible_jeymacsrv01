@@ -1,0 +1,54 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "Iface_name": "loopback",
+            "Iface_role": "loopback",
+            "Iface_unit": "0",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/0",
+            "Iface_role": "mpls",
+            "Iface_unit": "0",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/1",
+            "Iface_role": "mpls",
+            "Iface_unit": "0",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/2",
+            "Iface_role": "mpls",
+            "Iface_unit": "0",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/3",
+            "Iface_role": "iprr",
+            "Iface_unit": "0",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/5",
+            "Iface_role": "ipvrf",
+            "Iface_unit": "13",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/5",
+            "Iface_role": "ip",
+            "Iface_unit": "16",
+            "Name": "jeyniper01"
+        },
+        {
+            "Iface_name": "ge-0/0/5",
+            "Iface_role": "ipvrf",
+            "Iface_unit": "30",
+            "Name": "jeyniper01"
+        }
+    ]
+}

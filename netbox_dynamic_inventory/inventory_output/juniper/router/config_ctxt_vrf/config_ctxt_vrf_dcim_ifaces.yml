@@ -1,0 +1,59 @@
+changed: false
+failed: false
+msg:
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper03
+    iface_name: ge-0/0/0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper03
+    iface_name: ge-0/0/0.0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper04
+    iface_name: ge-0/0/1
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper04
+    iface_name: ge-0/0/1.0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper02
+    iface_name: ge-0/0/2
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper02
+    iface_name: ge-0/0/2.0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper06
+    iface_name: ge-0/0/3
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper06
+    iface_name: ge-0/0/3.0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: ''
+    iface_name: ge-0/0/4.0
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Lien vers Jeycisco01
+    iface_name: ge-0/0/5
+    vrf: null
+-   device: jeyniper01
+    iface_desc: Vlan Internet
+    iface_name: ge-0/0/5.13
+    vrf: vpn-internet
+-   device: jeyniper01
+    iface_desc: Vlan Admin
+    iface_name: ge-0/0/5.16
+    vrf: default
+-   device: jeyniper01
+    iface_desc: Vlan Guest
+    iface_name: ge-0/0/5.30
+    vrf: vpn-internet-guest
+-   device: jeyniper01
+    iface_desc: Management - Loopback - Jeyniper01
+    iface_name: loopback 0
+    vrf: null

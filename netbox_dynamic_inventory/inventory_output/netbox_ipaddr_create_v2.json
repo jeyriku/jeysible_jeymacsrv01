@@ -1,0 +1,4234 @@
+{
+    "allow": "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS",
+    "api_version": "3.3",
+    "changed": false,
+    "connection": "close",
+    "content_length": "82269",
+    "content_type": "application/json",
+    "cookies": {},
+    "cookies_string": "",
+    "cross_origin_opener_policy": "same-origin",
+    "date": "Sat, 05 Nov 2022 17:41:54 GMT",
+    "elapsed": 0,
+    "failed": false,
+    "json": {
+        "count": 83,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "address": "10.0.0.1/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 1,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/1/"
+                },
+                "assigned_object_id": 1,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeycisco01",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeycisco01",
+                "display": "10.0.0.1/32",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 1,
+                "last_updated": "2022-11-05T15:23:50.474062Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/1/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.3/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 4,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/4/"
+                },
+                "assigned_object_id": 4,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper01",
+                "display": "10.0.0.3/32",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 3,
+                "last_updated": "2022-11-05T15:23:50.504290Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/3/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.4/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 7,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/7/"
+                },
+                "assigned_object_id": 7,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper04",
+                "display": "10.0.0.4/32",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 4,
+                "last_updated": "2022-11-05T15:23:50.533276Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/4/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.5/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeywanfree (jeywanfree)",
+                        "id": 18,
+                        "name": "jeywanfree",
+                        "url": "https://192.168.0.251/api/dcim/devices/18/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 11,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/11/"
+                },
+                "assigned_object_id": 11,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeywanfree",
+                "display": "10.0.0.5/32",
+                "dns_name": "jeywanfree.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 5,
+                "last_updated": "2021-07-06T22:15:46.816083Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/5/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.6/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 5,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/5/"
+                },
+                "assigned_object_id": 5,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper02",
+                "display": "10.0.0.6/32",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 6,
+                "last_updated": "2022-11-05T15:23:50.562154Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/6/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.7/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco02 (jeycisco02)",
+                        "id": 9,
+                        "name": "jeycisco02",
+                        "url": "https://192.168.0.251/api/dcim/devices/9/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 2,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/2/"
+                },
+                "assigned_object_id": 2,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeycisco02",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeycisco02",
+                "display": "10.0.0.7/32",
+                "dns_name": "jeycisco02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 7,
+                "last_updated": "2022-11-05T15:23:50.591338Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/7/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.8/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 6,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/6/"
+                },
+                "assigned_object_id": 6,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper03",
+                "display": "10.0.0.8/32",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 8,
+                "last_updated": "2022-11-05T15:23:50.620263Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/8/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.9/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper05 (jeyniper05)",
+                        "id": 5,
+                        "name": "jeyniper05",
+                        "url": "https://192.168.0.251/api/dcim/devices/5/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 8,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/8/"
+                },
+                "assigned_object_id": 8,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper05",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper05",
+                "display": "10.0.0.9/32",
+                "dns_name": "jeyniper05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 9,
+                "last_updated": "2022-11-05T15:23:50.649083Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/9/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.10/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper06 (jeyniper06)",
+                        "id": 6,
+                        "name": "jeyniper06",
+                        "url": "https://192.168.0.251/api/dcim/devices/6/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 9,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/9/"
+                },
+                "assigned_object_id": 9,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper06",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper06",
+                "display": "10.0.0.10/32",
+                "dns_name": "jeyniper06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 10,
+                "last_updated": "2022-11-05T15:23:50.678149Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/10/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.11/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco03 (jeycisco03)",
+                        "id": 16,
+                        "name": "jeycisco03",
+                        "url": "https://192.168.0.251/api/dcim/devices/16/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 3,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/3/"
+                },
+                "assigned_object_id": 3,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-06T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeycisco03",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeycisco03",
+                "display": "10.0.0.11/32",
+                "dns_name": "jeycisco03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 11,
+                "last_updated": "2022-11-05T15:23:50.707118Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/11/",
+                "vrf": null
+            },
+            {
+                "address": "10.0.0.12/32",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper07 (jeyniper07)",
+                        "id": 19,
+                        "name": "jeyniper07",
+                        "url": "https://192.168.0.251/api/dcim/devices/19/"
+                    },
+                    "display": "loopback 0 (loopback 0)",
+                    "id": 172,
+                    "name": "loopback 0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/172/"
+                },
+                "assigned_object_id": 172,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-09-22T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper07",
+                    "iface_mtu": null,
+                    "iface_parent": "loopback",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyniper07",
+                "display": "10.0.0.12/32",
+                "dns_name": "jeyniper07.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 19,
+                "last_updated": "2022-11-05T15:23:50.736067Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/19/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.0.0/24",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T12:58:36.802674Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan1_192.168.0.0/24_vlan1",
+                "display": "192.168.0.0/24",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 78,
+                "last_updated": "2022-09-27T13:01:10.136557Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/78/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.0.30/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 9,
+                    "device": {
+                        "display": "jeynas01 (jeynas01)",
+                        "id": 20,
+                        "name": "jeynas01",
+                        "url": "https://192.168.0.251/api/dcim/devices/20/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 181,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/181/"
+                },
+                "assigned_object_id": 181,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-11-17T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Jeynas01 attached Ip address",
+                "display": "192.168.0.30/24",
+                "dns_name": "jeynas01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 20,
+                "last_updated": "2022-09-25T19:04:34.078341Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/20/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.31/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeynas02 (jeynas02)",
+                        "id": 21,
+                        "name": "jeynas02",
+                        "url": "https://192.168.0.251/api/dcim/devices/21/"
+                    },
+                    "display": "Bond_1 (Bond_1)",
+                    "id": 185,
+                    "name": "Bond_1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/185/"
+                },
+                "assigned_object_id": 185,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-11-17T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Jeynas02 attached Ip address",
+                "display": "192.168.0.31/24",
+                "dns_name": "jeynas02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 21,
+                "last_updated": "2022-09-25T19:04:34.112138Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/21/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.32/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 12,
+                    "device": {
+                        "display": "jeynas03 (jeynas03)",
+                        "id": 22,
+                        "name": "jeynas03",
+                        "url": "https://192.168.0.251/api/dcim/devices/22/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 184,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/184/"
+                },
+                "assigned_object_id": 184,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-11-17T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Jeynas03 attached Ip address",
+                "display": "192.168.0.32/24",
+                "dns_name": "jeynas03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 22,
+                "last_updated": "2022-09-25T19:04:34.143898Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/22/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.51/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 41,
+                    "device": {
+                        "display": "jeywifiap01",
+                        "id": 31,
+                        "name": "jeywifiap01",
+                        "url": "https://192.168.0.251/api/dcim/devices/31/"
+                    },
+                    "display": "Eth0 (Eth0)",
+                    "id": 227,
+                    "name": "Eth0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/227/"
+                },
+                "assigned_object_id": 227,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T12:54:46.504845Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeywifiap01 attached Ip address",
+                "display": "192.168.0.51/24",
+                "dns_name": "jeywifiap01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 75,
+                "last_updated": "2022-09-27T12:57:01.922552Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/75/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.52/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeywifiap02",
+                        "id": 32,
+                        "name": "jeywifiap02",
+                        "url": "https://192.168.0.251/api/dcim/devices/32/"
+                    },
+                    "display": "Eth0 (Eth0)",
+                    "id": 228,
+                    "name": "Eth0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/228/"
+                },
+                "assigned_object_id": 228,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T12:55:18.281283Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeywifiap02 attached Ip address",
+                "display": "192.168.0.52/24",
+                "dns_name": "jeywifiap02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 76,
+                "last_updated": "2022-09-27T12:55:18.281303Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/76/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.53/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeywifiap03",
+                        "id": 33,
+                        "name": "jeywifiap03",
+                        "url": "https://192.168.0.251/api/dcim/devices/33/"
+                    },
+                    "display": "Eth0 (Eth0)",
+                    "id": 229,
+                    "name": "Eth0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/229/"
+                },
+                "assigned_object_id": 229,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T12:55:48.844987Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeywifiap03 attached Ip address",
+                "display": "192.168.0.53/24",
+                "dns_name": "jeywifiap03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 77,
+                "last_updated": "2022-09-27T12:55:48.845006Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/77/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.60/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch01 (jeyswitch01)",
+                        "id": 11,
+                        "name": "jeyswitch01",
+                        "url": "https://192.168.0.251/api/dcim/devices/11/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 145,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/145/"
+                },
+                "assigned_object_id": 145,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyswitch01",
+                "display": "192.168.0.60/24",
+                "dns_name": "jeyswitch01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 13,
+                "last_updated": "2022-09-25T19:04:34.176078Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/13/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.61/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch02 (jeyswitch02)",
+                        "id": 12,
+                        "name": "jeyswitch02",
+                        "url": "https://192.168.0.251/api/dcim/devices/12/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 146,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/146/"
+                },
+                "assigned_object_id": 146,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyswitch02",
+                "display": "192.168.0.61/24",
+                "dns_name": "jeyswitch02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 14,
+                "last_updated": "2022-09-25T19:04:34.207771Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/14/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.62/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch03 (jeyswitch03)",
+                        "id": 13,
+                        "name": "jeyswitch03",
+                        "url": "https://192.168.0.251/api/dcim/devices/13/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 147,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/147/"
+                },
+                "assigned_object_id": 147,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyswitch03",
+                "display": "192.168.0.62/24",
+                "dns_name": "jeyswitch03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 15,
+                "last_updated": "2022-09-25T19:04:34.239429Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/15/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.63/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch04 (jeyswitch04)",
+                        "id": 14,
+                        "name": "jeyswitch04",
+                        "url": "https://192.168.0.251/api/dcim/devices/14/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 148,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/148/"
+                },
+                "assigned_object_id": 148,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyswitch04",
+                "display": "192.168.0.63/24",
+                "dns_name": "jeyswitch04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 16,
+                "last_updated": "2022-09-25T19:04:34.271114Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/16/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.241/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 8,
+                    "device": {
+                        "display": "jeymacsrv01 (Macmini9,1)",
+                        "id": 28,
+                        "name": "jeymacsrv01",
+                        "url": "https://192.168.0.251/api/dcim/devices/28/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 205,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/205/"
+                },
+                "assigned_object_id": 205,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:48:39.185812Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeymacsrv01 attached Ip address",
+                "display": "192.168.0.241/24",
+                "dns_name": "jeymacsrv01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 72,
+                "last_updated": "2022-09-27T09:51:48.413939Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/72/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.243/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 38,
+                    "device": {
+                        "display": "Raspberry (Raspberry Pi 3)",
+                        "id": 30,
+                        "name": "Raspberry",
+                        "url": "https://192.168.0.251/api/dcim/devices/30/"
+                    },
+                    "display": "Fa0 (Fa0)",
+                    "id": 214,
+                    "name": "Fa0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/214/"
+                },
+                "assigned_object_id": 214,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T11:53:10.120136Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "raspberry attached Ip address",
+                "display": "192.168.0.243/24",
+                "dns_name": "raspberry.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 74,
+                "last_updated": "2022-09-27T13:21:47.568963Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/74/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.244/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 40,
+                    "device": {
+                        "display": "jeyRS400 (jeyRS400)",
+                        "id": 34,
+                        "name": "jeyRS400",
+                        "url": "https://192.168.0.251/api/dcim/devices/34/"
+                    },
+                    "display": "internet (internet)",
+                    "id": 234,
+                    "name": "internet",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/234/"
+                },
+                "assigned_object_id": 234,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T13:34:48.023089Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan1_192.168.0.0/24_vlan1",
+                "display": "192.168.0.244/24",
+                "dns_name": "jeyrs400.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 84,
+                "last_updated": "2022-09-27T13:34:48.023107Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/84/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.245/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 29,
+                    "device": {
+                        "display": "jeysrv06 (10A4S06L02)",
+                        "id": 27,
+                        "name": "jeysrv06",
+                        "url": "https://192.168.0.251/api/dcim/devices/27/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 204,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/204/"
+                },
+                "assigned_object_id": 204,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:37:03.154372Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeysrv06 attached Ip address",
+                "display": "192.168.0.245/24",
+                "dns_name": "jeysrv06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 71,
+                "last_updated": "2022-09-27T09:38:11.091376Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/71/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.246/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeysrv01 (ProLiant)",
+                        "id": 29,
+                        "name": "jeysrv01",
+                        "url": "https://192.168.0.251/api/dcim/devices/29/"
+                    },
+                    "display": "Bond_1 (Bond_1)",
+                    "id": 208,
+                    "name": "Bond_1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/208/"
+                },
+                "assigned_object_id": 208,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T10:13:27.805995Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Jeysrv01 attached IP address",
+                "display": "192.168.0.246/24",
+                "dns_name": "jeysrv01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 73,
+                "last_updated": "2022-09-27T10:14:06.583978Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/73/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.247/24",
+                "assigned_object": {
+                    "display": "Gi0",
+                    "id": 1,
+                    "name": "Gi0",
+                    "url": "https://192.168.0.251/api/virtualization/interfaces/1/",
+                    "virtual_machine": {
+                        "display": "jeyvm02",
+                        "id": 1,
+                        "name": "jeyvm02",
+                        "url": "https://192.168.0.251/api/virtualization/virtual-machines/1/"
+                    }
+                },
+                "assigned_object_id": 1,
+                "assigned_object_type": "virtualization.vminterface",
+                "created": "2022-09-27T15:02:52.336227Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeyvm02 attached Ip address",
+                "display": "192.168.0.247/24",
+                "dns_name": "jeyvm02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 85,
+                "last_updated": "2022-09-27T15:02:52.336248Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/85/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.249/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 34,
+                    "device": {
+                        "display": "jeysrv05 (4VG00EA#ABF)",
+                        "id": 25,
+                        "name": "jeysrv05",
+                        "url": "https://192.168.0.251/api/dcim/devices/25/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 203,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/203/"
+                },
+                "assigned_object_id": 203,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:27:38.321959Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeysrv05 attached Ip address",
+                "display": "192.168.0.249/24",
+                "dns_name": "jeysrv05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 70,
+                "last_updated": "2022-09-27T09:38:02.404463Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/70/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.250/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 28,
+                    "device": {
+                        "display": "jeysrv04 (OEM)",
+                        "id": 24,
+                        "name": "jeysrv04",
+                        "url": "https://192.168.0.251/api/dcim/devices/24/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 202,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/202/"
+                },
+                "assigned_object_id": 202,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:25:16.236420Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeysrv04 attached Ip address",
+                "display": "192.168.0.250/24",
+                "dns_name": "jeysrv04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 67,
+                "last_updated": "2022-09-27T09:38:27.284937Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/67/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.251/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 33,
+                    "device": {
+                        "display": "jeysrv03 (NUC7i3DNKE)",
+                        "id": 26,
+                        "name": "jeysrv03",
+                        "url": "https://192.168.0.251/api/dcim/devices/26/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 201,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/201/"
+                },
+                "assigned_object_id": 201,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:27:05.615328Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeysrv03 attached Ip address",
+                "display": "192.168.0.251/24",
+                "dns_name": "jeysrv03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 69,
+                "last_updated": "2022-09-27T09:38:39.309939Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/69/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.252/24",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 32,
+                    "device": {
+                        "display": "jeysrv02 (NUC6CAYH)",
+                        "id": 23,
+                        "name": "jeysrv02",
+                        "url": "https://192.168.0.251/api/dcim/devices/23/"
+                    },
+                    "display": "Ge0 (Ge0)",
+                    "id": 200,
+                    "name": "Ge0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/200/"
+                },
+                "assigned_object_id": 200,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-27T09:25:41.180028Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "jeysrv02 attached Ip address",
+                "display": "192.168.0.252/24",
+                "dns_name": "jeysrv02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 68,
+                "last_updated": "2022-09-27T09:38:54.715672Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/68/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.254/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch06 (jeyswitch06)",
+                        "id": 7,
+                        "name": "jeyswitch06",
+                        "url": "https://192.168.0.251/api/dcim/devices/7/"
+                    },
+                    "display": "irb.0 (irb.0)",
+                    "id": 163,
+                    "name": "irb.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/163/"
+                },
+                "assigned_object_id": 163,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Management - Loopback - Jeyswitch06",
+                "display": "192.168.0.254/24",
+                "dns_name": "jeyswitch06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 18,
+                "last_updated": "2022-09-25T19:04:34.302737Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/18/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.0.255/24",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T12:59:00.129787Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan1_192.168.0.0/24_vlan1",
+                "display": "192.168.0.255/24",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 79,
+                "last_updated": "2022-09-27T13:02:46.097322Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/79/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.3.0/24",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T13:00:34.070773Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan3_192.168.3.0/24_vlan3",
+                "display": "192.168.3.0/24",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 81,
+                "last_updated": "2022-09-27T13:02:20.194487Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/81/",
+                "vrf": {
+                    "display": "vpn-internet-guest (03)",
+                    "id": 2,
+                    "name": "vpn-internet-guest",
+                    "rd": "03",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/2/"
+                }
+            },
+            {
+                "address": "192.168.3.254/24",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "GigabitEthernet0/0/1.3 (GigabitEthernet0/0/1.3)",
+                    "id": 198,
+                    "name": "GigabitEthernet0/0/1.3",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/198/"
+                },
+                "assigned_object_id": 198,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:11:17.177192Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan3_192.168.3.0/24_vlan3",
+                "display": "192.168.3.254/24",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 36,
+                "last_updated": "2022-09-25T21:11:17.177211Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/36/",
+                "vrf": {
+                    "display": "vpn-internet-guest (03)",
+                    "id": 2,
+                    "name": "vpn-internet-guest",
+                    "rd": "03",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/2/"
+                }
+            },
+            {
+                "address": "192.168.3.255/24",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T12:59:31.264332Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan3_192.168.3.0/24_vlan3",
+                "display": "192.168.3.255/24",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 80,
+                "last_updated": "2022-09-27T13:03:05.731785Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/80/",
+                "vrf": {
+                    "display": "vpn-internet-guest (03)",
+                    "id": 2,
+                    "name": "vpn-internet-guest",
+                    "rd": "03",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/2/"
+                }
+            },
+            {
+                "address": "192.168.10.0/29",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T13:04:23.952366Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan10_192.168.10.0/29_vlan10",
+                "display": "192.168.10.0/29",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 82,
+                "last_updated": "2022-09-27T13:04:23.952387Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/82/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.10.3/29",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeywanfree (jeywanfree)",
+                        "id": 18,
+                        "name": "jeywanfree",
+                        "url": "https://192.168.0.251/api/dcim/devices/18/"
+                    },
+                    "display": "bridge (bridge)",
+                    "id": 226,
+                    "name": "bridge",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/226/"
+                },
+                "assigned_object_id": 226,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:08:03.734965Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan10_192.168.10.0/29_vlan10",
+                "display": "192.168.10.3/29",
+                "dns_name": "jeywanfree.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 23,
+                "last_updated": "2022-09-27T12:11:09.941520Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/23/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.10.4/29",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco02 (jeycisco02)",
+                        "id": 9,
+                        "name": "jeycisco02",
+                        "url": "https://192.168.0.251/api/dcim/devices/9/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 211,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/211/"
+                },
+                "assigned_object_id": 211,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:21:28.321554Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan10_192.168.10.0/29_vlan10",
+                "display": "192.168.10.4/29",
+                "dns_name": "jeycisco02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 24,
+                "last_updated": "2022-09-27T10:35:01.324795Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/24/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.10.5/29",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper05 (jeyniper05)",
+                        "id": 5,
+                        "name": "jeyniper05",
+                        "url": "https://192.168.0.251/api/dcim/devices/5/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 255,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/255/"
+                },
+                "assigned_object_id": 255,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:28:05.849100Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper05",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Inet-JeyWanFree-SFR",
+                "display": "192.168.10.5/29",
+                "dns_name": "jeyniper05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 25,
+                "last_updated": "2022-11-04T14:40:19.951642Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/25/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.10.6/29",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyswitch05 (jeyswitch05)",
+                        "id": 15,
+                        "name": "jeyswitch05",
+                        "url": "https://192.168.0.251/api/dcim/devices/15/"
+                    },
+                    "display": "vlan1 (vlan1)",
+                    "id": 104,
+                    "name": "vlan1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/104/"
+                },
+                "assigned_object_id": 104,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-19T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan10_192.168.10.0/29_vlan10",
+                "display": "192.168.10.6/29",
+                "dns_name": "jeyswitch05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 17,
+                "last_updated": "2022-09-25T21:07:56.503168Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/17/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.10.7/29",
+                "assigned_object": null,
+                "assigned_object_id": null,
+                "assigned_object_type": null,
+                "created": "2022-09-27T13:04:35.922543Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan10_192.168.10.0/29_vlan10",
+                "display": "192.168.10.7/29",
+                "dns_name": "",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 83,
+                "last_updated": "2022-09-27T13:04:35.922565Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Reserved",
+                    "value": "reserved"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/83/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.11.1/30",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 6,
+                    "device": {
+                        "display": "jeycisco02 (jeycisco02)",
+                        "id": 9,
+                        "name": "jeycisco02",
+                        "url": "https://192.168.0.251/api/dcim/devices/9/"
+                    },
+                    "display": "GigabitEthernet0/0/0 (GigabitEthernet0/0/0)",
+                    "id": 30,
+                    "name": "GigabitEthernet0/0/0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/30/"
+                },
+                "assigned_object_id": 30,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:18:54.731519Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan11_192.168.11.0/30_vlan11",
+                "display": "192.168.11.1/30",
+                "dns_name": "jeycisco02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 37,
+                "last_updated": "2022-09-25T21:18:54.731538Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/37/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.11.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/5.0 (ge-0/0/5.0)",
+                    "id": 245,
+                    "name": "ge-0/0/5.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/245/"
+                },
+                "assigned_object_id": 245,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:22:47.987841Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "ipvrf",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeycisco02",
+                "display": "192.168.11.2/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 38,
+                "last_updated": "2022-11-05T10:27:34.787731Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/38/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.11.5/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "ge-0/0/5.0 (ge-0/0/5.0)",
+                    "id": 254,
+                    "name": "ge-0/0/5.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/254/"
+                },
+                "assigned_object_id": 254,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:51:42.363445Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "ipvrf",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper05",
+                "display": "192.168.11.5/30",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 41,
+                "last_updated": "2022-11-05T10:27:34.833521Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/41/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.11.6/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper05 (jeyniper05)",
+                        "id": 5,
+                        "name": "jeyniper05",
+                        "url": "https://192.168.0.251/api/dcim/devices/5/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 256,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/256/"
+                },
+                "assigned_object_id": 256,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:52:36.466997Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper05",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper04",
+                "display": "192.168.11.6/30",
+                "dns_name": "jeyniper05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 42,
+                "last_updated": "2022-11-04T14:39:32.826051Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/42/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.12.1/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 46,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/46/"
+                },
+                "assigned_object_id": 46,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:10:29.721960Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper03",
+                "display": "192.168.12.1/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 43,
+                "last_updated": "2022-11-04T14:56:52.062933Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/43/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 246,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/246/"
+                },
+                "assigned_object_id": 246,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:11:45.632505Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper01",
+                "display": "192.168.12.2/30",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 44,
+                "last_updated": "2022-11-04T14:22:31.642254Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/44/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.5/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 247,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/247/"
+                },
+                "assigned_object_id": 247,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:12:27.668088Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper02",
+                "display": "192.168.12.5/30",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 45,
+                "last_updated": "2022-11-04T14:28:45.208592Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/45/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.6/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 241,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/241/"
+                },
+                "assigned_object_id": 241,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:13:37.949787Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper03",
+                "display": "192.168.12.6/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 46,
+                "last_updated": "2022-11-04T14:14:14.013250Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/46/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.9/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 240,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/240/"
+                },
+                "assigned_object_id": 240,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:14:49.607366Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper04",
+                "display": "192.168.12.9/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 47,
+                "last_updated": "2022-11-04T14:19:05.265317Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/47/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.10/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 250,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/250/"
+                },
+                "assigned_object_id": 250,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:16:09.933990Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper02",
+                "display": "192.168.12.10/30",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 48,
+                "last_updated": "2022-11-04T14:33:45.909678Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/48/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.13/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 251,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/251/"
+                },
+                "assigned_object_id": 251,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:17:34.614301Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper01",
+                "display": "192.168.12.13/30",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 49,
+                "last_updated": "2022-11-04T14:34:36.773252Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/49/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.14/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 47,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/47/"
+                },
+                "assigned_object_id": 47,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:18:04.037757Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper04",
+                "display": "192.168.12.14/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 50,
+                "last_updated": "2022-11-04T14:55:35.448083Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/50/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.17/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 248,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/248/"
+                },
+                "assigned_object_id": 248,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:20:37.682276Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper04",
+                "display": "192.168.12.17/30",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 51,
+                "last_updated": "2022-11-04T14:23:40.198239Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/51/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.18/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 252,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/252/"
+                },
+                "assigned_object_id": 252,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:21:02.978091Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper03",
+                "display": "192.168.12.18/30",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 52,
+                "last_updated": "2022-11-04T14:36:05.750623Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/52/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.21/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 48,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/48/"
+                },
+                "assigned_object_id": 48,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:22:17.622886Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper02",
+                "display": "192.168.12.21/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 53,
+                "last_updated": "2022-11-04T14:53:58.781861Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/53/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.22/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 242,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/242/"
+                },
+                "assigned_object_id": 242,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:22:40.581755Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper01",
+                "display": "192.168.12.22/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 54,
+                "last_updated": "2022-11-04T14:12:02.713744Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/54/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.25/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/3.0 (ge-0/0/3.0)",
+                    "id": 49,
+                    "name": "ge-0/0/3.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/49/"
+                },
+                "assigned_object_id": 49,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:23:45.747886Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/3",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Juniper06",
+                "display": "192.168.12.25/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 55,
+                "last_updated": "2022-11-05T14:58:32.203451Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/55/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.26/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper06 (jeyniper06)",
+                        "id": 6,
+                        "name": "jeyniper06",
+                        "url": "https://192.168.0.251/api/dcim/devices/6/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 258,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/258/"
+                },
+                "assigned_object_id": 258,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:25:43.747979Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper06",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper01",
+                "display": "192.168.12.26/30",
+                "dns_name": "jeyniper06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 56,
+                "last_updated": "2022-11-04T14:42:08.621882Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/56/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.29/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "ge-0/0/4.0 (ge-0/0/4.0)",
+                    "id": 249,
+                    "name": "ge-0/0/4.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/249/"
+                },
+                "assigned_object_id": 249,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:26:42.658235Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/4",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper06",
+                "display": "192.168.12.29/30",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 57,
+                "last_updated": "2022-11-05T14:58:32.231830Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/57/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.30/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper06 (jeyniper06)",
+                        "id": 6,
+                        "name": "jeyniper06",
+                        "url": "https://192.168.0.251/api/dcim/devices/6/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 259,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/259/"
+                },
+                "assigned_object_id": 259,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:27:36.596781Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper06",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper03",
+                "display": "192.168.12.30/30",
+                "dns_name": "jeyniper06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 58,
+                "last_updated": "2022-11-04T14:43:48.977820Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/58/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.33/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/3.0 (ge-0/0/3.0)",
+                    "id": 243,
+                    "name": "ge-0/0/3.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/243/"
+                },
+                "assigned_object_id": 243,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:29:15.686803Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/3",
+                    "iface_role": "mpls",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeycisco03",
+                "display": "192.168.12.33/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 59,
+                "last_updated": "2022-11-04T14:15:30.730116Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/59/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.34/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco03 (jeycisco03)",
+                        "id": 16,
+                        "name": "jeycisco03",
+                        "url": "https://192.168.0.251/api/dcim/devices/16/"
+                    },
+                    "display": "GigabitEthernet0/0/0 (GigabitEthernet0/0/0)",
+                    "id": 40,
+                    "name": "GigabitEthernet0/0/0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/40/"
+                },
+                "assigned_object_id": 40,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:29:52.589882Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan12_192.168.12.32/30_vlan12",
+                "display": "192.168.12.34/30",
+                "dns_name": "jeycisco03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 60,
+                "last_updated": "2022-09-25T22:29:52.589904Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/60/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.37/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper02 (jeyniper02)",
+                        "id": 2,
+                        "name": "jeyniper02",
+                        "url": "https://192.168.0.251/api/dcim/devices/2/"
+                    },
+                    "display": "ge-0/0/4.0 (ge-0/0/4.0)",
+                    "id": 244,
+                    "name": "ge-0/0/4.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/244/"
+                },
+                "assigned_object_id": 244,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:31:05.656172Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper02",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/4",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper07",
+                "display": "192.168.12.37/30",
+                "dns_name": "jeyniper02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 61,
+                "last_updated": "2022-11-05T14:58:32.259573Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/61/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.38/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper07 (jeyniper07)",
+                        "id": 19,
+                        "name": "jeyniper07",
+                        "url": "https://192.168.0.251/api/dcim/devices/19/"
+                    },
+                    "display": "ge-0/0/0.0 (ge-0/0/0.0)",
+                    "id": 261,
+                    "name": "ge-0/0/0.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/261/"
+                },
+                "assigned_object_id": 261,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:32:17.554882Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper07",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/0",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper02",
+                "display": "192.168.12.38/30",
+                "dns_name": "jeyniper07.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 62,
+                "last_updated": "2022-11-04T14:46:05.424408Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/62/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.41/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper04 (jeyniper04)",
+                        "id": 4,
+                        "name": "jeyniper04",
+                        "url": "https://192.168.0.251/api/dcim/devices/4/"
+                    },
+                    "display": "ge-0/0/3.0 (ge-0/0/3.0)",
+                    "id": 253,
+                    "name": "ge-0/0/3.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/253/"
+                },
+                "assigned_object_id": 253,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:33:59.734809Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper04",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/3",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper07",
+                "display": "192.168.12.41/30",
+                "dns_name": "jeyniper04.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 63,
+                "last_updated": "2022-11-05T14:58:32.287099Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/63/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.42/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper07 (jeyniper07)",
+                        "id": 19,
+                        "name": "jeyniper07",
+                        "url": "https://192.168.0.251/api/dcim/devices/19/"
+                    },
+                    "display": "ge-0/0/1.0 (ge-0/0/1.0)",
+                    "id": 262,
+                    "name": "ge-0/0/1.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/262/"
+                },
+                "assigned_object_id": 262,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:35:03.445330Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper07",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/1",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper04",
+                "display": "192.168.12.42/30",
+                "dns_name": "jeyniper07.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 64,
+                "last_updated": "2022-11-04T14:46:43.484167Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/64/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.45/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper06 (jeyniper06)",
+                        "id": 6,
+                        "name": "jeyniper06",
+                        "url": "https://192.168.0.251/api/dcim/devices/6/"
+                    },
+                    "display": "ge-0/0/3.0 (ge-0/0/3.0)",
+                    "id": 260,
+                    "name": "ge-0/0/3.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/260/"
+                },
+                "assigned_object_id": 260,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:36:37.788808Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper06",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/3",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper07",
+                "display": "192.168.12.45/30",
+                "dns_name": "jeyniper06.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 65,
+                "last_updated": "2022-11-05T14:58:32.315946Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/65/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.12.46/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper07 (jeyniper07)",
+                        "id": 19,
+                        "name": "jeyniper07",
+                        "url": "https://192.168.0.251/api/dcim/devices/19/"
+                    },
+                    "display": "ge-0/0/5.0 (ge-0/0/5.0)",
+                    "id": 263,
+                    "name": "ge-0/0/5.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/263/"
+                },
+                "assigned_object_id": 263,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T22:37:17.252094Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper07",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "iprr",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeyniper06",
+                "display": "192.168.12.46/30",
+                "dns_name": "jeyniper07.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 66,
+                "last_updated": "2022-11-05T14:58:32.343616Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/66/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.13.1/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/5.13 (ge-0/0/5.13)",
+                    "id": 191,
+                    "name": "ge-0/0/5.13",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/191/"
+                },
+                "assigned_object_id": 191,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:17:17.330377Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "ipvrf",
+                    "iface_unit": "13",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Vlan Internet",
+                "display": "192.168.13.1/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 30,
+                "last_updated": "2022-11-05T10:25:47.269250Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/30/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.13.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "GigabitEthernet0/0/0.13 (GigabitEthernet0/0/0.13)",
+                    "id": 192,
+                    "name": "GigabitEthernet0/0/0.13",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/192/"
+                },
+                "assigned_object_id": 192,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:19:20.680940Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan13_192.168.13.0/30_vlan13",
+                "display": "192.168.13.2/30",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 31,
+                "last_updated": "2022-09-30T10:08:31.324968Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/31/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.13.9/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "vlan13 (vlan13)",
+                    "id": 190,
+                    "name": "vlan13",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/190/"
+                },
+                "assigned_object_id": 190,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:53:30.480397Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JEYLAN13_192.168.13.8/30_vlan13",
+                "display": "192.168.13.9/30",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 27,
+                "last_updated": "2022-09-25T21:03:26.772106Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/27/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.13.10/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper03 (jeyniper03)",
+                        "id": 3,
+                        "name": "jeyniper03",
+                        "url": "https://192.168.0.251/api/dcim/devices/3/"
+                    },
+                    "display": "ge-0/0/3.13 (ge-0/0/3.13)",
+                    "id": 197,
+                    "name": "ge-0/0/3.13",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/197/"
+                },
+                "assigned_object_id": 197,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:58:02.895845Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper03",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/3",
+                    "iface_role": "ipvrf",
+                    "iface_unit": "13",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeycisco01",
+                "display": "192.168.13.10/30",
+                "dns_name": "jeyniper03.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 28,
+                "last_updated": "2022-11-05T10:25:47.308722Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/28/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.14.1/30",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 7,
+                    "device": {
+                        "display": "jeycisco02 (jeycisco02)",
+                        "id": 9,
+                        "name": "jeycisco02",
+                        "url": "https://192.168.0.251/api/dcim/devices/9/"
+                    },
+                    "display": "GigabitEthernet0/0/1 (GigabitEthernet0/0/1)",
+                    "id": 31,
+                    "name": "GigabitEthernet0/0/1",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/31/"
+                },
+                "assigned_object_id": 31,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:31:22.360505Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan14_192.168.14.0/30_vlan14",
+                "display": "192.168.14.1/30",
+                "dns_name": "jeycisco02.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 39,
+                "last_updated": "2022-09-25T21:31:22.360525Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/39/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.14.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper05 (jeyniper05)",
+                        "id": 5,
+                        "name": "jeyniper05",
+                        "url": "https://192.168.0.251/api/dcim/devices/5/"
+                    },
+                    "display": "ge-0/0/2.0 (ge-0/0/2.0)",
+                    "id": 257,
+                    "name": "ge-0/0/2.0",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/257/"
+                },
+                "assigned_object_id": 257,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T21:34:12.594596Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper05",
+                    "iface_mtu": "1514",
+                    "iface_parent": "ge-0/0/2",
+                    "iface_role": "ip",
+                    "iface_unit": "0",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Lien vers Jeycisco02",
+                "display": "192.168.14.2/30",
+                "dns_name": "jeyniper05.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 40,
+                "last_updated": "2022-11-04T14:37:40.662740Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/40/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.16.1/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/5.16 (ge-0/0/5.16)",
+                    "id": 195,
+                    "name": "ge-0/0/5.16",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/195/"
+                },
+                "assigned_object_id": 195,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:44:46.967403Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "ip",
+                    "iface_unit": "16",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Vlan Admin",
+                "display": "192.168.16.1/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 34,
+                "last_updated": "2022-11-04T16:18:32.156412Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/34/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.16.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "GigabitEthernet0/0/0.16 (GigabitEthernet0/0/0.16)",
+                    "id": 193,
+                    "name": "GigabitEthernet0/0/0.16",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/193/"
+                },
+                "assigned_object_id": 193,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:45:26.623894Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan16_192.168.16.0/30_vlan16",
+                "display": "192.168.16.2/30",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 35,
+                "last_updated": "2022-09-25T20:45:26.623914Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/35/",
+                "vrf": null
+            },
+            {
+                "address": "192.168.17.1/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "vlan17 (vlan17)",
+                    "id": 189,
+                    "name": "vlan17",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/189/"
+                },
+                "assigned_object_id": 189,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T19:44:48.890223Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan17_192.168.17.0/30_vlan17",
+                "display": "192.168.17.1/30",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 26,
+                "last_updated": "2022-09-25T21:12:45.088760Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/26/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.17.2/30",
+                "assigned_object": {
+                    "_occupied": true,
+                    "cable": 4,
+                    "device": {
+                        "display": "jeysaco (jeysaco)",
+                        "id": 17,
+                        "name": "jeysaco",
+                        "url": "https://192.168.0.251/api/dcim/devices/17/"
+                    },
+                    "display": "GigabitEthernet1/8 (GigabitEthernet1/8)",
+                    "id": 19,
+                    "name": "GigabitEthernet1/8",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/19/"
+                },
+                "assigned_object_id": 19,
+                "assigned_object_type": "dcim.interface",
+                "created": "2021-07-16T00:00:00Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan17_192.168.17.0/30_vlan17",
+                "display": "192.168.17.2/30",
+                "dns_name": "jeysaco.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 12,
+                "last_updated": "2022-09-25T21:13:05.159731Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": {
+                    "label": "Loopback",
+                    "value": "loopback"
+                },
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/12/",
+                "vrf": {
+                    "display": "vpn-internet (01)",
+                    "id": 1,
+                    "name": "vpn-internet",
+                    "rd": "01",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/1/"
+                }
+            },
+            {
+                "address": "192.168.30.1/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeyniper01 (jeyniper01)",
+                        "id": 1,
+                        "name": "jeyniper01",
+                        "url": "https://192.168.0.251/api/dcim/devices/1/"
+                    },
+                    "display": "ge-0/0/5.30 (ge-0/0/5.30)",
+                    "id": 196,
+                    "name": "ge-0/0/5.30",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/196/"
+                },
+                "assigned_object_id": 196,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:40:43.490916Z",
+                "custom_fields": {
+                    "iface_device": "jeyniper01",
+                    "iface_mtu": "1614",
+                    "iface_parent": "ge-0/0/5",
+                    "iface_role": "ipvrf",
+                    "iface_unit": "30",
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "Vlan Guest",
+                "display": "192.168.30.1/30",
+                "dns_name": "jeyniper01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 32,
+                "last_updated": "2022-11-05T10:25:47.340912Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/32/",
+                "vrf": {
+                    "display": "vpn-internet-guest (03)",
+                    "id": 2,
+                    "name": "vpn-internet-guest",
+                    "rd": "03",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/2/"
+                }
+            },
+            {
+                "address": "192.168.30.2/30",
+                "assigned_object": {
+                    "_occupied": false,
+                    "cable": null,
+                    "device": {
+                        "display": "jeycisco01 (jeycisco01)",
+                        "id": 8,
+                        "name": "jeycisco01",
+                        "url": "https://192.168.0.251/api/dcim/devices/8/"
+                    },
+                    "display": "GigabitEthernet0/0/0.30 (GigabitEthernet0/0/0.30)",
+                    "id": 194,
+                    "name": "GigabitEthernet0/0/0.30",
+                    "url": "https://192.168.0.251/api/dcim/interfaces/194/"
+                },
+                "assigned_object_id": 194,
+                "assigned_object_type": "dcim.interface",
+                "created": "2022-09-25T20:41:44.178539Z",
+                "custom_fields": {
+                    "iface_device": null,
+                    "iface_mtu": null,
+                    "iface_parent": null,
+                    "iface_role": "ip",
+                    "iface_unit": 0,
+                    "ospf_area": "0.0.0.0"
+                },
+                "description": "JeyLan30_192.168.30.0/30_vlan30",
+                "display": "192.168.30.2/30",
+                "dns_name": "jeycisco01.int.jeyriku.net",
+                "family": {
+                    "label": "IPv4",
+                    "value": 4
+                },
+                "id": 33,
+                "last_updated": "2022-09-25T20:41:44.178560Z",
+                "nat_inside": null,
+                "nat_outside": [],
+                "role": null,
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": [],
+                "tenant": null,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/33/",
+                "vrf": {
+                    "display": "vpn-internet-guest (03)",
+                    "id": 2,
+                    "name": "vpn-internet-guest",
+                    "rd": "03",
+                    "url": "https://192.168.0.251/api/ipam/vrfs/2/"
+                }
+            }
+        ]
+    },
+    "msg": "OK (82269 bytes)",
+    "redirected": false,
+    "referrer_policy": "same-origin",
+    "server": "nginx/1.18.0 (Ubuntu)",
+    "status": 200,
+    "url": "https://192.168.0.251/api/ipam/ip-addresses/?limit=5000",
+    "vary": "Accept, Cookie, Origin",
+    "x_content_type_options": "nosniff",
+    "x_frame_options": "SAMEORIGIN"
+}

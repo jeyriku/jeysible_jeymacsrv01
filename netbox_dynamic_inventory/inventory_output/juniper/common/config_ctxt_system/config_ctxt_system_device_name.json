@@ -1,0 +1,13 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "DNS": "int.jeyriku.net",
+            "DNS1": "192.168.0.252",
+            "DNS2": "192.168.0.250",
+            "IP": "10.0.0.3/32",
+            "Name": "jeyniper01"
+        }
+    ]
+}

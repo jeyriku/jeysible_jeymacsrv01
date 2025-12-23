@@ -1,0 +1,31 @@
+---
+- name: Configure Restconf
+  hosts: router_cisco:router_juniper:switch_cisco:switch_juniper
+  gather_facts: no
+  tasks:
+    - name: Task 1 Config snmp Cisco
+      cisco.ios.ios_config:
+        lines:
+          - snmp-server location "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]"
+      vars:
+        ansible_connection: network_cli
+        ansible_network_os: ios
+        ansible_user: root
+        ansible_password: Celjer.05n
+        ansible_become: yes
+        ansible_become_password: Celjer.05n
+        ansible_become_method: enable
+      when: "'router_cisco','switch_cisco' in device_roles"
+
+    - name: Task 2 Config snmp Juniper
+      connection: ansible.netcommon.netconf
+      junipernetworks.junos.junos_config:
+        lines:
+          - delete snmp location
+          - set snmp location "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]"
+      vars:
+        ansible_network_os: junipernetworks.junos.junos
+        ansible_user: root
+        ansible_password: Celjer.05n
+        ansible_command_timeout: 120
+      when: "'router_juniper','switch_juniper' in device_roles"

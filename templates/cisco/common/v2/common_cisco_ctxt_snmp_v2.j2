@@ -1,0 +1,13 @@
+no ip access-list standard 18
+access-list 18 permit host 192.168.0.248
+access-list 18 permit host 192.168.0.249
+access-list 18 permit host 192.168.0.239
+snmp-server view Jeyriku system included
+snmp-server view Jeyriku interfaces included
+snmp-server view Jeyriku system.1 included
+snmp-server community {{ device_name.msg[item].snmp_com }} RO 18
+snmp-server location "{{ device_name.msg[item].snmp_loc }}"
+snmp-server enable traps snmp linkdown linkup coldstart
+snmp-server host {{ device_name.msg[item].snmp_srv1 }} {{ device_name.msg[item].snmp_com }}
+snmp-server host {{ device_name.msg[item].snmp_srv2 }} {{ device_name.msg[item].snmp_com }}
+snmp-server host {{ device_name.msg[item].snmp_srv3 }} {{ device_name.msg[item].snmp_com }}

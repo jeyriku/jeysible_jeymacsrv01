@@ -1,0 +1,143 @@
+---
+- name: Report IOS version to netbox
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  roles:
+    - ansible-pyats
+  vars:
+    server: "https://192.168.0.251"
+    endpoint1: "/api/dcim/devices/?limit=1000"
+    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    upgrade_ios_version: "17.10.01a"
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_user: root
+    ansible_password: Celjer.05n
+    new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
+  tasks:
+    # Make a Netbox API call to retrieve devices'components
+    - name: Get Device List from Netbox
+      uri:
+        url: "{{ server }}{{ endpoint1 }}"
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: netbox_devices
+      run_once: yes
+
+    # Define specific filters to only keep particular device Role
+    - name: QueryDeviceName
+      ansible.builtin.debug:
+        msg: "{{ netbox_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?role.display=='Router_CE_Cisco' && status.value=='active'].{Name: name, IP: custom_fields.dev_lpbk }"
+      register: device_name
+
+    # Display debug outputs for learning purpose
+    - name: Debug for learning purpose
+      debug:
+        msg: "Device's name is {{ device_name.msg[item].Name }}, and IP is {{ device_name.msg[item].IP }}"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+    # Retrieve device facts
+    - name: Retrieve device facts
+      ios_facts:
+      with_items:
+         - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+    # Display debug output thanks to embedded Ansible variables
+    - debug:
+        msg:
+          - "Device's name is {{ device_name.msg[item].Name }}"
+          - "Current version is {{ ansible_net_version }}"
+          - "Current Cisco binary file is {{ ansible_net_image }}"
+          - "Upgrade image is {{ upgrade_ios_version }}"
+      with_items:
+        - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+    # Get IOSXE version with PyATS and compare it with the target version
+    - name: Get current IOSXE version
+      tags: pre-check, check-version, post-check, install
+      ios_command:
+        commands:
+          - show version
+      register: show_version
+      with_items:
+        - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+    # Debug previous command registered values
+    - name: Debug previous command registered values
+      ansible.builtin.debug:
+        var: show_version
+
+    # Get fact for the current IOSXE version with PyATS
+    - name: Get fact for the current IOSXE version with PyATS
+      tags: pre-check, check-version, post-check, install
+      set_fact:
+        current_xe_ver: "{{ show_version.results[item]['stdout'][0] | pyats_parser('show version', 'iosxe') }}"
+      with_items:
+        - "{{ show_version.results }}"
+      loop_control:
+        index_var: item
+      register: device_iosxe_version
+
+    # Debug previous command registered values
+    - name: Debug previous command registered values
+      ansible.builtin.debug:
+        var: device_iosxe_version
+
+    # Debug message for learning purpose based on facts parsed with PyATS
+    - name: Debug parsed output for the current IOSXE version
+      debug:
+        msg: "{{ device_name.msg[item].Name }} is currently running with {{ device_iosxe_version.results[item].ansible_facts.current_xe_ver.version.xe_version }}"
+      with_together:
+        - "{{ device_name.msg }}"
+        - "{{ device_iosxe_version.results }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+      register: filtered_info_iosxe_version
+
+    # Display debug output telling that software needs to be upgraded
+    - debug:
+        msg:
+        - "IOS Software on {{ device_name.msg[item].Name }} is not compliant and will be upgraded"
+      when: ansible_net_version != upgrade_ios_version
+      with_items:
+          - "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      vars:
+        ansible_host: "{{ device_name.msg[item].Name }}"
+
+    # Copy
+    - local_action:
+        module: copy
+        content: "{{ filtered_info_iosxe_version | to_nice_yaml }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.yml
+
+    - local_action:
+        module: copy
+        content: "{{ filtered_info_iosxe_version | to_nice_json }}"
+        dest: /Users/jeremierouzet/jeysible/netbox_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.json

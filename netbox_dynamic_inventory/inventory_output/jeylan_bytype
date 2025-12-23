@@ -1,0 +1,811 @@
+{
+    "_meta": {
+        "hostvars": {
+            "jeycisco01": {
+                "ansible_host": "10.0.0.1",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_cisco"
+                ],
+                "device_types": [
+                    "c1111_8p"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "10.0.0.1",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeycisco02": {
+                "ansible_host": "10.0.0.7",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_cisco"
+                ],
+                "device_types": [
+                    "c1111_8p"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "10.0.0.7",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeycisco03": {
+                "ansible_host": "10.0.0.11",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_cisco"
+                ],
+                "device_types": [
+                    "c1111_4p"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "10.0.0.11",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeynas01": {
+                "ansible_host": "192.168.0.30",
+                "custom_fields": {},
+                "device_roles": [
+                    "nas"
+                ],
+                "device_types": [
+                    "ds214play"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "synology"
+                ],
+                "primary_ip4": "192.168.0.30",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeynas02": {
+                "ansible_host": "192.168.0.31",
+                "custom_fields": {},
+                "device_roles": [
+                    "nas"
+                ],
+                "device_types": [
+                    "ds220"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "synology"
+                ],
+                "primary_ip4": "192.168.0.31",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeynas03": {
+                "ansible_host": "192.168.0.32",
+                "custom_fields": {},
+                "device_roles": [
+                    "nas"
+                ],
+                "device_types": [
+                    "ds218play"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "synology"
+                ],
+                "primary_ip4": "192.168.0.32",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper01": {
+                "ansible_host": "10.0.0.3",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.3",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper02": {
+                "ansible_host": "10.0.0.6",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.6",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper03": {
+                "ansible_host": "10.0.0.8",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.8",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper04": {
+                "ansible_host": "10.0.0.4",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.4",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper05": {
+                "ansible_host": "10.0.0.9",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.9",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper06": {
+                "ansible_host": "10.0.0.10",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.10",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyniper07": {
+                "ansible_host": "10.0.0.12",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_juniper"
+                ],
+                "device_types": [
+                    "srx300"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "10.0.0.12",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeysaco": {
+                "ansible_host": "192.168.17.2",
+                "custom_fields": {},
+                "device_roles": [
+                    "firewall_cisco"
+                ],
+                "device_types": [
+                    "asa5506"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.17.2",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch01": {
+                "ansible_host": "192.168.0.60",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_cisco"
+                ],
+                "device_types": [
+                    "ws_c2960c_8tc_s"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.0.60",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch02": {
+                "ansible_host": "192.168.0.61",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_cisco"
+                ],
+                "device_types": [
+                    "ws_c2960cg_8tc_l"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.0.61",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch03": {
+                "ansible_host": "192.168.0.62",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_cisco"
+                ],
+                "device_types": [
+                    "ws_c2960cg_8tc_l"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.0.62",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch04": {
+                "ansible_host": "192.168.0.63",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_cisco"
+                ],
+                "device_types": [
+                    "ws_c2960l_8ps_ll"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.0.63",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch05": {
+                "ansible_host": "192.168.10.6",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_cisco"
+                ],
+                "device_types": [
+                    "ws_c2960l_8ts_ll"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "cisco-systems"
+                ],
+                "primary_ip4": "192.168.10.6",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeyswitch06": {
+                "ansible_host": "192.168.0.254",
+                "custom_fields": {},
+                "device_roles": [
+                    "switch_juniper"
+                ],
+                "device_types": [
+                    "ex2300_c_12p"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "juniper-networks"
+                ],
+                "primary_ip4": "192.168.0.254",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            },
+            "jeywanfree": {
+                "ansible_host": "10.0.0.5",
+                "custom_fields": {},
+                "device_roles": [
+                    "router_mikrotik"
+                ],
+                "device_types": [
+                    "rb4011igs"
+                ],
+                "is_virtual": false,
+                "local_context_data": [
+                    null
+                ],
+                "locations": [
+                    "vieugy"
+                ],
+                "manufacturers": [
+                    "mikrotik"
+                ],
+                "primary_ip4": "10.0.0.5",
+                "regions": [
+                    "auvergne-rhone-alpes"
+                ],
+                "services": [],
+                "site_groups": [],
+                "sites": [
+                    "jeyhome2"
+                ],
+                "status": {
+                    "label": "Active",
+                    "value": "active"
+                },
+                "tags": []
+            }
+        }
+    },
+    "all": {
+        "children": [
+            "asa5506",
+            "c1111_4p",
+            "c1111_8p",
+            "ds214play",
+            "ds218play",
+            "ds220",
+            "ex2300_c_12p",
+            "rb4011igs",
+            "srx300",
+            "ungrouped",
+            "ws_c2960c_8tc_s",
+            "ws_c2960cg_8tc_l",
+            "ws_c2960l_8ps_ll",
+            "ws_c2960l_8ts_ll"
+        ]
+    },
+    "asa5506": {
+        "hosts": [
+            "jeysaco"
+        ]
+    },
+    "c1111_4p": {
+        "hosts": [
+            "jeycisco03"
+        ]
+    },
+    "c1111_8p": {
+        "hosts": [
+            "jeycisco01",
+            "jeycisco02"
+        ]
+    },
+    "ds214play": {
+        "hosts": [
+            "jeynas01"
+        ]
+    },
+    "ds218play": {
+        "hosts": [
+            "jeynas03"
+        ]
+    },
+    "ds220": {
+        "hosts": [
+            "jeynas02"
+        ]
+    },
+    "ex2300_c_12p": {
+        "hosts": [
+            "jeyswitch06"
+        ]
+    },
+    "rb4011igs": {
+        "hosts": [
+            "jeywanfree"
+        ]
+    },
+    "srx300": {
+        "hosts": [
+            "jeyniper01",
+            "jeyniper02",
+            "jeyniper03",
+            "jeyniper04",
+            "jeyniper05",
+            "jeyniper06",
+            "jeyniper07"
+        ]
+    },
+    "ws_c2960c_8tc_s": {
+        "hosts": [
+            "jeyswitch01"
+        ]
+    },
+    "ws_c2960cg_8tc_l": {
+        "hosts": [
+            "jeyswitch02",
+            "jeyswitch03"
+        ]
+    },
+    "ws_c2960l_8ps_ll": {
+        "hosts": [
+            "jeyswitch04"
+        ]
+    },
+    "ws_c2960l_8ts_ll": {
+        "hosts": [
+            "jeyswitch05"
+        ]
+    }
+}

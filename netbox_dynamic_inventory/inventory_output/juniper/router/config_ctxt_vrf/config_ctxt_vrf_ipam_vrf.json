@@ -1,0 +1,15 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "Name": "default"
+        },
+        {
+            "Name": "vpn-internet"
+        },
+        {
+            "Name": "vpn-internet-guest"
+        }
+    ]
+}

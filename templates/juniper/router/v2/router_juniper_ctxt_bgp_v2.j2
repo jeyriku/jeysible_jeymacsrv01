@@ -1,0 +1,18 @@
+{% for device in device_name.msg -%}
+set protocols bgp group route-reflector type internal
+set protocols bgp group route-reflector local-address {{ device.loopback }}
+set protocols bgp group route-reflector family inet unicast add-path receive
+set protocols bgp group route-reflector family inet unicast add-path send path-count 6
+set protocols bgp group route-reflector family inet-vpn unicast
+set protocols bgp group route-reflector family route-target
+set protocols bgp group route-reflector neighbor {{ device.rr1 }}
+set protocols bgp group route-reflector neighbor {{ device.rr2 }}
+{% endfor %}
+set protocols bgp traceoptions file bgp-log
+set protocols bgp traceoptions file size 100k
+set protocols bgp traceoptions file files 5
+set protocols bgp traceoptions file world-readable
+set protocols bgp traceoptions flag all send
+set protocols bgp traceoptions flag all receive
+set protocols bgp traceoptions flag all detail
+deactivate protocols bgp traceoptions

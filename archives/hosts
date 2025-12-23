@@ -1,0 +1,60 @@
+[cisco]
+jeycisco01 ansible_host=10.0.0.1
+jeycisco02 ansible_host=10.0.0.7
+jeycisco03 ansible_host=10.0.0.11
+jeyswitch01 ansible_host=192.168.0.60
+jeyswitch02 ansible_host=192.168.0.61
+jeyswitch03 ansible_host=192.168.0.62
+jeyswitch04 ansible_host=192.168.0.64
+jeyswitch05 ansible_host=192.168.10.6
+jeysaco ansible_host=192.168.17.2
+
+[juniper]
+jeyniper01 ansible_host=10.0.0.3
+jeyniper02 ansible_host=10.0.0.6
+jeyniper03 ansible_host=10.0.0.8
+jeyniper04 ansible_host=10.0.0.4
+jeyniper05 ansible_host=10.0.0.9
+jeyniper06 ansible_host=10.0.0.10
+jeyniper07 ansible_host=10.0.0.11
+jeyswitch06 ansible_host=192.168.0.254
+
+[core_junos]
+jeyniper01
+jeyniper02
+jeyniper03
+jeyniper04
+
+[edge_cisco]
+jeycisco01
+jeycisco02
+jeycisco03
+
+[edge_junos]
+jeyniper05
+
+[switch_cisco]
+jeyswitch01
+jeyswitch02
+jeyswitch03
+jeyswitch04
+jeyswitch05
+
+[switch_junos]
+jeyswitch06
+
+[firewall_cisco]
+jeysaco
+
+[rr_junos]
+jeyniper06
+jeyniper07
+
+[network:children]
+core_junos
+edge_cisco
+edge_junos
+switch_cisco
+switch_junos
+firewall_cisco
+rr_junos

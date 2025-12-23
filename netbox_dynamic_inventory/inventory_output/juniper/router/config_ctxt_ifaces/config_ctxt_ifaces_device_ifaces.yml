@@ -1,0 +1,23 @@
+changed: false
+failed: false
+msg:
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper03
+    iface_mtu: 1614
+    iface_name: ge-0/0/0
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper04
+    iface_mtu: 1614
+    iface_name: ge-0/0/1
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper02
+    iface_mtu: 1614
+    iface_name: ge-0/0/2
+-   device: jeyniper01
+    iface_desc: Lien vers Jeyniper06
+    iface_mtu: 1614
+    iface_name: ge-0/0/3
+-   device: jeyniper01
+    iface_desc: Lien vers Jeycisco01
+    iface_mtu: 1614
+    iface_name: ge-0/0/5

@@ -1,0 +1,70 @@
+{
+    "changed": false,
+    "failed": false,
+    "msg": [
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "10.0.0.3/32",
+            "subif_desc": "Management - Loopback - Jeyniper01",
+            "subif_name": "loopback",
+            "subif_role": "loopback",
+            "subif_unit": "0"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.12.1/30",
+            "subif_desc": "Lien vers Jeyniper03",
+            "subif_name": "ge-0/0/0",
+            "subif_role": "mpls",
+            "subif_unit": "0"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.12.14/30",
+            "subif_desc": "Lien vers Jeyniper04",
+            "subif_name": "ge-0/0/1",
+            "subif_role": "mpls",
+            "subif_unit": "0"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.12.21/30",
+            "subif_desc": "Lien vers Jeyniper02",
+            "subif_name": "ge-0/0/2",
+            "subif_role": "mpls",
+            "subif_unit": "0"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.12.25/30",
+            "subif_desc": "Lien vers Juniper06",
+            "subif_name": "ge-0/0/3",
+            "subif_role": "iprr",
+            "subif_unit": "0"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.13.1/30",
+            "subif_desc": "Vlan Internet",
+            "subif_name": "ge-0/0/5",
+            "subif_role": "ipvrf",
+            "subif_unit": "13"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.16.1/30",
+            "subif_desc": "Vlan Admin",
+            "subif_name": "ge-0/0/5",
+            "subif_role": "ip",
+            "subif_unit": "16"
+        },
+        {
+            "if_device": "jeyniper01",
+            "subif_address": "192.168.30.1/30",
+            "subif_desc": "Vlan Guest",
+            "subif_name": "ge-0/0/5",
+            "subif_role": "ipvrf",
+            "subif_unit": "30"
+        }
+    ]
+}

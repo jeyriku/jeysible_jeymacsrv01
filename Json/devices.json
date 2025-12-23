@@ -1,0 +1,3194 @@
+{
+    "count": 33,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 8,
+            "url": "https://192.168.0.251/api/dcim/devices/8/",
+            "display": "jeycisco01 (jeycisco01)",
+            "name": "jeycisco01",
+            "device_type": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-types/3/",
+                "display": "C1111_8P",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "C1111_8P",
+                "slug": "c1111_8p"
+            },
+            "device_role": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-roles/15/",
+                "display": "Router_CE_Cisco",
+                "name": "Router_CE_Cisco",
+                "slug": "router_ce_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/platforms/1/",
+                "display": "Cisco_c1100_universalk9.16.12.04",
+                "name": "Cisco_c1100_universalk9.16.12.04",
+                "slug": "cisco_c1100_universalk9-16-12-04"
+            },
+            "serial": "FCZ2247E1CX",
+            "asset_tag": "jeycisco01",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/1/",
+                "display": "10.0.0.1/32",
+                "family": 4,
+                "address": "10.0.0.1/32"
+            },
+            "primary_ip4": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/1/",
+                "display": "10.0.0.1/32",
+                "family": 4,
+                "address": "10.0.0.1/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T16:23:42.975004Z"
+        },
+        {
+            "id": 9,
+            "url": "https://192.168.0.251/api/dcim/devices/9/",
+            "display": "jeycisco02 (jeycisco02)",
+            "name": "jeycisco02",
+            "device_type": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-types/3/",
+                "display": "C1111_8P",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "C1111_8P",
+                "slug": "c1111_8p"
+            },
+            "device_role": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-roles/15/",
+                "display": "Router_CE_Cisco",
+                "name": "Router_CE_Cisco",
+                "slug": "router_ce_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/platforms/1/",
+                "display": "Cisco_c1100_universalk9.16.12.04",
+                "name": "Cisco_c1100_universalk9.16.12.04",
+                "slug": "cisco_c1100_universalk9-16-12-04"
+            },
+            "serial": "FCZ2421C30S",
+            "asset_tag": "jeycisco02",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 7,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/7/",
+                "display": "10.0.0.7/32",
+                "family": 4,
+                "address": "10.0.0.7/32"
+            },
+            "primary_ip4": {
+                "id": 7,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/7/",
+                "display": "10.0.0.7/32",
+                "family": 4,
+                "address": "10.0.0.7/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 3,
+                    "url": "https://192.168.0.251/api/ipam/asns/3/",
+                    "display": "AS65004",
+                    "asn": 65004
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T16:24:49.180197Z"
+        },
+        {
+            "id": 16,
+            "url": "https://192.168.0.251/api/dcim/devices/16/",
+            "display": "jeycisco03 (jeycisco03)",
+            "name": "jeycisco03",
+            "device_type": {
+                "id": 13,
+                "url": "https://192.168.0.251/api/dcim/device-types/13/",
+                "display": "C1111_4P",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "C1111_4P",
+                "slug": "c1111_4p"
+            },
+            "device_role": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-roles/15/",
+                "display": "Router_CE_Cisco",
+                "name": "Router_CE_Cisco",
+                "slug": "router_ce_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/platforms/1/",
+                "display": "Cisco_c1100_universalk9.16.12.04",
+                "name": "Cisco_c1100_universalk9.16.12.04",
+                "slug": "cisco_c1100_universalk9-16-12-04"
+            },
+            "serial": "FCZ2435C1G0",
+            "asset_tag": "jeycisco03",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/11/",
+                "display": "10.0.0.11/32",
+                "family": 4,
+                "address": "10.0.0.11/32"
+            },
+            "primary_ip4": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/11/",
+                "display": "10.0.0.11/32",
+                "family": 4,
+                "address": "10.0.0.11/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T13:40:00.282074Z"
+        },
+        {
+            "id": 28,
+            "url": "https://192.168.0.251/api/dcim/devices/28/",
+            "display": "jeymacsrv01 (Macmini9,1)",
+            "name": "jeymacsrv01",
+            "device_type": {
+                "id": 18,
+                "url": "https://192.168.0.251/api/dcim/device-types/18/",
+                "display": "Mac_mini",
+                "manufacturer": {
+                    "id": 9,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/9/",
+                    "display": "Apple",
+                    "name": "Apple",
+                    "slug": "apple"
+                },
+                "model": "Mac_mini",
+                "slug": "mac_mini"
+            },
+            "device_role": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-roles/3/",
+                "display": "Server",
+                "name": "Server",
+                "slug": "server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 13,
+                "url": "https://192.168.0.251/api/dcim/platforms/13/",
+                "display": "MacOS_12_6",
+                "name": "MacOS_12_6",
+                "slug": "macos_12_6"
+            },
+            "serial": "C07H10DZQ6NV",
+            "asset_tag": "Macmini9,1",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 72,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/72/",
+                "display": "192.168.0.241/24",
+                "family": 4,
+                "address": "192.168.0.241/24"
+            },
+            "primary_ip4": {
+                "id": 72,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/72/",
+                "display": "192.168.0.241/24",
+                "family": 4,
+                "address": "192.168.0.241/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "Software:\r\n\r\n    System Software Overview:\r\n\r\n      System Version: macOS 12.6 (21G115)\r\n      Kernel Version: Darwin 21.6.0\r\n      Boot Volume: Macintosh HD\r\n      Boot Mode: Normal\r\n      Computer Name: jeymacsrv01\r\n      User Name: Jérémie Rouzet (jeremierouzet)\r\n      Secure Virtual Memory: Enabled\r\n      System Integrity Protection: Enabled\r\n      Time since boot: 3 days 17:08\r\n\r\nHardware:\r\n\r\n    Hardware Overview:\r\n\r\n      Model Name: Mac mini\r\n      Model Identifier: Macmini9,1\r\n      Chip: Apple M1\r\n      Total Number of Cores: 8 (4 performance and 4 efficiency)\r\n      Memory: 8 GB\r\n      System Firmware Version: 7459.141.1\r\n      OS Loader Version: 7459.141.1\r\n      Serial Number (system): C07H10DZQ6NV\r\n      Hardware UUID: 230CF825-6DCA-5D97-BE5E-ACBC558F2BBD\r\n      Provisioning UDID: 00008103-001238382E23001E\r\n      Activation Lock Status: Enabled",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T09:46:34.874614Z",
+            "last_updated": "2022-09-30T12:24:33.423359Z"
+        },
+        {
+            "id": 20,
+            "url": "https://192.168.0.251/api/dcim/devices/20/",
+            "display": "jeynas01 (jeynas01)",
+            "name": "jeynas01",
+            "device_type": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/dcim/device-types/9/",
+                "display": "DS214play",
+                "manufacturer": {
+                    "id": 6,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/6/",
+                    "display": "Synology",
+                    "name": "Synology",
+                    "slug": "synology"
+                },
+                "model": "DS214play",
+                "slug": "ds214play"
+            },
+            "device_role": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/dcim/device-roles/9/",
+                "display": "Nas_Synology",
+                "name": "Nas_Synology",
+                "slug": "nas"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "1510LTN425107",
+            "asset_tag": "jeynas01",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 20,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/20/",
+                "display": "192.168.0.30/24",
+                "family": 4,
+                "address": "192.168.0.30/24"
+            },
+            "primary_ip4": {
+                "id": 20,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/20/",
+                "display": "192.168.0.30/24",
+                "family": 4,
+                "address": "192.168.0.30/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-11-17T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:33.468582Z"
+        },
+        {
+            "id": 21,
+            "url": "https://192.168.0.251/api/dcim/devices/21/",
+            "display": "jeynas02 (jeynas02)",
+            "name": "jeynas02",
+            "device_type": {
+                "id": 14,
+                "url": "https://192.168.0.251/api/dcim/device-types/14/",
+                "display": "DS220+",
+                "manufacturer": {
+                    "id": 6,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/6/",
+                    "display": "Synology",
+                    "name": "Synology",
+                    "slug": "synology"
+                },
+                "model": "DS220+",
+                "slug": "ds220"
+            },
+            "device_role": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/dcim/device-roles/9/",
+                "display": "Nas_Synology",
+                "name": "Nas_Synology",
+                "slug": "nas"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "2150RLR6YQ2B3",
+            "asset_tag": "jeynas02",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 21,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/21/",
+                "display": "192.168.0.31/24",
+                "family": 4,
+                "address": "192.168.0.31/24"
+            },
+            "primary_ip4": {
+                "id": 21,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/21/",
+                "display": "192.168.0.31/24",
+                "family": 4,
+                "address": "192.168.0.31/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-11-17T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:33.512546Z"
+        },
+        {
+            "id": 22,
+            "url": "https://192.168.0.251/api/dcim/devices/22/",
+            "display": "jeynas03 (jeynas03)",
+            "name": "jeynas03",
+            "device_type": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/device-types/10/",
+                "display": "DS218play",
+                "manufacturer": {
+                    "id": 6,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/6/",
+                    "display": "Synology",
+                    "name": "Synology",
+                    "slug": "synology"
+                },
+                "model": "DS218play",
+                "slug": "ds218play"
+            },
+            "device_role": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/dcim/device-roles/9/",
+                "display": "Nas_Synology",
+                "name": "Nas_Synology",
+                "slug": "nas"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "1830Q8N302304",
+            "asset_tag": "jeynas03",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 22,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/22/",
+                "display": "192.168.0.32/24",
+                "family": 4,
+                "address": "192.168.0.32/24"
+            },
+            "primary_ip4": {
+                "id": 22,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/22/",
+                "display": "192.168.0.32/24",
+                "family": 4,
+                "address": "192.168.0.32/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-11-17T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:33.556279Z"
+        },
+        {
+            "id": 1,
+            "url": "https://192.168.0.251/api/dcim/devices/1/",
+            "display": "jeyniper01 (jeyniper01)",
+            "name": "jeyniper01",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/device-roles/16/",
+                "display": "Router_PE_Juniper",
+                "name": "Router_PE_Juniper",
+                "slug": "router_pe_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/platforms/2/",
+                "display": "Juniper_20.3R1.8",
+                "name": "Juniper_20.3R1.8",
+                "slug": "juniper_20-3r1-8"
+            },
+            "serial": "CV4817AF1252",
+            "asset_tag": "jeyniper01",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/3/",
+                "display": "10.0.0.3/32",
+                "family": 4,
+                "address": "10.0.0.3/32"
+            },
+            "primary_ip4": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/3/",
+                "display": "10.0.0.3/32",
+                "family": 4,
+                "address": "10.0.0.3/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.335125Z"
+        },
+        {
+            "id": 2,
+            "url": "https://192.168.0.251/api/dcim/devices/2/",
+            "display": "jeyniper02 (jeyniper02)",
+            "name": "jeyniper02",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/device-roles/16/",
+                "display": "Router_PE_Juniper",
+                "name": "Router_PE_Juniper",
+                "slug": "router_pe_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/platforms/2/",
+                "display": "Juniper_20.3R1.8",
+                "name": "Juniper_20.3R1.8",
+                "slug": "juniper_20-3r1-8"
+            },
+            "serial": "CV3917AF5791",
+            "asset_tag": "jeyniper02",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/6/",
+                "display": "10.0.0.6/32",
+                "family": 4,
+                "address": "10.0.0.6/32"
+            },
+            "primary_ip4": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/6/",
+                "display": "10.0.0.6/32",
+                "family": 4,
+                "address": "10.0.0.6/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.390595Z"
+        },
+        {
+            "id": 3,
+            "url": "https://192.168.0.251/api/dcim/devices/3/",
+            "display": "jeyniper03 (jeyniper03)",
+            "name": "jeyniper03",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/device-roles/16/",
+                "display": "Router_PE_Juniper",
+                "name": "Router_PE_Juniper",
+                "slug": "router_pe_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/platforms/2/",
+                "display": "Juniper_20.3R1.8",
+                "name": "Juniper_20.3R1.8",
+                "slug": "juniper_20-3r1-8"
+            },
+            "serial": "CV2118AF1819",
+            "asset_tag": "jeyniper03",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 8,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/8/",
+                "display": "10.0.0.8/32",
+                "family": 4,
+                "address": "10.0.0.8/32"
+            },
+            "primary_ip4": {
+                "id": 8,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/8/",
+                "display": "10.0.0.8/32",
+                "family": 4,
+                "address": "10.0.0.8/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.441792Z"
+        },
+        {
+            "id": 4,
+            "url": "https://192.168.0.251/api/dcim/devices/4/",
+            "display": "jeyniper04 (jeyniper04)",
+            "name": "jeyniper04",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/device-roles/16/",
+                "display": "Router_PE_Juniper",
+                "name": "Router_PE_Juniper",
+                "slug": "router_pe_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/platforms/2/",
+                "display": "Juniper_20.3R1.8",
+                "name": "Juniper_20.3R1.8",
+                "slug": "juniper_20-3r1-8"
+            },
+            "serial": "CV1319AF0480",
+            "asset_tag": "jeyniper04",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 4,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/4/",
+                "display": "10.0.0.4/32",
+                "family": 4,
+                "address": "10.0.0.4/32"
+            },
+            "primary_ip4": {
+                "id": 4,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/4/",
+                "display": "10.0.0.4/32",
+                "family": 4,
+                "address": "10.0.0.4/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.492607Z"
+        },
+        {
+            "id": 5,
+            "url": "https://192.168.0.251/api/dcim/devices/5/",
+            "display": "jeyniper05 (jeyniper05)",
+            "name": "jeyniper05",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-roles/1/",
+                "display": "Router_CE_Juniper",
+                "name": "Router_CE_Juniper",
+                "slug": "router_ce_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/platforms/2/",
+                "display": "Juniper_20.3R1.8",
+                "name": "Juniper_20.3R1.8",
+                "slug": "juniper_20-3r1-8"
+            },
+            "serial": "CV1319AF0637",
+            "asset_tag": "jeyniper05",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/9/",
+                "display": "10.0.0.9/32",
+                "family": 4,
+                "address": "10.0.0.9/32"
+            },
+            "primary_ip4": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/9/",
+                "display": "10.0.0.9/32",
+                "family": 4,
+                "address": "10.0.0.9/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 3,
+                    "url": "https://192.168.0.251/api/ipam/asns/3/",
+                    "display": "AS65004",
+                    "asn": 65004
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:24:49.230356Z"
+        },
+        {
+            "id": 6,
+            "url": "https://192.168.0.251/api/dcim/devices/6/",
+            "display": "jeyniper06 (jeyniper06)",
+            "name": "jeyniper06",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 17,
+                "url": "https://192.168.0.251/api/dcim/device-roles/17/",
+                "display": "Router_RR_Juniper",
+                "name": "Router_RR_Juniper",
+                "slug": "router_rr_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/platforms/3/",
+                "display": "Juniper_19.4R3.11",
+                "name": "Juniper_19.4R3.11",
+                "slug": "juniper_19-4r3-11"
+            },
+            "serial": "CV3717AF1563",
+            "asset_tag": "jeyniper06",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/10/",
+                "display": "10.0.0.10/32",
+                "family": 4,
+                "address": "10.0.0.10/32"
+            },
+            "primary_ip4": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/10/",
+                "display": "10.0.0.10/32",
+                "family": 4,
+                "address": "10.0.0.10/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.543812Z"
+        },
+        {
+            "id": 19,
+            "url": "https://192.168.0.251/api/dcim/devices/19/",
+            "display": "jeyniper07 (jeyniper07)",
+            "name": "jeyniper07",
+            "device_type": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/dcim/device-types/1/",
+                "display": "SRX300",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "SRX300",
+                "slug": "srx300"
+            },
+            "device_role": {
+                "id": 17,
+                "url": "https://192.168.0.251/api/dcim/device-roles/17/",
+                "display": "Router_RR_Juniper",
+                "name": "Router_RR_Juniper",
+                "slug": "router_rr_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/platforms/3/",
+                "display": "Juniper_19.4R3.11",
+                "name": "Juniper_19.4R3.11",
+                "slug": "juniper_19-4r3-11"
+            },
+            "serial": "CV2121AN1367",
+            "asset_tag": "jeyniper07",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 19,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/19/",
+                "display": "10.0.0.12/32",
+                "family": 4,
+                "address": "10.0.0.12/32"
+            },
+            "primary_ip4": {
+                "id": 19,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/19/",
+                "display": "10.0.0.12/32",
+                "family": 4,
+                "address": "10.0.0.12/32"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/ipam/asns/2/",
+                    "display": "AS65003",
+                    "asn": 65003
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": "0.0.0.0",
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-09-22T00:00:00Z",
+            "last_updated": "2022-09-30T16:25:30.594846Z"
+        },
+        {
+            "id": 34,
+            "url": "https://192.168.0.251/api/dcim/devices/34/",
+            "display": "jeyRS400 (jeyRS400)",
+            "name": "jeyRS400",
+            "device_type": {
+                "id": 23,
+                "url": "https://192.168.0.251/api/dcim/device-types/23/",
+                "display": "Nighthawk_AC2300",
+                "manufacturer": {
+                    "id": 12,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/12/",
+                    "display": "Netgear",
+                    "name": "Netgear",
+                    "slug": "netgear"
+                },
+                "model": "Nighthawk_AC2300",
+                "slug": "rs400"
+            },
+            "device_role": {
+                "id": 12,
+                "url": "https://192.168.0.251/api/dcim/device-roles/12/",
+                "display": "Router_Netgear",
+                "name": "Router_Netgear",
+                "slug": "router_netgear"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/platforms/16/",
+                "display": "Netgear_1.5.0.54",
+                "name": "Netgear_1.5.0.54",
+                "slug": "netgear_1_5_0_54"
+            },
+            "serial": "61R1967FA0182",
+            "asset_tag": "jeyRS400",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 84,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/84/",
+                "display": "192.168.0.244/24",
+                "family": 4,
+                "address": "192.168.0.244/24"
+            },
+            "primary_ip4": {
+                "id": 84,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/84/",
+                "display": "192.168.0.244/24",
+                "family": 4,
+                "address": "192.168.0.244/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T13:34:13.631941Z",
+            "last_updated": "2022-09-30T12:24:33.941380Z"
+        },
+        {
+            "id": 17,
+            "url": "https://192.168.0.251/api/dcim/devices/17/",
+            "display": "jeysaco (jeysaco)",
+            "name": "jeysaco",
+            "device_type": {
+                "id": 12,
+                "url": "https://192.168.0.251/api/dcim/device-types/12/",
+                "display": "ASA5506",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "ASA5506",
+                "slug": "asa5506"
+            },
+            "device_role": {
+                "id": 4,
+                "url": "https://192.168.0.251/api/dcim/device-roles/4/",
+                "display": "Firewall_Cisco",
+                "name": "Firewall_Cisco",
+                "slug": "firewall_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 8,
+                "url": "https://192.168.0.251/api/dcim/platforms/8/",
+                "display": "Cisco_asa982_20_lfbff_k8",
+                "name": "Cisco_asa982_20_lfbff_k8",
+                "slug": "cisco_asa982_20_lfbff_k8"
+            },
+            "serial": "JMX2037Y33K",
+            "asset_tag": "jeysaco",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 12,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/12/",
+                "display": "192.168.17.2/30",
+                "family": 4,
+                "address": "192.168.17.2/30"
+            },
+            "primary_ip4": {
+                "id": 12,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/12/",
+                "display": "192.168.17.2/30",
+                "family": 4,
+                "address": "192.168.17.2/30"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:33.989429Z"
+        },
+        {
+            "id": 29,
+            "url": "https://192.168.0.251/api/dcim/devices/29/",
+            "display": "jeysrv01 (ProLiant)",
+            "name": "jeysrv01",
+            "device_type": {
+                "id": 19,
+                "url": "https://192.168.0.251/api/dcim/device-types/19/",
+                "display": "Proliant_MicroServer_Gen10",
+                "manufacturer": {
+                    "id": 4,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/4/",
+                    "display": "Hewlett Packard",
+                    "name": "Hewlett Packard",
+                    "slug": "hewlett-packard"
+                },
+                "model": "Proliant_MicroServer_Gen10",
+                "slug": "proliant_microserver_gen10"
+            },
+            "device_role": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-roles/3/",
+                "display": "Server",
+                "name": "Server",
+                "slug": "server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 14,
+                "url": "https://192.168.0.251/api/dcim/platforms/14/",
+                "display": "Windows_Server_2019",
+                "name": "Windows_Server_2019",
+                "slug": "windows_server_2019"
+            },
+            "serial": "7CE919U0DJ",
+            "asset_tag": "ProLiant",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 73,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/73/",
+                "display": "192.168.0.246/24",
+                "family": 4,
+                "address": "192.168.0.246/24"
+            },
+            "primary_ip4": {
+                "id": 73,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/73/",
+                "display": "192.168.0.246/24",
+                "family": 4,
+                "address": "192.168.0.246/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T10:02:14.453267Z",
+            "last_updated": "2022-09-30T12:24:34.035862Z"
+        },
+        {
+            "id": 23,
+            "url": "https://192.168.0.251/api/dcim/devices/23/",
+            "display": "jeysrv02 (NUC6CAYH)",
+            "name": "jeysrv02",
+            "device_type": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-types/15/",
+                "display": "NUC",
+                "manufacturer": {
+                    "id": 3,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/3/",
+                    "display": "Intel",
+                    "name": "Intel",
+                    "slug": "intel"
+                },
+                "model": "NUC",
+                "slug": "nuc"
+            },
+            "device_role": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/device-roles/10/",
+                "display": "DNS_Server",
+                "name": "DNS_Server",
+                "slug": "dns_server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/platforms/10/",
+                "display": "Ubuntu_18.04",
+                "name": "Ubuntu_18.04",
+                "slug": "ubuntu_18_04"
+            },
+            "serial": "G6AY93800GNT",
+            "asset_tag": "NUC6CAYH",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 68,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/68/",
+                "display": "192.168.0.252/24",
+                "family": 4,
+                "address": "192.168.0.252/24"
+            },
+            "primary_ip4": {
+                "id": 68,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/68/",
+                "display": "192.168.0.252/24",
+                "family": 4,
+                "address": "192.168.0.252/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "System Information\r\n        Manufacturer: Intel(R) Client Systems\r\n        Product Name: NUC6CAYH\r\n        Version: J26843-410\r\n        Serial Number: G6AY93800GNT\r\n        UUID: 91F633C7-D71C-51BB-A212-1C697A08F659\r\n        Wake-up Type: Power Switch\r\n        SKU Number:\r\n        Family: Intel NUC",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T08:34:51.330347Z",
+            "last_updated": "2022-09-30T12:24:34.083421Z"
+        },
+        {
+            "id": 26,
+            "url": "https://192.168.0.251/api/dcim/devices/26/",
+            "display": "jeysrv03 (NUC7i3DNKE)",
+            "name": "jeysrv03",
+            "device_type": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-types/15/",
+                "display": "NUC",
+                "manufacturer": {
+                    "id": 3,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/3/",
+                    "display": "Intel",
+                    "name": "Intel",
+                    "slug": "intel"
+                },
+                "model": "NUC",
+                "slug": "nuc"
+            },
+            "device_role": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-roles/3/",
+                "display": "Server",
+                "name": "Server",
+                "slug": "server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/dcim/platforms/11/",
+                "display": "Ubuntu_20.04",
+                "name": "Ubuntu_20.04",
+                "slug": "ubuntu_20_04"
+            },
+            "serial": "DW1646213300234",
+            "asset_tag": "NUC7i3DNKE",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 69,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/69/",
+                "display": "192.168.0.251/24",
+                "family": 4,
+                "address": "192.168.0.251/24"
+            },
+            "primary_ip4": {
+                "id": 69,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/69/",
+                "display": "192.168.0.251/24",
+                "family": 4,
+                "address": "192.168.0.251/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "System Information\r\n        Manufacturer: Intel Corporation\r\n        Product Name: NUC7i3DNKE\r\n        Version: J57829-503\r\n        Serial Number: DW1646213300234\r\n        UUID: 52ed8c64-db5c-4c96-bc50-d45ddf046f03\r\n        Wake-up Type: Power Switch\r\n        SKU Number:\r\n        Family: Intel NUC",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T09:13:51.457557Z",
+            "last_updated": "2022-09-30T12:24:34.130223Z"
+        },
+        {
+            "id": 24,
+            "url": "https://192.168.0.251/api/dcim/devices/24/",
+            "display": "jeysrv04 (OEM)",
+            "name": "jeysrv04",
+            "device_type": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/device-types/15/",
+                "display": "NUC",
+                "manufacturer": {
+                    "id": 3,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/3/",
+                    "display": "Intel",
+                    "name": "Intel",
+                    "slug": "intel"
+                },
+                "model": "NUC",
+                "slug": "nuc"
+            },
+            "device_role": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/device-roles/10/",
+                "display": "DNS_Server",
+                "name": "DNS_Server",
+                "slug": "dns_server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/platforms/10/",
+                "display": "Ubuntu_18.04",
+                "name": "Ubuntu_18.04",
+                "slug": "ubuntu_18_04"
+            },
+            "serial": "OEM",
+            "asset_tag": "OEM",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 67,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/67/",
+                "display": "192.168.0.250/24",
+                "family": 4,
+                "address": "192.168.0.250/24"
+            },
+            "primary_ip4": {
+                "id": 67,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/67/",
+                "display": "192.168.0.250/24",
+                "family": 4,
+                "address": "192.168.0.250/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "Base Board Information\r\n        Manufacturer: INTEL Corporation\r\n        Product Name: Q3XXG4-P\r\n        Version:  V1.0\r\n        Serial Number: To be filled by O.E.M.\r\n        Asset Tag: To be filled by O.E.M.\r\n        Features:\r\n                Board is a hosting board\r\n                Board is replaceable\r\n        Location In Chassis: To be filled by O.E.M.\r\n        Chassis Handle: 0x0003\r\n        Type: Motherboard\r\n        Contained Object Handles: 0",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T08:35:07.303298Z",
+            "last_updated": "2022-09-30T12:24:34.176644Z"
+        },
+        {
+            "id": 25,
+            "url": "https://192.168.0.251/api/dcim/devices/25/",
+            "display": "jeysrv05 (4VG00EA#ABF)",
+            "name": "jeysrv05",
+            "device_type": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/dcim/device-types/16/",
+                "display": "HP_260_G3",
+                "manufacturer": {
+                    "id": 4,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/4/",
+                    "display": "Hewlett Packard",
+                    "name": "Hewlett Packard",
+                    "slug": "hewlett-packard"
+                },
+                "model": "HP_260_G3",
+                "slug": "hp_260_g3"
+            },
+            "device_role": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-roles/3/",
+                "display": "Server",
+                "name": "Server",
+                "slug": "server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 10,
+                "url": "https://192.168.0.251/api/dcim/platforms/10/",
+                "display": "Ubuntu_18.04",
+                "name": "Ubuntu_18.04",
+                "slug": "ubuntu_18_04"
+            },
+            "serial": "8CC92033PH",
+            "asset_tag": "4VG00EA#ABF",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 70,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/70/",
+                "display": "192.168.0.249/24",
+                "family": 4,
+                "address": "192.168.0.249/24"
+            },
+            "primary_ip4": {
+                "id": 70,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/70/",
+                "display": "192.168.0.249/24",
+                "family": 4,
+                "address": "192.168.0.249/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "jeyriku@jeysrv05:~$ sudo dmidecode -t system\r\n# dmidecode 3.1\r\nGetting SMBIOS data from sysfs.\r\nSMBIOS 3.1.1 present.\r\n\r\nHandle 0x0001, DMI type 1, 27 bytes\r\nSystem Information\r\n        Manufacturer: HP\r\n        Product Name: HP 260 G3 DM\r\n        Version:\r\n        Serial Number: 8CC92033PH\r\n        UUID: 4FEDF941-ABFF-89B1-01E6-C5AC8F1DF3D2\r\n        Wake-up Type: Power Switch\r\n        SKU Number: 4VG00EA#ABF\r\n        Family: 103C_53307F HP 260",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T09:11:04.597032Z",
+            "last_updated": "2022-09-30T12:24:34.223423Z"
+        },
+        {
+            "id": 27,
+            "url": "https://192.168.0.251/api/dcim/devices/27/",
+            "display": "jeysrv06 (10A4S06L02)",
+            "name": "jeysrv06",
+            "device_type": {
+                "id": 17,
+                "url": "https://192.168.0.251/api/dcim/device-types/17/",
+                "display": "ThinkCentre_M93",
+                "manufacturer": {
+                    "id": 8,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/8/",
+                    "display": "Lenovo",
+                    "name": "Lenovo",
+                    "slug": "lenovo"
+                },
+                "model": "ThinkCentre_M93",
+                "slug": "thinkcentre_m93"
+            },
+            "device_role": {
+                "id": 13,
+                "url": "https://192.168.0.251/api/dcim/device-roles/13/",
+                "display": "Hypervisor",
+                "name": "Hypervisor",
+                "slug": "hypervisor"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 12,
+                "url": "https://192.168.0.251/api/dcim/platforms/12/",
+                "display": "Debian_11",
+                "name": "Debian_11",
+                "slug": "debian_11"
+            },
+            "serial": "S4S71018",
+            "asset_tag": "10A4S06L02",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 71,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/71/",
+                "display": "192.168.0.245/24",
+                "family": 4,
+                "address": "192.168.0.245/24"
+            },
+            "primary_ip4": {
+                "id": 71,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/71/",
+                "display": "192.168.0.245/24",
+                "family": 4,
+                "address": "192.168.0.245/24"
+            },
+            "primary_ip6": null,
+            "cluster": {
+                "id": 1,
+                "url": "https://192.168.0.251/api/virtualization/clusters/1/",
+                "display": "jeycluster01",
+                "name": "jeycluster01"
+            },
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "System Information\r\n        Manufacturer: LENOVO\r\n        Product Name: 10A4S06L02\r\n        Version: ThinkCentre M93\r\n        Serial Number: S4S71018\r\n        UUID: 7f12c2ec-a802-11e5-b73f-3406e84d1200\r\n        Wake-up Type: Power Switch\r\n        SKU Number: LENOVO_PN_10A4S06L02\r\n        Family: To be filled by O.E.M.",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T09:17:33.859457Z",
+            "last_updated": "2022-09-30T12:24:34.274037Z"
+        },
+        {
+            "id": 11,
+            "url": "https://192.168.0.251/api/dcim/devices/11/",
+            "display": "jeyswitch01 (jeyswitch01)",
+            "name": "jeyswitch01",
+            "device_type": {
+                "id": 4,
+                "url": "https://192.168.0.251/api/dcim/device-types/4/",
+                "display": "WS_C2960C_8TC_S",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "WS_C2960C_8TC_S",
+                "slug": "ws_c2960c_8tc_s"
+            },
+            "device_role": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-roles/6/",
+                "display": "Switch_Cisco",
+                "name": "Switch_Cisco",
+                "slug": "switch_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 4,
+                "url": "https://192.168.0.251/api/dcim/platforms/4/",
+                "display": "Cisco_c2960c405_universalk9_mz.150_2.SE5",
+                "name": "Cisco_c2960c405_universalk9_mz.150_2.SE5",
+                "slug": "cisco_c2960c405_universalk9_mz-150_2-se5"
+            },
+            "serial": "FOC1905Y2V2",
+            "asset_tag": "jeyswitch01",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 13,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/13/",
+                "display": "192.168.0.60/24",
+                "family": 4,
+                "address": "192.168.0.60/24"
+            },
+            "primary_ip4": {
+                "id": 13,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/13/",
+                "display": "192.168.0.60/24",
+                "family": 4,
+                "address": "192.168.0.60/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.323033Z"
+        },
+        {
+            "id": 12,
+            "url": "https://192.168.0.251/api/dcim/devices/12/",
+            "display": "jeyswitch02 (jeyswitch02)",
+            "name": "jeyswitch02",
+            "device_type": {
+                "id": 5,
+                "url": "https://192.168.0.251/api/dcim/device-types/5/",
+                "display": "WS_C2960CG_8TC_L",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "WS_C2960CG_8TC_L",
+                "slug": "ws_c2960cg_8tc_l"
+            },
+            "device_role": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-roles/6/",
+                "display": "Switch_Cisco",
+                "name": "Switch_Cisco",
+                "slug": "switch_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 5,
+                "url": "https://192.168.0.251/api/dcim/platforms/5/",
+                "display": "Cisco_c2960c405ex_universalk9_mz.150_2.SE5",
+                "name": "Cisco_c2960c405ex_universalk9_mz.150_2.SE5",
+                "slug": "cisco_c2960c405ex_universalk9_mz-150_2-se5"
+            },
+            "serial": "FOC1904Y3EH",
+            "asset_tag": "jeyswitch02",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 14,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/14/",
+                "display": "192.168.0.61/24",
+                "family": 4,
+                "address": "192.168.0.61/24"
+            },
+            "primary_ip4": {
+                "id": 14,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/14/",
+                "display": "192.168.0.61/24",
+                "family": 4,
+                "address": "192.168.0.61/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.371710Z"
+        },
+        {
+            "id": 13,
+            "url": "https://192.168.0.251/api/dcim/devices/13/",
+            "display": "jeyswitch03 (jeyswitch03)",
+            "name": "jeyswitch03",
+            "device_type": {
+                "id": 5,
+                "url": "https://192.168.0.251/api/dcim/device-types/5/",
+                "display": "WS_C2960CG_8TC_L",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "WS_C2960CG_8TC_L",
+                "slug": "ws_c2960cg_8tc_l"
+            },
+            "device_role": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-roles/6/",
+                "display": "Switch_Cisco",
+                "name": "Switch_Cisco",
+                "slug": "switch_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 5,
+                "url": "https://192.168.0.251/api/dcim/platforms/5/",
+                "display": "Cisco_c2960c405ex_universalk9_mz.150_2.SE5",
+                "name": "Cisco_c2960c405ex_universalk9_mz.150_2.SE5",
+                "slug": "cisco_c2960c405ex_universalk9_mz-150_2-se5"
+            },
+            "serial": "FOC1905Z4C2",
+            "asset_tag": "jeyswitch03",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/15/",
+                "display": "192.168.0.62/24",
+                "family": 4,
+                "address": "192.168.0.62/24"
+            },
+            "primary_ip4": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/15/",
+                "display": "192.168.0.62/24",
+                "family": 4,
+                "address": "192.168.0.62/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.419789Z"
+        },
+        {
+            "id": 14,
+            "url": "https://192.168.0.251/api/dcim/devices/14/",
+            "display": "jeyswitch04 (jeyswitch04)",
+            "name": "jeyswitch04",
+            "device_type": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-types/6/",
+                "display": "WS_C2960L_8PS_LL",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "WS_C2960L_8PS_LL",
+                "slug": "ws_c2960l_8ps_ll"
+            },
+            "device_role": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-roles/6/",
+                "display": "Switch_Cisco",
+                "name": "Switch_Cisco",
+                "slug": "switch_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/platforms/6/",
+                "display": "Cisco_c2960l_universalk9-mz.152_7.E2",
+                "name": "Cisco_c2960l_universalk9-mz.152_7.E2",
+                "slug": "cisco_c2960l_universalk9-mz-152_7-e2"
+            },
+            "serial": "FCW2204A0MQ",
+            "asset_tag": "jeyswitch04",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/16/",
+                "display": "192.168.0.63/24",
+                "family": 4,
+                "address": "192.168.0.63/24"
+            },
+            "primary_ip4": {
+                "id": 16,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/16/",
+                "display": "192.168.0.63/24",
+                "family": 4,
+                "address": "192.168.0.63/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.469028Z"
+        },
+        {
+            "id": 15,
+            "url": "https://192.168.0.251/api/dcim/devices/15/",
+            "display": "jeyswitch05 (jeyswitch05)",
+            "name": "jeyswitch05",
+            "device_type": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/dcim/device-types/11/",
+                "display": "WS_C2960L_8TS_LL",
+                "manufacturer": {
+                    "id": 2,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/2/",
+                    "display": "Cisco Systems",
+                    "name": "Cisco Systems",
+                    "slug": "cisco-systems"
+                },
+                "model": "WS_C2960L_8TS_LL",
+                "slug": "ws_c2960l_8ts_ll"
+            },
+            "device_role": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/device-roles/6/",
+                "display": "Switch_Cisco",
+                "name": "Switch_Cisco",
+                "slug": "switch_cisco"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 6,
+                "url": "https://192.168.0.251/api/dcim/platforms/6/",
+                "display": "Cisco_c2960l_universalk9-mz.152_7.E2",
+                "name": "Cisco_c2960l_universalk9-mz.152_7.E2",
+                "slug": "cisco_c2960l_universalk9-mz-152_7-e2"
+            },
+            "serial": "FCW2202A2J9",
+            "asset_tag": "jeyswitch05",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 17,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/17/",
+                "display": "192.168.10.6/29",
+                "family": 4,
+                "address": "192.168.10.6/29"
+            },
+            "primary_ip4": {
+                "id": 17,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/17/",
+                "display": "192.168.10.6/29",
+                "family": 4,
+                "address": "192.168.10.6/29"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.517305Z"
+        },
+        {
+            "id": 7,
+            "url": "https://192.168.0.251/api/dcim/devices/7/",
+            "display": "jeyswitch06 (jeyswitch06)",
+            "name": "jeyswitch06",
+            "device_type": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/device-types/2/",
+                "display": "EX2300_C_12P",
+                "manufacturer": {
+                    "id": 1,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/1/",
+                    "display": "Juniper Networks",
+                    "name": "Juniper Networks",
+                    "slug": "juniper-networks"
+                },
+                "model": "EX2300_C_12P",
+                "slug": "ex2300_c_12p"
+            },
+            "device_role": {
+                "id": 7,
+                "url": "https://192.168.0.251/api/dcim/device-roles/7/",
+                "display": "Switch_Juniper",
+                "name": "Switch_Juniper",
+                "slug": "switch_juniper"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 7,
+                "url": "https://192.168.0.251/api/dcim/platforms/7/",
+                "display": "Juniper_18.2R3_S5.3",
+                "name": "Juniper_18.2R3_S5.3",
+                "slug": "juniper_18-2r3_s5-3"
+            },
+            "serial": "HV0219340931",
+            "asset_tag": "jeyswitch06",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 18,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/18/",
+                "display": "192.168.0.254/24",
+                "family": 4,
+                "address": "192.168.0.254/24"
+            },
+            "primary_ip4": {
+                "id": 18,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/18/",
+                "display": "192.168.0.254/24",
+                "family": 4,
+                "address": "192.168.0.254/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-06-29T00:00:00Z",
+            "last_updated": "2022-09-30T12:24:34.565297Z"
+        },
+        {
+            "id": 18,
+            "url": "https://192.168.0.251/api/dcim/devices/18/",
+            "display": "jeywanfree (jeywanfree)",
+            "name": "jeywanfree",
+            "device_type": {
+                "id": 8,
+                "url": "https://192.168.0.251/api/dcim/device-types/8/",
+                "display": "RB4011iGS+",
+                "manufacturer": {
+                    "id": 7,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/7/",
+                    "display": "Mikrotik",
+                    "name": "Mikrotik",
+                    "slug": "mikrotik"
+                },
+                "model": "RB4011iGS+",
+                "slug": "rb4011igs"
+            },
+            "device_role": {
+                "id": 8,
+                "url": "https://192.168.0.251/api/dcim/device-roles/8/",
+                "display": "Router_Mikrotik",
+                "name": "Router_Mikrotik",
+                "slug": "router_mikrotik"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 9,
+                "url": "https://192.168.0.251/api/dcim/platforms/9/",
+                "display": "Mikrotik_6.43.7",
+                "name": "Mikrotik_6.43.7",
+                "slug": "mikrotik_6-43-7"
+            },
+            "serial": "AAAF0A467683",
+            "asset_tag": "jeywanfree",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 23,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/23/",
+                "display": "192.168.10.3/29",
+                "family": 4,
+                "address": "192.168.10.3/29"
+            },
+            "primary_ip4": {
+                "id": 23,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/23/",
+                "display": "192.168.10.3/29",
+                "family": 4,
+                "address": "192.168.10.3/29"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": {
+                    "id": 4,
+                    "url": "https://192.168.0.251/api/ipam/asns/4/",
+                    "display": "AS65005",
+                    "asn": 65005
+                },
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2021-07-06T00:00:00Z",
+            "last_updated": "2022-09-30T16:26:12.997855Z"
+        },
+        {
+            "id": 31,
+            "url": "https://192.168.0.251/api/dcim/devices/31/",
+            "display": "jeywifiap01",
+            "name": "jeywifiap01",
+            "device_type": {
+                "id": 21,
+                "url": "https://192.168.0.251/api/dcim/device-types/21/",
+                "display": "UAP_FlexHD",
+                "manufacturer": {
+                    "id": 5,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/5/",
+                    "display": "Ubiquiti Networks",
+                    "name": "Ubiquiti Networks",
+                    "slug": "ubiquiti-networks"
+                },
+                "model": "UAP_FlexHD",
+                "slug": "uap_flexhd"
+            },
+            "device_role": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/dcim/device-roles/11/",
+                "display": "AP_Wifi_Ubiquiti",
+                "name": "AP_Wifi_Ubiquiti",
+                "slug": "ap_wifi_ubiquiti"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "",
+            "asset_tag": null,
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 75,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/75/",
+                "display": "192.168.0.51/24",
+                "family": 4,
+                "address": "192.168.0.51/24"
+            },
+            "primary_ip4": {
+                "id": 75,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/75/",
+                "display": "192.168.0.51/24",
+                "family": 4,
+                "address": "192.168.0.51/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T12:52:43.297567Z",
+            "last_updated": "2022-09-30T12:24:34.657475Z"
+        },
+        {
+            "id": 32,
+            "url": "https://192.168.0.251/api/dcim/devices/32/",
+            "display": "jeywifiap02",
+            "name": "jeywifiap02",
+            "device_type": {
+                "id": 22,
+                "url": "https://192.168.0.251/api/dcim/device-types/22/",
+                "display": "UAP_AC_Lite",
+                "manufacturer": {
+                    "id": 5,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/5/",
+                    "display": "Ubiquiti Networks",
+                    "name": "Ubiquiti Networks",
+                    "slug": "ubiquiti-networks"
+                },
+                "model": "UAP_AC_Lite",
+                "slug": "uap_ac_lite"
+            },
+            "device_role": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/dcim/device-roles/11/",
+                "display": "AP_Wifi_Ubiquiti",
+                "name": "AP_Wifi_Ubiquiti",
+                "slug": "ap_wifi_ubiquiti"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "",
+            "asset_tag": null,
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 76,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/76/",
+                "display": "192.168.0.52/24",
+                "family": 4,
+                "address": "192.168.0.52/24"
+            },
+            "primary_ip4": {
+                "id": 76,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/76/",
+                "display": "192.168.0.52/24",
+                "family": 4,
+                "address": "192.168.0.52/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T12:53:06.740936Z",
+            "last_updated": "2022-09-30T12:24:34.700655Z"
+        },
+        {
+            "id": 33,
+            "url": "https://192.168.0.251/api/dcim/devices/33/",
+            "display": "jeywifiap03",
+            "name": "jeywifiap03",
+            "device_type": {
+                "id": 21,
+                "url": "https://192.168.0.251/api/dcim/device-types/21/",
+                "display": "UAP_FlexHD",
+                "manufacturer": {
+                    "id": 5,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/5/",
+                    "display": "Ubiquiti Networks",
+                    "name": "Ubiquiti Networks",
+                    "slug": "ubiquiti-networks"
+                },
+                "model": "UAP_FlexHD",
+                "slug": "uap_flexhd"
+            },
+            "device_role": {
+                "id": 11,
+                "url": "https://192.168.0.251/api/dcim/device-roles/11/",
+                "display": "AP_Wifi_Ubiquiti",
+                "name": "AP_Wifi_Ubiquiti",
+                "slug": "ap_wifi_ubiquiti"
+            },
+            "tenant": null,
+            "platform": null,
+            "serial": "",
+            "asset_tag": null,
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 77,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/77/",
+                "display": "192.168.0.53/24",
+                "family": 4,
+                "address": "192.168.0.53/24"
+            },
+            "primary_ip4": {
+                "id": 77,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/77/",
+                "display": "192.168.0.53/24",
+                "family": 4,
+                "address": "192.168.0.53/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T12:53:27.190412Z",
+            "last_updated": "2022-09-30T12:24:34.743668Z"
+        },
+        {
+            "id": 30,
+            "url": "https://192.168.0.251/api/dcim/devices/30/",
+            "display": "Raspberry (Raspberry Pi 3)",
+            "name": "Raspberry",
+            "device_type": {
+                "id": 20,
+                "url": "https://192.168.0.251/api/dcim/device-types/20/",
+                "display": "Raspberry_Pi3",
+                "manufacturer": {
+                    "id": 11,
+                    "url": "https://192.168.0.251/api/dcim/manufacturers/11/",
+                    "display": "Raspberry",
+                    "name": "Raspberry",
+                    "slug": "raspberry"
+                },
+                "model": "Raspberry_Pi3",
+                "slug": "raspberry_pi3"
+            },
+            "device_role": {
+                "id": 3,
+                "url": "https://192.168.0.251/api/dcim/device-roles/3/",
+                "display": "Server",
+                "name": "Server",
+                "slug": "server"
+            },
+            "tenant": null,
+            "platform": {
+                "id": 15,
+                "url": "https://192.168.0.251/api/dcim/platforms/15/",
+                "display": "Raspbian_10",
+                "name": "Raspbian_10",
+                "slug": "raspbian_10"
+            },
+            "serial": "00000000145617c2",
+            "asset_tag": "Raspberry Pi 3",
+            "site": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/sites/2/",
+                "display": "JeyHome2",
+                "name": "JeyHome2",
+                "slug": "jeyhome2"
+            },
+            "location": {
+                "id": 2,
+                "url": "https://192.168.0.251/api/dcim/locations/2/",
+                "display": "Vieugy",
+                "name": "Vieugy",
+                "slug": "vieugy",
+                "_depth": 0
+            },
+            "rack": null,
+            "position": null,
+            "face": null,
+            "parent_device": null,
+            "status": {
+                "value": "active",
+                "label": "Active"
+            },
+            "airflow": null,
+            "primary_ip": {
+                "id": 74,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/74/",
+                "display": "192.168.0.243/24",
+                "family": 4,
+                "address": "192.168.0.243/24"
+            },
+            "primary_ip4": {
+                "id": 74,
+                "url": "https://192.168.0.251/api/ipam/ip-addresses/74/",
+                "display": "192.168.0.243/24",
+                "family": 4,
+                "address": "192.168.0.243/24"
+            },
+            "primary_ip6": null,
+            "cluster": null,
+            "virtual_chassis": null,
+            "vc_position": null,
+            "vc_priority": null,
+            "comments": "",
+            "local_context_data": null,
+            "tags": [],
+            "custom_fields": {
+                "bgp_asn": null,
+                "dns_server_pri": "192.168.0.252",
+                "dns_server_sec": "192.168.0.250",
+                "domain_name": "int.jeyriku.net",
+                "ospf_area": null,
+                "snmp_community": "jeyricorp",
+                "snmp_location": "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]",
+                "snmp_server": "192.168.0.249"
+            },
+            "config_context": {},
+            "created": "2022-09-27T11:50:34.698829Z",
+            "last_updated": "2022-09-30T12:24:34.791932Z"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+---
+# Playbook example : générer et appliquer la configuration basée sur les templates
+# Utilise l'inventaire Infrahub (opsmill.infrahub.inventory) pour obtenir
+# `ansible_host`, `ansible_network_os` et autres attributs par device.
+
+- name: Generate and push device configuration from Infrahub
+  hosts: all
+  gather_facts: no
+  collections:
+    - cisco.ios
+    - junipernetworks.junos
+
+  tasks:
+    - name: Select template for device
+      set_fact:
+        cfg_template: >-
+          {% if 'ios' in (ansible_network_os | default('')) or 'cisco' in (ansible_network_os | default('')) %}
+            templates/cisco/router/router_cisco_full_cfg.j2
+          {% elif 'junos' in (ansible_network_os | default('')) or 'juniper' in (ansible_network_os | default('')) %}
+            templates/juniper/router/router_juniper_full_cfg_v1.j2
+          {% else %}
+            ''
+          {% endif %}
+
+    - name: Fail if no template selected for device
+      fail:
+        msg: "No template available for device with ansible_network_os='{{ ansible_network_os }}'"
+      when: cfg_template == ''
+
+    - name: Render configuration to local temp file
+      template:
+        src: "{{ cfg_template }}"
+        dest: "/tmp/{{ inventory_hostname }}.cfg"
+
+    - name: Push configuration to Cisco IOS devices
+      when: "'ios' in (ansible_network_os | default('')) or 'cisco' in (ansible_network_os | default(''))"
+      vars:
+        ansible_connection: network_cli
+      ios_config:
+        src: "/tmp/{{ inventory_hostname }}.cfg"
+
+    - name: Push configuration to Junos devices
+      when: "'junos' in (ansible_network_os | default('')) or 'juniper' in (ansible_network_os | default(''))"
+      vars:
+        ansible_connection: netconf
+      junos_config:
+        src: "/tmp/{{ inventory_hostname }}.cfg"
+        replace: false

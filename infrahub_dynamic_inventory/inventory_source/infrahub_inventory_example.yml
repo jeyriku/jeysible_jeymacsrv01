@@ -1,0 +1,31 @@
+---
+# Exemple d'inventaire Infrahub utilisant le plugin `opsmill.infrahub.inventory`.
+# Ce fichier illustre le mapping des attributs Infrahub vers des variables Ansible
+# utilisées par les playbooks de configuration.
+
+plugin: opsmill.infrahub.inventory
+api_endpoint: "http://jeysrv10:8080"
+validate_certs: false
+# token: set via INFRAHUB_API_TOKEN env var or Ansible Vault
+
+keyed_groups:
+  - prefix: ""
+    separator: ""
+    key: "role"
+
+nodes:
+  InfraDevice:
+    include:
+      - name
+      - primary_address.address
+      - platform.ansible_network_os
+      - site.name
+      - interfaces
+
+compose:
+  ansible_host: primary_address.address
+  ansible_network_os: platform.ansible_network_os
+  hostname: name
+
+# Note: ne pas récupérer en clair les credentials depuis Infrahub.
+# Fournir `ansible_user` / `ansible_password` via Vault, vars files ou variables d'environnement.

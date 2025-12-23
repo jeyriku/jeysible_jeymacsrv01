@@ -1,0 +1,5 @@
+---
+# Template: inventaire Infrahub par site
+plugin: community.general.script
+command: |
+  /usr/local/bin/infrahub-inventory --filter site

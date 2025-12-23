@@ -1,0 +1,11 @@
+---
+# Template: inventaire Infrahub par rôle
+# Remplacez par votre plugin/script ou adaptez la commande ci-dessous
+plugin: community.general.script
+command: |
+  # Exemple de script local qui retourne un inventaire YAML filtré par role
+  # Remplacez par le chemin vers votre script d'export Infrahub
+  /usr/local/bin/infrahub-inventory --filter role
+
+# Si vous utilisez directement une interrogation HTTP, implémentez un script wrapper
+# qui appelle l'API Infrahub (http://jeysrv10) et émet un YAML compatible Ansible.

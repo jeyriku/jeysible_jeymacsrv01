@@ -1,0 +1,12 @@
+# Données d'exemple pour Infrahub
+# Remplacez les valeurs par celles de votre instance `jeysrv10` ou adaptez pour appeler un script local
+---
+# Exemple de configuration minimale pour un plugin/script d'inventaire Infrahub
+# - `api_endpoint`: URL de l'API Infrahub (ex: http://jeysrv10:8080/api)
+# - `token`: utilisez une référence à une variable d'environnement ou vault
+api_endpoint: "http://jeysrv10:8080/api"
+validate_certs: false
+# token: "<INFRAHUB_TOKEN>"    # NE PAS COMMITTER EN CLAIR
+
+# Exemple: vous pouvez écrire un script qui interroge l'API et génère un inventory YAML
+# et appeler ce script via le plugin `community.general.script` dans Ansible.

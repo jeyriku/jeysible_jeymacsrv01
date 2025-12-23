@@ -1,0 +1,5 @@
+---
+# Template: inventaire Infrahub par type
+plugin: community.general.script
+command: |
+  /usr/local/bin/infrahub-inventory --filter type

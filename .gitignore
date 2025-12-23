@@ -1,0 +1,14 @@
+# Ignorer dossiers binaires et environnements locaux
+bin/
+lib/
+include/
+
+# pylibssh local build/install folder (sensible au cas)
+pylibssh/
+Pylibssh/
+
+# sshpass sources / build
+sshpass*/
+
+# macOS
+.DS_Store

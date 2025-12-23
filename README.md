@@ -52,3 +52,29 @@ ansible-playbook -i hosts playbooks/Dynamic_inventory/pb_create_report_v2.yml
 
 ---
 Fichier généré automatiquement après analyse rapide de l'arborescence du dépôt. Dites-moi si vous voulez que je crée le commit Git localement ou que j'enrichisse cette documentation avec des exemples précis.
+
+**Entrées présentes sur `origin/main`**
+Après vérification du remote `origin/main`, les entrées de premier niveau présentes sont :
+
+- .gitignore
+- Icon
+- ansible.cfg
+- archives/
+- config/
+- Dojo/
+- host_vars/
+- hosts
+- Json/
+- launch_inventory.txt
+- launch_playbook.txt
+- netbox_dynamic_inventory/
+- playbooks/
+- Python/
+- pyvenv.cfg
+- README.md
+- requirements.yml
+- roles/
+- templates/
+- vars/
+
+Si vous souhaitez que j'ajoute la liste complète (récursive) pour un dossier précis, dites lequel.

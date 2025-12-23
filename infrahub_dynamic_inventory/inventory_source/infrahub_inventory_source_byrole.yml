@@ -3,7 +3,7 @@
 plugin: opsmill.infrahub.inventory
 api_endpoint: "http://jeysrv10:8080"
 validate_certs: false
-# token: "<INFRAHUB_API_TOKEN>"    # préférez exporter INFRAHUB_API_TOKEN ou utiliser Ansible Vault
+token: "{{ lookup('env', 'INFRAHUB_API_TOKEN') | default(omit) }}"
 keyed_groups:
   - prefix: ""
     separator: ""

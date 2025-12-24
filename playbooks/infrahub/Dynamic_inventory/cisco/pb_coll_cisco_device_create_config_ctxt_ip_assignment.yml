@@ -13,35 +13,39 @@
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
-    # Make a Infrahub API call to retrieve devices'components
-    - name: Get Device List from Infrahub
+    # Query Infrahub via GraphQL and build a filtered devices list (omit hosts whose name is an IPv4)
+    - name: Get Device List from Infrahub (GraphQL)
       uri:
-        url: "{{ server }}{{ endpoint1 }}"
+        url: "{{ server }}/graphql"
         headers:
           Authorization: "Token {{ infrahub_token }}"
-          Accept: 'application/json'
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id display_label name { value } primary_address { address { value } } platform { name { value } } device_type { name { value } } } } } }"}
         body_format: json
-        method: GET
+        method: POST
         status_code: [200, 201]
-        timeout: 30
+        timeout: 60
         validate_certs: false
-        return_content: no
+        return_content: yes
       register: infrahub_devices
       run_once: yes
 
-    - name: QueryDeviceName
-      ansible.builtin.debug:
-        msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
-      vars:
-        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems' && role.display=='ToBeDefined'].{Name: name, IP: custom_fields.dev_lpbk }"
-      register: device_name
+    - name: Extract nodes from GraphQL response
+      set_fact:
+        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
 
-    - name: Debug for learning purpose
-      debug:
-        msg: "Device's name is {{ device_name.msg[item].Name }}, and ZTP IP is {{ device_name.msg[item].IP }}"
-      loop: "{{ device_name.msg }}"
-      loop_control:
-        index_var: item
+    - name: Build filtered device list (exclude IP hostnames)
+      vars:
+        ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
+      set_fact:
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.primary_address.address.value|default('')) , 'id': item.id, 'display_label': item.display_label|default('') } ] }}"
+      loop: "{{ devices_raw }}"
+      when: "(item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
+
+    - name: Expose device list for downstream tasks (device_name.msg)
+      set_fact:
+        device_name: "{{ {'msg': device_name_list | default([])} }}"
 
     - name: Print device role planned for the devices
       ansible.builtin.debug:

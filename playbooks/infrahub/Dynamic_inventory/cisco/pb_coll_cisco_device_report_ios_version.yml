@@ -17,37 +17,38 @@
     ansible_password: Celjer.05n
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
   tasks:
-    # Make a Infrahub API call to retrieve devices'components
-    - name: Get Device List from Infrahub
+    - name: Get Device List from Infrahub (GraphQL)
       uri:
-        url: "{{ server }}{{ endpoint1 }}"
+        url: "{{ server }}/graphql"
         headers:
           Authorization: "Token {{ infrahub_token }}"
-          Accept: 'application/json'
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id display_label name { value } role { label display } status { value } primary_address { address { value } } } } } }"}
         body_format: json
-        method: GET
+        method: POST
         status_code: [200, 201]
-        timeout: 30
+        timeout: 60
         validate_certs: false
-        return_content: no
+        return_content: yes
       register: infrahub_devices
       run_once: yes
 
-    # Define specific filters to only keep particular device Role
-    - name: QueryDeviceName
-      ansible.builtin.debug:
-        msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
-      vars:
-        jmesquery: "[?role.display=='Router_CE_Cisco' && status.value=='active'].{Name: name, IP: custom_fields.dev_lpbk }"
-      register: device_name
+    - name: Extract nodes from GraphQL response
+      set_fact:
+        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
 
-    # Display debug outputs for learning purpose
-    - name: Debug for learning purpose
-      debug:
-        msg: "Device's name is {{ device_name.msg[item].Name }}, and IP is {{ device_name.msg[item].IP }}"
-      loop: "{{ device_name.msg }}"
-      loop_control:
-        index_var: item
+    - name: Build filtered device list (role Router_CE_Cisco, status active, exclude IP hostnames)
+      vars:
+        ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
+      set_fact:
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.primary_address.address.value|default('')) , 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default('') } ] }}"
+      loop: "{{ devices_raw }}"
+      when: "(item.role is defined and item.role.label == 'Router_CE_Cisco') and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
+
+    - name: Expose device list for downstream tasks (device_name.msg)
+      set_fact:
+        device_name: "{{ {'msg': device_name_list | default([])} }}"
 
     # Retrieve device facts
     - name: Retrieve device facts

@@ -50,8 +50,68 @@ ansible-playbook -i hosts playbooks/Dynamic_inventory/pb_create_report_v2.yml
 - Convertir et fusionner éventuellement `pylibssh/README.rst` en Markdown si souhaité.
 - Ajouter des exemples d'usage concrets (playbook minimal, snippet Python) et des instructions d'installation de NetBox si vous voulez une doc plus complète.
 
----
-Fichier généré automatiquement après analyse rapide de l'arborescence du dépôt. Dites-moi si vous voulez que je crée le commit Git localement ou que j'enrichisse cette documentation avec des exemples précis.
+**Infrahub Ansible Modules**
+- **Docs officielles**: références des plugins Ansible fournis par Infrahub — utile pour créer playbooks ciblant une instance Infrahub:
+	- artifact_fetch_module: https://docs.infrahub.app/ansible/references/plugins/artifact_fetch_module
+	- query_graphql_module: https://docs.infrahub.app/ansible/references/plugins/query_graphql_module
+	- branch_module: https://docs.infrahub.app/ansible/references/plugins/branch_module
+	- node_module: https://docs.infrahub.app/ansible/references/plugins/node_module
+	- inventory_inventory: https://docs.infrahub.app/ansible/references/plugins/inventory_inventory
+	- lookup_lookup: https://docs.infrahub.app/ansible/references/plugins/lookup_lookup
+	- roles/install: https://docs.infrahub.app/ansible/references/roles/install
+
+- **Résumé & bonnes pratiques**:
+	- Utilisez `infrahub.query_graphql` pour interroger directement l'API GraphQL d'Infrahub et récupérer des nœuds, inventaires ou effectuer des mutations quand l'API REST n'existe pas.
+	- Préférez l'envoi de payloads JSON via fichiers (`--data-binary` dans les tests curl) pour éviter les problèmes de quoting lors de génération dynamique.
+	- Ajoutez des timeouts et des retries (dans vos tâches Ansible ou scripts appelés) lorsque vous effectuez des opérations en masse (création/upsert de profiles, attachments, etc.).
+
+- **Exemples rapides**:
+
+	- Requête GraphQL simple avec le module `query_graphql` (extrait):
+
+```yaml
+- name: Interroger Infrahub - devices
+	hosts: localhost
+	tasks:
+		- name: Query GraphQL devices
+			infrahub.query_graphql:
+				url: "http://jeysrv10:8000/graphql"
+				headers:
+					X-INFRAHUB-KEY: "{{ lookup('env','INFRAHUB_TOKEN') }}"
+					Authorization: "Bearer {{ lookup('env','INFRAHUB_TOKEN') }}"
+				query: |
+					query ($limit:Int){
+						devices(limit:$limit){
+							id
+							name
+						}
+					}
+				variables:
+					limit: 50
+			register: ghql
+
+		- debug: var=ghql
+```
+
+	- Récupération d'un artefact et extraction via `artifact_fetch` (extrait):
+
+```yaml
+- name: Télécharger un artefact depuis Infrahub
+	hosts: localhost
+	tasks:
+		- name: Fetch artifact
+			infrahub.artifact_fetch:
+				url: "http://jeysrv10:8000"
+				artifact: "configs/device-template.tar.gz"
+				dest: "/tmp/device-template.tar.gz"
+			register: af
+
+		- name: Debug artifact result
+			debug: var=af
+```
+
+Pour des usages plus avancés (branch/node management, inventaires dynamiques, lookup personnalisé), consultez les pages liées ci-dessus et adaptez les exemples selon votre endpoint et le token d'authentification.
+
 
 **Entrées présentes sur `origin/main`**
 Après vérification du remote `origin/main`, les entrées de premier niveau présentes sont :

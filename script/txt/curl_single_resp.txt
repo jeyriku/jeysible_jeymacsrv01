@@ -1,0 +1,29 @@
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 192.168.0.237:8000...
+* Connected to 192.168.0.237 (192.168.0.237) port 8000
+> POST /graphql HTTP/1.1
+> Host: 192.168.0.237:8000
+> User-Agent: curl/8.7.1
+> Accept: */*
+> Content-Type: application/json
+> X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3
+> Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3
+> Content-Length: 464
+> 
+} [464 bytes data]
+* upload completely sent off: 464 bytes
+< HTTP/1.1 200 OK
+< date: Wed, 24 Dec 2025 10:56:01 GMT
+< server: uvicorn
+< content-length: 135
+< content-type: application/json
+< x-process-time: 0.04738163948059082
+< x-request-id: 410076f9456a404e858af11507e20f47
+< vary: Accept-Encoding
+< 
+{ [135 bytes data]
+100   599  100   135  100   464   2442   8393 --:--:-- --:--:-- --:--:-- 10890
+* Connection #0 to host 192.168.0.237 left intact
+{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}

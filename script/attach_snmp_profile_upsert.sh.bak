@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Usage: TOKEN=... ENDPOINT=http://192.168.0.237:8000/graphql PROFILE_ID=18841c92-2901-b3e3-301c-c517ee457923 ./attach_snmp_profile_upsert.sh devices.txt
+set -euo pipefail
+if [ "$#" -ne 1 ]; then
+  echo "Usage: TOKEN=... ENDPOINT=... PROFILE_ID=... $0 devices_file" >&2
+  exit 2
+fi
+DEV_FILE="$1"
+: "${TOKEN:?Environment variable TOKEN required (use Authorization: Bearer <token>)}"
+: "${ENDPOINT:?Environment variable ENDPOINT required (e.g. http://192.168.0.237:8000/graphql)}"
+: "${PROFILE_ID:?Environment variable PROFILE_ID required (existing SNMP profile id)}"
+
+read -r -d '' MUTATION <<'GQL'
+mutation ProfileDcimDeviceUpsert($input: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(input: $input) {
+    ok
+    object { id profile_name { value } }
+    errors { field messages }
+  }
+}
+GQL
+
+while IFS= read -r device_id || [ -n "$device_id" ]; do
+  device_id_trimmed=$(echo "$device_id" | tr -d '\r\n' | sed -e 's/^\s*//' -e 's/\s*$//')
+  [ -z "$device_id_trimmed" ] && continue
+
+  read -r -d '' VARIABLES <<EOF
+{"input": {"id": "${PROFILE_ID}", "profile_name": {"value": "SNMP"}, "related_nodes": [{"id": "${device_id_trimmed}", "kind": "DcimDevice"}]}}
+EOF
+
+  resp=$(curl -s -w "\n%{http_code}" -X POST "$ENDPOINT" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $TOKEN" \
+    -d "{\"query\":$(jq -Rn --arg m "$MUTATION" '$m' | jq -s -R -r @json),\"variables\":$VARIABLES}")
+
+  http_code=$(echo "$resp" | tail -n1)
+  body=$(echo "$resp" | sed '$d')
+
+  if [ "$http_code" != "200" ]; then
+    echo "[ERROR] HTTP $http_code for device $device_id_trimmed" >&2
+    echo "$body" >&2
+  else
+    ok=$(echo "$body" | jq -r '.data.ProfileDcimDeviceUpsert.ok')
+    if [ "$ok" = "true" ]; then
+      echo "[OK] Attached profile ${PROFILE_ID} -> device ${device_id_trimmed}"
+    else
+      echo "[FAIL] device ${device_id_trimmed}:" >&2
+      echo "$body" | jq -r '.data.ProfileDcimDeviceUpsert.errors'
+    fi
+  fi
+  sleep 0.2
+done < "$DEV_FILE"

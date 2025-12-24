@@ -1,0 +1,7 @@
++ set -euo pipefail
++ '[' 1 -ne 1 ']'
++ DEV_FILE=devices.txt
++ : 'ssh -l Jeyriku'
++ : http://192.168.0.237:8000/graphql
++ : 18841c92-2901-b3e3-301c-c517ee457923
++ read -r -d '' MUTATION

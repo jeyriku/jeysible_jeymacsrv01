@@ -1,0 +1,584 @@
++ set -euo pipefail
++ '[' 1 -ne 1 ']'
++ DEV_FILE=devices.txt
++ : 1867d1dc-c6f4-d019-38f0-c516805651f3
++ : http://192.168.0.237:8000/graphql
++ : 18841c92-2901-b3e3-301c-c517ee457923
+++ cat
++ MUTATION='mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}'
++ :
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-2c63-58ee-301e-c514f05a2753
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-2c63-58ee-301e-c514f05a2753
++ '[' -z 187eb84a-2c63-58ee-301e-c514f05a2753 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-2c63-58ee-301e-c514f05a2753 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-2c63-58ee-301e-c514f05a2753",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-2c63-58ee-301e-c514f05a2753 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-2c63-58ee-301e-c514f05a2753'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eead6-6fe9-765c-301e-c5126b25a55e
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eead6-6fe9-765c-301e-c5126b25a55e
++ '[' -z 187eead6-6fe9-765c-301e-c5126b25a55e ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eead6-6fe9-765c-301e-c5126b25a55e '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eead6-6fe9-765c-301e-c5126b25a55e",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eead6-6fe9-765c-301e-c5126b25a55e '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eead6-6fe9-765c-301e-c5126b25a55e'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-3116-6d38-301a-c51699b79880
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-3116-6d38-301a-c51699b79880
++ '[' -z 187eb84a-3116-6d38-301a-c51699b79880 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3116-6d38-301a-c51699b79880 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-3116-6d38-301a-c51699b79880",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3116-6d38-301a-c51699b79880 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-3116-6d38-301a-c51699b79880'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-3724-3165-3017-c5117171f2d5
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-3724-3165-3017-c5117171f2d5
++ '[' -z 187eb84a-3724-3165-3017-c5117171f2d5 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3724-3165-3017-c5117171f2d5 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-3724-3165-3017-c5117171f2d5",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3724-3165-3017-c5117171f2d5 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-3724-3165-3017-c5117171f2d5'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-3b54-329d-301b-c516af546bbf
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-3b54-329d-301b-c516af546bbf
++ '[' -z 187eb84a-3b54-329d-301b-c516af546bbf ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3b54-329d-301b-c516af546bbf '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-3b54-329d-301b-c516af546bbf",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3b54-329d-301b-c516af546bbf '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-3b54-329d-301b-c516af546bbf'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-3f85-ddec-301b-c516dd44a7ce
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-3f85-ddec-301b-c516dd44a7ce
++ '[' -z 187eb84a-3f85-ddec-301b-c516dd44a7ce ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3f85-ddec-301b-c516dd44a7ce '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-3f85-ddec-301b-c516dd44a7ce",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-3f85-ddec-301b-c516dd44a7ce '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-3f85-ddec-301b-c516dd44a7ce'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-4644-48e4-3019-c511be7d092d
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-4644-48e4-3019-c511be7d092d
++ '[' -z 187eb84a-4644-48e4-3019-c511be7d092d ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4644-48e4-3019-c511be7d092d '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-4644-48e4-3019-c511be7d092d",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4644-48e4-3019-c511be7d092d '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-4644-48e4-3019-c511be7d092d'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-4a6f-5100-3013-c51b63a22361
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-4a6f-5100-3013-c51b63a22361
++ '[' -z 187eb84a-4a6f-5100-3013-c51b63a22361 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4a6f-5100-3013-c51b63a22361 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-4a6f-5100-3013-c51b63a22361",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4a6f-5100-3013-c51b63a22361 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-4a6f-5100-3013-c51b63a22361'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187eb84a-4ece-c54f-301d-c517f0d00188
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187eb84a-4ece-c54f-301d-c517f0d00188
++ '[' -z 187eb84a-4ece-c54f-301d-c517f0d00188 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4ece-c54f-301d-c517f0d00188 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187eb84a-4ece-c54f-301d-c517f0d00188",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187eb84a-4ece-c54f-301d-c517f0d00188 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187eb84a-4ece-c54f-301d-c517f0d00188'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187d5423-595f-e42e-38dc-c51b8ad9d46e
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187d5423-595f-e42e-38dc-c51b8ad9d46e
++ '[' -z 187d5423-595f-e42e-38dc-c51b8ad9d46e ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5423-595f-e42e-38dc-c51b8ad9d46e '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187d5423-595f-e42e-38dc-c51b8ad9d46e",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5423-595f-e42e-38dc-c51b8ad9d46e '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187d5423-595f-e42e-38dc-c51b8ad9d46e'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187d5425-06dd-8ced-38d5-c51cd84d4497
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187d5425-06dd-8ced-38d5-c51cd84d4497
++ '[' -z 187d5425-06dd-8ced-38d5-c51cd84d4497 ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5425-06dd-8ced-38d5-c51cd84d4497 '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187d5425-06dd-8ced-38d5-c51cd84d4497",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5425-06dd-8ced-38d5-c51cd84d4497 '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json
++ resp='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
++ rm -f /tmp/infrahub_payload.XXXX.json
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ tail -n1
++ http_code=200
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}
+200'
+++ sed '$d'
++ body='{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
++ '[' 200 '!=' 200 ']'
+++ printf %s '{"data":{"ProfileDcimDeviceUpsert":{"ok":true,"object":{"id":"18841c92-2901-b3e3-301c-c517ee457923","profile_name":{"value":"SNMP"}}}}}'
+++ jq -r '.data.ProfileDcimDeviceUpsert.ok // false'
++ ok=true
++ '[' true = true ']'
++ echo '[OK] 187d5425-06dd-8ced-38d5-c51cd84d4497'
++ sleep 0.2
++ IFS=
++ read -r device_id
+++ printf %s 187d5425-9cbb-0d45-38de-c51543cddf7b
+++ tr -d '\r\n'
+++ sed -e 's/^\s*//' -e 's/\s*$//'
++ device_id_trimmed=187d5425-9cbb-0d45-38de-c51543cddf7b
++ '[' -z 187d5425-9cbb-0d45-38de-c51543cddf7b ']'
+++ jq -n --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5425-9cbb-0d45-38de-c51543cddf7b '{data: {id: $pid, profile_name: {value: "SNMP"}, related_nodes: [{id: $did, kind: "DcimDevice"}]}}'
++ VARIABLES='{
+  "data": {
+    "id": "18841c92-2901-b3e3-301c-c517ee457923",
+    "profile_name": {
+      "value": "SNMP"
+    },
+    "related_nodes": [
+      {
+        "id": "187d5425-9cbb-0d45-38de-c51543cddf7b",
+        "kind": "DcimDevice"
+      }
+    ]
+  }
+}'
+++ mktemp /tmp/infrahub_payload.XXXX.json
++ payload_file=/tmp/infrahub_payload.XXXX.json
++ jq -n --arg m 'mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
+  ProfileDcimDeviceUpsert(data: $data) {
+    ok
+    object { id profile_name { value } }
+  }
+}' --arg pid 18841c92-2901-b3e3-301c-c517ee457923 --arg did 187d5425-9cbb-0d45-38de-c51543cddf7b '{query:$m, variables: {data:{id:$pid, profile_name:{value:"SNMP"}, related_nodes:[{id:$did, kind:"DcimDevice"}]}}}'
+++ curl -s -w '\n%{http_code}' -X POST http://192.168.0.237:8000/graphql -H 'Content-Type: application/json' -H 'X-INFRAHUB-KEY: 1867d1dc-c6f4-d019-38f0-c516805651f3' -H 'Authorization: Bearer 1867d1dc-c6f4-d019-38f0-c516805651f3' --data-binary @/tmp/infrahub_payload.XXXX.json

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-#!/bin/bash
-# Usage: eval "$(scripts/infrahub_export_token.sh /path/to/vault_pass username)"
-# Ex: eval "$(scripts/infrahub_export_token.sh /tmp/.vault_pass jeyriku)"
+# Usage: eval "$(script/infrahub_export_token.sh /path/to/vault_pass username)"
+# Ex: eval "$(script/infrahub_export_token.sh /tmp/.vault_pass jeyriku)"
 
 set -euo pipefail
 VAULT_PASS_FILE=${1:-}

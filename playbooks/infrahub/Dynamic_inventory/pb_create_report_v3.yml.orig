@@ -4,7 +4,7 @@
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint: "/api/dcim/devices/?brief=1"
   tasks:
     - name: list devices

@@ -1,11 +1,11 @@
 ---
-- name: Config Junos context SNMP
+- name: Config Cisco context SNMP
   gather_facts: no
   hosts: all
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
@@ -29,25 +29,25 @@
       ansible.builtin.debug:
         msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
       vars:
-        jmesquery: "[?device_type.display=='EX2300_C_12P'].{Name: name, snmp_loc: custom_fields.snmp_location, IP: custom_fields.dev_lpbk, snmp_com: custom_fields.snmp_community, snmp_srv1: custom_fields.snmp_server1, snmp_srv2: custom_fields.snmp_server2, snmp_srv3: custom_fields.snmp_server3}"
+        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems' && role.display=='ToBeDefined'].{Name: name, IP: custom_fields.dev_lpbk  }"
       register: device_name
 
     - name: Debug for learning purpose
       debug:
-        msg: "Device's name is {{ device_name.msg[item].Name }}, snmp location is {{ device_name.msg[item].snmp_loc }}, snmp server 2 is {{ device_name.msg[item].snmp_srv2 }}, snmp server 3 is {{ device_name.msg[item].snmp_srv3 }}, snmp community is {{ device_name.msg[item].snmp_com }},snmp agent answers with source ip {{ device_name.msg[item].IP }}"
+        msg: "Device's name is {{ device_name.msg[item].Name }}, Device IP is {{ device_name.msg[item].IP }}"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
 
-    - name: Generate Junos Config Directory
+    - name: Generate Cisco Config Directory
       ansible.builtin.file:
         path: /Users/jeremierouzet/jeysible/config
         state: directory
 
-    - name: Generate Junos Config from Jinja2 & Infrahub
+    - name: Generate Cisco Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/common/v2/common_juniper_ctxt_snmp_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/jeysible/templates/cisco/router/v2/router_cisco_ctxt_day1.j2"
+        dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ device_name.msg[item].Name }}.cfg"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
@@ -55,9 +55,9 @@
 
     - name: Generate Facts from previous generated config file
       set_fact:
-        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg') }}"
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/cisco/{{ device_name.msg[item].Name }}.cfg') }}"
       with_items:
-         - "{{ device_name.msg }}"
+        - "{{ device_name.msg }}"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
@@ -67,16 +67,20 @@
         var: command_to_push
 
     - name: Push command to devices
-      junipernetworks.junos.junos_config:
-        src: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg"
-        src_format: "set"
+      cisco.ios.ios_config:
+        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_snmp_v2.j2"
+        backup: true
+        backup_options:
+          filename: "{{ device_name.msg[item].Name }}.cfg"
+          dir_path: /Users/jeremierouzet/jeysible/config/cisco/backup
+        save_when: "modified"
       with_items:
-         - "{{ device_name.msg }}"
+        - "{{ device_name.msg }}"
       loop_control:
         index_var: item
       vars:
-        ansible_network_os: junipernetworks.junos.junos
-        ansible_connection: ansible.netcommon.netconf
+        ansible_connection: network_cli
+        ansible_network_os: ios
         ansible_user: root
         ansible_password: Celjer.05n
         ansible_host: "{{ device_name.msg[item].Name }}"
@@ -84,9 +88,9 @@
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/common/config_ctxt_snmp/config_ctxt_snmp_device_name.yml
+        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.yml
 
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/common/config_ctxt_snmp/config_ctxt_snmp_device_name.json
+        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.json

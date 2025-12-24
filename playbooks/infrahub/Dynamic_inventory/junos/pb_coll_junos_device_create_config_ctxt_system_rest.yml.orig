@@ -1,11 +1,11 @@
 ---
-- name: Config Junos context system
+- name: Config Junos context system Rest
   gather_facts: no
   hosts: all
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
@@ -29,7 +29,7 @@
       ansible.builtin.debug:
         msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
       vars:
-        jmesquery: "[?device_type.display=='SRX300' && name=='jeyniper01'].{Name: name, DNS: custom_fields.domain_name, IP: primary_ip.address, DNS1: custom_fields.dns_server_pri, DNS2: custom_fields.dns_server_sec}"
+        jmesquery: "[?device_type.display=='SRX300'].{Name: name, DNS: custom_fields.domain_name, IP: primary_ip.address}"
       register: device_name
 
     - name: Debug for learning purpose
@@ -46,8 +46,8 @@
 
     - name: Generate Junos Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_system_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_name.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_system_rest_v1.j2"
+        dest: "/Users/jeremierouzet/jeysible/config/{{ device_name.msg[item].Name }}.cfg"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
@@ -56,9 +56,9 @@
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system/config_ctxt_system_device_name.yml
+        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.yml
 
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system/config_ctxt_system_device_name.json
+        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.json

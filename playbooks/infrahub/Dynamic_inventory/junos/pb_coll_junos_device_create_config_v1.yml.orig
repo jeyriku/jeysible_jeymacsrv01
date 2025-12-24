@@ -5,7 +5,7 @@
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint: "/api/dcim/devices/"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
@@ -27,22 +27,33 @@
 
     - name: save the Json data to a Variable as a Fact
       set_fact:
-        infrahub_datas: "{{ infrahub_datas.json.results | to_nice_json | from_json }}"
+        infrahub_datas: "{{ infrahub_datas.stdout | from_json }}"
 
     - name: setDeviceName
       set_fact:
-        device_name: "{{ infrahub_datas.json.results | json_query(jmesquery) }}"
+        device_name: "{{ infrahub_datas | json_query(jmesquery) }}"
       vars:
         jmesquery: 'device_name.name'
 
-    - name: Generate Junos Config from Jinja2
-      ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config state=directory
-        state: directory
+    - name: setDomainName
+      set_fact:
+        domain_name: "{{ jsondata | json_query(jmesquery) }}"
+      vars:
+        jmesquery: 'domain.name'
 
+    - name: Generate Junos Config from Jinja2
+      hosts: localhost
+      gather_facts: no
+      tasks:
+        - name: Create Config Directory
+          file: path=/Users/jeremierouzet/jeysible/config state=directory
 
     - name: Generate Junos Config from Jinja2 & Infrahub
-      template:
-        src: "/Users/jeremierouzet/jeysible/templates/router_juniper_full_cfg.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/{{inventory_hostname}}.cfg"
-      delegate_to: localhost
+      hosts: jeyniper07
+      gather_facts: no
+      tasks:
+        - name: Generate Juniper Full Config
+          template:
+            src: "/Users/jeremierouzet/jeysible/templates/router_juniper_full_cfg.j2"
+            dest: "/Users/jeremierouzet/jeysible/config/{{inventory_hostname}}.cfg"
+          delegate_to: localhost

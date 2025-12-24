@@ -5,7 +5,7 @@
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
     endpoint2: "/api/dcim/interfaces/?limit=30000"
     endpoint3: "/api/ipam/ip-addresses/?limit=5000"

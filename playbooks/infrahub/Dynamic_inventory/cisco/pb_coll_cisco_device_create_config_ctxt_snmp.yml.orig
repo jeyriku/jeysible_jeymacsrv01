@@ -5,7 +5,7 @@
   connection: local
   become: false
   vars:
-    server: "https://192.168.0.237"
+    server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
@@ -29,12 +29,12 @@
       ansible.builtin.debug:
         msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
       vars:
-        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems' && role.display=='ToBeDefined'].{Name: name, IP: custom_fields.dev_lpbk  }"
+        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems'].{Name: name, snmp_loc: custom_fields.snmp_location, IP: custom_fields.dev_lpbk, snmp_com: custom_fields.snmp_community, snmp_srv1: custom_fields.snmp_server1, snmp_srv2: custom_fields.snmp_server2, snmp_srv3: custom_fields.snmp_server3}"
       register: device_name
 
     - name: Debug for learning purpose
       debug:
-        msg: "Device's name is {{ device_name.msg[item].Name }}, Device IP is {{ device_name.msg[item].IP }}"
+        msg: "Device's name is {{ device_name.msg[item].Name }}, snmp location is {{ device_name.msg[item].snmp_loc }}, snmp server 1 is {{ device_name.msg[item].snmp_srv1 }}, snmp server 2 is {{ device_name.msg[item].snmp_srv2 }}, snmp server 3 is {{ device_name.msg[item].snmp_srv3 }}, snmp community is {{ device_name.msg[item].snmp_com }}, snmp agent answers with source ip {{ device_name.msg[item].IP }}"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
@@ -46,7 +46,7 @@
 
     - name: Generate Cisco Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/router/v2/router_cisco_ctxt_day1.j2"
+        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_snmp_v2.j2"
         dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ device_name.msg[item].Name }}.cfg"
       loop: "{{ device_name.msg }}"
       loop_control:

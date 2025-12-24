@@ -5,7 +5,7 @@
   connection: local
   become: false
   vars:
-    server: "http://192.168.0.237:8000:8000"
+    server: "https://192.168.0.237"
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
   tasks:
@@ -29,7 +29,7 @@
       ansible.builtin.debug:
         msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
       vars:
-        jmesquery: "[?device_role.display=='Router_PE_Cisco'].{Name: name, snmp_loc: custom_fields.snmp_location, IP: custom_fields.dev_lpbk, snmp_com: custom_fields.snmp_community, snmp_srv1: custom_fields.snmp_server1, snmp_srv2: custom_fields.snmp_server2, snmp_srv3: custom_fields.snmp_server3}"
+        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems'].{Name: name, snmp_loc: custom_fields.snmp_location, IP: custom_fields.dev_lpbk, snmp_com: custom_fields.snmp_community, snmp_srv1: custom_fields.snmp_server1, snmp_srv2: custom_fields.snmp_server2, snmp_srv3: custom_fields.snmp_server3}"
       register: device_name
 
     - name: Debug for learning purpose
@@ -69,7 +69,6 @@
     - name: Push command to devices
       cisco.ios.ios_config:
         src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_snmp_v2.j2"
-        replace: "block"
         backup: true
         backup_options:
           filename: "{{ device_name.msg[item].Name }}.cfg"

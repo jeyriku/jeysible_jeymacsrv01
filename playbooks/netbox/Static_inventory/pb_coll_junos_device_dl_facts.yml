@@ -1,0 +1,22 @@
+---
+- name: Get Device Facts
+  hosts: router_juniper
+  connection: local
+  gather_facts: no
+  vars:
+    user: "{{ ansible_user }}"
+    passwd: "{{ ansible_password }}"
+    ansible_network_os: "junipernetworks.junos.junos"
+
+  vars_files:
+    - /Users/jeremierouzet/jeysible/vars/juniper_nc.yaml
+
+  tasks:
+    - name: Retrieve facts from devices running Junos OS
+      juniper.device.facts:
+        savedir: "{{ playbook_dir }}/facts/"
+
+    - name: Get hardware inventory
+      juniper.device.command:
+        commands: "show chassis hardware"
+        dest_dir: "{{ playbook_dir }}/facts/"

@@ -1,0 +1,37 @@
+---
+- name: Create Report from infrahub Data
+  gather_facts: no
+  hosts: all
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint: "/api/dcim/devices/"
+    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+    # Make a Infrahub API call to retrieve devices'components
+    - name: Get Device List from Infrahub
+      uri:
+        url: "{{ server }}{{ endpoint }}"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: infrahub_datas
+      run_once: yes
+
+    # Allow to Generate a Report thanks to the informations registered previously with For loop to iterate through multiples devices
+    - name: Generate Report
+      ansible.builtin.blockinfile:
+        block:  |
+            infrahub_datas.json:
+            {% for device_name in infrahub_datas.json.results %}
+              - { node: {{ device_name.name }}, runs Network OS: {{ device_name.platform.name }}, and has Ipv4: {{ device_name.primary_ip.address }}}
+            {% endfor %}
+        path: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_report/infrahub_report_v1.yaml
+        create: yes

@@ -1,0 +1,10 @@
+---
+- name: Lookup tasks
+  hosts: localhost
+  vars:
+    jsonvar: "{{ lookup('file', 'inputs/query.json') | from_json }}"
+  tasks:
+    - name: Display all cluster names
+      ansible.builtin.debug:
+        var: item
+      loop: "{{ jsonvar.domain_definition | community.general.json_query('domain.cluster[*].name') }}"

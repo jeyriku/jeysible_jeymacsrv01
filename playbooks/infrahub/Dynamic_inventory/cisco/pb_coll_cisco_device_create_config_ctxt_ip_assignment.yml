@@ -1,0 +1,79 @@
+---
+- name: Assign IPs
+  gather_facts: no
+  hosts: all
+  vars_prompt:
+    - name: infrahub_role
+      prompt: What is the Infrahub role planned for the device(s) ?
+      private: false
+  connection: local
+  become: false
+  vars:
+    server: "https://192.168.0.251"
+    endpoint1: "/api/dcim/devices/?limit=1000"
+    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+  tasks:
+    # Make a Infrahub API call to retrieve devices'components
+    - name: Get Device List from Infrahub
+      uri:
+        url: "{{ server }}{{ endpoint1 }}"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: no
+      register: infrahub_devices
+      run_once: yes
+
+    - name: QueryDeviceName
+      ansible.builtin.debug:
+        msg: "{{ infrahub_devices.json.results | to_json | from_json | community.general.json_query(jmesquery) }}"
+      vars:
+        jmesquery: "[?device_type.manufacturer.display=='Cisco Systems' && role.display=='ToBeDefined'].{Name: name, IP: custom_fields.dev_lpbk }"
+      register: device_name
+
+    - name: Debug for learning purpose
+      debug:
+        msg: "Device's name is {{ device_name.msg[item].Name }}, and ZTP IP is {{ device_name.msg[item].IP }}"
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+
+    - name: Print device role planned for the devices
+      ansible.builtin.debug:
+        msg: The Nebox role for that device is {{ infrahub_role }}
+
+    - name: NetBox API connection check
+      ansible.builtin.uri:
+        url: "{{ server }}"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Accept: 'application/json'
+        body_format: json
+        method: GET
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+      register: infrahub_api_check
+
+    - name: Show result NetBox API check
+      debug:
+        var: infrahub_api_check
+
+    - name: Upload Data to INFRAHUB
+      infrahub.infrahub.infrahub_device:
+        infrahub_url: "{{ server }}"
+        infrahub_token: "{{ infrahub_token }}"
+        data:
+          name: "{{ device_name.msg[item].Name }}"
+          device_role: "{{ infrahub_role }}"
+        state: present
+        validate_certs: false
+      loop: "{{ device_name.msg }}"
+      loop_control:
+        index_var: item
+      when: infrahub_api_check.status == 200

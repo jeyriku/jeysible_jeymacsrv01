@@ -1,0 +1,14 @@
+---
+- name: Initial Playbook
+  hosts: router_cisco:router_juniper
+  gather_facts: no
+  tasks:
+  - name: Display Hostname
+    debug:
+      msg: "Router name is {{ inventory_hostname }}"
+  - name: Display OS
+    debug:
+      msg: "{{ inventory_hostname  }} is running {{ platforms }}"
+  - name: Display Primary IP
+    debug:
+      msg: "{{ inventory_hostname  }} is running {{ platforms }} and has IP {{ primary_ip4 }}"

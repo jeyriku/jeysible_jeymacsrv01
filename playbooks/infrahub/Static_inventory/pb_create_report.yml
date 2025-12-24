@@ -1,0 +1,19 @@
+---
+- name: Create Report From Infrahub Data
+  hosts: all
+  gather_facts: no
+  connection: local
+  vars_files:
+  - /Users/jeremierouzet/jeysible/vars/infrahub.yaml
+  tasks:
+    - name: Build Report
+      blockinfile:
+        block:  |
+            infrahub_data:
+            {% for node in play_hosts %}
+              - { node: {{ node }} , type: {{ hostvars[node].device_types[0] }} , mgmt_ip: {{ hostvars[node].ansible_host }} , device_role: {{hostvars[node].device_roles[0]}} }
+            {% endfor %}
+        path: ./infrahub_report.yaml
+        create: yes
+      delegate_to: localhost
+      run_once: yes

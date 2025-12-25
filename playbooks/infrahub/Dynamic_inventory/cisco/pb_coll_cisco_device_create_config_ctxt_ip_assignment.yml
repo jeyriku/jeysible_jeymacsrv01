@@ -1,7 +1,6 @@
 ---
-- name: Assign IPs
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   vars_prompt:
     - name: infrahub_role
       prompt: What is the Infrahub role planned for the device(s) ?

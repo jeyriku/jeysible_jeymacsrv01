@@ -2,7 +2,7 @@
 # First play - Recover DCIM/Devices datas from Infrahub thanks to Rest Api Call
 - name: Config Junos context BGP
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:

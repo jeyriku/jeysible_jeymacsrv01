@@ -1,17 +1,2 @@
-# Ignorer dossiers binaires et environnements locaux
-bin/
-lib/
-include/
-
-# pylibssh local build/install folder (sensible au cas)
-pylibssh/
-Pylibssh/
-
-# Ignore Pandas workspace folder
-Pandas/
-
-# sshpass sources / build
-sshpass*/
-
-# macOS
-.DS_Store
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*

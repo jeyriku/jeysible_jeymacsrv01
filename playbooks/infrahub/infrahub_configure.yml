@@ -4,7 +4,7 @@
 # `ansible_host`, `ansible_network_os` et autres attributs par device.
 
 - name: Generate and push device configuration from Infrahub
-  hosts: all
+  hosts: infrahub
   gather_facts: no
   collections:
     - cisco.ios

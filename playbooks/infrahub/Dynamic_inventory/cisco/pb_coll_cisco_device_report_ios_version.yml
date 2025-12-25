@@ -1,7 +1,7 @@
 ---
 - name: Report IOS version to infrahub
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   roles:
@@ -13,8 +13,8 @@
     upgrade_ios_version: "17.10.01a"
     ansible_connection: network_cli
     ansible_network_os: ios
-    ansible_user: root
-    ansible_password: Celjer.05n
+    ansible_user: "{{ device_username }}"
+    ansible_password: "{{ device_password }}"
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
   tasks:
     - name: Get Device List from Infrahub (GraphQL)
@@ -24,7 +24,7 @@
           Authorization: "Token {{ infrahub_token }}"
           Content-Type: "application/json"
         body: |
-          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id display_label name { value } role { label display } status { value } primary_address { address { value } } } } } }"}
+          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id name { value } role { label } status { value } } } } }"}
         body_format: json
         method: POST
         status_code: [200, 201]
@@ -38,101 +38,83 @@
       set_fact:
         devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
 
-    - name: Build filtered device list (role Router_CE_Cisco, status active, exclude IP hostnames)
+    - name: Build filtered device list (only Cisco devices, status active, exclude IP hostnames)
       vars:
         ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
       set_fact:
         device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.primary_address.address.value|default('')) , 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default('') } ] }}"
       loop: "{{ devices_raw }}"
-      when: "(item.role is defined and item.role.label == 'Router_CE_Cisco') and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
+      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower))) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
 
     - name: Expose device list for downstream tasks (device_name.msg)
       set_fact:
         device_name: "{{ {'msg': device_name_list | default([])} }}"
+    - name: Normalize device list to a simple variable
+      set_fact:
+        device_list: "{{ device_name.msg | default([]) }}"
 
-    # Retrieve device facts
-    - name: Retrieve device facts
-      ios_facts:
-      with_items:
-         - "{{ device_name.msg }}"
+    - name: Skip legacy ios_facts (incompatible) — using ios_command instead
+      ansible.builtin.debug:
+        msg: "Skipping ios_facts for {{ item.Name }}; collecting via ios_command"
+      loop: "{{ device_list }}"
       loop_control:
-        index_var: item
-      vars:
-        ansible_host: "{{ device_name.msg[item].Name }}"
+        label: "{{ item.Name }}"
 
-    # Display debug output thanks to embedded Ansible variables
-    - debug:
-        msg:
-          - "Device's name is {{ device_name.msg[item].Name }}"
-          - "Current version is {{ ansible_net_version }}"
-          - "Current Cisco binary file is {{ ansible_net_image }}"
-          - "Upgrade image is {{ upgrade_ios_version }}"
-      with_items:
-        - "{{ device_name.msg }}"
-      loop_control:
-        index_var: item
+    - name: Debug device facts results
+      ansible.builtin.debug:
+        var: device_facts_results
 
-    # Get IOSXE version with PyATS and compare it with the target version
-    - name: Get current IOSXE version
-      tags: pre-check, check-version, post-check, install
-      ios_command:
+    - name: Run 'show version' on each device
+      cisco.ios.ios_command:
         commands:
           - show version
-      register: show_version
-      with_items:
-        - "{{ device_name.msg }}"
+      loop: "{{ device_list }}"
       loop_control:
-        index_var: item
+        label: "{{ item.Name }}"
       vars:
-        ansible_host: "{{ device_name.msg[item].Name }}"
+        provider:
+          host: "{{ item.Name }}"
+          username: "{{ device_username }}"
+          password: "{{ device_password }}"
+      register: show_version
 
-    # Debug previous command registered values
     - name: Debug previous command registered values
       ansible.builtin.debug:
         var: show_version
 
-    # Get fact for the current IOSXE version with PyATS
     - name: Get fact for the current IOSXE version with PyATS
-      tags: pre-check, check-version, post-check, install
       set_fact:
-        current_xe_ver: "{{ show_version.results[item]['stdout'][0] | pyats_parser('show version', 'iosxe') }}"
-      with_items:
-        - "{{ show_version.results }}"
+        current_xe_ver: "{{ item.ansible_facts.current_xe_ver }}"
+      loop: "{{ show_version.results | default([]) }}"
       loop_control:
-        index_var: item
+        label: "{{ loop.index0 }}"
+      vars:
+        # parse stdout with pyats_parser and attach to ansible_facts for consistency
+        _parsed: "{{ item.stdout[0] | default('') | pyats_parser('show version', 'iosxe') }}"
+      when: item.stdout is defined and item.stdout | length > 0
       register: device_iosxe_version
 
-    # Debug previous command registered values
-    - name: Debug previous command registered values
+    - name: Debug parsed IOSXE versions
       ansible.builtin.debug:
         var: device_iosxe_version
 
-    # Debug message for learning purpose based on facts parsed with PyATS
-    - name: Debug parsed output for the current IOSXE version
-      debug:
-        msg: "{{ device_name.msg[item].Name }} is currently running with {{ device_iosxe_version.results[item].ansible_facts.current_xe_ver.version.xe_version }}"
-      with_together:
-        - "{{ device_name.msg }}"
-        - "{{ device_iosxe_version.results }}"
+    - name: Build filtered_info list for report
+      set_fact:
+        filtered_info_iosxe_version: "{{ filtered_info_iosxe_version | default([]) + [ { 'device': (device_list[item_index].Name if device_list[item_index] is defined else 'unknown'), 'parsed': device_iosxe_version.results[item_index].ansible_facts.current_xe_ver if (device_iosxe_version.results[item_index] is defined and device_iosxe_version.results[item_index].ansible_facts is defined) else {} } ] }}"
+      loop: "{{ range(0, (device_iosxe_version.results | length) ) | list }}"
       loop_control:
-        index_var: item
-      vars:
-        ansible_host: "{{ device_name.msg[item].Name }}"
-      register: filtered_info_iosxe_version
-
-    # Display debug output telling that software needs to be upgraded
-    - debug:
-        msg:
-        - "IOS Software on {{ device_name.msg[item].Name }} is not compliant and will be upgraded"
-      when: ansible_net_version != upgrade_ios_version
-      with_items:
-          - "{{ device_name.msg }}"
-      loop_control:
-        index_var: item
-      vars:
-        ansible_host: "{{ device_name.msg[item].Name }}"
+        index_var: item_index
 
     # Copy
+
+    - name: Ensure output directory exists on controller
+      file:
+        path: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
+        state: directory
+        mode: '0755'
+      run_once: yes
+      delegate_to: localhost
+
     - local_action:
         module: copy
         content: "{{ filtered_info_iosxe_version | to_nice_yaml }}"

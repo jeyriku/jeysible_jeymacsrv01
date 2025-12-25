@@ -2,7 +2,7 @@
 # First play - Recover VRF datas from Infrahub thanks to Rest Api Call
 - name: Retrieve datas from infrahub for context VRF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -29,7 +29,7 @@
 # Second play - Recover BGP datas from Infrahub thanks to Rest Api Call
 - name: Retrieve datas from infrahub for context BGP in VRF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -56,7 +56,7 @@
 # Third play - Recover Ifaces datas from Infrahub thanks to Rest Api Call
 - name: Retrieve datas from infrahub for context BGP & VRF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -83,7 +83,7 @@
 # Fourth play - Recover Devices datas from Infrahub thanks to Rest Api Call
 - name: Retrieve datas from infrahub for context BGP & VRF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -110,7 +110,7 @@
 # Fifth play - Parse recovered datas from Infrahub thanks to jmesquery
 - name: Configure Junos device context BGP & VRF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   tasks:
 ##### Parse recovered datas from Infrahub VRF, BGP, DCIM Apps with jmesquery

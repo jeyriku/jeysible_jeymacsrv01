@@ -1,7 +1,6 @@
 ---
-- name: Retrieve specific Device Role
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:

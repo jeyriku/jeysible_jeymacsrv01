@@ -13,8 +13,8 @@
     upgrade_ios_version: "17.10.01a"
     ansible_connection: network_cli
     ansible_network_os: ios
-    ansible_user: root
-    ansible_password: Celjer.05n
+    ansible_user: "{{ device_username }}"
+    ansible_password: "{{ device_password }}"
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
   tasks:
     # Make a Netbox API call to retrieve devices'components

@@ -1,7 +1,7 @@
 ---
 - name: Update Junos context system user
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -77,8 +77,8 @@
       vars:
         ansible_network_os: junipernetworks.junos.junos
         ansible_connection: ansible.netcommon.netconf
-        ansible_user: root
-        ansible_password: Celjer.05n
+        ansible_user: "{{ device_username }}"
+        ansible_password: "{{ device_password }}"
         ansible_host: "{{ device_name.msg[item].Name }}"
 
     - local_action:

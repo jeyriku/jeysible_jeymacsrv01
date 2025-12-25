@@ -2,7 +2,7 @@
 # First play - Recover VRF datas from Infrahub thanks to Rest Api Call
 - name: Config Junos context OSPF
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:

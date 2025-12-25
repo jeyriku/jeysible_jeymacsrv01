@@ -1,4 +1,4 @@
 ---
 # Juniper specific variables
-ansible_user: root
-ansible_password: Celjer.05n
+ansible_user: "{{ device_username }}"
+ansible_password: "{{ device_password }}"

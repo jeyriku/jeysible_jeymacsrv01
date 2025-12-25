@@ -1,6 +1,6 @@
 ---
 - name: uri module demo
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:

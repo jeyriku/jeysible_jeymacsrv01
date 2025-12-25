@@ -10,8 +10,16 @@ if [ "$#" -ne 1 ]; then
   exit 2
 fi
 DEV_FILE="$1"
-: "${TOKEN:?Environment variable TOKEN required (use Authorization: Bearer <token>)}"
-: "${ENDPOINT:?Environment variable ENDPOINT required (e.g. http://192.168.0.237:8000/graphql)}"
+# Allow using either TOKEN or INFRAHUB_API_TOKEN (convenience for local runs)
+TOKEN=${TOKEN:-${INFRAHUB_API_TOKEN:-}}
+if [ -z "$TOKEN" ]; then
+  echo "Environment variable TOKEN or INFRAHUB_API_TOKEN required (use Authorization: Bearer <token>)" >&2
+  exit 2
+fi
+
+# ENDPOINT fallback to common Infrahub address if not provided
+ENDPOINT=${ENDPOINT:-${INFRAHUB_ENDPOINT:-http://192.168.0.237:8000/graphql}}
+
 : "${PROFILE_ID:?Environment variable PROFILE_ID required (existing SNMP profile id)}"
 
 # Configurable parameters (can be exported before running)
@@ -44,16 +52,18 @@ logerr() { printf "%s\n" "$@" | tee -a "$DEBUG_LOG" >&4; }
 touch "$ATTACH_RESULTS_FILE"
 awk '/^\[OK\]/{print $2} /^\[FAIL\]/{print $2} /^\[ERROR\]/{print $2}' "$ATTACH_RESULTS_FILE" | sort -u > .processed_ids.tmp || true
 
-# Read devices into array, filter out processed
-mapfile -t all_devices < <(sed -e 's/\r$//' -e '/^\s*$/d' "$DEV_FILE")
+# Read devices into array, filter out processed (portable alternative to mapfile)
 remaining_devices=()
-for d in "${all_devices[@]}"; do
+while IFS= read -r line || [ -n "$line" ]; do
+  # strip CR and skip empty lines
+  d=$(printf "%s" "$line" | sed -e 's/\r$//')
+  [ -z "$d" ] && continue
   if grep -qxF "$d" .processed_ids.tmp; then
     log "[SKIP] $d (already processed)"
     continue
   fi
   remaining_devices+=("$d")
-done
+done < "$DEV_FILE"
 
 total=${#remaining_devices[@]}
 log "Starting attach run: ${total} devices to process (batch=${BATCH_SIZE})"
@@ -119,7 +129,7 @@ process_device() {
 }
 
 # ensure MUTATION var available (keep the GraphQL definition)
-read -r -d '' MUTATION <<'GQL'
+read -r -d '' MUTATION <<'GQL' || true
 mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!) {
   ProfileDcimDeviceUpsert(data: $data) {
     ok

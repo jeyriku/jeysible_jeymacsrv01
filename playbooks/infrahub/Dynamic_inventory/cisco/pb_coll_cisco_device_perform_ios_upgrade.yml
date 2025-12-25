@@ -1,7 +1,7 @@
 ---
 - name: Upgrade Ios on Cisco Devices
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   roles:
@@ -15,8 +15,8 @@
     tftp_server: "192.168.0.249"
     ansible_connection: network_cli
     ansible_network_os: ios
-    ansible_user: root
-    ansible_password: Celjer.05n
+    ansible_user: "{{ device_username }}"
+    ansible_password: "{{ device_password }}"
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
     previous_ios_bin: "c1100-universalk9.16.12.04.SPA.bin"
 

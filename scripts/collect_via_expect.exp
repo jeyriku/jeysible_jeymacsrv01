@@ -1,0 +1,128 @@
+#!/usr/bin/expect -f
+# Expect wrapper: handle ANSI, login prompts, wait for stable prompt and capture command output
+set timeout 120
+set host [lindex $argv 0]
+set user [lindex $argv 1]
+set pass [lindex $argv 2]
+
+# Gate debug messages with EXPECT_DEBUG=1 environment variable
+set debug_enabled 0
+if {[info exists ::env(EXPECT_DEBUG)] && $::env(EXPECT_DEBUG) == "1"} {
+  set debug_enabled 1
+}
+
+# Start ssh and prefer keyboard-interactive/password, disable pubkey checks
+spawn ssh -o PreferredAuthentications=password,keyboard-interactive -oPubkeyAuthentication=no \
+  -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oConnectTimeout=10 $user@$host
+
+# Helper to try to match and handle common prompts (case-insensitive)
+expect {
+  -re {[Aa]re you sure you want to continue connecting} {
+    send "yes\r"; exp_continue
+  }
+  -re {[Uu]ser\s*[Nn]ame:|[Uu]sername:|[Ll]ogin:|[Uu]ser[: ]+$} {
+    send "$user\r"; sleep 1; exp_continue
+  }
+  -re {[Pp]assword:} {
+    send "$pass\r"; sleep 1
+  }
+  timeout {
+    # give up on interactive login
+    exit 2
+  }
+  eof {
+    # remote closed connection
+    exit 3
+  }
+}
+
+# After authentication, try to stabilize and detect a shell prompt reliably.
+# Some devices output ANSI sequences or clear-screen before prompt; attempt a few times.
+set tries 0
+set max_tries 12
+while {$tries < $max_tries} {
+  # send a CR to provoke a prompt if needed
+  send "\r"
+  expect {
+    -re {\033\[[0-9;]*[A-Za-z].*([#>$])\s*$} {
+      # ANSI sequences before prompt
+      break
+    }
+    -re {([#>$])\s*$} {
+      break
+    }
+    -re {[Pp]assword:} {
+      # got a password prompt again (keyboard-interactive fallback)
+      send "$pass\r"
+    }
+    timeout { }
+    eof { break }
+  }
+  incr tries
+  sleep 1
+}
+
+# Small pause to ensure device finished any banner output
+sleep 1
+
+# Probe: send extra CRs and a quick marker to verify commands are executed
+if {$debug_enabled} { send_user "DEBUG: sending extra CRs\n" }
+send "\r\r"
+sleep 1
+if {$debug_enabled} { send_user "DEBUG: sending CHECK marker\n" }
+send "echo '---CHECK---'\r"
+expect {
+  -re {---CHECK---} { }
+  timeout { }
+}
+sleep 1
+
+# Diagnostic: echo HELLO and stty -a to verify execution and tty settings
+send "echo 'HELLO'\r"
+expect {
+  -re {HELLO} { }
+  timeout { }
+}
+if {$debug_enabled} { send_user "DEBUG: sending stty and STTY-END marker\n" }
+send "stty -a || true; echo '---STTY-END---'\r"
+expect {
+  -re {---STTY-END---} { }
+  timeout { }
+}
+
+# Use explicit end-of-command markers so we don't depend on shell prompt matching
+# Try network-device style collection first (disable paging and run 'show version')
+if {$debug_enabled} { send_user "DEBUG: disabling paging and running 'show version'\n" }
+send "terminal length 0\r"
+expect {
+  -re {([#>$])\s*$} { }
+  timeout { }
+}
+send "show version\r"
+expect {
+  -re {([#>$])\s*$} { }
+  timeout { }
+}
+
+# Then try uname/os-release; accept either our markers or the prompt as end-of-output
+if {$debug_enabled} { send_user "DEBUG: sending uname and END-UNAME marker\n" }
+send "uname -a; echo '---END-UNAME---'\r"
+expect {
+  -re {---END-UNAME---} { }
+  -re {([#>$])\s*$} { }
+  timeout { }
+}
+sleep 1
+
+if {$debug_enabled} { send_user "DEBUG: sending cat /etc/os-release and END-OS-RELEASE marker\n" }
+send "cat /etc/os-release 2>/dev/null || true; echo '---END-OS-RELEASE---'\r"
+expect {
+  -re {---END-OS-RELEASE---} { }
+  -re {([#>$])\s*$} { }
+  eof { }
+  timeout { }
+}
+
+# close and exit
+send "exit\r"
+expect eof

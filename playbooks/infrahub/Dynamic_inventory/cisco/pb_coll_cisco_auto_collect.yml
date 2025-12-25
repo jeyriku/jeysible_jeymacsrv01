@@ -1,0 +1,197 @@
+---
+- name: Auto-collect Cisco devices (REST if present, else network_cli show version)
+  hosts: localhost
+  gather_facts: no
+  vars:
+    endpoints:
+      - ""
+      - "api"
+      - "api/1.0/system"
+      - "rest/v1/system"
+      - "api/v1/system"
+      - "cgi-bin/status"
+      - "status"
+      - "system"
+    private_key: "/Users/jeremierouzet/.ssh/id_ed25519_jeysible"
+  tasks:
+    - name: Require `target_hosts` list
+      ansible.builtin.assert:
+        that:
+          - target_hosts is defined
+          - target_hosts | length > 0
+        fail_msg: "Provide a list of hosts via -e target_hosts=['host1','host2']"
+
+    - name: Build query list of (target,endpoint)
+      ansible.builtin.set_fact:
+        query_list: "{{ target_hosts | product(endpoints) | list }}"
+
+    - name: Check TCP 443 for each target
+      ansible.builtin.wait_for:
+        host: "{{ item }}"
+        port: 443
+        timeout: 3
+      loop: "{{ target_hosts }}"
+      loop_control:
+        loop_var: item
+      register: tcp443_results
+      failed_when: false
+
+    - name: Check TCP 80 for each target
+      ansible.builtin.wait_for:
+        host: "{{ item }}"
+        port: 80
+        timeout: 3
+      loop: "{{ target_hosts }}"
+      loop_control:
+        loop_var: item
+      register: tcp80_results
+      failed_when: false
+
+    - name: Build probe_results mapping from tcp checks
+      ansible.builtin.set_fact:
+        probe_results: >-
+          {{ probe_results | default({}) | combine({ item: { '443': (tcp443_results.results[loop_index].elapsed is defined and tcp443_results.results[loop_index].elapsed > 0) | default(false) | bool, '80': (tcp80_results.results[loop_index].elapsed is defined and tcp80_results.results[loop_index].elapsed > 0) | default(false) | bool } }) }}
+      loop: "{{ target_hosts }}"
+      loop_control:
+        index_var: loop_index
+        loop_var: item
+
+    - name: Try REST endpoints (unauthenticated) for all targets with open HTTP(S)
+      ansible.builtin.uri:
+        url: "{{ 'https://' + item.0 + (('/' + item.1) if item.1 != '' else '') }}"
+        method: GET
+        return_content: yes
+        status_code: [200,401,403]
+        validate_certs: no
+        timeout: 8
+      loop: "{{ query_list }}"
+      loop_control:
+        label: "{{ item.0 }} / {{ item.1 }}"
+      when: probe_results[item.0].443 | default(false)
+      register: unauth_results
+      failed_when: false
+
+    - name: Save unauthenticated REST 200 responses
+      when: (item.status | default(0)) == 200
+      loop: "{{ unauth_results.results | default([]) }}"
+      loop_control:
+        loop_var: item
+      ansible.builtin.copy:
+        content: "{{ item.content }}"
+        dest: "./show_version_{{ item.item.0 }}_rest_{{ item.item.1 | regex_replace('[^A-Za-z0-9_-]','_') }}.txt"
+
+    - name: Try REST endpoints with basic auth for HTTP(S)-open hosts
+      ansible.builtin.uri:
+        url: "{{ 'https://' + item.0 + (('/' + item.1) if item.1 != '' else '') }}"
+        method: GET
+        user: "{{ hostvars['localhost'].infrahub_api_tokens.device_username | default('') }}"
+        password: "{{ hostvars['localhost'].infrahub_api_tokens.device_password | default('') }}"
+        force_basic_auth: yes
+        return_content: yes
+        status_code: [200,401,403]
+        validate_certs: no
+        timeout: 8
+      loop: "{{ query_list }}"
+      loop_control:
+        label: "auth {{ item.0 }} / {{ item.1 }}"
+      when: probe_results[item.0].443 | default(false)
+      register: auth_results
+      failed_when: false
+
+    - name: Save authenticated REST 200 responses
+      when: (item.status | default(0)) == 200
+      loop: "{{ auth_results.results | default([]) }}"
+      loop_control:
+        loop_var: item
+      ansible.builtin.copy:
+        content: "{{ item.content }}"
+        dest: "./show_version_{{ item.item.0 }}_rest_auth_{{ item.item.1 | regex_replace('[^A-Za-z0-9_-]','_') }}.txt"
+
+    - name: Initialize cli_hosts list
+      ansible.builtin.set_fact:
+        cli_hosts: []
+
+    - name: Append targets needing CLI to cli_hosts
+      ansible.builtin.set_fact:
+        cli_hosts: "{{ cli_hosts + [ item ] }}"
+      loop: "{{ target_hosts }}"
+      loop_control:
+        loop_var: item
+      when: not ( (probe_results[item].443 | default(false)) or (probe_results[item].80 | default(false)) )
+
+    - name: Add CLI hosts to inventory group 'collected_cli'
+      ansible.builtin.add_host:
+        name: "{{ item }}"
+        groups: collected_cli
+        ansible_host: "{{ item }}"
+        # Catalyst 1200 and CBS220: use system ssh (non-interactive with password/keyboard-interactive)
+        ansible_connection: "{{ 'ssh' if (item | regex_search('(?i)(1200|cbs220)')) else 'network_cli' }}"
+        # only set network_os for network_cli hosts
+        ansible_network_os: "{{ 'cisco.ios.ios' if not (item | regex_search('(?i)(1200|cbs220)') ) else omit }}"
+        ansible_user: "root"
+        ansible_password: "{{ hostvars['localhost'].infrahub_api_tokens.device_password | default('') }}"
+        # prefer OpenSSH client and set SSH args per transport
+        # For SSH hosts (1200/cbs220) force password/keyboard-interactive and disable pubkey to avoid prompts
+        ansible_ssh_executable: "{{ '/usr/bin/ssh' if (item | regex_search('(?i)(1200|cbs220)')) else '/usr/bin/ssh' }}"
+        ansible_ssh_common_args: >-
+          {{ ('-o PreferredAuthentications=password,keyboard-interactive -o PubkeyAuthentication=no -o ConnectTimeout=10') if (item | regex_search('(?i)(1200|cbs220)') ) else ('-o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa -o ConnectTimeout=10') }}
+        ansible_network_timeout: 120
+        ansible_remote_tmp: "/tmp/.ansible_{{ item }}"
+        # use libssh transport for network hosts; omit for system ssh hosts
+        ansible_ssh_type: "{{ 'libssh' if not (item | regex_search('(?i)(1200|cbs220)')) else omit }}"
+      loop: "{{ cli_hosts | default([]) }}"
+
+    # key deployment removed: non-interactive collection will rely on provided credentials and libssh transport
+
+
+# Deux parcours :
+# - Hôtes 'ssh' (p.ex. CBS / Catalyst 1200) : exécuter commandes shell (uname, /etc/os-release)
+# - Hôtes 'network_cli' : exécuter `show version` via `cisco.ios.ios_command`
+
+- name: Collecte pour hôtes Linux (SSH) via le contrôleur (ssh)
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Ensure local expect script exists for controller-side SSH collection
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../../../../scripts/collect_via_expect.exp"
+        dest: "./scripts/collect_via_expect.exp"
+        mode: '0755'
+
+    - name: Run SSH command (sshpass) to collect uname + /etc/os-release
+      ansible.builtin.shell: >-
+        "{{ playbook_dir }}/../../../../scripts/collector_ssh_wrapper.sh" {{ hostvars[item].ansible_host | default(item) }} {{ hostvars['localhost'].infrahub_api_tokens.device_username | default(hostvars[item].ansible_user | default('root')) }} '{{ hostvars['localhost'].infrahub_api_tokens.device_password | default(hostvars[item].ansible_password | default('')) }}'
+      args:
+        chdir: "{{ playbook_dir }}/../../../../"
+      loop: "{{ groups['collected_cli'] | default([]) }}"
+      loop_control:
+        loop_var: item
+      when: hostvars[item].ansible_connection == 'ssh'
+
+    - name: Save Linux-host outputs to controller
+      ansible.builtin.stat:
+        path: "./show_version_{{ item }}_linux.txt"
+      register: collected_file_stat
+      loop: "{{ groups['collected_cli'] | default([]) }}"
+      loop_control:
+        loop_var: item
+      when: hostvars[item].ansible_connection == 'ssh'
+
+- name: Collecte pour hôtes Cisco réseau (network_cli)
+  hosts: collected_cli
+  gather_facts: no
+  tasks:
+    - name: Run show version (with terminal length 0)
+      cisco.ios.ios_command:
+        commands:
+          - terminal length 0
+          - show version
+      register: show
+      when: ansible_connection == 'network_cli'
+
+    - name: Write raw show_version output to controller
+      ansible.builtin.copy:
+        content: "{{ show.stdout[-1] }}"
+        dest: "./show_version_{{ inventory_hostname }}_linux.txt"
+      when: ansible_connection == 'network_cli'
+      delegate_to: localhost

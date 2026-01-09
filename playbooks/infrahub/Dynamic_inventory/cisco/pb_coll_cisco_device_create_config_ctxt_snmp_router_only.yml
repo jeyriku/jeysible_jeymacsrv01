@@ -1,13 +1,13 @@
 ---
 - name: Config Cisco context SNMP
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
     server: "http://192.168.0.237:8000"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
     # Make a Infrahub API call to retrieve devices'components
     - name: Get Device List from Infrahub
@@ -82,8 +82,8 @@
       vars:
         ansible_connection: network_cli
         ansible_network_os: ios
-        ansible_user: root
-        ansible_password: Celjer.05n
+          ansible_user: "{{ device_username }}"
+          ansible_password: "{{ device_password }}"
         ansible_host: "{{ device_name.msg[item].Name }}"
 
     - local_action:

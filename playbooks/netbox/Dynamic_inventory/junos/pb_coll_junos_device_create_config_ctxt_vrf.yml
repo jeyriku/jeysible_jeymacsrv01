@@ -8,7 +8,7 @@
   vars:
     server: "https://192.168.0.251"
     endpoint4: "/api/ipam/vrfs/?limit=5000"
-    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') | default(netbox_api_tokens.api_token, true) }}"
   tasks:
 ##### Make a Netbox API call to retrieve devices'components related to VRF
     - name: Retrieve datas from netbox for context VRF
@@ -35,7 +35,7 @@
   vars:
     server: "https://192.168.0.251"
     endpoint5: "/api/plugins/bgp/session/"
-    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') | default(netbox_api_tokens.api_token, true) }}"
   tasks:
 ##### Make a Netbox API call to retrieve devices'components related to BGP
     - name: Retrieve datas from netbox for context BGP in VRF
@@ -62,7 +62,7 @@
   vars:
     server: "https://192.168.0.251"
     endpoint2: "/api/dcim/interfaces/?limit=30000"
-    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') | default(netbox_api_tokens.api_token, true) }}"
   tasks:
 ##### Make a Netbox API call to retrieve devices'components related to dcim/ifaces
     - name: Retrieve datas from netbox for context BGP & VRF
@@ -89,7 +89,7 @@
   vars:
     server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') | default(netbox_api_tokens.api_token, true) }}"
   tasks:
 ##### Make a Netbox API call to retrieve devices'components related to dcim/devices
     - name: Retrieve datas from netbox for context BGP & VRF

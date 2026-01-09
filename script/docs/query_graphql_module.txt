@@ -1,0 +1,15 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/query_graphql_module
+
+Extraits pertinents:
+- Paramètres:
+  - api_endpoint, token, timeout
+  - query (GraphQL query as string) -> required
+  - graph_variables, branch, validate_certs
+  - update_hostvars: bool (False) — contrôle où placer les résultats
+- Exemples:
+  - Construction d'un dict `query_dict` puis usage:
+    opsmill.infrahub.query_graphql: query: "{{ query_dict }}" graph_variables: "{{ variables }}"
+- Return values:
+  - data: dict (résultat GraphQL)
+
+Remarque: utilisé pour envoyer des queries/mutations via Ansible; bon pour dry-runs et intégration dans playbooks.

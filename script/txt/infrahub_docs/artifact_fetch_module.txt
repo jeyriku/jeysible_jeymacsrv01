@@ -1,0 +1,15 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/artifact_fetch_module
+
+Extraits pertinents:
+- Paramètres:
+  - api_endpoint, token, timeout
+  - artifact_name, artifact_id, target_id, branch, validate_certs
+- Exemples:
+  - Récupération d'un artifact et sauvegarde locale:
+    opsmill.infrahub.artifact_fetch -> register startup_artifact
+    ansible.builtin.copy: content: "{{ startup_artifact.text }}"
+- Return values:
+  - json: dict (content de l'artifact en JSON)
+  - text: str (content en texte)
+
+Remarque: utile pour récupérer configs/startup files stockés dans Infrahub.

@@ -10,10 +10,10 @@
       vars:
         ansible_connection: network_cli
         ansible_network_os: ios
-        ansible_user: root
-        ansible_password: Celjer.05n
+        ansible_user: "{{ device_username }}"
+        ansible_password: "{{ device_password }}"
         ansible_become: yes
-        ansible_become_password: Celjer.05n
+        ansible_become_password: "{{ device_password }}"
         ansible_become_method: enable
       when: "'router_cisco','switch_cisco' in device_roles"
 
@@ -25,7 +25,7 @@
           - set snmp location "int.jeyriku.net, 2 allee des campagnols, Seynod, 74600, Annecy, France [45.85995, 6.0793]"
       vars:
         ansible_network_os: junipernetworks.junos.junos
-        ansible_user: root
-        ansible_password: Celjer.05n
+        ansible_user: "{{ device_username }}"
+        ansible_password: "{{ device_password }}"
         ansible_command_timeout: 120
       when: "'router_juniper','switch_juniper' in device_roles"

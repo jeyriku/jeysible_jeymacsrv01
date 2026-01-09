@@ -1,0 +1,43 @@
+# GraphQL mutation examples for SNMP SchemaDropdowns (use in opsmill.infrahub.query_graphql or curl)
+
+mutation SchemaDropdownAdd($data: SchemaDropdownAddInput!) {
+  SchemaDropdownAdd(data: $data) {
+    id
+    name
+    label
+  }
+}
+
+# Example variables for snmp_location
+{
+  "data": {
+    "name": "snmp_location_dropdown",
+    "label": "SNMP Location",
+    "values": ["datacenter1","datacenter2","edge"],
+    "branch": "test"
+  }
+}
+
+# Example variables for snmp_community
+{
+  "data": {
+    "name": "snmp_community_dropdown",
+    "label": "SNMP Community",
+    "values": ["public","private"],
+    "branch": "test"
+  }
+}
+
+# Example variables for snmp_server1
+{
+  "data": {
+    "name": "snmp_server1_dropdown",
+    "label": "SNMP Server 1",
+    "values": ["10.0.0.1","10.0.0.2"],
+    "branch": "test"
+  }
+}
+
+# Notes:
+# - Run these in branch 'test' first. Inspect responses. If OK, merge to 'main'.
+# - To call via Ansible use opsmill.infrahub.query_graphql with `query` set to the mutation and `graph_variables` to the variables JSON.

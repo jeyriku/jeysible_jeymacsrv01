@@ -1,0 +1,29 @@
+# GraphQL mutation example (SchemaDropdownAdd)
+# Use with opsmill.infrahub.query_graphql (field `query`) or via curl to the GraphQL endpoint.
+
+mutation SchemaDropdownAdd($data: SchemaDropdownAddInput!) {
+  SchemaDropdownAdd(data: $data) {
+    id
+    name
+    label
+  }
+}
+
+# Variables
+{
+  "data": {
+    "name": "snmp_location_dropdown",
+    "label": "SNMP Location",
+    "values": ["datacenter1","datacenter2","edge"],
+    "branch": "main"
+  }
+}
+
+# Example Ansible usage (opsmill.infrahub.query_graphql):
+# - opsmill.infrahub.query_graphql:
+#     api_endpoint: "http://192.168.0.237:8000/graphql"
+#     token: "{{ lookup('env','INFRAHUB_TOKEN') }}"
+#     query: "{{ lookup('file', 'script/docs/schema_payloads/schema_dropdown_graphql.txt') }}"
+#     graph_variables: "{\"data\": {\"name\":\"snmp_location_dropdown\", ...}}"
+
+# Note: run first in a non-production branch (use `branch: "test"`), inspect response, then merge to main.

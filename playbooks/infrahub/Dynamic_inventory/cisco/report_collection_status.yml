@@ -1,0 +1,61 @@
+---
+- name: Report collection status for Cisco devices
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    server: "http://192.168.0.237:8000"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
+  tasks:
+    - name: Get Device List from Infrahub (GraphQL)
+      uri:
+        url: "{{ server }}/graphql"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id name { value } role { label } status { value } } } } }"}
+        body_format: json
+        method: POST
+        status_code: [200, 201]
+        timeout: 60
+        validate_certs: false
+        return_content: true
+      register: infrahub_devices
+
+    - name: Extract nodes
+      set_fact:
+        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
+
+    - name: Build filtered device list (only Cisco manufacturer, exclude local names)
+      vars:
+        ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
+      set_fact:
+        device_list: "{{ device_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': '', 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default(''), 'manufacturer': '' } ] }}"
+      loop: "{{ devices_raw }}"
+      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower)) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value | lower) not in ['localhost','infrahub'])"
+
+    - name: Compute target_host
+      set_fact:
+        device_list2: "{{ device_list2 | default([]) + [ item | combine({'target_host': (((item.IP|default('')|trim)|length > 0) and item.IP or item.Name) }) ] }}"
+      loop: "{{ device_list }}"
+
+    - name: Optionally filter by only_target
+      set_fact:
+        device_list2: "{{ device_list2 | selectattr('target_host','equalto', only_target) | list }}"
+      when: only_target is defined
+
+    - name: Stat saved show_version files
+      stat:
+        path: "./show_version_{{ item.target_host }}.txt"
+      loop: "{{ device_list2 }}"
+      register: stat_results
+
+    - name: Write collection status report
+      copy:
+        content: "{{ stat_results.results | to_nice_json }}"
+        dest: ./collection_status_{{ lookup('pipe','date +%Y%m%dT%H%M%S') }}.json
+
+    - name: Debug summary
+      debug:
+        msg: "Wrote collection status report"

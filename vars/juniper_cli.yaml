@@ -1,6 +1,6 @@
 ---
 # Juniper specific variables
 connection: ansible.netcommon.network_cli
-ansible_user: root
-ansible_password: Celjer.05n
+ansible_user: "{{ device_username }}"
+ansible_password: "{{ device_password }}"
 ansible_network_os: junipernetworks.junos.junos

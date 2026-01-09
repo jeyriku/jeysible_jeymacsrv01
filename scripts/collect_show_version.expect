@@ -1,0 +1,53 @@
+#!/usr/bin/expect -f
+# collect_show_version.expect
+# Usage: collect_show_version.expect <host> <user> <password>
+
+set timeout 30
+if {$argc < 3} {
+  puts "Usage: $argv0 host user password"
+  exit 2
+}
+
+set host [lindex $argv 0]
+set user [lindex $argv 1]
+set pass [lindex $argv 2]
+
+set options "-o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group14-sha1 -o Ciphers=+aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc -o StrictHostKeyChecking=no"
+
+log_user 1
+
+eval spawn ssh -tt $options $user@$host
+
+expect {
+  -re "Are you sure you want to continue connecting.*" {
+    send "yes\r"
+    exp_continue
+  }
+  -re "([Pp]assword:|assword for .*:)"] {
+    send "$pass\r"
+  }
+  timeout {
+    puts "ERROR: timeout waiting for password or host key prompt"
+    exit 3
+  }
+}
+
+# wait for device prompt, then run commands
+expect {
+  -re {[#>%]\s*$} {}
+  timeout {}
+}
+
+send "terminal length 0\r"
+expect -re {[#>%]\s*$}
+send "show version\r"
+
+# wait until prompt or EOF (collect output)
+expect {
+  -re {[#>%]\s*$} { send "exit\r" }
+  eof {}
+  timeout {}
+}
+
+expect eof
+exit 0

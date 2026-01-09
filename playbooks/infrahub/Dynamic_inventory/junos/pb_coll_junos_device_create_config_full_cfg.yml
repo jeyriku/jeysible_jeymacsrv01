@@ -1,7 +1,5 @@
 ---
-- name: Create Config from infrahub Data
-  gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
@@ -10,7 +8,7 @@
     endpoint2: "/api/dcim/interfaces/?limit=30000"
     endpoint3: "/api/ipam/ip-addresses/?limit=5000"
     endpoint4: "/api/ipam/vrfs/?limit=5000"
-    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
     # Make a Infrahub API call to retrieve devices'components
     - name: Get Device List from Infrahub

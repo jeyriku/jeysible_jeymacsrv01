@@ -1,0 +1,15 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/node_module
+
+Extraits pertinents:
+- Paramètres:
+  - api_endpoint, token, timeout
+  - kind (str) -> Kind of node to create (e.g., BuiltinTag, SchemaDropdown, etc.)
+  - data (raw) -> dict of node attributes
+  - branch, validate_certs, state (present|absent)
+- Exemples:
+  - opsmill.infrahub.node: kind: "BuiltinTag" data: name: "tag1" state: present
+- Return values:
+  - object: dict (node créé ou existant)
+  - msg: str
+
+Remarque: ce module permet de créer/mettre à jour des nœuds directement (utile pour Schema* nodes si supportés).

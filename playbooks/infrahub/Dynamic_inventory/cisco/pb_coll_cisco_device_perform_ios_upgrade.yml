@@ -1,7 +1,7 @@
 ---
 - name: Upgrade Ios on Cisco Devices
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   roles:
@@ -9,14 +9,14 @@
   vars:
     server: "http://192.168.0.237:8000"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
     upgrade_ios_version: "17.08.01a"
     tftp_path: "netos/tftp/cisco/router/c1100"
     tftp_server: "192.168.0.249"
     ansible_connection: network_cli
     ansible_network_os: ios
-    ansible_user: root
-    ansible_password: Celjer.05n
+    ansible_user: "{{ device_username }}"
+    ansible_password: "{{ device_password }}"
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
     previous_ios_bin: "c1100-universalk9.16.12.04.SPA.bin"
 

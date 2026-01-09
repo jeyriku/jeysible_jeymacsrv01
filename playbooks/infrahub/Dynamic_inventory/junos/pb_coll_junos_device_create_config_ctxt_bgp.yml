@@ -2,13 +2,13 @@
 # First play - Recover DCIM/Devices datas from Infrahub thanks to Rest Api Call
 - name: Config Junos context BGP
   gather_facts: no
-  hosts: all
+  hosts: infrahub
   connection: local
   become: false
   vars:
     server: "http://192.168.0.237:8000"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
 ##### Make a Infrahub API call to retrieve devices'components related to dcim/devices
     - name: Get Device List from Infrahub

@@ -1,0 +1,78 @@
+---
+- name: Collect info from Linux-based / REST-capable Cisco devices
+  hosts: localhost
+  gather_facts: no
+  vars:
+    endpoints:
+      - ""
+      - "api"
+      - "api/1.0/system"
+      - "rest/v1/system"
+      - "api/v1/system"
+      - "cgi-bin/status"
+      - "status"
+      - "system"
+  tasks:
+    - name: Require `target_hosts` list
+      ansible.builtin.assert:
+        that:
+          - target_hosts is defined
+          - target_hosts | length > 0
+        fail_msg: "Provide a list of hosts via -e target_hosts=['host1','host2']"
+
+    - name: Build query list (target, endpoint) pairs
+      ansible.builtin.set_fact:
+        query_list: "{{ target_hosts | product(endpoints) | list }}"
+
+    - name: Try unauthenticated endpoints for all targets
+      ansible.builtin.uri:
+        url: "{{ 'https://' + item.0 + (('/' + item.1) if item.1 != '' else '') }}"
+        method: GET
+        return_content: yes
+        status_code: [200,401,403]
+        validate_certs: no
+        timeout: 8
+      loop: "{{ query_list }}"
+      loop_control:
+        label: "{{ item.0 }} / {{ item.1 }}"
+      register: unauth_results
+      failed_when: false
+
+    - name: Save unauthenticated results with HTTP 200
+      when: item.status == 200
+      loop: "{{ unauth_results.results }}"
+      loop_control:
+        loop_var: item
+      ansible.builtin.copy:
+        content: "{{ item.content }}"
+        dest: "./show_version_{{ item.item.0 }}_rest_{{ item.item.1 | regex_replace('[^A-Za-z0-9_-]','_') }}.txt"
+
+    - name: Try basic-auth endpoints for all targets
+      ansible.builtin.uri:
+        url: "{{ 'https://' + item.0 + (('/' + item.1) if item.1 != '' else '') }}"
+        method: GET
+        user: "{{ hostvars['localhost'].infrahub_api_tokens.device_username | default('') }}"
+        password: "{{ hostvars['localhost'].infrahub_api_tokens.device_password | default('') }}"
+        force_basic_auth: yes
+        return_content: yes
+        status_code: [200,401,403]
+        validate_certs: no
+        timeout: 8
+      loop: "{{ query_list }}"
+      loop_control:
+        label: "auth {{ item.0 }} / {{ item.1 }}"
+      register: auth_results
+      failed_when: false
+
+    - name: Save auth results with HTTP 200
+      when: item.status == 200
+      loop: "{{ auth_results.results }}"
+      loop_control:
+        loop_var: item
+      ansible.builtin.copy:
+        content: "{{ item.content }}"
+        dest: "./show_version_{{ item.item.0 }}_rest_auth_{{ item.item.1 | regex_replace('[^A-Za-z0-9_-]','_') }}.txt"
+
+    - name: Debug summary of results
+      ansible.builtin.debug:
+        msg: "REST collect finished; rest_found_map={{ rest_found_map | default({}) }}"

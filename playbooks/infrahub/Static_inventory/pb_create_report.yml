@@ -1,6 +1,6 @@
 ---
 - name: Create Report From Infrahub Data
-  hosts: all
+  hosts: infrahub
   gather_facts: no
   connection: local
   vars_files:

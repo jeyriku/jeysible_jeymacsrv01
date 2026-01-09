@@ -1,0 +1,145 @@
+---
+- name: Prepare device entry for test
+  hosts: localhost
+  connection: local
+  ---
+  - name: Prepare device entry for test
+    hosts: localhost
+    connection: local
+    gather_facts: false
+    tasks:
+      - name: Load vaulted infrahub credentials
+        include_vars:
+          file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+
+      - name: Debug check device_username
+        debug:
+          msg: "device_username in vars? {{ ('device_username' in hostvars['localhost']) | string }}"
+
+      - name: Debug check device_password
+        debug:
+          msg: "device_password in vars? {{ ('device_password' in hostvars['localhost']) | string }}"
+
+      - name: Debug check infrahub dict
+        debug:
+          msg: "infrahub in vars? {{ ('infrahub' in hostvars['localhost']) | string }}"
+
+      - name: Add device to in-memory inventory
+        add_host:
+          name: 192.168.0.61
+          ansible_host: 192.168.0.61
+          ansible_connection: network_cli
+          ansible_network_os: cisco.ios
+
+  - name: Run show version on single device jey-c2960-sw-01
+    hosts: 192.168.0.61
+    gather_facts: false
+    tasks:
+      - name: Run show version via cisco.ios.ios_command
+        cisco.ios.ios_command:
+          commands:
+            - show version
+        vars:
+          provider:
+            host: 192.168.0.61
+            username: "{{ device_username }}"
+            password: "{{ device_password }}"
+            transport: network_cli
+            port: 22
+            look_for_keys: false
+            allow_agent: false
+        register: show_version
+
+      - name: Show result
+        debug:
+          var: show_version
+  tasks:
+    - name: Load vaulted infrahub credentials
+      include_vars:
+        file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+
+    - name: Debug check common credential variable names
+      debug:
+        msg: "device_username in vars? {{ ('device_username' in hostvars['localhost']) | string }}"
+
+    - name: Debug check device_password presence
+      debug:
+        msg: "device_password in vars? {{ ('device_password' in hostvars['localhost']) | string }}"
+
+    - name: Debug check infrahub dict presence
+      debug:
+        msg: "infrahub in vars? {{ ('infrahub' in hostvars['localhost']) | string }}"
+
+    - name: Add device to in-memory inventory
+      add_host:
+        name: 192.168.0.61
+        ansible_host: 192.168.0.61
+        ansible_connection: network_cli
+        ansible_network_os: cisco.ios
+
+- name: Run show version on single device jey-c2960-sw-01
+  hosts: 192.168.0.61
+  gather_facts: no
+  tasks:
+    - name: Run show version via cisco.ios.ios_command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      vars:
+        provider:
+          host: 192.168.0.61
+          username: "{{ device_username }}"
+          password: "{{ device_password }}"
+          transport: network_cli
+          port: 22
+          look_for_keys: false
+          allow_agent: false
+      register: show_version
+
+    ---
+    - name: Prepare device entry for test
+      hosts: localhost
+      connection: local
+      gather_facts: false
+      tasks:
+        - name: Load vaulted infrahub credentials
+          include_vars:
+            file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+
+        - name: Capture loaded variable keys
+          set_fact:
+            loaded_keys: "{{ hostvars['localhost'] | dict2items | map(attribute='key') | list }}"
+
+        - name: Debug: show candidate loaded var keys
+          debug:
+            var: loaded_keys
+
+        - name: Add device to in-memory inventory
+          add_host:
+            name: 192.168.0.61
+            ansible_host: 192.168.0.61
+            ansible_connection: network_cli
+            ansible_network_os: cisco.ios
+
+    - name: Run show version on single device jey-c2960-sw-01
+      hosts: 192.168.0.61
+      gather_facts: false
+      tasks:
+        - name: Run show version via cisco.ios.ios_command
+          cisco.ios.ios_command:
+            commands:
+              - show version
+          vars:
+            provider:
+              host: 192.168.0.61
+              username: "{{ device_username }}"
+              password: "{{ device_password }}"
+              transport: network_cli
+              port: 22
+              look_for_keys: false
+              allow_agent: false
+          register: show_version
+
+        - name: Show result
+          debug:
+            var: show_version

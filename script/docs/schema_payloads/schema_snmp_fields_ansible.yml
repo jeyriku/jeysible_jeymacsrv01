@@ -1,0 +1,95 @@
+---
+- name: Create SNMP SchemaDropdowns (dry-run on branch 'test')
+  hosts: localhost
+  gather_facts: false
+  vars:
+    infrahub_endpoint: "http://192.168.0.237:8000/graphql"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') }}"
+    branch: "test"
+    # Adjust values arrays as needed before running
+    snmp_location_values:
+      - datacenter1
+      - datacenter2
+      - edge
+    snmp_community_values:
+      - public
+      - private
+    snmp_server1_values:
+      - 10.0.0.1
+      - 10.0.0.2
+    snmp_server2_values: []
+    snmp_server3_values: []
+  tasks:
+    - name: Create snmp_location_dropdown
+      opsmill.infrahub.node:
+        api_endpoint: "{{ infrahub_endpoint }}"
+        token: "{{ infrahub_token }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_location_dropdown"
+          label: "SNMP Location"
+          values: "{{ snmp_location_values }}"
+          branch: "{{ branch }}"
+        state: present
+      register: snmp_location_result
+
+    - name: Create snmp_community_dropdown
+      opsmill.infrahub.node:
+        api_endpoint: "{{ infrahub_endpoint }}"
+        token: "{{ infrahub_token }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_community_dropdown"
+          label: "SNMP Community"
+          values: "{{ snmp_community_values }}"
+          branch: "{{ branch }}"
+        state: present
+      register: snmp_community_result
+
+    - name: Create snmp_server1_dropdown
+      opsmill.infrahub.node:
+        api_endpoint: "{{ infrahub_endpoint }}"
+        token: "{{ infrahub_token }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_server1_dropdown"
+          label: "SNMP Server 1"
+          values: "{{ snmp_server1_values }}"
+          branch: "{{ branch }}"
+        state: present
+      register: snmp_server1_result
+
+    - name: Create snmp_server2_dropdown
+      opsmill.infrahub.node:
+        api_endpoint: "{{ infrahub_endpoint }}"
+        token: "{{ infrahub_token }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_server2_dropdown"
+          label: "SNMP Server 2"
+          values: "{{ snmp_server2_values }}"
+          branch: "{{ branch }}"
+        state: present
+      register: snmp_server2_result
+
+    - name: Create snmp_server3_dropdown
+      opsmill.infrahub.node:
+        api_endpoint: "{{ infrahub_endpoint }}"
+        token: "{{ infrahub_token }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_server3_dropdown"
+          label: "SNMP Server 3"
+          values: "{{ snmp_server3_values }}"
+          branch: "{{ branch }}"
+        state: present
+      register: snmp_server3_result
+
+    - name: Print results
+      ansible.builtin.debug:
+        msg:
+          - snmp_location: "{{ snmp_location_result }}"
+          - snmp_community: "{{ snmp_community_result }}"
+          - snmp_server1: "{{ snmp_server1_result }}"
+          - snmp_server2: "{{ snmp_server2_result }}"
+          - snmp_server3: "{{ snmp_server3_result }}"

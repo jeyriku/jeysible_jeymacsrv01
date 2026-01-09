@@ -4,11 +4,16 @@ lib/
 lib64/
 include/
 pyvenv.cfg
+venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
+
+# Submodules et dépendances externes
+pylibssh/
+sshpass*/
 
 # macOS
 .DS_Store

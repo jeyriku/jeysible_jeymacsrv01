@@ -69,13 +69,13 @@
 
     - name: Generate Cisco Config Directory
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
     - name: Generate Cisco Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ Switch_Cisco.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Switch_Cisco.msg[item].Name }}.cfg"
       loop: "{{ Switch_Cisco.msg }}"
       loop_control:
         index_var: item
@@ -83,7 +83,7 @@
 
     - name: Generate Cisco Facts from previous generated config file
       set_fact:
-        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/cisco/{{ Switch_Cisco.msg[item].Name }}.cfg') }}"
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Switch_Cisco.msg[item].Name }}.cfg') }}"
       with_items:
          - "{{ Switch_Cisco.msg }}"
       loop: "{{ Switch_Cisco.msg }}"
@@ -92,8 +92,8 @@
 
     - name: Generate Cisco Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ Router_CE_Cisco.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Router_CE_Cisco.msg[item].Name }}.cfg"
       loop: "{{ Router_CE_Cisco.msg }}"
       loop_control:
         index_var: item
@@ -101,7 +101,7 @@
 
     - name: Generate Facts from previous generated config file
       set_fact:
-        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/cisco/{{ Router_CE_Cisco.msg[item].Name }}.cfg') }}"
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Router_CE_Cisco.msg[item].Name }}.cfg') }}"
       with_items:
          - "{{ Router_CE_Cisco.msg }}"
       loop: "{{ Router_CE_Cisco.msg }}"
@@ -110,8 +110,8 @@
 
     - name: Generate Cisco Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ Router_PE_Cisco.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Router_PE_Cisco.msg[item].Name }}.cfg"
       loop: "{{ Router_PE_Cisco.msg }}"
       loop_control:
         index_var: item
@@ -119,7 +119,7 @@
 
     - name: Generate Facts from previous generated config file
       set_fact:
-        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/cisco/{{ Router_PE_Cisco.msg[item].Name }}.cfg') }}"
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ Router_PE_Cisco.msg[item].Name }}.cfg') }}"
       with_items:
          - "{{ Router_PE_Cisco.msg }}"
       loop: "{{ Router_PE_Cisco.msg }}"
@@ -132,11 +132,11 @@
 
     - name: Push command to devices
       cisco.ios.ios_config:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
         backup: yes
         backup_options:
           filename: "{{ device_name.msg[item].Name }}.cfg"
-          dir_path: /Users/jeremierouzet/jeysible/config/cisco/backup
+          dir_path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/backup
         save_when: "modified"
       with_items:
          - "{{ device_name.msg }}"
@@ -152,9 +152,9 @@
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.yml
 
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_snmp/config_ctxt_snmp_device_name.json

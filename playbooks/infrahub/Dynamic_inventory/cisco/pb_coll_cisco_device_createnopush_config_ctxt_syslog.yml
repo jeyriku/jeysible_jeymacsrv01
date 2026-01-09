@@ -41,13 +41,13 @@
 
     - name: Generate Cisco Config Directory
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
     - name: Generate Cisco Config from Jinja2 & Infrahub - Cisco_Devices
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/cisco/{{ ciscodevices.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/cisco/common/v2/common_cisco_ctxt_syslog_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ ciscodevices.msg[item].Name }}.cfg"
       loop: "{{ ciscodevices.msg }}"
       loop_control:
         index_var: item
@@ -55,7 +55,7 @@
 
     - name: Generate Cisco Facts from previous generated config file
       set_fact:
-        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/jeysible/config/cisco/{{ ciscodevices.msg[item].Name }}.cfg') }}"
+        command_to_push: "{{ lookup('file', '/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/cisco/{{ ciscodevices.msg[item].Name }}.cfg') }}"
       with_items:
          - "{{ ciscodevices.msg }}"
       loop: "{{ ciscodevices.msg }}"
@@ -69,9 +69,9 @@
     - local_action:
         module: copy
         content: "{{ ciscodevices | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_syslog/config_ctxt_syslog_device_name.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_syslog/config_ctxt_syslog_device_name.yml
 
     - local_action:
         module: copy
         content: "{{ ciscodevices | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_syslog/config_ctxt_syslog_device_name.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/config_ctxt_syslog/config_ctxt_syslog_device_name.json

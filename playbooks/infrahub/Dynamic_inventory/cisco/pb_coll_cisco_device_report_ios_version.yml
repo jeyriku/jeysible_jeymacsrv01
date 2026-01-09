@@ -122,13 +122,13 @@
   tasks:
     - name: Ensure reports directory exists on controller
       file:
-        path: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
         state: directory
         mode: '0755'
 
     - name: Parse saved show_version files with PyATS parser
       shell: |
-        {{ playbook_dir }}/../../../../bin/python {{ playbook_dir }}/../../../../scripts/parse_show_version_pyats.py ./show_version_{{ item.target_host }}.txt /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/show_version_{{ item.target_host }}
+        {{ playbook_dir }}/../../../../bin/python {{ playbook_dir }}/../../../../scripts/parse_show_version_pyats.py ./show_version_{{ item.target_host }}.txt /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/show_version_{{ item.target_host }}
       register: parser_result
       changed_when: false
       loop: >-
@@ -152,7 +152,7 @@
 
     - name: Ensure output directory exists on controller
       file:
-        path: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
         state: directory
         mode: '0755'
       run_once: yes
@@ -161,11 +161,11 @@
     - local_action:
         module: copy
         content: "{{ filtered_info_iosxe_version | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.yml
       when: filtered_info_iosxe_version is defined
 
     - local_action:
         module: copy
         content: "{{ filtered_info_iosxe_version | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.json
       when: filtered_info_iosxe_version is defined

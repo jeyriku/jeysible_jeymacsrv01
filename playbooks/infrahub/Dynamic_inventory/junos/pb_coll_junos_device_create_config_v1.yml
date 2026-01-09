@@ -46,7 +46,7 @@
       gather_facts: no
       tasks:
         - name: Create Config Directory
-          file: path=/Users/jeremierouzet/jeysible/config state=directory
+          file: path=/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config state=directory
 
     - name: Generate Junos Config from Jinja2 & Infrahub
       hosts: jeyniper07
@@ -54,6 +54,6 @@
       tasks:
         - name: Generate Juniper Full Config
           template:
-            src: "/Users/jeremierouzet/jeysible/templates/router_juniper_full_cfg.j2"
-            dest: "/Users/jeremierouzet/jeysible/config/{{inventory_hostname}}.cfg"
+            src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/router_juniper_full_cfg.j2"
+            dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/{{inventory_hostname}}.cfg"
           delegate_to: localhost

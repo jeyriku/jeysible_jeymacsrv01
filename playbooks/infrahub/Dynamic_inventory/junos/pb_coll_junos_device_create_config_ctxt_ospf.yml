@@ -46,24 +46,24 @@
     - local_action:
         module: copy
         content: "{{ iface_name | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ospf/config_ctxt_ospf_iface_name.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ospf/config_ctxt_ospf_iface_name.yml
 
     - local_action:
         module: copy
         content: "{{ iface_name | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ospf/config_ctxt_ospf_iface_name.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ospf/config_ctxt_ospf_iface_name.json
 
 ##### Generate Junos Config Directory
     - name: Generate Junos Config Directory
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
 ##### Render Junos Config thanks to Jinja2 Template
     - name: Generate Junos Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_ospf_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ iface_name.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/juniper/router/v2/router_juniper_ctxt_ospf_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/juniper/{{ iface_name.msg[item].Name }}.cfg"
       loop: "{{ iface_name.msg }}"
       loop_control:
         index_var: item

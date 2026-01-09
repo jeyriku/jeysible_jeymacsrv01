@@ -75,42 +75,42 @@
     - local_action:
         module: copy
         content: "{{ infrahub_devices | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_devices_create_v2.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_devices_create_v2.yml
 
     - local_action:
         module: copy
         content: "{{ infrahub_devices | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_devices_create_v2.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_devices_create_v2.json
 
     - local_action:
         module: copy
         content: "{{ infrahub_ifaces | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_ifaces_create_v2.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_ifaces_create_v2.yml
 
     - local_action:
         module: copy
         content: "{{ infrahub_ifaces | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_ifaces_create_v2.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_ifaces_create_v2.json
 
     - local_action:
         module: copy
         content: "{{ infrahub_ipaddr | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_ipaddr_create_v2.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_ipaddr_create_v2.yml
 
     - local_action:
         module: copy
         content: "{{ infrahub_ipaddr | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_ipaddr_create_v2.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_ipaddr_create_v2.json
 
     - local_action:
         module: copy
         content: "{{ infrahub_vrfs | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_vrfs_create_v2.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_vrfs_create_v2.yml
 
     - local_action:
         module: copy
         content: "{{ infrahub_vrfs | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/infrahub_vrfs_create_v2.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/infrahub_vrfs_create_v2.json
 
     - name: setDeviceName
       ansible.builtin.debug:
@@ -123,11 +123,11 @@
 
     - name: Generate Junos Config from Jinja2
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
     - name: Generate Junos Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/router_juniper_full_cfg.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/{{ device_name.msg[0] }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/juniper/router/router_juniper_full_cfg.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/{{ device_name.msg[0] }}.cfg"
       delegate_to: localhost

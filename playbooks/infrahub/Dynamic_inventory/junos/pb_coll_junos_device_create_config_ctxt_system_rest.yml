@@ -41,13 +41,13 @@
 
     - name: Generate Junos Config Directory
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
     - name: Generate Junos Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_system_rest_v1.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/{{ device_name.msg[item].Name }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/juniper/router/v2/router_juniper_ctxt_system_rest_v1.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/{{ device_name.msg[item].Name }}.cfg"
       loop: "{{ device_name.msg }}"
       loop_control:
         index_var: item
@@ -56,9 +56,9 @@
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.yml
 
     - local_action:
         module: copy
         content: "{{ device_name | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/config_ctxt_system_rest/config_ctxt_system_rest_device_name.json

@@ -79,34 +79,34 @@
     - local_action:
         module: copy
         content: "{{ device_ifaces | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ifaces.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ifaces.yml
 
     - local_action:
         module: copy
         content: "{{ device_ipaddr | to_nice_yaml }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ipaddr.yml
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ipaddr.yml
 
     - local_action:
         module: copy
         content: "{{ device_ifaces | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ifaces.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ifaces.json
 
     - local_action:
         module: copy
         content: "{{ device_ipaddr | to_nice_json }}"
-        dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ipaddr.json
+        dest: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output/juniper/router/config_ctxt_ifaces/config_ctxt_ifaces_device_ipaddr.json
 
 ##### Generate Junos Config Directory
     - name: Generate Junos Config from Jinja2
       ansible.builtin.file:
-        path: /Users/jeremierouzet/jeysible/config
+        path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config
         state: directory
 
 ##### Render Junos Config thanks to Jinja2 Template
     - name: Generate Junos Config from Jinja2 & Infrahub
       template:
-        src: "/Users/jeremierouzet/jeysible/templates/juniper/router/v2/router_juniper_ctxt_ifaces_v2.j2"
-        dest: "/Users/jeremierouzet/jeysible/config/juniper/{{ device_ifaces.msg[item].device }}.cfg"
+        src: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/templates/juniper/router/v2/router_juniper_ctxt_ifaces_v2.j2"
+        dest: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/config/juniper/{{ device_ifaces.msg[item].device }}.cfg"
       loop: "{{ device_ifaces.msg }}"
       loop_control:
         index_var: item

@@ -1,0 +1,14 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/branch_module
+
+Extraits pertinents:
+- Paramètres:
+  - name (str) -> Nom de la branche
+  - sync_with_git (bool), description, validate_certs
+  - state: present|absent
+- Exemples:
+  - Création suppression de branche via opsmill.infrahub.branch
+- Return values:
+  - object: dict (branche créée ou existante)
+  - msg: str
+
+Remarque: utile pour créer des branches pour modifications schema ou tests.

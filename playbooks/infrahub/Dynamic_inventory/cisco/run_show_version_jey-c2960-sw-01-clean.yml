@@ -1,0 +1,72 @@
+---
+- name: Prepare device entry for test
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Load vaulted infrahub credentials
+      include_vars:
+        file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+
+    - name: Debug check device_username
+      debug:
+        msg: "device_username in vars? {{ ('device_username' in hostvars['localhost']) | string }}"
+
+    - name: Capture candidate var keys
+      set_fact:
+        candidate_keys: "{{ hostvars['localhost'] | dict2items | map(attribute='key') | list }}"
+
+    - name: Debug candidate keys
+      debug:
+        var: candidate_keys
+
+    - name: Debug infrahub_api_tokens structure
+      debug:
+        msg: "infrahub_api_tokens keys: {{ (infrahub_api_tokens | default({})) | dict2items | map(attribute='key') | list }}"
+
+    - name: "Debug: is device_username non-empty"
+      debug:
+        msg: "device_username length: {{ (infrahub_api_tokens.device_username | default('')) | length }}"
+
+    - name: "Debug: is device_password non-empty"
+      debug:
+        msg: "device_password length: {{ (infrahub_api_tokens.device_password | default('')) | length }}"
+
+    - name: Debug check device_password
+      debug:
+        msg: "device_password in vars? {{ ('device_password' in hostvars['localhost']) | string }}"
+
+    - name: Debug check infrahub dict
+      debug:
+        msg: "infrahub in vars? {{ ('infrahub' in hostvars['localhost']) | string }}"
+
+    - name: Add device to in-memory inventory
+      add_host:
+        name: 192.168.0.61
+        ansible_host: 192.168.0.61
+        ansible_connection: network_cli
+        ansible_network_os: ios
+        ansible_user: "{{ hostvars['localhost'].infrahub_api_tokens.device_username }}"
+        ansible_password: "{{ hostvars['localhost'].infrahub_api_tokens.device_password }}"
+
+- name: Run show version on single device jey-c2960-sw-01
+  hosts: 192.168.0.61
+  gather_facts: false
+  vars:
+    target_host: 192.168.0.61
+  tasks:
+    - name: Run show version via network module (cisco.ios.ios_command)
+      cisco.ios.ios_command:
+        commands:
+          - terminal length 0
+          - show version
+      register: show_version
+
+    - name: Save show_version stdout to file on controller
+      copy:
+        content: "{{ show_version.stdout[1] | default('') }}\n"
+        dest: "./show_version_{{ inventory_hostname }}.txt"
+
+    - name: Debug show_version
+      debug:
+        var: show_version

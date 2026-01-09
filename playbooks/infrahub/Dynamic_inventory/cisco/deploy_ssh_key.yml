@@ -1,0 +1,92 @@
+---
+- name: Deploy SSH public key to Cisco devices (using vault creds)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    server: "http://192.168.0.237:8000"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
+  tasks:
+    - name: Load vaulted infrahub credentials
+      include_vars:
+        file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+
+    - name: Read public key
+      set_fact:
+        public_key: "{{ lookup('file', '~/.ssh/id_ed25519_jeysible.pub') }}"
+      run_once: true
+
+    - name: Get Device List from Infrahub (GraphQL)
+      uri:
+        url: "{{ server }}/graphql"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id name { value } role { label } status { value } } } } }"}
+        body_format: json
+        method: POST
+        status_code: [200,201]
+        timeout: 60
+        validate_certs: false
+        return_content: yes
+      register: infrahub_devices
+
+    - name: Extract nodes
+      set_fact:
+        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
+
+    - name: Build filtered device list (only Cisco manufacturer, exclude local names)
+      vars:
+        ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
+      set_fact:
+        device_list: "{{ device_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': '', 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default(''), 'manufacturer': '' } ] }}"
+      loop: "{{ devices_raw }}"
+      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower)) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value | lower) not in ['localhost','infrahub'])"
+
+    - name: Compute target_host
+      set_fact:
+        device_list2: "{{ device_list2 | default([]) + [ item | combine({'target_host': (((item.IP|default('')|trim)|length > 0) and item.IP or item.Name) }) ] }}"
+      loop: "{{ device_list }}"
+
+    - name: Add devices to in-memory inventory (set connection vars)
+      add_host:
+        name: "{{ item.target_host }}"
+        groups: collected_cisco
+        ansible_host: "{{ item.target_host }}"
+        ansible_connection: network_cli
+        ansible_network_os: ios
+        ansible_user: "{{ (item.device_username | default(hostvars['localhost'].infrahub_api_tokens.device_username)) }}"
+        ansible_password: "{{ (item.device_password | default(hostvars['localhost'].infrahub_api_tokens.device_password)) }}"
+        # ensure legacy devices offering only 'ssh-rsa' hostkey are accepted by the controller
+        ansible_ssh_common_args: "-o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa -o ConnectTimeout=10"
+        # prefer libssh transport for all targets (helps avoid OpenSSH interactive prompts)
+        ansible_ssh_type: "libssh"
+        ansible_network_timeout: 120
+      loop: "{{ device_list2 }}"
+      loop_control:
+        label: "{{ item.Name }}"
+
+- name: Install SSH public key on collected Cisco devices
+  hosts: collected_cisco
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Push public key via ios_config
+      cisco.ios.ios_config:
+        parents:
+          - ip ssh pubkey-chain
+          - "username {{ ansible_user }}"
+        lines:
+          - "key-string {{ hostvars['localhost'].public_key }}"
+      register: key_push
+
+    - name: Show pubkey chain (verify)
+      cisco.ios.ios_command:
+        commands:
+          - show ip ssh pubkey-chain
+      register: verify
+
+    - name: Debug verify
+      debug:
+        var: verify.stdout

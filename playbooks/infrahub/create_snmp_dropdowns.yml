@@ -1,0 +1,60 @@
+---
+- name: Create SNMP Schema Dropdowns
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    infrahub_server: "http://192.168.0.237:8000"
+    infrahub_token: "{{ lookup('env','INFRAHUB_API_TOKEN') }}"
+    snmp_attrs:
+      - snmp_location
+      - snmp_community
+      - snmp_server1
+      - snmp_server2
+      - snmp_server3
+      - snmp_server4
+    kind_candidates:
+      - ProfileDcimDevice
+      - Profile
+      - DcimDevice
+      - Device
+  tasks:
+    - name: Fail if token not provided
+      ansible.builtin.fail:
+        msg: "Set INFRAHUB_API_TOKEN in environment before running this playbook"
+      when: infrahub_token is not defined or infrahub_token == ''
+
+    - name: Attempt to create SchemaDropdowns for each SNMP attribute
+      shell: |
+        set -euo pipefail
+        SERVER="{{ infrahub_server }}"
+        TOKEN="{{ infrahub_token }}"
+        attrs=( {{ snmp_attrs | join(' ') }} )
+        kinds=( {{ kind_candidates | join(' ') }} )
+        for attr in "${attrs[@]}"; do
+          dropdown_name="dropdown_${attr}"
+          echo "Creating dropdown for $attr as $dropdown_name"
+          success=0
+          for k in "${kinds[@]}"; do
+            # use correct selection: SchemaDropdownAdd returns { ok, object: DropdownFields }
+            payload=$(jq -n --arg kind "$k" --arg attribute "$attr" --arg dropdown "$dropdown_name" '{query: "mutation SchemaDropdownAdd($data: SchemaDropdownAddInput!){ SchemaDropdownAdd(data:$data){ ok object { value label color description } } }", variables: {data: { kind: $kind, attribute: $attribute, dropdown: $dropdown }}}')
+            resp=$(curl -sS -X POST "$SERVER/graphql" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -H "X-INFRAHUB-KEY: $TOKEN" -d "$payload") || true
+            echo "$resp" | jq -C '.'
+            ok=$(echo "$resp" | jq -r '.data.SchemaDropdownAdd.ok // false' 2>/dev/null || echo false)
+            if [ "$ok" = "true" ]; then
+              echo "Created dropdown $dropdown_name for attribute $attr with kind $k"
+              success=1
+              break
+            fi
+            # if error message indicates kind not found or restricted, try next
+          done
+          if [ $success -ne 1 ]; then
+            echo "Failed to create dropdown for $attr — check server response above."
+          fi
+        done
+      register: create_dropdowns
+      changed_when: false
+
+    - name: Show creation results
+      ansible.builtin.debug:
+        var: create_dropdowns.stdout_lines

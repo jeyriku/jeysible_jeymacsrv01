@@ -9,7 +9,7 @@
   vars:
     server: "https://192.168.0.251"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    netbox_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') | default(netbox_api_tokens.api_token, true) }}"
     upgrade_ios_version: "17.10.01a"
     ansible_connection: network_cli
     ansible_network_os: ios

@@ -1,0 +1,13 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/lookup_lookup
+
+Extraits pertinents:
+- Paramètres:
+  - api_endpoint, token, timeout
+  - query (str) -> GraphQL query string
+  - graph_variables, branch, validate_certs
+- Exemples:
+  - Using `query` var and `query('opsmill.infrahub.lookup', query=query_string)` to obtain sites list
+- Return values:
+  - data: dict
+
+Remarque: utile pour lookup statique ou var injection dans playbooks.

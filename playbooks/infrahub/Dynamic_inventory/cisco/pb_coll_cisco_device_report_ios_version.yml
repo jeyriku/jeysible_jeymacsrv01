@@ -9,12 +9,10 @@
   vars:
     server: "http://192.168.0.237:8000"
     endpoint1: "/api/dcim/devices/?limit=1000"
-    infrahub_token: "7435d9eb9841dc8a941417a0993fc531c3dc35ca"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
     upgrade_ios_version: "17.10.01a"
     ansible_connection: network_cli
     ansible_network_os: ios
-    ansible_user: "{{ device_username }}"
-    ansible_password: "{{ device_password }}"
     new_ios_bin: "c1100-universalk9.17.10.01a.SPA.bin"
   tasks:
     - name: Get Device List from Infrahub (GraphQL)
@@ -38,13 +36,13 @@
       set_fact:
         devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
 
-    - name: Build filtered device list (only Cisco devices, status active, exclude IP hostnames)
+    - name: Build filtered device list (only Cisco manufacturer, status active, exclude IP hostnames and local names)
       vars:
         ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
       set_fact:
-        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.primary_address.address.value|default('')) , 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default('') } ] }}"
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': '', 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default(''), 'manufacturer': '' } ] }}"
       loop: "{{ devices_raw }}"
-      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower))) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
+      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower)) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex)) and (item.name.value | lower) not in ['localhost','infrahub'])"
 
     - name: Expose device list for downstream tasks (device_name.msg)
       set_fact:
@@ -53,6 +51,12 @@
       set_fact:
         device_list: "{{ device_name.msg | default([]) }}"
 
+    - name: Load vaulted infrahub credentials for device access
+      include_vars:
+        file: "{{ playbook_dir }}/../../../../group_vars/all/infrahub_vault.yml"
+      run_once: true
+      delegate_to: localhost
+
     - name: Skip legacy ios_facts (incompatible) — using ios_command instead
       ansible.builtin.debug:
         msg: "Skipping ios_facts for {{ item.Name }}; collecting via ios_command"
@@ -60,50 +64,89 @@
       loop_control:
         label: "{{ item.Name }}"
 
-    - name: Debug device facts results
-      ansible.builtin.debug:
-        var: device_facts_results
-
-    - name: Run 'show version' on each device
-      cisco.ios.ios_command:
-        commands:
-          - show version
+    - name: Compute `target_host` for each device (prefer IP, else Name)
+      set_fact:
+        device_list2: "{{ device_list2 | default([]) + [ item | combine({'target_host': (((item.IP|default('')|trim)|length > 0) and item.IP or item.Name) }) ] }}"
       loop: "{{ device_list }}"
+
+    - name: Debug computed device targets
+      ansible.builtin.debug:
+        var: device_list2
+
+    - name: Filter to single target when `only_target` is provided
+      set_fact:
+        device_list2: "{{ device_list2 | selectattr('target_host','equalto', only_target) | list }}"
+      when: only_target is defined
+
+    - name: Add devices to in-memory inventory (set connection vars)
+      add_host:
+        name: "{{ item.target_host }}"
+        groups: collected_cisco
+        ansible_host: "{{ item.target_host }}"
+        # use ssh for Catalyst 1200 (Linux), otherwise network_cli for network devices
+        ansible_connection: "{{ 'ssh' if (item.target_host | regex_search('(?i)1200')) else 'network_cli' }}"
+        ansible_network_os: "{{ 'ios' if not (item.target_host | regex_search('(?i)1200')) else omit }}"
+        # use libssh transport for CBS220 and 1200
+        ansible_ssh_type: "{{ 'libssh' if (item.target_host | regex_search('(?i)(1200|cbs220)')) else omit }}"
+        ansible_user: "{{ (item.device_username | default(hostvars['localhost'].infrahub_api_tokens.device_username)) }}"
+        ansible_password: "{{ (item.device_password | default(hostvars['localhost'].infrahub_api_tokens.device_password)) }}"
+      loop: "{{ device_list2 }}"
       loop_control:
         label: "{{ item.Name }}"
-      vars:
-        provider:
-          host: "{{ item.Name }}"
-          username: "{{ device_username }}"
-          password: "{{ device_password }}"
+
+- name: Run show version on collected Cisco devices
+  hosts: collected_cisco
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Run show version via network module (cisco.ios.ios_command)
+      cisco.ios.ios_command:
+        commands:
+          - terminal length 0
+          - show version
       register: show_version
 
-    - name: Debug previous command registered values
-      ansible.builtin.debug:
+    - name: Save show_version stdout to file on controller
+      copy:
+        content: "{{ show_version.stdout[1] | default('') }}\n"
+        dest: "./show_version_{{ inventory_hostname }}.txt"
+      delegate_to: localhost
+
+    - name: Debug show_version
+      debug:
         var: show_version
 
-    - name: Get fact for the current IOSXE version with PyATS
-      set_fact:
-        current_xe_ver: "{{ item.ansible_facts.current_xe_ver }}"
-      loop: "{{ show_version.results | default([]) }}"
-      loop_control:
-        label: "{{ loop.index0 }}"
-      vars:
-        # parse stdout with pyats_parser and attach to ansible_facts for consistency
-        _parsed: "{{ item.stdout[0] | default('') | pyats_parser('show version', 'iosxe') }}"
-      when: item.stdout is defined and item.stdout | length > 0
-      register: device_iosxe_version
+- name: Parse collected outputs and generate reports on controller
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Ensure reports directory exists on controller
+      file:
+        path: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version
+        state: directory
+        mode: '0755'
 
-    - name: Debug parsed IOSXE versions
-      ansible.builtin.debug:
-        var: device_iosxe_version
-
-    - name: Build filtered_info list for report
-      set_fact:
-        filtered_info_iosxe_version: "{{ filtered_info_iosxe_version | default([]) + [ { 'device': (device_list[item_index].Name if device_list[item_index] is defined else 'unknown'), 'parsed': device_iosxe_version.results[item_index].ansible_facts.current_xe_ver if (device_iosxe_version.results[item_index] is defined and device_iosxe_version.results[item_index].ansible_facts is defined) else {} } ] }}"
-      loop: "{{ range(0, (device_iosxe_version.results | length) ) | list }}"
+    - name: Parse saved show_version files with PyATS parser
+      shell: |
+        {{ playbook_dir }}/../../../../bin/python {{ playbook_dir }}/../../../../scripts/parse_show_version_pyats.py ./show_version_{{ item.target_host }}.txt /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/show_version_{{ item.target_host }}
+      register: parser_result
+      changed_when: false
+      loop: >-
+        {{ (
+            (hostvars['infrahub'].device_list2 | default([]))
+            if (only_target is not defined)
+            else (
+              ((hostvars['infrahub'].device_list2 | selectattr('target_host','equalto', only_target) | list)
+               + (hostvars['infrahub'].device_list2 | selectattr('Name','equalto', only_target) | list)
+               + (hostvars['infrahub'].device_list2 | selectattr('IP','equalto', only_target) | list)) | unique
+            )
+          ) }}
       loop_control:
-        index_var: item_index
+        label: "{{ item.Name }}"
+
+    - name: Debug parser results
+      debug:
+        var: parser_result.results
 
     # Copy
 
@@ -119,8 +162,10 @@
         module: copy
         content: "{{ filtered_info_iosxe_version | to_nice_yaml }}"
         dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.yml
+      when: filtered_info_iosxe_version is defined
 
     - local_action:
         module: copy
         content: "{{ filtered_info_iosxe_version | to_nice_json }}"
         dest: /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/report_ios_version_device_name.json
+      when: filtered_info_iosxe_version is defined

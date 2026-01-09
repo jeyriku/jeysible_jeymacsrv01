@@ -1,2 +1,53 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
-*
+# Python virtual environment
+bin/
+lib/
+lib64/
+include/
+pyvenv.cfg
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs and debug files
+*.log
+*_debug_*.log
+attach_*.log
+attach_*.txt
+logs/
+logs/**/*
+
+# Temporary and output files
+show_version_*.txt
+launch_inventory.txt
+launch_playbook.txt
+*.tmp
+*.temp
+
+# Ansible
+*.retry
+.vault_pass
+.ansible_vault_pass*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Pytest
+.pytest_cache/
+.mypy_cache/
+
+# Build and distribution
+dist/
+build/
+*.egg-info/

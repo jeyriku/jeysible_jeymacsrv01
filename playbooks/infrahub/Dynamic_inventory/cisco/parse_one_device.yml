@@ -1,0 +1,18 @@
+---
+- name: Save raw show version for device
+  copy:
+    content: "{{ cur.stdout[0] | default('') }}\n"
+    dest: "/tmp/show_version_{{ target }}.txt"
+  delegate_to: localhost
+
+- name: Parse raw output with PyATS/Genie parser
+  shell: |
+    {{ playbook_dir }}/../../../../bin/python {{ playbook_dir }}/../../../../scripts/parse_show_version_pyats.py /tmp/show_version_{{ target }}.txt /Users/jeremierouzet/jeysible/infrahub_dynamic_inventory/inventory_output/cisco/common/report_ios_version/show_version_{{ target }}
+  register: parser_result
+  changed_when: false
+  delegate_to: localhost
+
+- name: Debug parser result
+  debug:
+    var: parser_result.stdout
+  delegate_to: localhost

@@ -22,10 +22,12 @@ import json
 netbox = {
    "ip": "192.168.0.251"
 }
+import os
+
 headers = {
       "Accept" : "application/json",
       "Content-Type" : "application/json",
-      "Authorization" : "Token 7435d9eb9841dc8a941417a0993fc531c3dc35ca",
+      "Authorization" : f"Token {os.environ.get('INFRAHUB_TOKEN', '')}",
    }
 devices_path = "/api/dcim/devices"
 url = f"https://{netbox['ip']}{devices_path}"

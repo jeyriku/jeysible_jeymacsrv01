@@ -1,0 +1,15 @@
+Source: https://docs.infrahub.app/ansible/references/plugins/inventory_inventory
+
+Extraits pertinents:
+- Paramètres:
+  - plugin, api_endpoint, token, timeout
+  - prefetch_relationships (bool), nodes (dict) to configure attributes to include/exclude
+  - branch, compose (dict), keyed_groups (list), validate_certs
+- Exemples:
+  - inventory.yml example: retrieve attributes for 'InfraDevice', include specific fields, create compose vars and keyed_groups
+- Notes:
+  - Run with -vvv to see the GraphQL query, -vvvv to see the JSON response
+- Return values:
+  - _list: list of composed dicts
+
+Remarque: utile pour générer inventaire Ansible depuis Infrahub.

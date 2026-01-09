@@ -1,0 +1,24 @@
+---
+- name: Create SchemaDropdown "snmp_location_dropdown"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create SchemaDropdown via node module
+      opsmill.infrahub.node:
+        api_endpoint: "http://192.168.0.237:8000/graphql"
+        token: "{{ lookup('env','INFRAHUB_TOKEN') }}"
+        kind: "SchemaDropdown"
+        data:
+          name: "snmp_location_dropdown"
+          label: "SNMP Location"
+          values:
+            - "datacenter1"
+            - "datacenter2"
+            - "edge"
+        branch: "main"
+        state: present
+      register: dropdown_result
+
+    - name: Debug result
+      ansible.builtin.debug:
+        var: dropdown_result

@@ -1,0 +1,71 @@
+---
+- name: Create SNMP profile and attach to all devices
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    infrahub_server: "http://192.168.0.237:8000"
+    infrahub_token: "{{ lookup('env','INFRAHUB_API_TOKEN') }}"
+    profile_name: "SNMP_Profile"
+    devices_file: "/tmp/infrahub_devices_to_attach.txt"
+    attach_script: "{{ playbook_dir }}/../../script/attach_snmp_profile_upsert.sh"
+  tasks:
+    - name: Fail if token not provided
+      ansible.builtin.fail:
+        msg: "Set INFRAHUB_API_TOKEN in environment before running this playbook"
+      when: infrahub_token is not defined or infrahub_token == ''
+
+    - name: Query all device ids from Infrahub (GraphQL) using curl
+      shell: |
+        curl -sS -X POST "{{ infrahub_server }}/graphql" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer {{ infrahub_token }}" \
+          -H "X-INFRAHUB-KEY: {{ infrahub_token }}" \
+          -d '{"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id name { value } } } } }"}'
+      register: all_devices_resp
+      changed_when: false
+
+    - name: Build list of device ids from curl output
+      set_fact:
+        device_ids: >-
+          {{ (all_devices_resp.stdout | from_json).data.DcimDevice.edges
+             | map(attribute='node.id') | list }}
+
+    - name: Write device ids to file for attach script
+      copy:
+        dest: "{{ devices_file }}"
+        content: "{{ device_ids | join('\n') }}\n"
+
+    - name: Upsert global SNMP profile via GraphQL using curl
+      shell: |
+        curl -sS -X POST "{{ infrahub_server }}/graphql" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer {{ infrahub_token }}" \
+          -H "X-INFRAHUB-KEY: {{ infrahub_token }}" \
+          -d '{"query":"mutation ProfileDcimDeviceUpsert($data: ProfileDcimDeviceUpsertInput!){ ProfileDcimDeviceUpsert(data:$data){ ok object { id profile_name { value } } } }","variables":{"data":{"profile_name":{"value":"{{ profile_name }}"}}}}'
+      register: profile_upsert_resp
+      changed_when: false
+
+    - name: Fail if profile creation failed
+      ansible.builtin.fail:
+        msg: "Profile creation failed: {{ profile_upsert_resp }}"
+      when: not ((profile_upsert_resp.stdout | from_json).data.ProfileDcimDeviceUpsert.ok | default(false))
+
+    - name: Extract created profile id
+      set_fact:
+        profile_id: >-
+          {{ (profile_upsert_resp.stdout | from_json).data.ProfileDcimDeviceUpsert.object.id }}
+
+    - name: Attach profile to devices using attach script
+      ansible.builtin.command:
+        cmd: "/bin/bash {{ attach_script }} {{ devices_file }}"
+      environment:
+        TOKEN: "{{ infrahub_token }}"
+        ENDPOINT: "{{ infrahub_server }}/graphql"
+        PROFILE_ID: "{{ profile_id }}"
+      register: attach_run
+      failed_when: attach_run.rc not in [0,2,3,4]
+
+    - name: Show attach run stdout
+      ansible.builtin.debug:
+        var: attach_run.stdout_lines

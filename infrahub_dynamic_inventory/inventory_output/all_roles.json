@@ -1,0 +1,110 @@
+[
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884cf-dd65-3ad8-3390-c51f311b9b39",
+        "name": {
+            "value": "cisco_sw"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d0-63a9-9708-3397-c51435dd9697",
+        "name": {
+            "value": "juniper_sw"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d0-75ee-b230-3399-c51ec7887c36",
+        "name": {
+            "value": "cisco_ce"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d0-a2dd-c4fb-3394-c51a5bf0e06c",
+        "name": {
+            "value": "cisco_pe"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d0-dd33-4764-3391-c5176ba72975",
+        "name": {
+            "value": "juniper_ce"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d0-ed5c-d63a-339d-c51a22f7aca5",
+        "name": {
+            "value": "juniper_pe"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d1-303b-9147-3396-c5115b1e2af4",
+        "name": {
+            "value": "juniper_rr"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d1-4fd5-c236-339e-c51f102818ad",
+        "name": {
+            "value": "generic_srv"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d1-62e8-b988-339c-c5170612a727",
+        "name": {
+            "value": "synology_nas"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d1-939b-6c44-339d-c518cf5477cd",
+        "name": {
+            "value": "cisco_fw"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d2-46f8-e871-3397-c518d7697bde",
+        "name": {
+            "value": "generic_vm"
+        }
+    },
+    {
+        "description": {
+            "value": null
+        },
+        "id": "188884d2-62d3-07f3-3399-c517bb50feeb",
+        "name": {
+            "value": "ubiquiti_ap"
+        }
+    }
+]

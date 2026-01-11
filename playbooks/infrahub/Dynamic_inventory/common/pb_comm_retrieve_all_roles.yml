@@ -1,0 +1,48 @@
+---
+- name: Retrieve All Roles from Infrahub
+  gather_facts: no
+  hosts: localhost
+  connection: local
+  become: false
+  vars:
+    server: "http://192.168.0.237:8000"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
+    output_dir: "/Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_output"
+  tasks:
+    # Make a Infrahub API call to retrieve all roles
+    - name: Get All Roles from Infrahub (GraphQL)
+      uri:
+        url: "{{ server }}/graphql"
+        headers:
+          Authorization: "Token {{ infrahub_token }}"
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ JeylanDeviceRole(limit:1000, offset:0){ edges { node { id name { value } description { value } } } } }"}
+        body_format: json
+        method: POST
+        status_code: [200, 201]
+        timeout: 30
+        validate_certs: false
+        return_content: yes
+        use_proxy: false
+      register: infrahub_roles
+      run_once: yes
+
+    - name: Extract nodes from GraphQL response
+      set_fact:
+        roles_raw: "{{ infrahub_roles.json.data.JeylanDeviceRole.edges | map(attribute='node') | list }}"
+
+    - name: Display all roles
+      ansible.builtin.debug:
+        msg: "Role: {{ item.name.value }}{% if item.description.value is defined and item.description.value %}, Description: {{ item.description.value }}{% endif %}"
+      loop: "{{ roles_raw }}"
+
+    - name: Save roles list to file
+      copy:
+        content: "{{ roles_raw | to_nice_json }}"
+        dest: "{{ output_dir }}/all_roles.json"
+      delegate_to: localhost
+
+    - name: Display summary
+      ansible.builtin.debug:
+        msg: "Found {{ roles_raw | length }} roles. Results saved to {{ output_dir }}/all_roles.json"

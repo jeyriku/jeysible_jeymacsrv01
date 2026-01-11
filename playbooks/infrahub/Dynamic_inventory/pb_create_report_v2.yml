@@ -1,42 +1,37 @@
 ---
 - name: Create Report from infrahub Data
   gather_facts: no
-  hosts: infrahub
+  hosts: localhost
   connection: local
   become: false
   vars:
     server: "http://192.168.0.237:8000"
-    endpoint: "/api/dcim/devices/"
+    infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
+    # NOTE: platform field not available in Infrahub GraphQL schema, using model instead
     # Make a Infrahub API call to retrieve devices'components
-    - name: Get Device List from Infrahub
+    - name: Get Device List from Infrahub (GraphQL)
       ansible.builtin.uri:
-        url: "{{ server }}{{ endpoint }}"
+        url: "{{ server }}/graphql"
         headers:
-          Authorization: "Token {{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
-          Accept: 'application/json'
+          Authorization: "Token {{ infrahub_token }}"
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ JeylanDevice(limit:1000, offset:0){ edges { node { id name { value } model { node { name { value } } } } } } }"}
         body_format: json
-        method: GET
+        method: POST
         status_code: [200, 201]
         timeout: 30
-        validate_certs: no
-        return_content: no
+        validate_certs: false
+        return_content: yes
+        use_proxy: false
       register: infrahub_datas
-
-    #- name: debug
-    #  ansible.builtin.debug:
-    #    var: infrahub_datas
-
-    # Allow to Display informations registered previously
-    - name: Check Infrahub Datas
-      debug:
-        var: infrahub_datas
 
     # Allow to Display messages including informations registered previously
     - name: Check Infrahub Datas
       debug:
-        msg: "Router name is {{ infrahub_datas.json.results[item].name }}, it runs Network OS {{ infrahub_datas.json.results[item].platform.name }}"
-      loop: "{{ infrahub_datas.json.results }}"
+        msg: "Router name is {{ item.node.name.value }}, it runs on Model {{ item.node.model.node.name.value }}"
+      loop: "{{ infrahub_datas.json.data.JeylanDevice.edges }}"
       loop_control:
         index_var: item
 

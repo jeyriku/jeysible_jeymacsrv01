@@ -9,6 +9,8 @@
     endpoint1: "/api/dcim/devices/?limit=1000"
     infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
+    # NOTE: custom_fields (snmp_*) not available in Infrahub schema - using default empty values
+    # NOTE: device_type.manufacturer not available - filtering by role name containing 'cisco' instead
     - name: Get Device List from Infrahub (GraphQL)
       uri:
         url: "{{ server }}/graphql"
@@ -16,27 +18,30 @@
           Authorization: "Token {{ infrahub_token }}"
           Content-Type: "application/json"
         body: |
-          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id display_label name { value } primary_address { address { value } } device_type { node { name { value } manufacturer { node { display } } } } role { label display } status { value } } } } }"}
+          {"query":"{ JeylanDevice(limit:1000, offset:0){ edges { node { id display_label name { value } mgmt_ip { value } model { node { name { value } } } role { node { name { value } } } status { value } } } } }"}
         body_format: json
         method: POST
         status_code: [200, 201]
         timeout: 60
         validate_certs: false
         return_content: yes
+        use_proxy: false
       register: infrahub_devices
       run_once: yes
 
     - name: Extract nodes from GraphQL response
       set_fact:
-        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
+        devices_raw: "{{ infrahub_devices.json.data.JeylanDevice.edges | map(attribute='node') | list }}"
 
+    # WARNING: custom_fields not available - snmp_loc, snmp_com, snmp_srv1/2/3 will be empty
+    # TODO: These values should come from Infrahub profiles once configured
     - name: Build filtered device list for SNMP (Cisco manufacturer, exclude IP hostnames)
       vars:
         ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
       set_fact:
-        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'snmp_loc': (item.custom_fields.snmp_location.value|default('') if item.custom_fields is defined else ''), 'IP': (item.primary_address.address.value|default('')) , 'snmp_com': (item.custom_fields.snmp_community.value|default('') if item.custom_fields is defined else ''), 'snmp_srv1': (item.custom_fields.snmp_server1.value|default('') if item.custom_fields is defined else ''), 'snmp_srv2': (item.custom_fields.snmp_server2.value|default('') if item.custom_fields is defined else ''), 'snmp_srv3': (item.custom_fields.snmp_server3.value|default('') if item.custom_fields is defined else '') } ] }}"
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'snmp_loc': '', 'IP': (item.mgmt_ip.value|default('')) , 'snmp_com': '', 'snmp_srv1': '', 'snmp_srv2': '', 'snmp_srv3': '' } ] }}"
       loop: "{{ devices_raw }}"
-      when: "(item.device_type is defined and (item.device_type.node.manufacturer.node.display|default('') == 'Cisco Systems')) and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
+      when: "(item.role is defined and item.role.node is defined and item.role.node.name is defined and item.role.node.name.value is defined and ('cisco' in (item.role.node.name.value | lower))) and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
 
     - name: Expose device list for downstream tasks (device_name.msg)
       set_fact:

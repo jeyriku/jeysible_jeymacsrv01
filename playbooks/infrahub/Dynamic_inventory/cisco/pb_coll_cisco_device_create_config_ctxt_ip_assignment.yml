@@ -13,6 +13,7 @@
     infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
     # Query Infrahub via GraphQL and build a filtered devices list (omit hosts whose name is an IPv4)
+    # NOTE: platform and device_type fields not available in Infrahub schema, using model instead
     - name: Get Device List from Infrahub (GraphQL)
       uri:
         url: "{{ server }}/graphql"
@@ -20,25 +21,26 @@
           Authorization: "Token {{ infrahub_token }}"
           Content-Type: "application/json"
         body: |
-          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id display_label name { value } primary_address { address { value } } platform { name { value } } device_type { name { value } } } } } }"}
+          {"query":"{ JeylanDevice(limit:1000, offset:0){ edges { node { id display_label name { value } mgmt_ip { value } model { node { name { value } } } } } } }"}
         body_format: json
         method: POST
         status_code: [200, 201]
         timeout: 60
         validate_certs: false
         return_content: yes
+        use_proxy: false
       register: infrahub_devices
       run_once: yes
 
     - name: Extract nodes from GraphQL response
       set_fact:
-        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
+        devices_raw: "{{ infrahub_devices.json.data.JeylanDevice.edges | map(attribute='node') | list }}"
 
     - name: Build filtered device list (exclude IP hostnames)
       vars:
         ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
       set_fact:
-        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.primary_address.address.value|default('')) , 'id': item.id, 'display_label': item.display_label|default('') } ] }}"
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': (item.mgmt_ip.value|default('')) , 'id': item.id, 'display_label': item.display_label|default('') } ] }}"
       loop: "{{ devices_raw }}"
       when: "(item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex))"
 

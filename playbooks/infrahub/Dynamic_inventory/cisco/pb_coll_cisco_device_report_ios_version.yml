@@ -22,27 +22,28 @@
           Authorization: "Token {{ infrahub_token }}"
           Content-Type: "application/json"
         body: |
-          {"query":"{ DcimDevice(limit:1000, offset:0){ edges { node { id name { value } role { label } status { value } } } } }"}
+          {"query":"{ JeylanDevice(limit:1000, offset:0){ edges { node { id name { value } role { node { name { value } } } status { value } mgmt_ip { value } } } } }"}
         body_format: json
         method: POST
         status_code: [200, 201]
         timeout: 60
         validate_certs: false
         return_content: yes
+        use_proxy: false
       register: infrahub_devices
       run_once: yes
 
     - name: Extract nodes from GraphQL response
       set_fact:
-        devices_raw: "{{ infrahub_devices.json.data.DcimDevice.edges | map(attribute='node') | list }}"
+        devices_raw: "{{ infrahub_devices.json.data.JeylanDevice.edges | map(attribute='node') | list }}"
 
     - name: Build filtered device list (only Cisco manufacturer, status active, exclude IP hostnames and local names)
       vars:
         ip_regex: '^\\d{1,3}(?:\\.\\d{1,3}){3}$'
       set_fact:
-        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': '', 'id': item.id, 'role_label': item.role.label|default(''), 'status': item.status.value|default(''), 'manufacturer': '' } ] }}"
+        device_name_list: "{{ device_name_list | default([]) + [ { 'Name': item.name.value|default(''), 'IP': item.mgmt_ip.value|default(''), 'id': item.id, 'role_label': item.role.node.name.value|default(''), 'status': item.status.value|default(''), 'manufacturer': '' } ] }}"
       loop: "{{ devices_raw }}"
-      when: "(item.role is defined and item.role.label is defined and ('cisco' in (item.role.label | lower)) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex)) and (item.name.value | lower) not in ['localhost','infrahub'])"
+      when: "(item.role is defined and item.role.node is defined and item.role.node.name is defined and item.role.node.name.value is defined and ('cisco' in (item.role.node.name.value | lower)) and (item.status is defined and item.status.value == 'active') and (item.name is defined and item.name.value is defined) and (item.name.value is not match(ip_regex)) and (item.name.value | lower) not in ['localhost','infrahub'])"
 
     - name: Expose device list for downstream tasks (device_name.msg)
       set_fact:

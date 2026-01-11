@@ -1,27 +1,29 @@
 ---
 - name: Create Report from infrahub Data
   gather_facts: no
-  hosts: infrahub
+  hosts: localhost
   connection: local
   become: false
   vars:
     server: "http://192.168.0.237:8000"
-    endpoint: "/api/dcim/devices/"
     infrahub_token: "{{ lookup('env','INFRAHUB_TOKEN') | default(infrahub_api_tokens.api_token, true) }}"
   tasks:
     # Make a Infrahub API call to retrieve devices'components
-    - name: Get Device List from Infrahub
+    - name: Get Device List from Infrahub (GraphQL)
       uri:
-        url: "{{ server }}{{ endpoint }}"
+        url: "{{ server }}/graphql"
         headers:
           Authorization: "Token {{ infrahub_token }}"
-          Accept: 'application/json'
+          Content-Type: "application/json"
+        body: |
+          {"query":"{ JeylanDevice(limit:1000, offset:0){ edges { node { id name { value } mgmt_ip { value } model { node { name { value } } } } } } }"}
         body_format: json
-        method: GET
+        method: POST
         status_code: [200, 201]
         timeout: 30
         validate_certs: false
-        return_content: no
+        return_content: yes
+        use_proxy: false
       register: infrahub_datas
       run_once: yes
 
@@ -30,8 +32,8 @@
       ansible.builtin.blockinfile:
         block:  |
             infrahub_datas.json:
-            {% for device_name in infrahub_datas.json.results %}
-              - { node: {{ device_name.name }}, runs Network OS: {{ device_name.platform.name }}, and has Ipv4: {{ device_name.primary_ip.address }}}
+            {% for device in infrahub_datas.json.data.JeylanDevice.edges %}
+              - { node: {{ device.node.name.value }}, Model: {{ device.node.model.node.name.value }}, and has Ipv4: {{ device.node.mgmt_ip.value }}}
             {% endfor %}
         path: /Users/jeremierouzet/Documents/Dev/ansible/jeysible_jeymacsrv01/infrahub_dynamic_inventory/inventory_report/infrahub_report_v1.yaml
         create: yes

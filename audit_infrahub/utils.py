@@ -31,7 +31,7 @@ class InfrahubClient:
             "Content-Type": "application/json",
         }
         if INFRAHUB_API_TOKEN:
-            self.headers["Authorization"] = f"Bearer {INFRAHUB_API_TOKEN}"
+            self.headers["X-INFRAHUB-KEY"] = INFRAHUB_API_TOKEN
         self.verify_ssl = INFRAHUB_VERIFY_SSL
         self.timeout = API_TIMEOUT
 
@@ -75,7 +75,7 @@ class InfrahubClient:
         """Récupère tous les devices depuis Infrahub"""
         query = """
         query GetAllDevices {
-          InfraDevice {
+          JeylanDevice {
             edges {
               node {
                 id
@@ -125,15 +125,11 @@ class InfrahubClient:
         """
 
         result = self.execute_query(query)
-        if result.get("data") and result["data"].get("InfraDevice"):
-            return [edge["node"] for edge in result["data"]["InfraDevice"]["edges"]]
-        return []
-
-    def get_all_interfaces(self) -> List[Dict]:
-        """Récupère toutes les interfaces depuis Infrahub"""
+        if result.get("data") and result["data"].get("JeylanDevice"):
+            return [edge["node"] for edge in result["data"]["JeylanDevice"]["edges"]]
         query = """
         query GetAllInterfaces {
-          InfraInterface {
+          JeylanInterface {
             edges {
               node {
                 id
@@ -163,15 +159,15 @@ class InfrahubClient:
         """
 
         result = self.execute_query(query)
-        if result.get("data") and result["data"].get("InfraInterface"):
-            return [edge["node"] for edge in result["data"]["InfraInterface"]["edges"]]
+        if result.get("data") and result["data"].get("JeylanInterface"):
+            return [edge["node"] for edge in result["data"]["JeylanInterface"]["edges"]]
         return []
 
     def get_all_sites(self) -> List[Dict]:
         """Récupère tous les sites depuis Infrahub"""
         query = """
         query GetAllSites {
-          InfraSite {
+          JeylanSite {
             edges {
               node {
                 id
@@ -191,15 +187,15 @@ class InfrahubClient:
         """
 
         result = self.execute_query(query)
-        if result.get("data") and result["data"].get("InfraSite"):
-            return [edge["node"] for edge in result["data"]["InfraSite"]["edges"]]
+        if result.get("data") and result["data"].get("JeylanSite"):
+            return [edge["node"] for edge in result["data"]["JeylanSite"]["edges"]]
         return []
 
     def get_all_platforms(self) -> List[Dict]:
         """Récupère toutes les plateformes depuis Infrahub"""
         query = """
         query GetAllPlatforms {
-          InfraPlatform {
+          JeylanPlatform {
             edges {
               node {
                 id
@@ -222,8 +218,8 @@ class InfrahubClient:
         """
 
         result = self.execute_query(query)
-        if result.get("data") and result["data"].get("InfraPlatform"):
-            return [edge["node"] for edge in result["data"]["InfraPlatform"]["edges"]]
+        if result.get("data") and result["data"].get("JeylanPlatform"):
+            return [edge["node"] for edge in result["data"]["JeylanPlatform"]["edges"]]
         return []
 
 
@@ -256,7 +252,7 @@ def check_required_fields(obj: Dict, object_type: str, required_fields: Dict[str
 
     Args:
         obj: Objet à vérifier
-        object_type: Type d'objet (InfraDevice, InfraInterface, etc.)
+        object_type: Type d'objet (InfraDevice, JeylanInterface, etc.)
         required_fields: Dictionnaire des champs requis par criticité
 
     Returns:

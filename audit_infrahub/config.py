@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration API Infrahub
-INFRAHUB_API_URL = os.getenv("INFRAHUB_API_URL", "http://jeysrv10:8080")
+INFRAHUB_API_URL = os.getenv("INFRAHUB_API_URL", "http://jeysrv10:8000")
 INFRAHUB_API_TOKEN = os.getenv("INFRAHUB_API_TOKEN", "")
 INFRAHUB_VERIFY_SSL = os.getenv("INFRAHUB_VERIFY_SSL", "false").lower() == "true"
 
@@ -22,23 +22,24 @@ REPORTS_DIR = BASE_DIR / "reports"
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Champs requis par type d'objet
+# Utilise le préfixe Jeylan pour le schéma Infrahub personnalisé
 REQUIRED_FIELDS = {
-    "InfraDevice": {
+    "JeylanDevice": {
         "critical": ["name", "primary_address"],
         "important": ["site", "platform", "role"],
         "optional": ["type", "interfaces", "description"]
     },
-    "InfraInterface": {
+    "JeylanInterface": {
         "critical": ["name", "device"],
         "important": ["status", "enabled"],
         "optional": ["ip_addresses", "description", "mtu"]
     },
-    "InfraSite": {
+    "JeylanSite": {
         "critical": ["name"],
         "important": ["location"],
         "optional": ["description", "devices"]
     },
-    "InfraPlatform": {
+    "JeylanPlatform": {
         "critical": ["name", "ansible_network_os"],
         "important": ["manufacturer"],
         "optional": ["description"]

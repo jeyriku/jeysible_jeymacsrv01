@@ -12,7 +12,7 @@ nano .env
 
 Renseigner :
 ```
-INFRAHUB_API_URL=http://jeysrv10:8080
+INFRAHUB_API_URL=http://jeysrv10:8000
 INFRAHUB_API_TOKEN=votre_token_ici
 ```
 
@@ -24,122 +24,117 @@ pip3 install -r requirements.txt
 
 ### 3. Exécution
 
-#### Option A : Tous les audits en une fois
+#### Audit complet (recommandé)
 ```bash
-./run_audits.sh
+python3 audit.py
 ```
 
-#### Option B : Audits individuels
+Cela exécute tous les audits en une seule commande :
+- ✅ Audit des devices
+- ✅ Audit des rôles
+- ✅ Audit des plateformes  
+- ✅ Tableau résumé
 
-**Audit des devices :**
+#### Audits spécifiques
+
+**Audit des devices uniquement :**
 ```bash
-python3 check_devices.py
+python3 audit.py --devices
 ```
 
-**Audit des interfaces :**
+**Audit des rôles uniquement :**
 ```bash
-python3 check_interfaces.py
+python3 audit.py --roles
 ```
 
-**Audit des sites :**
+**Audit des plateformes uniquement :**
 ```bash
-python3 check_sites.py
+python3 audit.py --platforms
 ```
 
-**Audit des plateformes :**
+**Tableau résumé uniquement :**
 ```bash
-python3 check_platforms.py
+python3 audit.py --summary
 ```
 
-**Rapport complet :**
+**Export avec nom personnalisé :**
 ```bash
-python3 audit_report.py
+python3 audit.py -o mon_audit_custom.json
 ```
+
 
 ### 4. Consulter les résultats
 
-Les rapports JSON sont générés dans `reports/` :
+Les rapports JSON sont automatiquement sauvegardés dans `reports/` :
 ```bash
 ls -lh reports/
-cat reports/audit_full_*.json | jq .summary
+cat reports/audit_*.json | jq .
 ```
 
 ## 📊 Ce qui est vérifié
 
-### Devices (InfraDevice)
-- ✅ Champs critiques : `name`, `primary_address`
-- ⚠️ Champs importants : `site`, `platform`, `role`
-- ℹ️ Champs optionnels : `type`, `interfaces`, `description`
+### Devices (JeylanDevice)
+- ✅ Champs vérifiés : `name`, `mgmt_ip`, `status`
+- ⚠️ Champs importants : `platform`, `role`
+- ℹ️ Compteur d'interfaces
 
-### Interfaces (InfraInterface)
-- ✅ Champs critiques : `name`, `device`
-- ⚠️ Champs importants : `status`, `enabled`
-- 🔍 Vérifications : interfaces orphelines, devices sans interfaces
+### Rôles (JeylanDeviceRole)
+- Liste de tous les rôles
+- Distribution des devices par rôle
+- Statistiques d'utilisation
 
-### Sites (InfraSite)
-- ✅ Champs critiques : `name`
-- ⚠️ Champs importants : `location`
-- 🔍 Vérifications : sites référencés mais non définis, devices sans site
-
-### Plateformes (InfraPlatform)
-- ✅ Champs critiques : `name`, `ansible_network_os`
-- ⚠️ Champs importants : `manufacturer`
-- 🔍 Vérifications : cohérence ansible_network_os, devices sans plateforme
+### Plateformes (JeylanPlatform)
+- Liste des plateformes (iOS, JunOS, etc.)
+- Distribution des devices par plateforme
+- Devices sans plateforme définie
 
 ## 🎯 Exemple de workflow
 
 ```bash
 # 1. Exécuter un audit complet
-./run_audits.sh
+python3 audit.py
 
-# 2. Vérifier le résumé
-python3 audit_report.py | grep -A 20 "RAPPORT D'AUDIT"
+# 2. Consulter un rapport spécifique
+cat reports/audit_*.json | jq '.summary'
 
-# 3. Identifier les problèmes critiques
-jq '.devices.critical_issues[] | {device: .object_name, issues: .issues}' reports/audit_full_*.json
+# 3. Identifier les devices sans plateforme
+python3 audit.py --platforms | grep "sans plateforme"
 
-# 4. Lister les devices sans plateforme
-jq '.platforms.devices_without_platform[]' reports/audit_full_*.json
-
-# 5. Corriger dans Infrahub puis relancer
-./run_audits.sh
+# 4. Corriger dans Infrahub puis relancer
+python3 audit.py
 ```
 
-## 🔧 Options avancées
+## 🔧 Options du script
 
-### Mode verbeux
 ```bash
-python3 check_devices.py -v
+python3 audit.py [OPTIONS]
+
+Options:
+  --devices     Audit des devices uniquement
+  --roles       Audit des rôles uniquement
+  --platforms   Audit des plateformes uniquement
+  --summary     Tableau résumé uniquement
+  -o FILE       Nom du fichier de sortie JSON
 ```
 
-### Sortie personnalisée
-```bash
-python3 audit_report.py -o /tmp/mon_audit.json
-```
-
-### Intégration CI/CD
-```bash
-# Retourne code 0 si OK, 1 si problèmes, 2 si erreur
-python3 audit_report.py
-if [ $? -eq 0 ]; then
-    echo "✅ Audit OK"
-else
-    echo "❌ Problèmes détectés"
-    exit 1
-fi
-```
+Sans option, le script exécute tous les audits.
 
 ## 📝 Interprétation des résultats
 
-### Sévérités
-- **critical** : Bloquant pour l'automation Ansible
-- **warning** : À corriger mais non bloquant
-- **info** : Information (ex: plateforme sans devices)
+### Statistiques affichées
+- **Total** : Nombre total de devices
+- **Sans IP management** : Devices sans adresse IP
+- **Sans rôle** : Devices sans rôle défini
+- **Sans plateforme** : Devices sans plateforme
+- **Status non-actif** : Devices offline/disabled
 
-### Codes de sortie
-- `0` : Aucun problème
-- `1` : Problèmes détectés
-- `2` : Erreur d'exécution
+### Format de sortie console
+```
+📱 AUDIT DES DEVICES
+✅ 46 devices trouvés
+📊 Statistiques...
+⚠️ X devices avec problèmes
+```
 
 ## 🆘 Dépannage
 
@@ -151,16 +146,27 @@ pip3 install -r requirements.txt
 ### "Connection refused"
 ```bash
 # Vérifier que Infrahub est accessible
-curl http://jeysrv10:8080/graphql
+curl http://jeysrv10:8000/graphql
 
 # Vérifier les variables d'environnement
+cat .env
+```
 echo $INFRAHUB_API_URL
+
+
+### "Unauthorized" ou "403"
+```bash
+# Vérifier le token dans .env
+cat .env | grep TOKEN
+
+# Ou définir directement :
+export INFRAHUB_API_TOKEN="votre_token"
 ```
 
-### "Unauthorized"
-```bash
-# Vérifier le token dans .env ou :
-export INFRAHUB_API_TOKEN="votre_token"
+### Port incorrect
+Le port par défaut est **8000** (pas 8080). Vérifier `.env` :
+```
+INFRAHUB_API_URL=http://jeysrv10:8000
 ```
 
 ## 📚 Plus d'informations

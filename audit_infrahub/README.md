@@ -1,103 +1,98 @@
 # Audit Infrahub
 
-Ce répertoire contient des scripts Python pour auditer l'instance Infrahub (jeysrv10:8080) et identifier les objets manquants ou incomplets.
+Ce répertoire contient un script Python unifié pour auditer l'instance Infrahub (jeysrv10:8000) et identifier les objets manquants ou incomplets.
 
 ## Structure
 
-- `check_devices.py` : Vérifie les devices manquants et leurs attributs requis
-- `check_interfaces.py` : Vérifie les interfaces manquantes sur les devices
-- `check_sites.py` : Vérifie les sites et leur cohérence
-- `check_platforms.py` : Vérifie les plateformes et les attributs Ansible
-- `audit_report.py` : Génère un rapport d'audit complet
-- `config.py` : Configuration centralisée pour les scripts
+- `audit.py` : Script unifié d'audit Infrahub (devices, rôles, plateformes)
+- `config.py` : Configuration centralisée
 - `utils.py` : Fonctions utilitaires partagées
-- `reports/` : Répertoire pour les rapports générés
+- `reports/` : Répertoire pour les rapports JSON générés
+- `.env` : Configuration de l'API Infrahub
 
 ## Utilisation
 
 ### Configuration
 
-Définir les variables d'environnement :
+Créer un fichier `.env` à partir du modèle :
 ```bash
-export INFRAHUB_API_URL="http://jeysrv10:8080"
-export INFRAHUB_API_TOKEN="votre_token"
+cp .env.example .env
+nano .env
 ```
 
-Ou créer un fichier `.env` :
+Renseigner :
 ```
-INFRAHUB_API_URL=http://jeysrv10:8080
+INFRAHUB_API_URL=http://jeysrv10:8000
 INFRAHUB_API_TOKEN=votre_token
+```
+
+### Installation des dépendances
+
+```bash
+pip3 install -r requirements.txt
 ```
 
 ### Exécution des audits
 
 ```bash
-# Audit des devices
-python check_devices.py
+# Audit complet (devices, rôles, plateformes, résumé)
+python3 audit.py
 
-# Audit des interfaces
-python check_interfaces.py
+# Audits spécifiques
+python3 audit.py --devices      # Uniquement les devices
+python3 audit.py --roles        # Uniquement les rôles
+python3 audit.py --platforms    # Uniquement les plateformes
+python3 audit.py --summary      # Tableau résumé
 
-# Audit des sites
-python check_sites.py
-
-# Audit des plateformes
-python check_platforms.py
-
-# Rapport complet
-python audit_report.py --output reports/audit_$(date +%Y%m%d_%H%M%S).json
+# Export personnalisé
+python3 audit.py -o mon_audit.json
 ```
 
-## Attributs vérifiés
+## Résultats de l'audit
 
-### InfraDevice
-- `name` : Nom du device (requis)
-- `primary_address.address` : Adresse IP primaire (requis)
-- `site.name` : Site d'appartenance (requis)
-- `role` : Rôle du device (recommandé)
-- `type` : Type de device (recommandé)
-- `platform.ansible_network_os` : OS réseau Ansible (requis pour automation)
-- `interfaces` : Liste des interfaces (recommandé)
+Le script génère automatiquement :
+- **Affichage console** : Résumé formaté avec statistiques et problèmes détectés
+- **Rapport JSON** : Fichier détaillé sauvegardé dans `reports/audit_YYYYMMDD_HHMMSS.json`
 
-### InfraInterface
-- `name` : Nom de l'interface (requis)
-- `device` : Device parent (requis)
-- `status` : Statut de l'interface (recommandé)
-- `enabled` : Interface activée ou non (recommandé)
-- `ip_addresses` : Adresses IP assignées (optionnel)
+### Informations auditées
 
-### InfraSite
-- `name` : Nom du site (requis)
-- `location` : Localisation (recommandé)
-- `devices` : Liste des devices du site (pour cohérence)
+**Devices :**
+- Nom, adresse IP management, statut
+- Rôle et plateforme
+- Nombre d'interfaces
+- Problèmes : devices sans IP, rôle, plateforme ou status offline
 
-### InfraPlatform
-- `name` : Nom de la plateforme (requis)
-- `ansible_network_os` : OS pour Ansible (requis)
-- `manufacturer` : Fabricant (recommandé)
+**Rôles :**
+- Liste des rôles existants
+- Distribution des devices par rôle
 
-## Formats de sortie
+**Plateformes :**
+- Liste des plateformes existantes (iOS, JunOS, etc.)
+- Distribution des devices par plateforme
+- Devices sans plateforme définie
 
-Les scripts génèrent des rapports en JSON avec la structure suivante :
+### Exemple de sortie
+
+```
+📱 AUDIT DES DEVICES
+✅ 46 devices trouvés
+📊 Statistiques:
+  Total: 46
+  Sans IP management: 0
+  Sans plateforme: 35
+  Status non-actif: 7
+⚠️ 36 devices avec problèmes
+```
+
+## Format du rapport JSON
+
 ```json
 {
-  "timestamp": "2026-01-18T10:30:00",
-  "audit_type": "devices",
-  "summary": {
-    "total": 100,
-    "complete": 85,
-    "incomplete": 15,
-    "missing_critical": 5
-  },
-  "issues": [
-    {
-      "object_type": "InfraDevice",
-      "object_name": "device-01",
-      "severity": "critical",
-      "missing_fields": ["primary_address", "platform"],
-      "message": "Device sans adresse IP et plateforme"
-    }
-  ]
+  "timestamp": "2026-01-18T18:14:14",
+  "devices": {...},
+  "roles": {...},
+  "platforms": {...},
+  "summary": {...}
 }
 ```
 

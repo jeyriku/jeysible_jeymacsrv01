@@ -51,23 +51,32 @@ class InfrahubAuditor:
             return None
 
     def get_devices(self):
-        """Récupère tous les devices"""
+        """Récupère tous les devices avec tous les champs disponibles"""
         query = """
         {
           JeylanDevice {
             edges {
               node {
                 id
+                display_label
                 name { value }
+                fqdn { value }
                 mgmt_ip { value }
                 status { value }
+                asset_tag { value }
+                serial_number { value }
                 os_version { value }
                 dns_suffix { value }
                 interfaces_count { value }
                 warranty_expiration { value }
+                purchase_date { value }
                 role { node { id name { value } } }
                 type { node { id name { value } } }
                 platform { node { id name { value } } }
+                manufacturer { node { id name { value } } }
+                model { node { id name { value } } }
+                osversion { node { id display_label } }
+                location_ref { node { id name { value } } }
               }
             }
           }
@@ -79,7 +88,7 @@ class InfrahubAuditor:
         return []
 
     def audit_devices(self):
-        """Audit des devices"""
+        """Audit détaillé des devices"""
         print("\n📱 AUDIT DES DEVICES")
         print("="*80)
 
@@ -93,39 +102,110 @@ class InfrahubAuditor:
             "sans_ip": 0,
             "sans_role": 0,
             "sans_platform": 0,
+            "sans_type": 0,
+            "sans_manufacturer": 0,
+            "sans_model": 0,
+            "sans_location": 0,
+            "sans_serial": 0,
+            "sans_asset_tag": 0,
+            "sans_fqdn": 0,
+            "sans_os_version": 0,
             "sans_interfaces": 0,
-            "status_inactive": 0
+            "status_inactive": 0,
+            "warranty_expired": 0,
+            "warranty_soon": 0
         }
+
+        from datetime import datetime, timedelta
+        today = datetime.now()
+        warning_period = today + timedelta(days=90)
 
         for device in devices:
             name = device["name"]["value"]
-            ip = device.get("mgmt_ip", {}).get("value")
-            role = device.get("role", {}).get("node")
-            platform = device.get("platform", {}).get("node")
-            status = device.get("status", {}).get("value")
-            interfaces_count = device.get("interfaces_count", {}).get("value", 0)
+            ip = device.get("mgmt_ip", {}).get("value") if device.get("mgmt_ip") else None
+            role = device.get("role", {}).get("node") if device.get("role") else None
+            platform = device.get("platform", {}).get("node") if device.get("platform") else None
+            device_type = device.get("type", {}).get("node") if device.get("type") else None
+            manufacturer = device.get("manufacturer", {}).get("node") if device.get("manufacturer") else None
+            model = device.get("model", {}).get("node") if device.get("model") else None
+            location = device.get("location_ref", {}).get("node") if device.get("location_ref") else None
+            status = device.get("status", {}).get("value") if device.get("status") else None
+            serial = device.get("serial_number", {}).get("value") if device.get("serial_number") else None
+            asset_tag = device.get("asset_tag", {}).get("value") if device.get("asset_tag") else None
+            fqdn = device.get("fqdn", {}).get("value") if device.get("fqdn") else None
+            os_version = device.get("os_version", {}).get("value") if device.get("os_version") else None
+            warranty = device.get("warranty_expiration", {}).get("value") if device.get("warranty_expiration") else None
+            interfaces_count = device.get("interfaces_count", {}).get("value", 0) if device.get("interfaces_count") else 0
 
             device_issues = []
 
+            # Vérifications critiques
             if not ip:
                 stats["sans_ip"] += 1
-                device_issues.append("Pas d'IP de management")
+                device_issues.append("❌ Pas d'IP de management")
 
             if not role:
                 stats["sans_role"] += 1
-                device_issues.append("Pas de rôle défini")
+                device_issues.append("❌ Pas de rôle défini")
 
+            # Vérifications importantes
             if not platform:
                 stats["sans_platform"] += 1
-                device_issues.append("Pas de plateforme définie")
+                device_issues.append("⚠️  Pas de plateforme définie")
+
+            if not device_type:
+                stats["sans_type"] += 1
+                device_issues.append("⚠️  Pas de type défini")
+
+            if not manufacturer:
+                stats["sans_manufacturer"] += 1
+                device_issues.append("ℹ️  Pas de fabricant défini")
+
+            if not model:
+                stats["sans_model"] += 1
+                device_issues.append("ℹ️  Pas de modèle défini")
+
+            if not location:
+                stats["sans_location"] += 1
+                device_issues.append("ℹ️  Pas de localisation définie")
+
+            # Vérifications optionnelles
+            if not serial:
+                stats["sans_serial"] += 1
+                device_issues.append("📝 Pas de numéro de série")
+
+            if not asset_tag:
+                stats["sans_asset_tag"] += 1
+                device_issues.append("📝 Pas d'asset tag")
+
+            if not fqdn:
+                stats["sans_fqdn"] += 1
+                device_issues.append("📝 Pas de FQDN")
+
+            if not os_version:
+                stats["sans_os_version"] += 1
+                device_issues.append("📝 Pas de version OS")
 
             if interfaces_count == 0:
                 stats["sans_interfaces"] += 1
-                device_issues.append("Aucune interface")
+                device_issues.append("⚠️  Aucune interface")
 
-            if status != "active":
+            if status and status != "active":
                 stats["status_inactive"] += 1
-                device_issues.append(f"Status: {status}")
+                device_issues.append(f"⚠️  Status: {status}")
+
+            # Vérification garantie
+            if warranty:
+                try:
+                    warranty_date = datetime.fromisoformat(warranty.replace('Z', '+00:00'))
+                    if warranty_date < today:
+                        stats["warranty_expired"] += 1
+                        device_issues.append(f"⏰ Garantie expirée: {warranty}")
+                    elif warranty_date < warning_period:
+                        stats["warranty_soon"] += 1
+                        device_issues.append(f"⏰ Garantie bientôt expirée: {warranty}")
+                except:
+                    pass
 
             if device_issues:
                 issues.append({
@@ -136,11 +216,26 @@ class InfrahubAuditor:
         # Affichage résumé
         print(f"\n📊 Statistiques:")
         print(f"  Total: {stats['total']}")
-        print(f"  Sans IP management: {stats['sans_ip']}")
-        print(f"  Sans rôle: {stats['sans_role']}")
-        print(f"  Sans plateforme: {stats['sans_platform']}")
-        print(f"  Sans interfaces: {stats['sans_interfaces']}")
-        print(f"  Status non-actif: {stats['status_inactive']}")
+        print(f"\n  🔴 Critiques:")
+        print(f"    Sans IP management: {stats['sans_ip']}")
+        print(f"    Sans rôle: {stats['sans_role']}")
+        print(f"\n  🟠 Importantes:")
+        print(f"    Sans plateforme: {stats['sans_platform']}")
+        print(f"    Sans type: {stats['sans_type']}")
+        print(f"    Sans interfaces: {stats['sans_interfaces']}")
+        print(f"    Status non-actif: {stats['status_inactive']}")
+        print(f"\n  🟡 Informatives:")
+        print(f"    Sans fabricant: {stats['sans_manufacturer']}")
+        print(f"    Sans modèle: {stats['sans_model']}")
+        print(f"    Sans localisation: {stats['sans_location']}")
+        print(f"\n  📝 Optionnelles:")
+        print(f"    Sans numéro série: {stats['sans_serial']}")
+        print(f"    Sans asset tag: {stats['sans_asset_tag']}")
+        print(f"    Sans FQDN: {stats['sans_fqdn']}")
+        print(f"    Sans version OS: {stats['sans_os_version']}")
+        print(f"\n  ⏰ Garanties:")
+        print(f"    Garanties expirées: {stats['warranty_expired']}")
+        print(f"    Garanties <90j: {stats['warranty_soon']}")
 
         if issues:
             print(f"\n⚠️  {len(issues)} devices avec problèmes:")

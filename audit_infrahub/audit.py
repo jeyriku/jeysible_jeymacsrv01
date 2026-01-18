@@ -6,6 +6,7 @@ Analyse les devices, interfaces, sites et plateformes
 import argparse
 import json
 import sys
+import re
 from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
@@ -331,6 +332,97 @@ class InfrahubAuditor:
             "devices_sans_platform": devices_sans_platform
         }
 
+    def audit_custom_fields(self):
+        """Audit des custom fields NetBox manquants dans Infrahub"""
+        print("\n🔧 AUDIT DES CUSTOM FIELDS (Héritage NetBox)")
+        print("="*80)
+
+        # Custom fields utilisés dans les templates NetBox
+        netbox_custom_fields = {
+            "Interfaces": [
+                "iface_device", "iface_parent", "iface_role", "iface_unit", "iface_vrf"
+            ],
+            "Device": [
+                "dev_lpbk", "domain_name"
+            ],
+            "Routing": [
+                "bgp_asn", "ospf_area", "rr1", "rr2"
+            ],
+            "Network Services": [
+                "dns_server_pri", "dns_server_sec",
+                "snmp_community", "snmp_location", "snmp_server"
+            ]
+        }
+
+        total_custom_fields = sum(len(fields) for fields in netbox_custom_fields.values())
+        print(f"📋 {total_custom_fields} custom_fields utilisés dans les templates NetBox")
+
+        # Vérifier quels champs existent dans Infrahub
+        schema_query = """
+        {
+          __type(name: "JeylanDevice") {
+            fields {
+              name
+            }
+          }
+        }
+        """
+
+        data = self.query(schema_query)
+        infrahub_fields = []
+        if data and "__type" in data and data["__type"]:
+            infrahub_fields = [f["name"] for f in data["__type"]["fields"]]
+
+        # Chercher les custom fields dans Infrahub
+        infrahub_custom_fields = [f for f in infrahub_fields if "custom" in f.lower() or f.startswith("cf_")]
+
+        # Comparer
+        missing_fields = []
+        for category, fields in netbox_custom_fields.items():
+            for field in fields:
+                # Vérifier si le champ existe (soit tel quel, soit avec préfixe cf_)
+                if field not in infrahub_fields and f"cf_{field}" not in infrahub_fields:
+                    missing_fields.append((category, field))
+
+        # Affichage
+        print(f"\n📊 Résultat:")
+        print(f"  Custom fields dans NetBox: {total_custom_fields}")
+        print(f"  Custom fields dans Infrahub: {len(infrahub_custom_fields)}")
+        print(f"  ❌ Manquants: {len(missing_fields)}")
+
+        if infrahub_custom_fields:
+            print(f"\n✅ Custom fields trouvés dans Infrahub:")
+            for field in infrahub_custom_fields[:10]:
+                print(f"  - {field}")
+            if len(infrahub_custom_fields) > 10:
+                print(f"  ... et {len(infrahub_custom_fields) - 10} autres")
+
+        if missing_fields:
+            print(f"\n⚠️  Custom fields à créer dans Infrahub:")
+            by_category = defaultdict(list)
+            for category, field in missing_fields:
+                by_category[category].append(field)
+
+            for category, fields in by_category.items():
+                print(f"\n  📁 {category}:")
+                for field in fields:
+                    print(f"    - {field}")
+
+            print(f"\n💡 Ces champs sont utilisés dans les templates Jinja2 pour:")
+            print(f"   - Génération de configurations réseau (Juniper, Cisco)")
+            print(f"   - Routage (BGP, OSPF)")
+            print(f"   - Services (SNMP, DNS)")
+            print(f"   - Interfaces et VLANs")
+
+        return {
+            "type": "custom_fields",
+            "netbox_custom_fields": netbox_custom_fields,
+            "total_netbox": total_custom_fields,
+            "infrahub_custom_fields": infrahub_custom_fields,
+            "total_infrahub": len(infrahub_custom_fields),
+            "missing_fields": [{"category": cat, "field": field} for cat, field in missing_fields]
+        }
+
     def audit_summary(self):
         """Résumé de l'audit avec tous les devices"""
         print("\n📋 RÉSUMÉ DES DEVICES")
@@ -376,6 +468,9 @@ class InfrahubAuditor:
         # Plateformes
         results["platforms"] = self.audit_platforms()
 
+        # Custom fields (NetBox → Infrahub)
+        results["custom_fields"] = self.audit_custom_fields()
+
         # Résumé
         results["summary"] = self.audit_summary()
 
@@ -399,6 +494,7 @@ Exemples:
   %(prog)s --devices          # Audit devices uniquement
   %(prog)s --roles            # Audit rôles uniquement
   %(prog)s --platforms        # Audit plateformes uniquement
+  %(prog)s --custom-fields    # Audit custom fields NetBox
   %(prog)s --summary          # Résumé des devices
   %(prog)s -o rapport.json    # Sauvegarder en JSON
         """
@@ -417,6 +513,10 @@ Exemples:
         help="Audit des plateformes uniquement"
     )
     parser.add_argument(
+        "--custom-fields", action="store_true",
+        help="Audit des custom fields NetBox manquants"
+    )
+    parser.add_argument(
         "--summary", action="store_true",
         help="Afficher le résumé des devices"
     )
@@ -431,7 +531,7 @@ Exemples:
     auditor = InfrahubAuditor()
 
     # Déterminer quels audits exécuter
-    if not any([args.devices, args.roles, args.platforms, args.summary]):
+    if not any([args.devices, args.roles, args.platforms, args.custom_fields, args.summary]):
         # Audit complet par défaut
         results = auditor.run_full_audit()
     else:
@@ -442,6 +542,8 @@ Exemples:
             results["roles"] = auditor.audit_roles()
         if args.platforms:
             results["platforms"] = auditor.audit_platforms()
+        if args.custom_fields:
+            results["custom_fields"] = auditor.audit_custom_fields()
         if args.summary:
             results["summary"] = auditor.audit_summary()
 

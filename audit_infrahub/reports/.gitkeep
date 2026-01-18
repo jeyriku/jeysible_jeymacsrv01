@@ -1,0 +1,12 @@
+# Reports Directory
+
+Ce répertoire contient les rapports d'audit générés par les scripts Python.
+
+Les fichiers sont nommés selon le format :
+- `audit_devices_YYYYMMDD_HHMMSS.json`
+- `audit_interfaces_YYYYMMDD_HHMMSS.json`
+- `audit_sites_YYYYMMDD_HHMMSS.json`
+- `audit_platforms_YYYYMMDD_HHMMSS.json`
+- `audit_full_YYYYMMDD_HHMMSS.json`
+
+Les rapports sont automatiquement ignorés par git (voir `.gitignore`).

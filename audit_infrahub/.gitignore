@@ -1,0 +1,32 @@
+# Environnement virtuel
+venv/
+env/
+.venv/
+
+# Fichiers de configuration sensibles
+.env
+
+# Rapports générés
+reports/*.json
+reports/*.html
+reports/*.csv
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

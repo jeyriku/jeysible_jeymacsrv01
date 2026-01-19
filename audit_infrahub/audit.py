@@ -12,6 +12,14 @@ from pathlib import Path
 from collections import defaultdict
 import requests
 
+# Ajouter le répertoire parent pour importer extract_custom_fields
+sys.path.insert(0, str(Path(__file__).parent))
+from extract_custom_fields import (
+    extract_custom_fields_from_templates,
+    extract_custom_fields_from_playbooks,
+    categorize_custom_fields
+)
+
 # Configuration
 BASE_DIR = Path(__file__).parent
 REPORTS_DIR = BASE_DIR / "reports"
@@ -337,25 +345,27 @@ class InfrahubAuditor:
         print("\n🔧 AUDIT DES CUSTOM FIELDS (Héritage NetBox)")
         print("="*80)
 
-        # Custom fields utilisés dans les templates NetBox
-        netbox_custom_fields = {
-            "Interfaces": [
-                "iface_device", "iface_parent", "iface_role", "iface_unit", "iface_vrf"
-            ],
-            "Device": [
-                "dev_lpbk", "domain_name"
-            ],
-            "Routing": [
-                "bgp_asn", "ospf_area", "rr1", "rr2"
-            ],
-            "Network Services": [
-                "dns_server_pri", "dns_server_sec",
-                "snmp_community", "snmp_location", "snmp_server"
-            ]
-        }
+        # Extraire les custom_fields depuis templates et playbooks
+        print(f"📁 Extraction depuis templates et playbooks...")
+        template_fields = extract_custom_fields_from_templates()
+        playbook_fields = extract_custom_fields_from_playbooks()
 
-        total_custom_fields = sum(len(fields) for fields in netbox_custom_fields.values())
-        print(f"📋 {total_custom_fields} custom_fields utilisés dans les templates NetBox")
+        # Combiner les champs
+        all_fields_set = set(template_fields) | set(playbook_fields.keys())
+        # Créer un dict avec les sources pour chaque champ
+        all_fields = {}
+        for field in template_fields:
+            all_fields[field] = ["templates"]
+        for field, sources in playbook_fields.items():
+            if field in all_fields:
+                all_fields[field].extend(sources)
+            else:
+                all_fields[field] = sources
+
+        categorized = categorize_custom_fields(all_fields_set)
+
+        total_custom_fields = len(all_fields_set)
+        print(f"\n📊 {total_custom_fields} custom_fields uniques trouvés")
 
         # Vérifier quels champs existent dans Infrahub
         schema_query = """
@@ -376,13 +386,9 @@ class InfrahubAuditor:
         # Chercher les custom fields dans Infrahub
         infrahub_custom_fields = [f for f in infrahub_fields if "custom" in f.lower() or f.startswith("cf_")]
 
-        # Comparer
-        missing_fields = []
-        for category, fields in netbox_custom_fields.items():
-            for field in fields:
-                # Vérifier si le champ existe (soit tel quel, soit avec préfixe cf_)
-                if field not in infrahub_fields and f"cf_{field}" not in infrahub_fields:
-                    missing_fields.append((category, field))
+        # Comparer - tous les custom_fields NetBox sont manquants car Infrahub n'a pas de custom_fields
+        missing_fields = [(cat, field) for cat in categorized.keys()
+                         for field in categorized[cat]]
 
         # Affichage
         print(f"\n📊 Résultat:")
@@ -399,16 +405,26 @@ class InfrahubAuditor:
 
         if missing_fields:
             print(f"\n⚠️  Custom fields à créer dans Infrahub:")
-            by_category = defaultdict(list)
-            for category, field in missing_fields:
-                by_category[category].append(field)
 
-            for category, fields in by_category.items():
-                print(f"\n  📁 {category}:")
-                for field in fields:
-                    print(f"    - {field}")
+            for category, fields in sorted(categorized.items()):
+                if fields:
+                    print(f"\n  📁 {category} ({len(fields)} champs):")
+                    for field in sorted(fields):
+                        # Compter les usages depuis all_fields
+                        count = len(all_fields.get(field, []))
+                        print(f"    - {field:25} ({count:2} fichiers)")
 
-            print(f"\n💡 Ces champs sont utilisés dans les templates Jinja2 pour:")
+            # Champs critiques
+            critical_fields = [(field, len(sources))
+                              for field, sources in all_fields.items()
+                              if len(sources) > 5]
+
+            if critical_fields:
+                print(f"\n  ⚠️  CHAMPS CRITIQUES (> 5 fichiers):")
+                for field, count in sorted(critical_fields, key=lambda x: x[1], reverse=True):
+                    print(f"    - {field:25} ({count} fichiers)")
+
+            print(f"\n💡 Ces champs sont utilisés dans les templates Jinja2 et playbooks pour:")
             print(f"   - Génération de configurations réseau (Juniper, Cisco)")
             print(f"   - Routage (BGP, OSPF)")
             print(f"   - Services (SNMP, DNS)")
@@ -416,11 +432,12 @@ class InfrahubAuditor:
 
         return {
             "type": "custom_fields",
-            "netbox_custom_fields": netbox_custom_fields,
             "total_netbox": total_custom_fields,
             "infrahub_custom_fields": infrahub_custom_fields,
             "total_infrahub": len(infrahub_custom_fields),
-            "missing_fields": [{"category": cat, "field": field} for cat, field in missing_fields]
+            "missing_fields": [{"category": cat, "field": field} for cat, field in missing_fields],
+            "categorized": {cat: fields for cat, fields in categorized.items()},
+            "critical_fields": dict(critical_fields) if critical_fields else {}
         }
 
     def audit_summary(self):
